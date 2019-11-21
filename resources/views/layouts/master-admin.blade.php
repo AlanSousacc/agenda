@@ -144,7 +144,7 @@
                         </a>
                       </li>
                       <li class="nav-item">
-                        <a href="{{action('ContatoController@index')}}" class="nav-link">
+                        <a href="{{ action('ContatoController@index') }}" class="nav-link">
                           <i class="fa fa-list-ul nav-icon"></i>
                           <p>Listagem de Contatos</p>
                         </a>
