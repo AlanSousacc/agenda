@@ -107,7 +107,7 @@
                 <ul class="nav nav-treeview">
                   <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
-                      <i class="fa fa-address-book nav-icon"></i>
+                      <i class="fa fa-address-card nav-icon"></i>
                       <p>
                         Contatos
                         <i class="right fas fa-angle-left"></i>
@@ -137,12 +137,14 @@
                       </p>
                     </a>
                     <ul class="nav nav-treeview">
+                      @if (Auth::user()->profile == 'Administrador')
                       <li class="nav-item">
                         <a href="#" class="nav-link">
                           <i class="fa fa-plus-circle nav-icon"></i>
                           <p>Novo Usuário</p>
                         </a>
                       </li>
+                      @endif
                       <li class="nav-item">
                         <a href="{{ action('ContatoController@index') }}" class="nav-link">
                           <i class="fa fa-list-ul nav-icon"></i>
@@ -155,32 +157,32 @@
               </li>
 
               <li class="nav-item has-treeview">
-                  <a href="#" class="nav-link">
-                    <i class="fa fa-address-book nav-icon"></i>
-                    <p>
-                      Minha Conta
-                      <i class="right fas fa-angle-left"></i>
-                    </p>
-                  </a>
-                  <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                      <a href="#" class="nav-link">
-                        <i class="far fa-dot-circle nav-icon"></i>
-                        <p>Alterar Meus Dados</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                        <i class="fa fa-power-off nav-icon"></i>
-                        <p>Sair</p>
-                      </a>
+                <a href="#" class="nav-link">
+                  <i class="fa fa-address-book nav-icon"></i>
+                  <p>
+                    Minha Conta
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="fa fa-edit nav-icon"></i>
+                      <p>Alterar Meus Dados</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                      <i class="fa fa-power-off nav-icon"></i>
+                      <p>Sair</p>
+                    </a>
 
-                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                      </form>
-                    </li>
-                  </ul>
-                </li>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                      @csrf
+                    </form>
+                  </li>
+                </ul>
+              </li>
             </nav>
             <!-- /.sidebar-menu -->
           </div>
