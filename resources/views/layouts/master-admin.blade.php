@@ -1,10 +1,5 @@
-
 <!DOCTYPE html>
-<!--
-  This is a starter template page. Use this page to start your new project from
-  scratch. This page gets rid of all links and provides the needed markup only.
--->
-<html lang="en">
+<html lang="pt-BR">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,8 +11,6 @@
   <link href='{{asset('assets/fullcalendar/packages/daygrid/main.css')}}' rel='stylesheet' />
   <link href='{{asset('assets/fullcalendar/packages/timegrid/main.css')}}' rel='stylesheet' />
   <link href='{{asset('assets/fullcalendar/packages/list/main.css')}}' rel='stylesheet' />
-
-  {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> --}}
 
   <link href='{{asset('assets/fullcalendar/css/style.css')}}' rel='stylesheet' />
 
@@ -139,16 +132,16 @@
                     <ul class="nav nav-treeview">
                       @if (Auth::user()->profile == 'Administrador')
                       <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('register') }}" class="nav-link">
                           <i class="fa fa-plus-circle nav-icon"></i>
                           <p>Novo Usuário</p>
                         </a>
                       </li>
                       @endif
                       <li class="nav-item">
-                        <a href="{{ action('ContatoController@index') }}" class="nav-link">
+                        <a href="{{ route('routeUserList') }}" class="nav-link">
                           <i class="fa fa-list-ul nav-icon"></i>
-                          <p>Listagem de Contatos</p>
+                          <p>Listagem de Usuarios</p>
                         </a>
                       </li>
                     </ul>
@@ -235,12 +228,10 @@
 
       <script src='{{asset('assets/fullcalendar/packages/core/locales-all.js')}}'></script>
 
-      {{-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> --}}
       <script src="{{ asset('js/jquery.js')}}"></script>
 
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
       <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 

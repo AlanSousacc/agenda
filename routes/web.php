@@ -11,4 +11,7 @@ Route::delete('/event-destroy', 'EventController@destroy')->name('routeEventDele
 // contatos
 Route::resource('contato', 'ContatoController');
 
+// user
+Route::get('list-user', 'UserController@index')->name('routeUserList');
+
 Auth::routes();
