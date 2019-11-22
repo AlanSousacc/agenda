@@ -4,12 +4,12 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-12">
+      <h3 class="text-center">Cadastro de novos usuários</h3><br>
       <form method="POST" action="{{ route('register') }}">
         @csrf
 
         <div class="form-group row">
-          <label for="profile" class="col-md-4 col-form-label text-md-right">Perfil de Acesso</label>
-          <div class="col-md-6">
+          <div class="col-md-3 offset-md-1">
             <select required name="profile" id="profile" class="form-control ">
               <option value="" selected disabled>Escolha um perfil</option>
               <option value="Usuário Comum">Usuário Comum</option>
@@ -57,7 +57,7 @@
         </div>
 
         <div class="form-group row mb-0">
-          <div class="col-md-6 offset-md-4">
+          <div class="col-md-6 offset-md-1">
             <button type="submit" class="btn btn-primary">
               {{ __('Registrar') }}
             </button>

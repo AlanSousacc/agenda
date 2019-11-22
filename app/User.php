@@ -5,10 +5,23 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Carbon\Carbon;
 
 class User extends Authenticatable
 {
     use Notifiable;
+
+    public function getcreatedAtAttribute($value){
+      $criacao = Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d/m/Y H:i:s');
+
+      return $criacao;
+    }
+
+    public function getupdatedAtAttribute($value){
+      $alteracao = Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d/m/Y H:i:s');
+
+      return $alteracao;
+    }
 
     /**
      * The attributes that are mass assignable.
