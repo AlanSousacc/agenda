@@ -15,3 +15,5 @@ Route::resource('contato', 'ContatoController');
 Route::get('list-user', 'UserController@index')->name('routeUserList');
 
 Auth::routes();
+
+Auth::routes(['verify' => true]);

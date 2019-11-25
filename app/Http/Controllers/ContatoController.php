@@ -16,7 +16,7 @@ class ContatoController extends Controller
   {
     $contato = Contato::All();
 
-    return view('contatos.listagem', compact('contato'));
+    return view('Admin.contatos.listagem', compact('contato'));
   }
 
   /**

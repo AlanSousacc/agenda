@@ -19,8 +19,7 @@
 
   <title>AgendaBETHA</title>
 
-  <link rel="stylesheet" href="css/dataTables.min.css">
-  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="admin/css/app.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -91,7 +90,7 @@
                   </p>
                 </a>
 							</li>
-							
+
 							{{--  Sidebar cadastros  --}}
               <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
@@ -218,7 +217,7 @@
       <!-- ./wrapper -->
 
       <!-- REQUIRED SCRIPTS -->
-      <script src="/js/app.js"></script>
+      <script src="{{ asset('admin/js/app.js')}}"></script>
       {{-- start full calendar --}}
       <script src='{{asset('assets/fullcalendar/packages/core/main.js')}}'></script>
 
@@ -229,7 +228,7 @@
 
       <script src='{{asset('assets/fullcalendar/packages/core/locales-all.js')}}'></script>
 
-      <script src="{{ asset('js/jquery.js')}}"></script>
+      <script src="{{ asset('admin/js/jquery.js')}}"></script>
 
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
