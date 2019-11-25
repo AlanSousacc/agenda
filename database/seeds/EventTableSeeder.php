@@ -34,3 +34,4 @@ class EventTableSeeder extends Seeder
     //     ]);
     // }
 }
+}

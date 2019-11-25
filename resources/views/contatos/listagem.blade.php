@@ -1,6 +1,7 @@
 @extends('layouts.master-admin')
 
 @section('master')
+@include('layouts.master-message')
 <div class="wrapper">
   <section class="content-header">
     <div class="container-fluid">
@@ -55,11 +56,13 @@
                         <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Nome: activate to sort column descending" style="width: 383px;">Nome</th>
                         <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Documento: activate to sort column ascending" style="width: 200px;">Documento</th>
                         <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Endereco: activate to sort column ascending" style="width: 200px;">Endereco</th>
+                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Cidade: activate to sort column ascending" style="width: 200px;">Cidade</th>
                         <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Telefone: activate to sort column ascending" style="width: 200px;">Telefone</th>
                         <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Email: activate to sort column ascending" style="width: 200px;">Email</th>
                         <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Data Nascimento: activate to sort column ascending" style="width: 200px;">Data Nascimento</th>
                         <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Tipo Contato: activate to sort column ascending" style="width: 150px;">Tipo Contato</th>
-                        <th class="sorting" rowspan="1" colspan="1" style="width: 150px;">Operação</th>
+                        <th class="sorting" rowspan="1" colspan="1" style="width: 150px;">Tipo Contato</th>
+                        <th class="sorting" rowspan="1" colspan="1" style="width: 100px;">Status</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -67,10 +70,12 @@
                       <td class="sorting_1">{{$item->nome}}</td>
                       <td>{{$item->documento}}</td>
                       <td>{{$item->endereco}}</td>
+                      <td>{{$item->cidade}}</td>
                       <td>{{$item->telefone}}</td>
                       <td>{{$item->email}}</td>
                       <td>{{$item->datanascimento}}</td>
                       <td>{{$item->tipocontato}}</td>
+                      <td>{{$item->status}}</td>
                       <td>
                         teste
                       </td>
