@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
 use App\Models\Event;
 use App\Models\Contato;
 class FullCalendarController extends Controller
@@ -17,6 +17,6 @@ class FullCalendarController extends Controller
     $events   = Event::all();
     $contato = Contato::all();
 
-    return view('fullcalendar.master', compact('events', 'contato'));
+    return view('Admin.fullcalendar.master', compact('events', 'contato'));
   }
 }
