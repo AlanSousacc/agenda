@@ -215,7 +215,7 @@
         </footer>
       </div>
 			<!-- ./wrapper -->
-			
+
 			<script src="{{ asset('admin/js/jquery.js')}}"></script>
 
       <!-- REQUIRED SCRIPTS -->
@@ -240,5 +240,12 @@
       <script src='{{asset('assets/fullcalendar/js/calendar.js')}}'></script>
 
       {{-- end fullcalendar --}}
+      <script>
+      $(document).ready(function(){
+        $('.pagination').addClass('float-lg-right');
+      });
+      </script>
+    </div>
+
     </body>
     </html>
