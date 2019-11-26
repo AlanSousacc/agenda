@@ -13,6 +13,7 @@ Route::resource('contato', 'ContatoController');
 
 // user
 Route::get('list-user', 'UserController@index')->name('routeUserList');
+Route::any('search', 'UserController@search')->name('routeUserSearch');
 
 Auth::routes();
 
