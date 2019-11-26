@@ -39,7 +39,7 @@
         </div>
 
         <div class="input-group mb-3">
-          <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+          <input id="password" type="password" placeholder="Senha" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
           @error('password')
             <span class="invalid-feedback" role="alert">
@@ -68,7 +68,7 @@
           </div>
           <div class="col-12">
             @if (Route::has('password.request'))
-            <a class="btn btn-link text-center" style="width:100%" href="{{ route('password.request') }}">
+            <a class="btn btn-link pl-0" href="{{ route('password.request') }}">
               Esqueci minha senha?
             </a>
             @endif
@@ -84,7 +84,7 @@
 <!-- /.login-box -->
 
 <!-- jQuery -->
-<script src="{{ asset('js/jquery.js')}}"></script>
+<script src="{{ asset('admin/js/jquery.js')}}"></script>
 <!-- Bootstrap 4 -->
 <script src="{{ asset('admin/js/bootstrap.bundle.js')}}"></script>
 <!-- AdminLTE App -->

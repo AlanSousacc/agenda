@@ -16,4 +16,4 @@ mix
   .sass('resources/sass/app.scss', 'public/admin/css')
   .js('resources/js/jquery.js', 'public/admin/js')
   .js('resources/js/bootstrap/js/bootstrap.bundle.js', 'public/admin/js')
-  .js('resources/js/adminlte.js', 'public/admin/js');
+	.js('resources/js/adminlte.js', 'public/admin/js');

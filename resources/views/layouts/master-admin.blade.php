@@ -214,7 +214,9 @@
           <strong>Copyright &copy; 2019 AgendaBETHA</strong> Todos os direitos reservados.
         </footer>
       </div>
-      <!-- ./wrapper -->
+			<!-- ./wrapper -->
+			
+			<script src="{{ asset('admin/js/jquery.js')}}"></script>
 
       <!-- REQUIRED SCRIPTS -->
       <script src="{{ asset('admin/js/app.js')}}"></script>
@@ -227,8 +229,6 @@
       <script src='{{asset('assets/fullcalendar/packages/list/main.js')}}'></script>
 
       <script src='{{asset('assets/fullcalendar/packages/core/locales-all.js')}}'></script>
-
-      <script src="{{ asset('admin/js/jquery.js')}}"></script>
 
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
