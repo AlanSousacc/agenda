@@ -6,12 +6,19 @@
 <div class="col-md-12">
   <div class="card">
     <div class="card-header">
-      <div class="com-md-6"><h3 class="card-title mt-md-2">Listagem de Usuários</h3></div>
-      <div class="com-md-6 float-lg-right">
-        <form action="{{route('routeUserSearch')}}" method="POST" class="form form-inline">
+      <div class="com-md-6">
+        <h3 class="card-title mt-md-2"> Listagem de Usuários</h3>
+      </div>
+
+      <div class="com-md-6 float-md-right search">
+        <form action="{{route('routeUserSearch')}}" method="POST" class="form-inline">
           @csrf
-          <input type="text" placeholder="Consultar Contato" name="name" class="form form-control mx-md-2">
-          <button type="submit" class="btn btn-primary"> <i class="fa fa-search"></i> Consultar</button>
+          <div class="input-group input-group-sm">
+            <input type="search" placeholder="Consultar" aria-label="Consultar" name="name" class="form-control form-control-navbar">
+            <div class="input-group-append">
+              <button type="submit" class="btn btn-navbar"><i class="fas fa-search"></i></button>
+            </div>
+          </div>
         </form>
       </div>
     </div>
@@ -61,10 +68,10 @@
     </table>
     <div class="row">
       <div class="col-md-6 pl-4 mt-md-2"><p>Mostrando {{$consulta->count()}} usuários de um total de {{$consulta->total()}}</p></div>
-      @if (@isset($dataForm))
-        <div class="col-md-6 pr-4">{{$consulta->appends($dataForm)->links()}}</div>
+      @if (isset($dataForm))
+      <div class="col-md-6 pr-4">{{$consulta->appends($dataForm)->links()}}</div>
       @else
-        <div class="col-md-6 pr-4">{{$consulta->links()}}</div>
+      <div class="col-md-6 pr-4">{{$consulta->links()}}</div>
       @endif
     </div>
 

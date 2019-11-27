@@ -9,14 +9,17 @@ class UserController extends Controller
 {
   public function index(Request $request){
     $consulta = User::paginate(10);
-    return view('Admin.users.list', compact('consulta'));
+
+    return view('Admin.users.list', compact('consulta', 'dataForm'));
   }
 
   public function search(Request $request, User $user){
 		$dataForm = $request->except('_token');
 
-		$consulta = $user->search($dataForm);
-		
+    $consulta = $user->search($dataForm);
+
+    // dd($dataForm);
+
     return view('Admin.users.list', compact('consulta', 'dataForm'));
   }
 }
