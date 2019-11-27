@@ -16,7 +16,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     return $criacao;
 	}
-	
+
 	public function search($value){
 		return $this->where(function ($query) use ($value) {
 			if(isset($value['name']))
@@ -24,7 +24,7 @@ class User extends Authenticatable implements MustVerifyEmail
 		})
 		// ->toSql();
 		// dd($resultado);
-		->paginate(5);
+		->paginate(10);
 	}
 
   public function getupdatedAtAttribute($value){

@@ -326,6 +326,31 @@ legend {
   white-space: normal;
 }
 
+/* editado */
+
+.com-md-6.float-md-right.search .input-group-append {
+  border: 0;
+  border-left: 0;
+  background: #f2f4f6;
+}
+.com-md-6.float-md-right.search input.form-control.form-control-navbar {
+  background: #f2f4f6;
+  border: 0;
+}
+.com-md-6.float-md-right.search .input-group-append button.btn.btn-navbar {
+  padding: 0 5px;
+  color: #6c757d;
+}
+
+textarea:focus, input:focus, select:focus {
+  box-shadow: 0 0 0 0;
+  border: 0 none;
+  outline: 0;
+
+}
+
+/*  */
+
 progress {
   vertical-align: baseline;
 }

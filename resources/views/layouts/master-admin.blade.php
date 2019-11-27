@@ -13,6 +13,7 @@
   <link href='{{asset('assets/fullcalendar/packages/list/main.css')}}' rel='stylesheet' />
 
   <link href='{{asset('assets/fullcalendar/css/style.css')}}' rel='stylesheet' />
+  <link href='{{asset('admin/css/app.css')}}' rel='stylesheet' />
 
   <meta name="csrf-token" content="{{ csrf_token() }}">
   {{-- end fullcalendar--}}
@@ -40,18 +41,6 @@
           <a href="{{action('ContatoController@index')}}" class="nav-link">Contatos</a>
         </li>
       </ul>
-
-      <!-- SEARCH FORM -->
-      <form class="form-inline ml-3">
-        <div class="input-group input-group-sm">
-          <input class="form-control form-control-navbar" type="search" placeholder="Consultar" aria-label="Consultar">
-          <div class="input-group-append">
-            <button class="btn btn-navbar" type="submit">
-              <i class="fas fa-search"></i>
-            </button>
-          </div>
-        </div>
-      </form>
 
     </nav>
     <!-- /.navbar -->
