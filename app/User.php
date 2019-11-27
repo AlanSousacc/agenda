@@ -15,7 +15,17 @@ class User extends Authenticatable implements MustVerifyEmail
     $criacao = Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d/m/Y H:i:s');
 
     return $criacao;
-  }
+	}
+	
+	public function search($value){
+		return $this->where(function ($query) use ($value) {
+			if(isset($value['name']))
+				$query->where('name', 'like', '%'.$value['name'].'%');
+		})
+		// ->toSql();
+		// dd($resultado);
+		->paginate(5);
+	}
 
   public function getupdatedAtAttribute($value){
     $alteracao = Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d/m/Y H:i:s');

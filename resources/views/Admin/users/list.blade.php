@@ -35,7 +35,7 @@
         </tr>
       </thead>
       <tbody>
-        @foreach ($user as $item)
+        @foreach ($consulta as $item)
         <tr role="row" class="odd">
           <td class="text-center">{{$item->id}}</td>
           <td>{{$item->name}}</td>
@@ -60,11 +60,11 @@
       </tbody>
     </table>
     <div class="row">
-      <div class="col-md-6 pl-4 mt-md-2"><p>Mostrando {{$user->count()}} usuários de um total de {{$user->total()}}</p></div>
-      @if (isset($dataform))
-        <div class="col-md-6 pr-4">{{$user->appends($dataform)->links()}}</div>
+      <div class="col-md-6 pl-4 mt-md-2"><p>Mostrando {{$consulta->count()}} usuários de um total de {{$consulta->total()}}</p></div>
+      @if (@isset($dataForm))
+        <div class="col-md-6 pr-4">{{$consulta->appends($dataForm)->links()}}</div>
       @else
-        <div class="col-md-6 pr-4">{{$user->links()}}</div>
+        <div class="col-md-6 pr-4">{{$consulta->links()}}</div>
       @endif
     </div>
 
