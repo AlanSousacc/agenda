@@ -8,6 +8,7 @@ use Carbon\Carbon;
 class Contato extends Model
 {
   protected $filable = ['nome', 'documento', 'endereco', 'numero', 'cidade', 'status', 'telefone', 'email', 'tipocontato', 'datanascimento'];
+  protected $dateFormat = 'Y-m-d';
 
   public function search($value){
 		return $this->where(function ($query) use ($value) {
@@ -17,12 +18,11 @@ class Contato extends Model
 		// ->toSql();
 		// dd($resultado);
 		->paginate(10);
-	}
+  }
 
-  public function getdatanascimentoAttribute($value){
-    $datanascimento = Carbon::createFromFormat('Y-m-d', $value)->format('d/m/Y');
-
-    return $datanascimento;
+  public function getdatanascimentoAttribute($date) {
+    if (!empty($date))
+      return Carbon::createFromFormat('Y-m-d', $date)->format('d/m/Y');
   }
 
   public function event(){
