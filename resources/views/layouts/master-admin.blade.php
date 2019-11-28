@@ -38,7 +38,7 @@
           <a href="index3.html" class="nav-link">Home</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="{{action('ContatoController@index')}}" class="nav-link">Contatos</a>
+          <a href="{{route('routeContatoList')}}" class="nav-link">Contatos</a>
         </li>
       </ul>
 
@@ -103,7 +103,7 @@
                         </a>
                       </li>
                       <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a  href="{{route('routeContatoList')}}" class="nav-link">
                           <i class="fa fa-list-ul nav-icon"></i>
                           <p>Listar Contatos</p>
                         </a>

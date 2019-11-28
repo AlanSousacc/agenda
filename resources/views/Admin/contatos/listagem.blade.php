@@ -7,14 +7,14 @@
   <div class="card">
     <div class="card-header">
       <div class="com-md-6">
-        <h3 class="card-title mt-md-2"> Listagem de Usuários</h3>
+        <h3 class="card-title mt-md-2"> Listagem de Contatos</h3>
       </div>
 
       <div class="com-md-6 float-md-right search">
-        <form action="{{route('routeUserSearch')}}" method="POST" class="form-inline">
+        <form action="{{route('routeContatoSearch')}}" method="POST" class="form-inline">
           @csrf
           <div class="input-group input-group-sm">
-            <input type="search" placeholder="Consultar" aria-label="Consultar" name="name" class="form-control form-control-navbar">
+            <input type="search" placeholder="Consultar" aria-label="Consultar" name="nome" class="form-control form-control-navbar">
             <div class="input-group-append">
               <button type="submit" class="btn btn-navbar"><i class="fas fa-search"></i></button>
             </div>
@@ -25,23 +25,22 @@
     <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
       <thead>
         <tr>
-          <th class="text-center">#ID</th>
-          <th class="th-sm">Nome Completo</th>
-          <th class="th-sm">Documento</th>
-          <th class="th-sm">Endereço</th>
-          <th class="th-sm">Cidade</th>
-          <th class="th-sm">Telefone</th>
-          <th class="th-sm">Email</th>
-          <th class="th-sm">Data de Nascimento</th>
-          <th class="th-sm">Tipo de Contato</th>
-          <th class="th-sm">Status</th>
-          <th class="text-center">Opções</th>
+          <th class="text-center" style="width: 50px;" >#ID</th>
+          <th class="th-sm" style="width: 200px;" >Nome Completo</th>
+          <th class="th-sm" style="width: 150px;" >Documento</th>
+          <th class="th-sm" style="width: 200px;" >Endereço</th>
+          <th class="th-sm" style="width: 150px;" >Cidade</th>
+          <th class="th-sm" style="width: 100px;" >Telefone</th>
+          <th class="th-sm" style="width: 161px;" >Email</th>
+          <th class="th-sm" style="width: 120px;" >Nascimento</th>
+          {{-- <th class="th-sm" style="width: 120px;" >Tipo de Contato</th> --}}
+          <th class="text-center" style="width: 120px;" >Opções</th>
         </tr>
       </thead>
       <tbody>
         @foreach ($consulta as $item)
         <tr role="row" class="odd">
-          <td>{{$item->id}}</td>
+          <td class="text-center">{{$item->id}}</td>
           <td class="sorting_1">{{$item->nome}}</td>
           <td>{{$item->documento}}</td>
           <td>{{$item->endereco}}</td>
@@ -49,8 +48,7 @@
           <td>{{$item->telefone}}</td>
           <td>{{$item->email}}</td>
           <td>{{$item->datanascimento}}</td>
-          <td>{{$item->tipocontato}}</td>
-          <td>{{$item->status}}</td>
+          {{-- <td>{{$item->tipocontato}}</td> --}}
           <td class="text-center" style="padding: 0.45rem">
             <div class="dropdown">
               <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
