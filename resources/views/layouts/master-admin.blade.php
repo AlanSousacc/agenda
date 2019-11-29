@@ -148,7 +148,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('routeUserAccount') }}" class="nav-link">
                       <i class="fa fa-edit nav-icon"></i>
                       <p>Alterar Meus Dados</p>
                     </a>

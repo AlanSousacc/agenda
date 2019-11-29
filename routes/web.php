@@ -15,6 +15,8 @@ Route::any('search-contato', 'ContatoController@search')->name('routeContatoSear
 // user
 Route::get('list-user', 'UserController@index')->name('routeUserList');
 Route::any('search', 'UserController@search')->name('routeUserSearch');
+Route::get('my-account', 'UserController@myAccount')->name('routeUserAccount');
+Route::patch('users/{user}/update', 'UserController@update')->name('routeUserEdit');
 
 Auth::routes();
 

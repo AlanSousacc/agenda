@@ -56,9 +56,13 @@
                 Ação
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="http://"> Editar <i class="fa fa-edit"></i></a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="http://"> Excluir <i class="fa fa-trash"></i></a>
+                <a class="dropdown-item" href="http://"> Visualizar  <i class="fa fa-eye"></i></a>
+                @if (Auth::user()->profile == 'Administrador' )
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="http://"> Editar <i class="fa fa-edit"></i></a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="http://"> Excluir <i class="fa fa-trash"></i></a>
+                @endif
               </div>
             </div>
           </td>
