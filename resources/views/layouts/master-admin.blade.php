@@ -97,7 +97,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                       <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{route('routeContatoNovo')}}" class="nav-link">
                           <i class="fa fa-plus-circle nav-icon"></i>
                           <p>Novo Contato</p>
                         </a>
@@ -232,6 +232,8 @@
       <script>
       $(document).ready(function(){
         $('.pagination').addClass('float-lg-right');
+        $('.telefone').mask('(00) 00000-0000');
+        $('.documento').mask('000.000.000-00', {reverse: true});
       });
       </script>
     </div>
