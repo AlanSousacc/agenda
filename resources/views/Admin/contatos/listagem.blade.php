@@ -33,7 +33,6 @@
           <th class="th-sm" style="width: 100px;" >Telefone</th>
           <th class="th-sm" style="width: 161px;" >Email</th>
           <th class="th-sm" style="width: 120px;" >Nascimento</th>
-          {{-- <th class="th-sm" style="width: 120px;" >Tipo de Contato</th> --}}
           <th class="text-center" style="width: 120px;" >Opções</th>
         </tr>
       </thead>
@@ -48,19 +47,22 @@
           <td>{{$item->telefone}}</td>
           <td>{{$item->email}}</td>
           <td>{{$item->datanascimento}}</td>
-          {{-- <td>{{$item->tipocontato}}</td> --}}
-          <td class="text-center" style="padding: 0.45rem">
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Ação
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="http://"> Editar <i class="fa fa-edit"></i></a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="http://"> Excluir <i class="fa fa-trash"></i></a>
+            <td class="text-center" style="padding: 0.45rem">
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Ação
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="http://"> Visualizar  <i class="fa fa-eye"></i></a>
+                  @if (Auth::user()->profile == 'Administrador' )
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="http://"> Editar <i class="fa fa-edit"></i></a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="http://"> Excluir <i class="fa fa-trash"></i></a>
+                  @endif
+                </div>
               </div>
-            </div>
-          </td>
+            </td>
         </tr>
         @endforeach
       </tbody>
