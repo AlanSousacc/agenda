@@ -65,7 +65,8 @@ class ContatoController extends Controller
       }
       DB::commit();
       // se chegou aqui é pq deu tudo certo
-      return redirect('list-contato')->with('success', 'Contato criado com sucesso!');
+			return redirect('list-contato')->with('success', 'Contato criado com sucesso!');
+
     } catch (Exception $e) {
       // se deu pau ao salvar no banco de dados, faz rollback de tudo e retorna erro
       DB::rollBack();
