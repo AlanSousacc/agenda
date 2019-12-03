@@ -326,31 +326,6 @@ legend {
   white-space: normal;
 }
 
-/* editado */
-
-.search .input-group-append {
-  border: 0;
-  border-left: 0;
-  background: #f2f4f6;
-}
-.search input.form-control.form-control-navbar {
-  background: #f2f4f6;
-  border: 0;
-}
-.search .input-group-append button.btn.btn-navbar {
-  padding: 0 5px;
-  color: #6c757d;
-}
-
-textarea:focus, input:focus, select:focus {
-  box-shadow: 0 0 0 0;
-  border: 0 none;
-  outline: 0;
-
-}
-
-/*  */
-
 progress {
   vertical-align: baseline;
 }
@@ -19561,10 +19536,9 @@ html.maximized-card {
   border-right: 0;
 }
 
-.login-card-body .input-group .form-control:focus, .register-card-body .input-group .form-control:focus {
+.login-card-body .input-group .form-control:focus,
+.register-card-body .input-group .form-control:focus {
   box-shadow: none;
-  border: 1px solid #ced4da;
-  border-right: 0;
 }
 
 .login-card-body .input-group .form-control:focus ~ .input-group-append .input-group-text,
@@ -27957,15 +27931,6 @@ input.btn:-moz-focusring {
   color: #1F2D3D;
 }
 
-form input:focus {
-  border: 1px solid #ced4da;
-  outline: 0;
-}
-form textarea:focus {
-  border: 1px solid #ced4da;
-  outline: 0;
-}
-
 .bg-gradient-white.btn:not(:disabled):not(.disabled):active, .bg-gradient-white.btn:not(:disabled):not(.disabled).active, .bg-gradient-white.btn:active, .bg-gradient-white.btn.active {
   background: #e6e6e6 linear-gradient(180deg, #e9e9e9, #e6e6e6) repeat-x !important;
 }
@@ -34788,6 +34753,4 @@ readers do not read off random characters that represent icons */
 .fab {
   font-family: "Font Awesome 5 Brands";
 }
-
-
 

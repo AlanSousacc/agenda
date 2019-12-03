@@ -56,9 +56,22 @@
                   <a class="dropdown-item" href="http://"> Visualizar  <i class="fa fa-eye"></i></a>
                   @if (Auth::user()->profile == 'Administrador' )
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="http://"> Editar <i class="fa fa-edit"></i></a>
+									<a class="dropdown-item" href="{{$item->id}}"
+										data-contid="{{$item->id}}"
+										data-nome="{{$item->nome}}"
+										data-documento="{{$item->documento}}"
+										data-endereco="{{$item->endereco}}"
+										data-numero="{{$item->numero}}"
+										data-telefone="{{$item->telefone}}"
+										data-email="{{$item->email}}"
+										data-datanascimento="{{$item->datanascimento}}"
+										data-tipocontato="{{$item->tipocontato}}"
+										data-status="{{$item->status}}"
+										data-cidade="{{$item->cidade}}"
+										data-target="#editar"
+										data-toggle="modal"> Editar <i class="fa fa-edit"></i></a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="http://"> Excluir <i class="fa fa-trash"></i></a>
+                  <a class="dropdown-item" href="{{$item->id}}" data-contid={{$item->id}} data-target="#delete" data-toggle="modal">Excluir <i class="fa fa-trash"></i></a>
                   @endif
                 </div>
               </div>
@@ -74,11 +87,23 @@
       @else
       <div class="col-md-6 pr-4">{{$consulta->links()}}</div>
       @endif
-    </div>
+		</div>
+		
+		<!-- Modal editar-->
+		@include('Admin.contatos.modalEditar')
 
+		{{-- modal Deletar--}}
+		@include('Admin.contatos.modalExcluir')
+		{{-- Modal --}}
   </div>
 </div>
 <!-- /.card -->
+@section('js')
+<script>console.log('teste')</script>
+{{-- <script type="text/javascript" src="{{ URL::asset('admin/js/contato/contato.js') }}"></script> --}}
+<script src='{{asset('admin/js/contato/contato.js')}}'></script>
+@stop
 @endsection
+
 
 

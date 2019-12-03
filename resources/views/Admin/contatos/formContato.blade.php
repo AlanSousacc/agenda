@@ -35,7 +35,7 @@
 
 	<div class="col-md-3">
 		<div class="form-group">
-			<label for="endereco">Data de Nascimento</label>
+			<label for="datanascimento">Data de Nascimento</label>
 			<div class="input-group">
 				<input type="date" class="form-control datanascimento" id="datanascimento" placeholder="Data de nascimento" {{old('datanascimento')}} name="datanascimento" required>
 			</div>

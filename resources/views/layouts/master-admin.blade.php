@@ -35,7 +35,7 @@
           <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="index3.html" class="nav-link">Home</a>
+          <a href="/" class="nav-link">Home</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
           <a href="{{route('routeContatoList')}}" class="nav-link">Contatos</a>
@@ -216,6 +216,8 @@
       <script src='{{asset('assets/fullcalendar/packages/daygrid/main.js')}}'></script>
       <script src='{{asset('assets/fullcalendar/packages/timegrid/main.js')}}'></script>
       <script src='{{asset('assets/fullcalendar/packages/list/main.js')}}'></script>
+			
+			
 
       <script src='{{asset('assets/fullcalendar/packages/core/locales-all.js')}}'></script>
 
@@ -226,7 +228,7 @@
 
       <script src='{{asset('assets/fullcalendar/js/script.js')}}'></script>
 
-      <script src='{{asset('assets/fullcalendar/js/calendar.js')}}'></script>
+			<script src='{{asset('assets/fullcalendar/js/calendar.js')}}'></script>
 
       {{-- end fullcalendar --}}
       <script>
