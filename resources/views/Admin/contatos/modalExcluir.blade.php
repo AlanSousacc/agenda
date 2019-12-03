@@ -5,7 +5,7 @@
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				<h4 class="modal-title text-center">Confirmação de exclusão</h4>
 			</div>
-			<form method="post" action="{{route('routeContatoDelete', 'id')}}">
+			<form method="post" action="{{route('contato.destroy', 'id')}}">
 				{{method_field('delete')}}
 				{{ csrf_field() }}
 				<div class="modal-body">

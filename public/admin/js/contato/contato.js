@@ -95,7 +95,6 @@
 
 // tabela com listagem de clientes
 $('#editar').on('show.bs.modal', function (event) {
-  console.log('teste');
   var button = $(event.relatedTarget);
   var contid = button.data('contid');
   var nome = button.data('nome');
@@ -109,6 +108,8 @@ $('#editar').on('show.bs.modal', function (event) {
   var numero = button.data('numero');
   var cidade = button.data('cidade');
   var modal = $(this);
+  var nascimento = moment(datanascimento).format('YYYY-MM-DD');
+  console.log(nascimento);
   modal.find('.modal-body #status').val(status);
   modal.find('.modal-body #nome').val(nome);
   modal.find('.modal-body #documento').val(documento);
@@ -117,7 +118,7 @@ $('#editar').on('show.bs.modal', function (event) {
   modal.find('.modal-body #numero').val(numero);
   modal.find('.modal-body #email').val(email);
   modal.find('.modal-body #tipocontato').val(tipocontato);
-  modal.find('.modal-body #datanascimento').val(datanascimento);
+  modal.find('.modal-body #datanascimento').val(nascimento);
   modal.find('.modal-body #cidade').val(cidade);
   modal.find('.modal-body #contid').val(contid);
 }); // Função delete

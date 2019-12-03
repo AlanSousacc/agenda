@@ -19,8 +19,6 @@
   {{-- end fullcalendar--}}
 
   <title>AgendaBETHA</title>
-
-  <link rel="stylesheet" href="admin/css/app.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -38,7 +36,7 @@
           <a href="/" class="nav-link">Home</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="{{route('routeContatoList')}}" class="nav-link">Contatos</a>
+          <a href="{{route('contato.index')}}" class="nav-link">Contatos</a>
         </li>
       </ul>
 
@@ -49,7 +47,7 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
       <a href="/" class="brand-link">
-        <img src="assets/master-admin/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+        <img src="assets/master-admin/img/agenda.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
         style="opacity: .8">
         <span class="brand-text font-weight-light">AgendaBETHA</span>
       </a>
@@ -97,13 +95,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                       <li class="nav-item">
-                        <a href="{{route('routeContatoNovo')}}" class="nav-link">
+                        <a href="{{route('contato.create')}}" class="nav-link">
                           <i class="fa fa-plus-circle nav-icon"></i>
                           <p>Novo Contato</p>
                         </a>
                       </li>
                       <li class="nav-item">
-                        <a  href="{{route('routeContatoList')}}" class="nav-link">
+                        <a  href="{{route('contato.index')}}" class="nav-link">
                           <i class="fa fa-list-ul nav-icon"></i>
                           <p>Listar Contatos</p>
                         </a>
@@ -216,8 +214,8 @@
       <script src='{{asset('assets/fullcalendar/packages/daygrid/main.js')}}'></script>
       <script src='{{asset('assets/fullcalendar/packages/timegrid/main.js')}}'></script>
       <script src='{{asset('assets/fullcalendar/packages/list/main.js')}}'></script>
-			
-			
+
+
 
       <script src='{{asset('assets/fullcalendar/packages/core/locales-all.js')}}'></script>
 
@@ -238,6 +236,8 @@
         $('.documento').mask('000.000.000-00', {reverse: true});
       });
       </script>
+
+      @stack('scripts')
     </div>
 
     </body>

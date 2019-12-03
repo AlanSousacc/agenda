@@ -65,7 +65,8 @@ class ContatoController extends Controller
       }
       DB::commit();
       // se chegou aqui é pq deu tudo certo
-      return redirect('list-contato')->with('success', 'Contato criado com sucesso!');
+			return redirect('contato')->with('success', 'Contato criado com sucesso!');
+
     } catch (Exception $e) {
       // se deu pau ao salvar no banco de dados, faz rollback de tudo e retorna erro
       DB::rollBack();
@@ -78,7 +79,7 @@ class ContatoController extends Controller
     $data = $request->all();
     // aqui faz todas as valições possiveis
     try{
-      $contato = Contato::find($data->id);
+      $contato = Contato::find($data['contato_id']);
       if (!$contato)
         throw new Exception("Nenhum contato encontrado");
 
@@ -109,7 +110,7 @@ class ContatoController extends Controller
       }
       DB::commit();
       // se chegou aqui é pq deu tudo certo
-      return redirect('list-contato')->with('success', 'Contato #' . $contato->id . ' alterado com sucesso.');
+      return redirect('contato')->with('success', 'Contato #' . $contato->id . ' alterado com sucesso.');
     } catch (Exception $e) {
       // se deu pau ao salvar no banco de dados, faz rollback de tudo e retorna erro
       DB::rollBack();
@@ -150,7 +151,7 @@ class ContatoController extends Controller
       }
       DB::commit();
       // se chegou aqui é pq deu tudo certo
-      return redirect('list-contato')->with('success', 'Contato #' . $contato->id . ' removido com sucesso!');
+      return redirect('contato')->with('success', 'Contato #' . $contato->id . ' removido com sucesso!');
     } catch (Exception $e) {
       // se deu pau ao salvar no banco de dados, faz rollback de tudo e retorna erro
       DB::rollBack();
