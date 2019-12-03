@@ -88,7 +88,7 @@
       <div class="col-md-6 pr-4">{{$consulta->links()}}</div>
       @endif
 		</div>
-		
+
 		<!-- Modal editar-->
 		@include('Admin.contatos.modalEditar')
 
@@ -98,11 +98,9 @@
   </div>
 </div>
 <!-- /.card -->
-@section('js')
-<script>console.log('teste')</script>
-{{-- <script type="text/javascript" src="{{ URL::asset('admin/js/contato/contato.js') }}"></script> --}}
-<script src='{{asset('admin/js/contato/contato.js')}}'></script>
-@stop
+@push('scripts')
+  <script src='{{asset('admin/js/contato/contato.js')}}'></script>
+@endpush
 @endsection
 
 
