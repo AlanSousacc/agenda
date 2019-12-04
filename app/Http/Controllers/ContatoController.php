@@ -6,6 +6,9 @@ use App\Models\Contato;
 use Illuminate\Http\Request;
 use App\Http\Requests\ContatoRequest;
 use Illuminate\Support\Facades\DB;
+use Auth;
+use App\User;
+use Exception;
 // use Illuminate\Support\Facades\Route;
 
 class ContatoController extends Controller
@@ -35,10 +38,8 @@ class ContatoController extends Controller
   {
     $data = $request->all();
     try{
-      $contato = new Contato;
-
-      // dd($data->nome);
-
+			$contato = new Contato;
+			
       $contato->nome           = $data['nome'];
       $contato->endereco       = $data['endereco'];
       $contato->telefone       = $data['telefone'];
@@ -47,7 +48,7 @@ class ContatoController extends Controller
       $contato->documento      = $data['documento'];
       $contato->status         = $data['status'];
       $contato->email          = $data['email'];
-      $contato->datanascimento = $data['datanascimento'];
+			$contato->datanascimento = $data['datanascimento'];
       $contato->tipocontato    = $data['tipocontato'];
 
     } catch (Exception $e) {
@@ -79,12 +80,13 @@ class ContatoController extends Controller
     $data = $request->all();
     // aqui faz todas as valições possiveis
     try{
+			// dd($data['contato_id']);
       $contato = Contato::find($data['contato_id']);
       if (!$contato)
         throw new Exception("Nenhum contato encontrado");
 
       // aqui então faz todo o tratamento e seta o que foi alterado;
-      $contato->nome           = $data['nome'];
+			$contato->nome           = $data['nome'];
       $contato->endereco       = $data['endereco'];
       $contato->telefone       = $data['telefone'];
       $contato->numero         = $data['numero'];
@@ -92,7 +94,7 @@ class ContatoController extends Controller
       $contato->documento      = $data['documento'];
       $contato->status         = $data['status'];
       $contato->email          = $data['email'];
-      $contato->datanascimento = $data['datanascimento'];
+			$contato->datanascimento = $data['datanascimento'];
       $contato->tipocontato    = $data['tipocontato'];
 
     } catch (Exception $e) {
@@ -118,23 +120,23 @@ class ContatoController extends Controller
     }
   }
 
-  public function destroy(ContatoRequest $request)
+  public function destroy(Request $request)
   {
     try{
-      $contato = Contato::findOrFail($request->id);
+			$contato = Contato::find($request->contato_id);
 
       // verifica se este usuário esta vinculado a uma agenda
-      $event = DB::table('contato')
-      ->join('events', 'contato.id', '=', 'events.contato_id')->whereRaw('events.contato_id = '. $request->contato_id)->get();
+      $event = DB::table('contatos')
+      ->join('events', 'contatos.id', '=', 'events.contato_id')->whereRaw('events.contato_id = '. $request->contato_id)->get();
 
       if (!$contato)
-        throw new Exception("Nenhum paciênte encontrado");
+        throw new Exception("Nenhum contato encontrado");
 
-      if(Auth::user()->perfile != 'Administrador')
+      if(Auth::user()->profile != 'Administrador')
         throw new Exception("Este usuário não tem permissão para remover contatos!");
 
       if (count($event) > 0)
-        throw new Exception("Este paciênte está vinculado a um agendamento!");
+        throw new Exception("Este contato está vinculado a um agendamento!");
 
     } catch (Exception $e) {
       return redirect('contato')->with('error', $e->getMessage());
@@ -154,7 +156,8 @@ class ContatoController extends Controller
       return redirect('contato')->with('success', 'Contato #' . $contato->id . ' removido com sucesso!');
     } catch (Exception $e) {
       // se deu pau ao salvar no banco de dados, faz rollback de tudo e retorna erro
-      DB::rollBack();
+			DB::rollBack();
+
       return redirect('contato')->with('error', $e->getMessage());
     }
   }

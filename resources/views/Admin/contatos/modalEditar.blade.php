@@ -5,9 +5,9 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title">Editar Contatos</h4>
       </div>
-      <form action="{{route('contato.update', $item->id)}}" method="post">
-          {{method_field('put')}}
-          {{csrf_field()}}
+      <form action="{{route('contato.update','id')}}" method="post">
+				{{method_field('patch')}}
+				{{csrf_field()}}
         <div class="modal-body">
           <input type="hidden" name="contato_id" id="contid" value="">
           @include('Admin.contatos.formContato')
