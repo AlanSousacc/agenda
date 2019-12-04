@@ -1,11 +1,11 @@
 <div id="delete" class="modal fade text-danger" tabindex="-1" role="dialog">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
-			<div class="modal-header bg-danger">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<div class="modal-header bg-danger" style="text-align: center; display: inline;">
+				<button type="button" class="close" data-dismiss="modal" style="color:#fff">&times;</button>
 				<h4 class="modal-title text-center">Confirmação de exclusão</h4>
 			</div>
-			<form method="post" action="{{route('contato.destroy', 'id')}}">
+			<form action="{{route('contato.destroy', 'id')}}" method="post">
 				{{method_field('delete')}}
 				{{ csrf_field() }}
 				<div class="modal-body">

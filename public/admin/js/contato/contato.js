@@ -106,10 +106,10 @@ $('#editar').on('show.bs.modal', function (event) {
   var tipocontato = button.data('tipocontato');
   var datanascimento = button.data('datanascimento');
   var numero = button.data('numero');
-  var cidade = button.data('cidade');
+	var cidade = button.data('cidade');
+	var nascimento = moment(datanascimento).format('YYYY-MM-DD');
   var modal = $(this);
-  var nascimento = moment(datanascimento).format('YYYY-MM-DD');
-  console.log(nascimento);
+	
   modal.find('.modal-body #status').val(status);
   modal.find('.modal-body #nome').val(nome);
   modal.find('.modal-body #documento').val(documento);
@@ -129,6 +129,7 @@ $('#delete').on('show.bs.modal', function (event) {
   var modal = $(this);
   modal.find('.modal-body #contid').val(contid);
 });
+
 $(document).ready(function () {
   $('.telefone').mask('(00) 00000-0000');
   $('.documento').mask('000.000.000-00', {

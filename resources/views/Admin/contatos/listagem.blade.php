@@ -1,6 +1,5 @@
 @extends('layouts.master-admin')
 @section('css')
-<link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 @endsection
 @section('master')
 <div class="col-md-12">
