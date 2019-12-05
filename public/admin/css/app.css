@@ -28877,6 +28877,14 @@ a.text-muted:hover {
 .icheck-asbestos > input:first-child:checked + input[type="hidden"] + label::before {
     background-color: #7f8c8d;
     border-color: #7f8c8d;
+}.search input.form-control.form-control-navbar {
+	border: 1px solid #dee2e6;
+	border-right: 0;
+}
+
+.search button.btn.btn-navbar {
+	border: 1px solid #dee2e6;
+	border-left: 0;
 }@charset "UTF-8";
 
 /*!

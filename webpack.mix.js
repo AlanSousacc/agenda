@@ -5,4 +5,5 @@ mix
   .js('resources/js/jquery.js', 'public/admin/js')
   .js('resources/js/bootstrap/js/bootstrap.bundle.js', 'public/admin/js')
 	.js('resources/js/adminlte.js', 'public/admin/js')
-	.js('resources/js/contato/contato.js', 'public/admin/js/contato');
+	.js('resources/js/contato/contato.js', 'public/admin/js/contato')
+	.js('resources/js/users/users.js', 'public/admin/js/users');
