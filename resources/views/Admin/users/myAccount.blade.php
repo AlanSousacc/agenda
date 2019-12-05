@@ -1,20 +1,11 @@
 @extends('layouts.master-admin')
 @section('master')
+<div class="col-md-4 offset-md-8 fixed-top mt-3" style="z-index: 9999;">
+	@include('layouts.master-message')
+</div>
 <div class="container">
-  @if ($errors->any())
-  <div class="alert alert-danger alert-dismissible fade show" role="alert">
-    <ul>
-      @foreach ($errors->all() as $error)
-      <li>{{ $error }}</li>
-      @endforeach
-    </ul>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  @endif
   <h3 class="text-center mb-5">Minha Conta</h3>
-  <form method="post" action="{{route('routeUserEdit', $user)}}">
+  <form method="post" action="{{route('routeUserUpdateMyAccount', $user)}}">
     {{ csrf_field() }}
     {{ method_field('patch') }}
     <div class="row">

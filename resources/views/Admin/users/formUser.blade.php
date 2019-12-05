@@ -10,12 +10,12 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<div class="col-md-5">
 		<div class="form-group">
-			<label for="nome">Ultima Atualização</label>
+			<label for="updated_at">Ultima Atualização</label>
 			<div class="input-group">
-				<input type="text" class="form-control nome" id="nome" readonly  name="nome" >
+				<input type="text" class="form-control updated_at" id="updated_at" readonly  name="updated_at" >
 			</div>
 		</div>
   </div>

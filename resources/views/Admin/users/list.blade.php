@@ -54,11 +54,11 @@
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="{{$item->id}}"
 										data-userid="{{$item->id}}"
-										data-nome="{{$item->nome}}"
+										data-name="{{$item->name}}"
 										data-email="{{$item->email}}"
-										data-datanascimento="{{$item->email_verified_at}}"
-										data-tipocontato="{{$item->password}}"
-										data-status="{{$item->profile}}"
+										data-updated_at="{{$item->updated_at}}"
+										data-password="{{$item->password}}"
+										data-profile="{{$item->profile}}"
 										data-target="#editar"
 										data-toggle="modal"> Editar <i class="fa fa-edit"></i></a>
                   <div class="dropdown-divider"></div>
@@ -79,7 +79,7 @@
       <div class="col-md-6 pr-4">{{$consulta->links()}}</div>
       @endif
 		</div>
-		
+
 		<!-- Modal editar-->
 		@include('Admin.users.modalEditar')
 
