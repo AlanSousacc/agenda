@@ -10,7 +10,7 @@
   <link href='{{asset('assets/fullcalendar/packages/core/main.css')}}' rel='stylesheet' />
   <link href='{{asset('assets/fullcalendar/packages/daygrid/main.css')}}' rel='stylesheet' />
   <link href='{{asset('assets/fullcalendar/packages/timegrid/main.css')}}' rel='stylesheet' />
-  <link href='{{asset('assets/fullcalendar/packages/list/main.css')}}' rel='stylesheet' />
+	<link href='{{asset('assets/fullcalendar/packages/list/main.css')}}' rel='stylesheet' />
 
   <link href='{{asset('assets/fullcalendar/css/style.css')}}' rel='stylesheet' />
   <link href='{{asset('admin/css/app.css')}}' rel='stylesheet' />

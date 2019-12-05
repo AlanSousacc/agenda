@@ -81,70 +81,50 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/contato/contato.js":
-/*!*****************************************!*\
-  !*** ./resources/js/contato/contato.js ***!
-  \*****************************************/
+/***/ "./resources/js/users/users.js":
+/*!*************************************!*\
+  !*** ./resources/js/users/users.js ***!
+  \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// tabela com listagem de clientes
 $('#editar').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget);
-  var contid = button.data('contid');
-  var nome = button.data('nome');
-  var documento = button.data('documento');
-  var endereco = button.data('endereco');
-  var telefone = button.data('telefone');
-  var status = button.data('status');
+  var userid = button.data('userid');
+  var name = button.data('name');
   var email = button.data('email');
-  var tipocontato = button.data('tipocontato');
-  var datanascimento = button.data('datanascimento');
-  var numero = button.data('numero');
-  var cidade = button.data('cidade');
+  var profile = button.data('profile');
+  var email_verified_at = button.data('email_verified_at');
   var modal = $(this);
-  var nascimento = moment(datanascimento).format('YYYY-MM-DD');
-  modal.find('.modal-body #status').val(status);
-  modal.find('.modal-body #nome').val(nome);
-  modal.find('.modal-body #documento').val(documento);
-  modal.find('.modal-body #telefone').val(telefone);
-  modal.find('.modal-body #endereco').val(endereco);
-  modal.find('.modal-body #numero').val(numero);
+  modal.find('.modal-body #name').val(name);
   modal.find('.modal-body #email').val(email);
-  modal.find('.modal-body #tipocontato').val(tipocontato);
-  modal.find('.modal-body #datanascimento').val(nascimento);
-  modal.find('.modal-body #cidade').val(cidade);
-  modal.find('.modal-body #contid').val(contid);
+  modal.find('.modal-body #profile').val(profile);
+  modal.find('.modal-body #email_verified_at').val(email_verified_at);
+  modal.find('.modal-body #userid').val(userid);
 }); // Função delete
 
 $('#delete').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget);
-  var contid = button.data('contid');
+  var userid = button.data('userid');
   var modal = $(this);
-  modal.find('.modal-body #contid').val(contid);
-});
-$(document).ready(function () {
-  $('.telefone').mask('(00) 00000-0000');
-  $('.documento').mask('000.000.000-00', {
-    reverse: true
-  });
+  modal.find('.modal-body #userid').val(userid);
 });
 
 /***/ }),
 
-/***/ 4:
-/*!***********************************************!*\
-  !*** multi ./resources/js/contato/contato.js ***!
-  \***********************************************/
+/***/ 5:
+/*!*******************************************!*\
+  !*** multi ./resources/js/users/users.js ***!
+  \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\wamp64\www\Laravel 6\agenda\resources\js\contato\contato.js */"./resources/js/contato/contato.js");
+module.exports = __webpack_require__(/*! C:\wamp64\www\Laravel 6\agenda\resources\js\users\users.js */"./resources/js/users/users.js");
 
 
 /***/ })

@@ -23,6 +23,8 @@ Route::get('list-user', 'UserController@index')->name('routeUserList');
 Route::any('search', 'UserController@search')->name('routeUserSearch');
 Route::get('my-account', 'UserController@myAccount')->name('routeUserAccount');
 Route::patch('users/{user}/update', 'UserController@update')->name('routeUserEdit');
+Route::patch('users', 'UserController@update')->name('routeUserEdit');
+Route::delete('/users-delete', 'UserController@destroy')->name('routeUserDelete');
 
 Auth::routes();
 

@@ -1,0 +1,9 @@
+.search input.form-control.form-control-navbar {
+	border: 1px solid #dee2e6;
+	border-right: 0;
+}
+
+.search button.btn.btn-navbar {
+	border: 1px solid #dee2e6;
+	border-left: 0;
+}

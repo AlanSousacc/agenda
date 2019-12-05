@@ -2,6 +2,9 @@
 @section('css')
 @endsection
 @section('master')
+<div class="col-md-4 offset-md-8 fixed-top mt-3" style="z-index: 9999;">
+	@include('layouts.master-message')
+</div>
 <div class="col-md-12">
   <div class="card">
     <div class="card-header">
@@ -26,12 +29,12 @@
         <tr>
           <th class="text-center" style="width: 50px;" >#ID</th>
           <th class="th-sm" style="width: 200px;" >Nome Completo</th>
-          <th class="th-sm" style="width: 150px;" >Documento</th>
-          <th class="th-sm" style="width: 200px;" >Endereço</th>
-          <th class="th-sm" style="width: 150px;" >Cidade</th>
-          <th class="th-sm" style="width: 100px;" >Telefone</th>
+          <th class="th-sm" style="width: 120px;" >Documento</th>
+          {{-- <th class="th-sm" style="width: 200px;" >Endereço</th>
+          <th class="th-sm" style="width: 150px;" >Cidade</th> --}}
+          <th class="th-sm" style="width: 150px;" >Telefone</th>
           <th class="th-sm" style="width: 161px;" >Email</th>
-          <th class="th-sm" style="width: 120px;" >Nascimento</th>
+          {{-- <th class="th-sm" style="width: 120px;" >Nascimento</th> --}}
           <th class="text-center" style="width: 120px;" >Opções</th>
         </tr>
       </thead>
@@ -41,11 +44,11 @@
           <td class="text-center">{{$item->id}}</td>
           <td class="sorting_1">{{$item->nome}}</td>
           <td>{{$item->documento}}</td>
-          <td>{{$item->endereco}}</td>
-          <td>{{$item->cidade}}</td>
+          {{-- <td>{{$item->endereco}}</td>
+          <td>{{$item->cidade}}</td> --}}
           <td>{{$item->telefone}}</td>
           <td>{{$item->email}}</td>
-          <td>{{$item->datanascimento}}</td>
+          {{-- <td>{{$item->datanascimento}}</td> --}}
             <td class="text-center" style="padding: 0.45rem">
               <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -80,7 +83,7 @@
       </tbody>
     </table>
     <div class="row">
-      <div class="col-md-6 pl-4 mt-md-2"><p>Mostrando {{$consulta->count()}} usuários de um total de {{$consulta->total()}}</p></div>
+      <div class="col-md-6 pl-4 mt-md-2"><p>Mostrando {{$consulta->count()}} contatos de um total de {{$consulta->total()}}</p></div>
       @if (isset($contato))
       <div class="col-md-6 pr-4">{{$consulta->appends($contato)->links()}}</div>
       @else
@@ -98,7 +101,10 @@
 </div>
 <!-- /.card -->
 @push('scripts')
-  <script src='{{asset('admin/js/contato/contato.js')}}'></script>
+	<script src='{{asset('admin/js/contato/contato.js')}}'></script>
+	<script>
+		$('.alert').alert()
+	</script>
 @endpush
 @endsection
 
