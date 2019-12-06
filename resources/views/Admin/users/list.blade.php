@@ -41,7 +41,7 @@
           <td class="text-center">{{$item->id}}</td>
           <td>{{$item->name}}</td>
           <td>{{$item->email}}</td>
-          <td>{{$item->updated_at}}</td>
+          <td>{{Carbon\Carbon::parse($item->updated_at)->format('d/m/Y H:i:s')}}</td>
           <td>{{$item->profile}}</td>
           <td class="text-center" style="padding: 0.45rem">
             <div class="dropdown">
@@ -56,7 +56,7 @@
 										data-userid="{{$item->id}}"
 										data-name="{{$item->name}}"
 										data-email="{{$item->email}}"
-										data-updated_at="{{$item->updated_at}}"
+										data-updated_at="{{Carbon\Carbon::parse($item->updated_at)->format('d/m/Y H:i:s')}}"
 										data-password="{{$item->password}}"
 										data-profile="{{$item->profile}}"
 										data-target="#editar"

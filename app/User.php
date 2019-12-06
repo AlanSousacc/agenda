@@ -11,11 +11,11 @@ class User extends Authenticatable implements MustVerifyEmail
 {
   use Notifiable;
 
-  public function getcreatedAtAttribute($value){
-    $criacao = Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d/m/Y H:i:s');
+  // public function getcreatedAtAttribute($value){
+  //   $criacao = Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d/m/Y H:i:s');
 
-    return $criacao;
-	}
+  //   return $criacao;
+	// }
 
 	public function search($value){
 		return $this->where(function ($query) use ($value) {
@@ -32,17 +32,17 @@ class User extends Authenticatable implements MustVerifyEmail
   //     return Carbon::createFromFormat('Y-m-d', $date)->format('d/m/Y');
   // }
 
-  public function getupdatedAtAttribute($value){
-    $alteracao = Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d/m/Y H:i:s');
+  // public function getupdatedAtAttribute($value){
+  //   $alteracao = Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d/m/Y H:i:s');
 
-    return $alteracao;
-  }
+  //   return $alteracao;
+  // }
 
-  public function getemailVerifiedAtAttribute($value){
-    $email_verificado = Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d/m/Y H:i:s');
+  // public function getemailVerifiedAtAttribute($value){
+  //   $email_verificado = Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d/m/Y H:i:s');
 
-    return $email_verificado;
-  }
+  //   return $email_verificado;
+  // }
 
   /**
   * The attributes that are mass assignable.
