@@ -29,7 +29,7 @@
         <div class="form-group">
           <label for="verified">Email verificado</label>
           <div class="input-group">
-            <input type="text" readonly class="form-control verified" id="verified" value="{{$user->email_verified_at}}">
+            <input type="text" readonly class="form-control verified" id="verified" value="{{Carbon\Carbon::parse($user->email_verified_at)->format('d/m/Y H:i:s')}}">
           </div>
         </div>
       </div>
