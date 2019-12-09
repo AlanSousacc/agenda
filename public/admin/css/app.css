@@ -28885,7 +28885,18 @@ a.text-muted:hover {
 .search button.btn.btn-navbar {
 	border: 1px solid #dee2e6;
 	border-left: 0;
-}@charset "UTF-8";
+}
+
+ul.nav.nav-treeview {
+  padding-left: 10px!important;
+}
+
+.nav-item a.active{color: red}
+
+li.nav-item .active {
+  background: #2196F3;
+}
+@charset "UTF-8";
 
 /*!
  * Font Awesome Free 5.11.2 by @fontawesome - https://fontawesome.com

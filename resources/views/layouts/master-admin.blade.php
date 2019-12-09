@@ -10,7 +10,7 @@
   <link href='{{asset('assets/fullcalendar/packages/core/main.css')}}' rel='stylesheet' />
   <link href='{{asset('assets/fullcalendar/packages/daygrid/main.css')}}' rel='stylesheet' />
   <link href='{{asset('assets/fullcalendar/packages/timegrid/main.css')}}' rel='stylesheet' />
-	<link href='{{asset('assets/fullcalendar/packages/list/main.css')}}' rel='stylesheet' />
+  <link href='{{asset('assets/fullcalendar/packages/list/main.css')}}' rel='stylesheet' />
 
   <link href='{{asset('assets/fullcalendar/css/style.css')}}' rel='stylesheet' />
   <link href='{{asset('admin/css/app.css')}}' rel='stylesheet' />
@@ -68,22 +68,53 @@
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
               with font-awesome or any other icon font library -->
-              <li class="nav-item">
+              <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-th"></i>
                   <p>
                     Dashboard
                   </p>
                 </a>
-							</li>
+              </li>
+              <li class="nav-item has-treeview">
+                <a  href="{{route('contato.index')}}" class="nav-link">
+                  <i class="fa fa-list-ul nav-icon"></i>
+                  <p>Listar Contatos</p>
+                </a>
+              </li>
 
-							{{--  Sidebar cadastros  --}}
+              {{--  Sidebar cadastros  --}}
               <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
                   <i class="nav-icon fa fa-list"></i>
                   <p>Cadastro<i class="right fas fa-angle-left"></i></p>
                 </a>
                 <ul class="nav nav-treeview">
+                  @if (Auth::user()->isAdmin == 1)
+                  <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                      <i class="fa fa-landmark nav-icon"></i>
+                      <p>
+                        Empresas
+                        <i class="right fas fa-angle-left"></i>
+                      </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                        <a href="{{route('contato.create')}}" class="nav-link">
+                          <i class="fa fa-plus-circle nav-icon"></i>
+                          <p>Nova Empresa</p>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a  href="{{route('contato.index')}}" class="nav-link">
+                          <i class="fa fa-list-ul nav-icon"></i>
+                          <p>Listar Empresas</p>
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                  @endif
                   <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                       <i class="fa fa-address-card nav-icon"></i>
@@ -134,7 +165,7 @@
                   </li>
                 </ul>
               </li>
-
+              {{-- Minha Conta --}}
               <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
                   <i class="fa fa-address-book nav-icon"></i>
@@ -159,6 +190,24 @@
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                       @csrf
                     </form>
+                  </li>
+                </ul>
+              </li>
+              {{-- Minha Conta --}}
+              <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                  <i class="fa fa-cog nav-icon"></i>
+                  <p>
+                    Configurações
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="{{ route('routeUserAccount') }}" class="nav-link">
+                      <i class="fa fa-sliders-h nav-icon"></i>
+                      <p>Geral</p>
+                    </a>
                   </li>
                 </ul>
               </li>
@@ -200,9 +249,9 @@
           <strong>Copyright &copy; 2019 AgendaBETHA</strong> Todos os direitos reservados.
         </footer>
       </div>
-			<!-- ./wrapper -->
+      <!-- ./wrapper -->
 
-			<script src="{{ asset('admin/js/jquery.js')}}"></script>
+      <script src="{{ asset('admin/js/jquery.js')}}"></script>
 
       <!-- REQUIRED SCRIPTS -->
       <script src="{{ asset('admin/js/app.js')}}"></script>
@@ -225,19 +274,18 @@
 
       <script src='{{asset('assets/fullcalendar/js/script.js')}}'></script>
 
-			<script src='{{asset('assets/fullcalendar/js/calendar.js')}}'></script>
+      <script src='{{asset('assets/fullcalendar/js/calendar.js')}}'></script>
 
       {{-- end fullcalendar --}}
       <script>
-      $(document).ready(function(){
-        $('.pagination').addClass('float-lg-right');
-        $('.telefone').mask('(00) 00000-0000');
-        $('.documento').mask('000.000.000-00', {reverse: true});
-      });
+        $(document).ready(function(){
+          $('.pagination').addClass('float-lg-right');
+          $('.telefone').mask('(00) 00000-0000');
+          $('.documento').mask('000.000.000-00', {reverse: true});
+        });
       </script>
-
-      @stack('scripts')
-    </div>
+        @stack('scripts')
+      </div>
 
     </body>
     </html>

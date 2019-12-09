@@ -7,3 +7,11 @@
 	border: 1px solid #dee2e6;
 	border-left: 0;
 }
+
+ul.nav.nav-treeview {
+  padding-left: 10px!important;
+}
+
+li.nav-item .active {
+  background: #2196F3;
+}
