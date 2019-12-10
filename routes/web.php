@@ -18,6 +18,8 @@ Route::any('search-contato', 'ContatoController@search')->name('routeContatoSear
 
 Route::resource('contato', 'ContatoController');
 
+Route::resource('empresa', 'EmpresaController');
+
 // user
 Route::get('list-user', 'UserController@index')->name('routeUserList');
 Route::any('search', 'UserController@search')->name('routeUserSearch');

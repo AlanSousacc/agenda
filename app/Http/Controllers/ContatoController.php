@@ -39,7 +39,7 @@ class ContatoController extends Controller
     $data = $request->all();
     try{
 			$contato = new Contato;
-			
+
       $contato->nome           = $data['nome'];
       $contato->endereco       = $data['endereco'];
       $contato->telefone       = $data['telefone'];
