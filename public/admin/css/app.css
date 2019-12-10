@@ -28891,10 +28891,21 @@ ul.nav.nav-treeview {
   padding-left: 10px!important;
 }
 
-.nav-item a.active{color: red}
+li.nav-item.has-treeview.active {
+	background: #007bff;
+	border-radius: 3px;
+}
 
-li.nav-item .active {
-  background: #2196F3;
+.sidebar a.nav-link {
+	color: #fff!important;
+}
+
+li.nav-item.active {
+	background: #f8f9fa;
+	border-radius: 3px;
+}
+li.nav-item.active a{
+	color: #212529!important;
 }
 @charset "UTF-8";
 
