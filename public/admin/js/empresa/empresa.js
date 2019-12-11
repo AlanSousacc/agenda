@@ -81,50 +81,78 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/users/users.js":
-/*!*************************************!*\
-  !*** ./resources/js/users/users.js ***!
-  \*************************************/
+/***/ "./resources/js/empresa/empresa.js":
+/*!*****************************************!*\
+  !*** ./resources/js/empresa/empresa.js ***!
+  \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
+// tabela com listagem de clientes
 $('#editar').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget);
-  var userid = button.data('userid');
-  var name = button.data('name');
+  var emprid = button.data('emprid');
+  var razaosocial = button.data('razaosocial');
+  var nomefantasia = button.data('nomefantasia');
+  var apelido = button.data('apelido');
+  var cnpj = button.data('cnpj');
+  var ie = button.data('ie');
+  var im = button.data('im');
+  var telefone = button.data('telefone');
   var email = button.data('email');
-  var profile = button.data('profile');
-  var updated_at = button.data('updated_at');
+  var cidade = button.data('cidade');
+  var endereco = button.data('endereco');
+  var numero = button.data('numero');
+  var cep = button.data('cep');
+  var bairro = button.data('bairro');
+  var logo = button.data('logo');
   var modal = $(this);
-  modal.find('.modal-body #name').val(name);
+  modal.find('.modal-body #cidade').val(cidade);
+  modal.find('.modal-body #razaosocial').val(razaosocial);
+  modal.find('.modal-body #nomefantasia').val(nomefantasia);
+  modal.find('.modal-body #apelido').val(apelido);
+  modal.find('.modal-body #cnpj').val(cnpj);
+  modal.find('.modal-body #ie').val(ie);
+  modal.find('.modal-body #im').val(im);
+  modal.find('.modal-body #telefone').val(telefone);
   modal.find('.modal-body #email').val(email);
-  modal.find('.modal-body #profile').val(profile);
-  modal.find('.modal-body #updated_at').val(updated_at);
-  modal.find('.modal-body #userid').val(userid);
+  modal.find('.modal-body #endereco').val(endereco);
+  modal.find('.modal-body #numero').val(numero);
+  modal.find('.modal-body #cep').val(cep);
+  modal.find('.modal-body #bairro').val(bairro);
+  modal.find('.modal-body #logo').val(logo);
+  modal.find('.modal-body #emprid').val(emprid);
 }); // Função delete
 
 $('#delete').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget);
-  var userid = button.data('userid');
+  var emprid = button.data('emprid');
   var modal = $(this);
-  modal.find('.modal-body #userid').val(userid);
+  modal.find('.modal-body #emprid').val(emprid);
+});
+$(document).ready(function () {
+  $('.telefone').mask('(00) 00000-0000');
+  $('.cep').mask('00000-000');
+  $('.cnpj').mask('000.000.000-00', {
+    reverse: true
+  });
 });
 
 /***/ }),
 
-/***/ 6:
-/*!*******************************************!*\
-  !*** multi ./resources/js/users/users.js ***!
-  \*******************************************/
+/***/ 5:
+/*!***********************************************!*\
+  !*** multi ./resources/js/empresa/empresa.js ***!
+  \***********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\wamp64\www\Laravel 6\agenda\resources\js\users\users.js */"./resources/js/users/users.js");
+module.exports = __webpack_require__(/*! C:\wamp64\www\Laravel 6\agenda\resources\js\empresa\empresa.js */"./resources/js/empresa/empresa.js");
 
 
 /***/ })

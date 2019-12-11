@@ -11,7 +11,8 @@
             @include('Admin.empresa.formEmpresa')
             <input type="submit" name="submit" class="btn-alt btn btn-success btn-sm" value="Cadastrar" />
           </div>
-        </form>
+				</form>
+				<br>
       </div>
     </div>
   </div>

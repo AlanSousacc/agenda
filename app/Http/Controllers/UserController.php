@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\DB;
 class UserController extends Controller
 {
   public function index(Request $request){
-    $consulta = User::paginate(10);
+		$user 		= Auth::user()->empresa_id;
+    $consulta = User::where('empresa_id', '=', $user)->paginate(10);
 
     return view('Admin.users.list', compact('consulta', 'dataForm'));
   }
