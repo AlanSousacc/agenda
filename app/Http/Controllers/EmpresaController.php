@@ -13,11 +13,11 @@ class EmpresaController extends Controller
 {
   public function index()
   {
-    $consulta = Empresa::paginate(10);
+    $consulta = Empresa::Where('id', '!=', 1)->paginate(10);
 
     return view('Admin.empresa.listagem', compact('consulta'));
 	}
-	
+
 	public function search(Request $request, Empresa $empr){
 		$empresa = $request->except('_token');
 
@@ -135,20 +135,20 @@ class EmpresaController extends Controller
       // verifica se esta empresa esta vinculado a um usuario
       $event = DB::table('empresas')
 			->join('users', 'empresas.id', '=', 'users.empresa_id')->whereRaw('users.empresa_id = '. $request->empresa_id)->get();
-			
+
 			if ($request->empresa_id == 1);
 				throw new Exception("Esta empresa não pode ser removida, empresa padrão do sistema");
-				
+
       if (!$empresa)
         throw new Exception("Nenhuma empresa encontrada");
 
       if (count($event) > 0)
 				throw new Exception("Esta empresa está vinculada a um usuario!");
-				
+
 			if (Auth::user()->isAdmin != 1)
         throw new Exception("Este usuário não é Administrador do sistema, contate-o para obter informações");
-			
-			
+
+
 
     } catch (Exception $e) {
       return redirect('empresa')->with('error', $e->getMessage());
@@ -172,5 +172,20 @@ class EmpresaController extends Controller
 
       return redirect('empresa')->with('error', $e->getMessage());
     }
+  }
+
+  public function fileUploadPost(Request $request)
+  {
+    $request->validate([
+      'file' => 'required|mimes:jpg,png,jpeg|max:2048',
+    ]);
+
+    $fileName = time().'.'.$request->logo->extension();
+
+    $request->logo->move(public_path('uploads'), $fileName);
+
+    return back()
+    ->with('success','Upload realizado com sucesso!')
+    ->with('file',$fileName);
   }
 }

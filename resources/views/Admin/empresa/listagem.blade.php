@@ -42,7 +42,7 @@
           <td class="text-center">{{$item->id}}</td>
           <td class="sorting_1">{{$item->razaosocial}}</td>
           <td>{{$item->nomefantasia}}</td>
-          <td>{{$item->cnpj}}</td> 
+          <td>{{$item->cnpj}}</td>
           <td>{{$item->telefone}}</td>
           <td>{{$item->email}}</td>
             <td class="text-center" style="padding: 0.45rem">
