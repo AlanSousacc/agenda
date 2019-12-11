@@ -148,16 +148,7 @@
 </div>
 <div class="row">
   <div class="col-md-12">
-    <label for="bairro">Escolha a Logo</label>
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-      </div>
-      <div class="custom-file">
-        <input type="file" class="custom-file-input logo" id="logo" aria-describedby="inputGroupFileAddon01" name="logo">
-        <label class="custom-file-label" for="inputGroupFile01">Escolher Logo</label>
-      </div>
-    </div>
+    <input type="file" id="logo" name="logo">
   </div>
 </div>
 <br>

@@ -200,7 +200,14 @@
 											<i class="fa fa-sliders-h nav-icon"></i>
 											<p>Geral</p>
 										</a>
-									</li>
+                  </li>
+
+                  <li class="nav-item">
+                    <a href="#" class="nav-link">
+                      <i class="fa fa-store nav-icon"></i>
+                      <p>Minha Empresa</p>
+                    </a>
+                  </li>
 								</ul>
 							</li>
 						</nav>
