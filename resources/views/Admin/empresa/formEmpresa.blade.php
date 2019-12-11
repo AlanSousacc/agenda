@@ -36,7 +36,7 @@
     <div class="form-group">
       <label for="nomefantasia">Nome Fantasia</label>
       <div class="input-group">
-        <input type="email" class="form-control nomefantasia" id="nomefantasia" placeholder="Digite o nome fantasia" value="{{old('nomefantasia')}}" name="nomefantasia" required autofocus>
+        <input type="text" class="form-control nomefantasia" id="nomefantasia" placeholder="Digite o nome fantasia" value="{{old('nomefantasia')}}" name="nomefantasia" required autofocus>
       </div>
     </div>
   </div>
@@ -74,7 +74,7 @@
     <div class="form-group">
       <label for="im">Inscrição Municipal</label>
       <div class="input-group">
-        <input type="email" class="form-control im" id="im" placeholder="Digite a inscrição municipal" value="{{old('im')}}" name="im" required autofocus>
+        <input type="text" class="form-control im" id="im" placeholder="Digite a inscrição municipal" value="{{old('im')}}" name="im" required autofocus>
       </div>
     </div>
   </div>
@@ -94,7 +94,7 @@
     <div class="form-group">
       <label for="email">E-mail</label>
       <div class="input-group">
-        <input type="email" class="form-control email" id="ie" placeholder="Digite o email" value="{{old('email')}}" name="email" required autofocus>
+        <input type="email" class="form-control email" id="email" placeholder="Digite o email" value="{{old('email')}}" name="email" required autofocus>
       </div>
     </div>
   </div>

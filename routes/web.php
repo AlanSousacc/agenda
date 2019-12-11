@@ -9,16 +9,12 @@ Route::post('/event-store', 'EventController@store')->name('routeEventStore');
 Route::delete('/event-destroy', 'EventController@destroy')->name('routeEventDelete');
 
 // contatos
-// Route::get('list-contato', 'ContatoController@index')->name('routeContatoList');
-Route::any('search-contato', 'ContatoController@search')->name('routeContatoSearch');
-// Route::get('contato', 'ContatoController@create')->name('routeContatoNovo');
-// Route::post('list-contato', 'ContatoController@store')->name('routeContatoStore');
-// Route::delete('excluir-contato', 'ContatoController@delete')->name('routeContatoDelete');
-// Route::put('/editar-contato', 'ContatoController@update')->name('routeContatoUpdate');
-
 Route::resource('contato', 'ContatoController');
+Route::any('search-contato', 'ContatoController@search')->name('routeContatoSearch');
 
+// empresa
 Route::resource('empresa', 'EmpresaController');
+Route::any('search-empresa', 'EmpresaController@search')->name('routeEmpresaSearch');
 
 // user
 Route::get('list-user', 'UserController@index')->name('routeUserList');

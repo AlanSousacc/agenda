@@ -279,7 +279,7 @@
 					var path = window.location.pathname;
 					path = path.replace(/\/$/, "");
 					path = decodeURIComponent(path);
-					path = 'http://agendabetha' + path
+					path = 'http://agendabetha:8000' + path
 
 					$(".nav a").each(function () {
 						var href = $(this).attr('href');
@@ -293,7 +293,7 @@
 					var path = window.location.pathname;
 					path = path.replace(/\/$/, "");
 					path = decodeURIComponent(path);
-					path = 'http://agendabetha' + path
+					path = 'http://agendabetha:8000' + path
 
 					$(".sidebar a").each(function () {
 						if (path == (this.href)) {

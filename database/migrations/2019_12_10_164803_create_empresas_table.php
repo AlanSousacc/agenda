@@ -18,18 +18,18 @@ class CreateEmpresasTable extends Migration
       $table->timestamps();
       $table->string('razaosocial', 50);
       $table->string('nomefantasia', 50);
-      $table->string('apelido', 30);
-      $table->string('cnpj', 18);
-      $table->string('ie', 14);
-      $table->string('im', 14);
-      $table->string('telefone', 16);
-      $table->string('email', 30);
-      $table->string('cidade', 30);
-      $table->string('endereco', 30);
-      $table->string('numero', 5);
-      $table->string('cep', 19);
-      $table->string('bairro', 20);
-      $table->binary('logo');
+      $table->string('apelido', 30)->nullable();
+      $table->string('cnpj', 18)->unique();
+      $table->string('ie', 14)->nullable();
+      $table->string('im', 14)->nullable();
+      $table->string('telefone', 16)->nullable();
+      $table->string('email', 30)->nullable();
+      $table->string('cidade', 30)->nullable();
+      $table->string('endereco', 30)->nullable();
+      $table->string('numero', 5)->nullable();
+      $table->string('cep', 19)->nullable();
+      $table->string('bairro', 20)->nullable();
+      $table->binary('logo')->nullable();
     });
   }
 
