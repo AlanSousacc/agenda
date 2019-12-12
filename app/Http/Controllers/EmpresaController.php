@@ -8,6 +8,7 @@ use Exception;
 use Auth;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\EmpresaRequest;
+use Image;
 
 class EmpresaController extends Controller
 {
@@ -174,18 +175,36 @@ class EmpresaController extends Controller
     }
   }
 
-  public function fileUploadPost(Request $request)
+  public function logoUploadPost(Request $request)
   {
-    $request->validate([
-      'file' => 'required|mimes:jpg,png,jpeg|max:2048',
-    ]);
+		$request->validate([
+      'logo' => 'required|mimes:jpg,png,jpeg|max:2048',
+		]);
+		
+		if($request->hasFile('logo')){
+			$logo = $request->file('logo');
+			$fileName = time().'.'. $logo->getClientOriginalExtension();
+			Image::make($logo)->resize(300,300)->save(public_path('/uploads/logos/' . $fileName));
 
-    $fileName = time().'.'.$request->logo->extension();
+			$empresa = Empresa::Where('id', '=', Auth::user()->empresa_id)->first();
+			$empresa->logo = $fileName;
+			$empresa->save();
+		}
 
-    $request->logo->move(public_path('uploads'), $fileName);
+		return back()->with('success','Upload realizado com sucesso!');
 
-    return back()
-    ->with('success','Upload realizado com sucesso!')
-    ->with('file',$fileName);
-  }
+    // $fileName = time().'.'.$request->logo->extension();
+
+    // $request->logo->move(public_path('uploads'), $fileName);
+
+    // return back()
+    // ->with('success','Upload realizado com sucesso!')
+    // ->with('file',$fileName);
+	}
+	
+	public function show($id){
+		$consulta = Empresa::Where('id', '=', $id)->first();
+		// dd($consulta->razaosocial);
+    return view('Admin.empresa.show', compact('consulta'));
+	}
 }
