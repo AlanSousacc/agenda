@@ -36,6 +36,7 @@
 					<a href="/" class="nav-link">Home</a>
 				</li>
 				<li class="nav-item d-none d-sm-inline-block">
+
 					<a href="{{route('contato.index')}}" class="nav-link">Contatos</a>
 				</li>
 			</ul>
@@ -46,8 +47,12 @@
 		<!-- Main Sidebar Container -->
 		<aside class="main-sidebar sidebar-dark-primary elevation-4">
 			<!-- Brand Logo -->
-			<a href="/" class="brand-link">
-				<img src="/uploads/logos/{{$empresa->logo}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3">
+      <a href="/" class="brand-link">
+        @if ($empresa->logo)
+          <img src="/uploads/logos/{{$empresa->logo}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="max-width:35px; max-height:35px">
+        @else
+          <img src="{{URL::asset('assets/master-admin/img/schedule.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="max-width:35px; max-height:35px">
+        @endif
 				<span class="brand-text font-weight-light">AgendaBETHA</span>
 			</a>
 

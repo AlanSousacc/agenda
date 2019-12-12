@@ -68,8 +68,8 @@
 										data-endereco="{{$item->endereco}}"
 										data-numero="{{$item->numero}}"
 										data-cep="{{$item->cep}}"
-										data-bairro="{{$item->bairro}}"
 										data-logo="{{$item->logo}}"
+										data-bairro="{{$item->bairro}}"
 										data-target="#editar"
 										data-toggle="modal"> Editar <i class="fa fa-edit"></i></a>
                   <div class="dropdown-divider"></div>
@@ -84,8 +84,8 @@
     </table>
     <div class="row">
       <div class="col-md-6 pl-4 mt-md-2"><p>Mostrando {{$consulta->count()}} empresas de um total de {{$consulta->total()}}</p></div>
-      @if (isset($empresa))
-      <div class="col-md-6 pr-4">{{$consulta->appends($empresa)->links()}}</div>
+      @if (isset($empresas))
+      <div class="col-md-6 pr-4">{{$consulta->appends($empresas)->links()}}</div>
       @else
       <div class="col-md-6 pr-4">{{$consulta->links()}}</div>
       @endif

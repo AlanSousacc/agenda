@@ -20,11 +20,11 @@ class EmpresaController extends Controller
 	}
 
 	public function search(Request $request, Empresa $empr){
-		$empresa = $request->except('_token');
+		$empresas = $request->except('_token');
 
-    $consulta = $empr->search($empresa);
+    $consulta = $empr->search($empresas);
 
-    return view('Admin.empresa.listagem', compact('consulta', 'empresa'));
+    return view('Admin.empresa.listagem', compact('consulta', 'empresas'));
 	}
 
   public function create()
@@ -36,6 +36,15 @@ class EmpresaController extends Controller
   {
     $data = $request->all();
     try{
+      if($request->hasFile('logo')){
+        $logo     = $request->file('logo');
+        $fileName = $logo->getClientOriginalName();
+        Image::make($logo)->resize(100,100)->save(public_path('/uploads/logos/' . $fileName));
+
+        $empresa = Empresa::Where('id', '=', Auth::user()->empresa_id)->first();
+        $empresa->logo = $fileName;
+      }
+
 			$empresa = new Empresa;
 
       $empresa->razaosocial   = $data['razaosocial'];
@@ -51,7 +60,6 @@ class EmpresaController extends Controller
       $empresa->numero    		= $data['numero'];
       $empresa->cep    				= $data['cep'];
       $empresa->bairro    		= $data['bairro'];
-			$empresa->logo    			= $data['logo'];
 			$empresa->status    		= $data['status'];
 
     } catch (Exception $e) {
@@ -81,10 +89,16 @@ class EmpresaController extends Controller
   public function update(EmpresaRequest $request)
   {
     $data = $request->all();
-    // aqui faz todas as valições possiveis
     try{
-			// dd($data['contato_id']);
       $empresa = Empresa::find($data['empresa_id']);
+
+      if($request->hasFile('logo')){
+        $logo     = $request->file('logo');
+        $fileName = $logo->getClientOriginalName();
+        Image::make($logo)->resize(100,100)->save(public_path('/uploads/logos/' . $fileName));
+
+        $empresa->logo  = $fileName;
+      }
       if (!$empresa)
         throw new Exception("Nenhuma empresa encontrada");
 
@@ -92,7 +106,6 @@ class EmpresaController extends Controller
 			$empresa->razaosocial   = $data['razaosocial'];
       $empresa->nomefantasia  = $data['nomefantasia'];
       $empresa->apelido       = $data['apelido'];
-      $empresa->cnpj         	= $data['cnpj'];
       $empresa->ie         		= $data['ie'];
       $empresa->im      			= $data['im'];
       $empresa->telefone      = $data['telefone'];
@@ -178,13 +191,15 @@ class EmpresaController extends Controller
   public function logoUploadPost(Request $request)
   {
 		$request->validate([
-      'logo' => 'required|mimes:jpg,png,jpeg|max:2048',
+      'logo'          => 'mimes:jpg,png,jpeg|max:2048',
+      'logo.mimes'    => 'Formatos suportados: jpg, png, jpeg',
+			'logo.max'      => 'Tamanho máximo permitido do arquivo: 2048Mb',
 		]);
-		
+
 		if($request->hasFile('logo')){
 			$logo = $request->file('logo');
-			$fileName = time().'.'. $logo->getClientOriginalExtension();
-			Image::make($logo)->resize(300,300)->save(public_path('/uploads/logos/' . $fileName));
+			$fileName = $logo->getClientOriginalName();
+			Image::make($logo)->resize(100,100)->save(public_path('/uploads/logos/' . $fileName));
 
 			$empresa = Empresa::Where('id', '=', Auth::user()->empresa_id)->first();
 			$empresa->logo = $fileName;
@@ -192,16 +207,8 @@ class EmpresaController extends Controller
 		}
 
 		return back()->with('success','Upload realizado com sucesso!');
-
-    // $fileName = time().'.'.$request->logo->extension();
-
-    // $request->logo->move(public_path('uploads'), $fileName);
-
-    // return back()
-    // ->with('success','Upload realizado com sucesso!')
-    // ->with('file',$fileName);
 	}
-	
+
 	public function show($id){
 		$consulta = Empresa::Where('id', '=', $id)->first();
 		// dd($consulta->razaosocial);

@@ -15,7 +15,7 @@ class EmpresaRequest extends FormRequest
 	{
 		return true;
 	}
-	
+
 	/**
 	* Get the validation rules that apply to the request.
 	*
@@ -23,15 +23,21 @@ class EmpresaRequest extends FormRequest
 	*/
 	public function rules()
 	{
-		return [
+		$rules = [
 			'razaosocial'   => 'required|min:5|max:50',
 			'nomefantasia'  => 'required|min:5|max:50',
-			'cnpj'        	=> 'required|min:18|max:18',
 			'email'         => 'required|email:rfc,filter',
-			'status'        => 'required',
-		];
+      'status'        => 'required',
+      'logo'          => 'mimes:jpg,png,jpeg|max:2048',
+    ];
+
+    if(!$this->has('id')){
+      $rules += ['cnpj' => 'required|min:18|max:18'];
+    }
+
+    return $rules;
 	}
-	
+
 	public function messages()
 	{
 		return [
@@ -45,7 +51,8 @@ class EmpresaRequest extends FormRequest
 			'cnpj.min'              => 'O campo CNPJ Endereço conter ao menos 18 caracteres!',
 			'cnpj.max'              => 'O campo CNPJ Endereço conter no máximo 18 caracteres!',
 			'email.required'        => 'O campo Email é obrigatório!',
-			'email.required'        => 'O campo Status é obrigatório!',
+			'logo.mimes'            => 'Formatos suportados: jpg, png, jpeg',
+			'logo.max'              => 'Tamanho máximo permitido do arquivo: 2048Mb',
 		];
 	}
 }
