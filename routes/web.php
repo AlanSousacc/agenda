@@ -15,10 +15,8 @@ Route::any('search-contato', 'ContatoController@search')->name('routeContatoSear
 // empresa
 Route::resource('empresa', 'EmpresaController');
 Route::any('search-empresa', 'EmpresaController@search')->name('routeEmpresaSearch');
-
-// upload logo
-Route::get('file-upload', 'FileUploadController@fileUpload')->name('file.upload');
-Route::post('file-upload', 'FileUploadController@fileUploadPost')->name('file.upload.post');
+// Route::get('my-empresa/{user}', 'EmpresaController@myEmpresa')->name('routeEmpresamyEmpresa');
+Route::post('empresa', 'EmpresaController@logoUploadPost')->name('routeEmpresaLogo');
 
 // user
 Route::get('list-user', 'UserController@index')->name('routeUserList');

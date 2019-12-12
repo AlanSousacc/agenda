@@ -47,7 +47,7 @@
 		<aside class="main-sidebar sidebar-dark-primary elevation-4">
 			<!-- Brand Logo -->
 			<a href="/" class="brand-link">
-				<img src="{{URL::asset('assets/master-admin/img/agenda.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3">
+				<img src="/uploads/logos/{{$empresa->logo}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3">
 				<span class="brand-text font-weight-light">AgendaBETHA</span>
 			</a>
 
@@ -203,7 +203,7 @@
                   </li>
 
                   <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{route('empresa.show', Auth::user()->empresa_id)}}" class="nav-link">
                       <i class="fa fa-store nav-icon"></i>
                       <p>Minha Empresa</p>
                     </a>
