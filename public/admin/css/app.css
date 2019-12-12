@@ -1,6 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
 /*!
- *   AdminLTE v3.0.0
+ *   AdminLTE v3.0.1
  *   Author: Colorlib
  *   Website: AdminLTE.io <http://adminlte.io>
  *   License: Open source - MIT <http://opensource.org/licenses/MIT>
@@ -11111,6 +11111,14 @@ body,
   margin-left: 0;
 }
 
+body.sidebar-collapse:not(.sidebar-mini-md):not(.sidebar-mini) .content-wrapper, body.sidebar-collapse:not(.sidebar-mini-md):not(.sidebar-mini) .content-wrapper::before,
+body.sidebar-collapse:not(.sidebar-mini-md):not(.sidebar-mini) .main-footer,
+body.sidebar-collapse:not(.sidebar-mini-md):not(.sidebar-mini) .main-footer::before,
+body.sidebar-collapse:not(.sidebar-mini-md):not(.sidebar-mini) .main-header,
+body.sidebar-collapse:not(.sidebar-mini-md):not(.sidebar-mini) .main-header::before {
+  margin-left: 0;
+}
+
 @media (min-width: 768px) {
   body:not(.sidebar-mini-md) .content-wrapper,
   body:not(.sidebar-mini-md) .main-footer,
@@ -11527,6 +11535,11 @@ body,
   height: 100vh;
   overflow-y: hidden;
   z-index: 1038;
+}
+
+.main-sidebar a:-moz-focusring {
+  border: 0;
+  outline: none;
 }
 
 .sidebar {
@@ -13004,7 +13017,6 @@ body.text-sm .control-sidebar {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   padding: 0;
-  border-top-width: 0;
   width: 280px;
 }
 
@@ -15642,20 +15654,20 @@ html.maximized-card {
   max-width: 200px;
 }
 
-.card-primary.card-tabs:not(.card-outline) .card-header {
+.card-primary:not(.card-outline) .card-header {
   background-color: #007bff;
 }
 
-.card-primary.card-tabs:not(.card-outline) .card-header,
-.card-primary.card-tabs:not(.card-outline) .card-header a {
+.card-primary:not(.card-outline) .card-header,
+.card-primary:not(.card-outline) .card-header a {
   color: #ffffff;
 }
 
-.card-primary.card-tabs:not(.card-outline) .card-header a.active {
+.card-primary:not(.card-outline) .card-header a.active {
   color: #1F2D3D;
 }
 
-.card-primary.card-tabs.card-outline {
+.card-primary.card-outline {
   border-top: 3px solid #007bff;
 }
 
@@ -15713,20 +15725,20 @@ html.maximized-card {
   color: #ffffff;
 }
 
-.card-secondary.card-tabs:not(.card-outline) .card-header {
+.card-secondary:not(.card-outline) .card-header {
   background-color: #6c757d;
 }
 
-.card-secondary.card-tabs:not(.card-outline) .card-header,
-.card-secondary.card-tabs:not(.card-outline) .card-header a {
+.card-secondary:not(.card-outline) .card-header,
+.card-secondary:not(.card-outline) .card-header a {
   color: #ffffff;
 }
 
-.card-secondary.card-tabs:not(.card-outline) .card-header a.active {
+.card-secondary:not(.card-outline) .card-header a.active {
   color: #1F2D3D;
 }
 
-.card-secondary.card-tabs.card-outline {
+.card-secondary.card-outline {
   border-top: 3px solid #6c757d;
 }
 
@@ -15784,20 +15796,20 @@ html.maximized-card {
   color: #ffffff;
 }
 
-.card-success.card-tabs:not(.card-outline) .card-header {
+.card-success:not(.card-outline) .card-header {
   background-color: #28a745;
 }
 
-.card-success.card-tabs:not(.card-outline) .card-header,
-.card-success.card-tabs:not(.card-outline) .card-header a {
+.card-success:not(.card-outline) .card-header,
+.card-success:not(.card-outline) .card-header a {
   color: #ffffff;
 }
 
-.card-success.card-tabs:not(.card-outline) .card-header a.active {
+.card-success:not(.card-outline) .card-header a.active {
   color: #1F2D3D;
 }
 
-.card-success.card-tabs.card-outline {
+.card-success.card-outline {
   border-top: 3px solid #28a745;
 }
 
@@ -15855,20 +15867,20 @@ html.maximized-card {
   color: #ffffff;
 }
 
-.card-info.card-tabs:not(.card-outline) .card-header {
+.card-info:not(.card-outline) .card-header {
   background-color: #17a2b8;
 }
 
-.card-info.card-tabs:not(.card-outline) .card-header,
-.card-info.card-tabs:not(.card-outline) .card-header a {
+.card-info:not(.card-outline) .card-header,
+.card-info:not(.card-outline) .card-header a {
   color: #ffffff;
 }
 
-.card-info.card-tabs:not(.card-outline) .card-header a.active {
+.card-info:not(.card-outline) .card-header a.active {
   color: #1F2D3D;
 }
 
-.card-info.card-tabs.card-outline {
+.card-info.card-outline {
   border-top: 3px solid #17a2b8;
 }
 
@@ -15926,20 +15938,20 @@ html.maximized-card {
   color: #ffffff;
 }
 
-.card-warning.card-tabs:not(.card-outline) .card-header {
+.card-warning:not(.card-outline) .card-header {
   background-color: #ffc107;
 }
 
-.card-warning.card-tabs:not(.card-outline) .card-header,
-.card-warning.card-tabs:not(.card-outline) .card-header a {
+.card-warning:not(.card-outline) .card-header,
+.card-warning:not(.card-outline) .card-header a {
   color: #1F2D3D;
 }
 
-.card-warning.card-tabs:not(.card-outline) .card-header a.active {
+.card-warning:not(.card-outline) .card-header a.active {
   color: #1F2D3D;
 }
 
-.card-warning.card-tabs.card-outline {
+.card-warning.card-outline {
   border-top: 3px solid #ffc107;
 }
 
@@ -15997,20 +16009,20 @@ html.maximized-card {
   color: #1F2D3D;
 }
 
-.card-danger.card-tabs:not(.card-outline) .card-header {
+.card-danger:not(.card-outline) .card-header {
   background-color: #dc3545;
 }
 
-.card-danger.card-tabs:not(.card-outline) .card-header,
-.card-danger.card-tabs:not(.card-outline) .card-header a {
+.card-danger:not(.card-outline) .card-header,
+.card-danger:not(.card-outline) .card-header a {
   color: #ffffff;
 }
 
-.card-danger.card-tabs:not(.card-outline) .card-header a.active {
+.card-danger:not(.card-outline) .card-header a.active {
   color: #1F2D3D;
 }
 
-.card-danger.card-tabs.card-outline {
+.card-danger.card-outline {
   border-top: 3px solid #dc3545;
 }
 
@@ -16068,20 +16080,20 @@ html.maximized-card {
   color: #ffffff;
 }
 
-.card-light.card-tabs:not(.card-outline) .card-header {
+.card-light:not(.card-outline) .card-header {
   background-color: #f8f9fa;
 }
 
-.card-light.card-tabs:not(.card-outline) .card-header,
-.card-light.card-tabs:not(.card-outline) .card-header a {
+.card-light:not(.card-outline) .card-header,
+.card-light:not(.card-outline) .card-header a {
   color: #1F2D3D;
 }
 
-.card-light.card-tabs:not(.card-outline) .card-header a.active {
+.card-light:not(.card-outline) .card-header a.active {
   color: #1F2D3D;
 }
 
-.card-light.card-tabs.card-outline {
+.card-light.card-outline {
   border-top: 3px solid #f8f9fa;
 }
 
@@ -16139,20 +16151,20 @@ html.maximized-card {
   color: #1F2D3D;
 }
 
-.card-dark.card-tabs:not(.card-outline) .card-header {
+.card-dark:not(.card-outline) .card-header {
   background-color: #343a40;
 }
 
-.card-dark.card-tabs:not(.card-outline) .card-header,
-.card-dark.card-tabs:not(.card-outline) .card-header a {
+.card-dark:not(.card-outline) .card-header,
+.card-dark:not(.card-outline) .card-header a {
   color: #ffffff;
 }
 
-.card-dark.card-tabs:not(.card-outline) .card-header a.active {
+.card-dark:not(.card-outline) .card-header a.active {
   color: #1F2D3D;
 }
 
-.card-dark.card-tabs.card-outline {
+.card-dark.card-outline {
   border-top: 3px solid #343a40;
 }
 
@@ -16210,20 +16222,20 @@ html.maximized-card {
   color: #ffffff;
 }
 
-.card-navy.card-tabs:not(.card-outline) .card-header {
+.card-navy:not(.card-outline) .card-header {
   background-color: #001f3f;
 }
 
-.card-navy.card-tabs:not(.card-outline) .card-header,
-.card-navy.card-tabs:not(.card-outline) .card-header a {
+.card-navy:not(.card-outline) .card-header,
+.card-navy:not(.card-outline) .card-header a {
   color: #ffffff;
 }
 
-.card-navy.card-tabs:not(.card-outline) .card-header a.active {
+.card-navy:not(.card-outline) .card-header a.active {
   color: #1F2D3D;
 }
 
-.card-navy.card-tabs.card-outline {
+.card-navy.card-outline {
   border-top: 3px solid #001f3f;
 }
 
@@ -16281,20 +16293,20 @@ html.maximized-card {
   color: #ffffff;
 }
 
-.card-olive.card-tabs:not(.card-outline) .card-header {
+.card-olive:not(.card-outline) .card-header {
   background-color: #3d9970;
 }
 
-.card-olive.card-tabs:not(.card-outline) .card-header,
-.card-olive.card-tabs:not(.card-outline) .card-header a {
+.card-olive:not(.card-outline) .card-header,
+.card-olive:not(.card-outline) .card-header a {
   color: #ffffff;
 }
 
-.card-olive.card-tabs:not(.card-outline) .card-header a.active {
+.card-olive:not(.card-outline) .card-header a.active {
   color: #1F2D3D;
 }
 
-.card-olive.card-tabs.card-outline {
+.card-olive.card-outline {
   border-top: 3px solid #3d9970;
 }
 
@@ -16352,20 +16364,20 @@ html.maximized-card {
   color: #ffffff;
 }
 
-.card-lime.card-tabs:not(.card-outline) .card-header {
+.card-lime:not(.card-outline) .card-header {
   background-color: #01ff70;
 }
 
-.card-lime.card-tabs:not(.card-outline) .card-header,
-.card-lime.card-tabs:not(.card-outline) .card-header a {
+.card-lime:not(.card-outline) .card-header,
+.card-lime:not(.card-outline) .card-header a {
   color: #1F2D3D;
 }
 
-.card-lime.card-tabs:not(.card-outline) .card-header a.active {
+.card-lime:not(.card-outline) .card-header a.active {
   color: #1F2D3D;
 }
 
-.card-lime.card-tabs.card-outline {
+.card-lime.card-outline {
   border-top: 3px solid #01ff70;
 }
 
@@ -16423,20 +16435,20 @@ html.maximized-card {
   color: #1F2D3D;
 }
 
-.card-fuchsia.card-tabs:not(.card-outline) .card-header {
+.card-fuchsia:not(.card-outline) .card-header {
   background-color: #f012be;
 }
 
-.card-fuchsia.card-tabs:not(.card-outline) .card-header,
-.card-fuchsia.card-tabs:not(.card-outline) .card-header a {
+.card-fuchsia:not(.card-outline) .card-header,
+.card-fuchsia:not(.card-outline) .card-header a {
   color: #ffffff;
 }
 
-.card-fuchsia.card-tabs:not(.card-outline) .card-header a.active {
+.card-fuchsia:not(.card-outline) .card-header a.active {
   color: #1F2D3D;
 }
 
-.card-fuchsia.card-tabs.card-outline {
+.card-fuchsia.card-outline {
   border-top: 3px solid #f012be;
 }
 
@@ -16494,20 +16506,20 @@ html.maximized-card {
   color: #ffffff;
 }
 
-.card-maroon.card-tabs:not(.card-outline) .card-header {
+.card-maroon:not(.card-outline) .card-header {
   background-color: #d81b60;
 }
 
-.card-maroon.card-tabs:not(.card-outline) .card-header,
-.card-maroon.card-tabs:not(.card-outline) .card-header a {
+.card-maroon:not(.card-outline) .card-header,
+.card-maroon:not(.card-outline) .card-header a {
   color: #ffffff;
 }
 
-.card-maroon.card-tabs:not(.card-outline) .card-header a.active {
+.card-maroon:not(.card-outline) .card-header a.active {
   color: #1F2D3D;
 }
 
-.card-maroon.card-tabs.card-outline {
+.card-maroon.card-outline {
   border-top: 3px solid #d81b60;
 }
 
@@ -16565,20 +16577,20 @@ html.maximized-card {
   color: #ffffff;
 }
 
-.card-blue.card-tabs:not(.card-outline) .card-header {
+.card-blue:not(.card-outline) .card-header {
   background-color: #007bff;
 }
 
-.card-blue.card-tabs:not(.card-outline) .card-header,
-.card-blue.card-tabs:not(.card-outline) .card-header a {
+.card-blue:not(.card-outline) .card-header,
+.card-blue:not(.card-outline) .card-header a {
   color: #ffffff;
 }
 
-.card-blue.card-tabs:not(.card-outline) .card-header a.active {
+.card-blue:not(.card-outline) .card-header a.active {
   color: #1F2D3D;
 }
 
-.card-blue.card-tabs.card-outline {
+.card-blue.card-outline {
   border-top: 3px solid #007bff;
 }
 
@@ -16636,20 +16648,20 @@ html.maximized-card {
   color: #ffffff;
 }
 
-.card-indigo.card-tabs:not(.card-outline) .card-header {
+.card-indigo:not(.card-outline) .card-header {
   background-color: #6610f2;
 }
 
-.card-indigo.card-tabs:not(.card-outline) .card-header,
-.card-indigo.card-tabs:not(.card-outline) .card-header a {
+.card-indigo:not(.card-outline) .card-header,
+.card-indigo:not(.card-outline) .card-header a {
   color: #ffffff;
 }
 
-.card-indigo.card-tabs:not(.card-outline) .card-header a.active {
+.card-indigo:not(.card-outline) .card-header a.active {
   color: #1F2D3D;
 }
 
-.card-indigo.card-tabs.card-outline {
+.card-indigo.card-outline {
   border-top: 3px solid #6610f2;
 }
 
@@ -16707,20 +16719,20 @@ html.maximized-card {
   color: #ffffff;
 }
 
-.card-purple.card-tabs:not(.card-outline) .card-header {
+.card-purple:not(.card-outline) .card-header {
   background-color: #6f42c1;
 }
 
-.card-purple.card-tabs:not(.card-outline) .card-header,
-.card-purple.card-tabs:not(.card-outline) .card-header a {
+.card-purple:not(.card-outline) .card-header,
+.card-purple:not(.card-outline) .card-header a {
   color: #ffffff;
 }
 
-.card-purple.card-tabs:not(.card-outline) .card-header a.active {
+.card-purple:not(.card-outline) .card-header a.active {
   color: #1F2D3D;
 }
 
-.card-purple.card-tabs.card-outline {
+.card-purple.card-outline {
   border-top: 3px solid #6f42c1;
 }
 
@@ -16778,20 +16790,20 @@ html.maximized-card {
   color: #ffffff;
 }
 
-.card-pink.card-tabs:not(.card-outline) .card-header {
+.card-pink:not(.card-outline) .card-header {
   background-color: #e83e8c;
 }
 
-.card-pink.card-tabs:not(.card-outline) .card-header,
-.card-pink.card-tabs:not(.card-outline) .card-header a {
+.card-pink:not(.card-outline) .card-header,
+.card-pink:not(.card-outline) .card-header a {
   color: #ffffff;
 }
 
-.card-pink.card-tabs:not(.card-outline) .card-header a.active {
+.card-pink:not(.card-outline) .card-header a.active {
   color: #1F2D3D;
 }
 
-.card-pink.card-tabs.card-outline {
+.card-pink.card-outline {
   border-top: 3px solid #e83e8c;
 }
 
@@ -16849,20 +16861,20 @@ html.maximized-card {
   color: #ffffff;
 }
 
-.card-red.card-tabs:not(.card-outline) .card-header {
+.card-red:not(.card-outline) .card-header {
   background-color: #dc3545;
 }
 
-.card-red.card-tabs:not(.card-outline) .card-header,
-.card-red.card-tabs:not(.card-outline) .card-header a {
+.card-red:not(.card-outline) .card-header,
+.card-red:not(.card-outline) .card-header a {
   color: #ffffff;
 }
 
-.card-red.card-tabs:not(.card-outline) .card-header a.active {
+.card-red:not(.card-outline) .card-header a.active {
   color: #1F2D3D;
 }
 
-.card-red.card-tabs.card-outline {
+.card-red.card-outline {
   border-top: 3px solid #dc3545;
 }
 
@@ -16920,20 +16932,20 @@ html.maximized-card {
   color: #ffffff;
 }
 
-.card-orange.card-tabs:not(.card-outline) .card-header {
+.card-orange:not(.card-outline) .card-header {
   background-color: #fd7e14;
 }
 
-.card-orange.card-tabs:not(.card-outline) .card-header,
-.card-orange.card-tabs:not(.card-outline) .card-header a {
+.card-orange:not(.card-outline) .card-header,
+.card-orange:not(.card-outline) .card-header a {
   color: #1F2D3D;
 }
 
-.card-orange.card-tabs:not(.card-outline) .card-header a.active {
+.card-orange:not(.card-outline) .card-header a.active {
   color: #1F2D3D;
 }
 
-.card-orange.card-tabs.card-outline {
+.card-orange.card-outline {
   border-top: 3px solid #fd7e14;
 }
 
@@ -16991,20 +17003,20 @@ html.maximized-card {
   color: #1F2D3D;
 }
 
-.card-yellow.card-tabs:not(.card-outline) .card-header {
+.card-yellow:not(.card-outline) .card-header {
   background-color: #ffc107;
 }
 
-.card-yellow.card-tabs:not(.card-outline) .card-header,
-.card-yellow.card-tabs:not(.card-outline) .card-header a {
+.card-yellow:not(.card-outline) .card-header,
+.card-yellow:not(.card-outline) .card-header a {
   color: #1F2D3D;
 }
 
-.card-yellow.card-tabs:not(.card-outline) .card-header a.active {
+.card-yellow:not(.card-outline) .card-header a.active {
   color: #1F2D3D;
 }
 
-.card-yellow.card-tabs.card-outline {
+.card-yellow.card-outline {
   border-top: 3px solid #ffc107;
 }
 
@@ -17062,20 +17074,20 @@ html.maximized-card {
   color: #1F2D3D;
 }
 
-.card-green.card-tabs:not(.card-outline) .card-header {
+.card-green:not(.card-outline) .card-header {
   background-color: #28a745;
 }
 
-.card-green.card-tabs:not(.card-outline) .card-header,
-.card-green.card-tabs:not(.card-outline) .card-header a {
+.card-green:not(.card-outline) .card-header,
+.card-green:not(.card-outline) .card-header a {
   color: #ffffff;
 }
 
-.card-green.card-tabs:not(.card-outline) .card-header a.active {
+.card-green:not(.card-outline) .card-header a.active {
   color: #1F2D3D;
 }
 
-.card-green.card-tabs.card-outline {
+.card-green.card-outline {
   border-top: 3px solid #28a745;
 }
 
@@ -17133,20 +17145,20 @@ html.maximized-card {
   color: #ffffff;
 }
 
-.card-teal.card-tabs:not(.card-outline) .card-header {
+.card-teal:not(.card-outline) .card-header {
   background-color: #20c997;
 }
 
-.card-teal.card-tabs:not(.card-outline) .card-header,
-.card-teal.card-tabs:not(.card-outline) .card-header a {
+.card-teal:not(.card-outline) .card-header,
+.card-teal:not(.card-outline) .card-header a {
   color: #ffffff;
 }
 
-.card-teal.card-tabs:not(.card-outline) .card-header a.active {
+.card-teal:not(.card-outline) .card-header a.active {
   color: #1F2D3D;
 }
 
-.card-teal.card-tabs.card-outline {
+.card-teal.card-outline {
   border-top: 3px solid #20c997;
 }
 
@@ -17204,20 +17216,20 @@ html.maximized-card {
   color: #ffffff;
 }
 
-.card-cyan.card-tabs:not(.card-outline) .card-header {
+.card-cyan:not(.card-outline) .card-header {
   background-color: #17a2b8;
 }
 
-.card-cyan.card-tabs:not(.card-outline) .card-header,
-.card-cyan.card-tabs:not(.card-outline) .card-header a {
+.card-cyan:not(.card-outline) .card-header,
+.card-cyan:not(.card-outline) .card-header a {
   color: #ffffff;
 }
 
-.card-cyan.card-tabs:not(.card-outline) .card-header a.active {
+.card-cyan:not(.card-outline) .card-header a.active {
   color: #1F2D3D;
 }
 
-.card-cyan.card-tabs.card-outline {
+.card-cyan.card-outline {
   border-top: 3px solid #17a2b8;
 }
 
@@ -17275,20 +17287,20 @@ html.maximized-card {
   color: #ffffff;
 }
 
-.card-white.card-tabs:not(.card-outline) .card-header {
+.card-white:not(.card-outline) .card-header {
   background-color: #ffffff;
 }
 
-.card-white.card-tabs:not(.card-outline) .card-header,
-.card-white.card-tabs:not(.card-outline) .card-header a {
+.card-white:not(.card-outline) .card-header,
+.card-white:not(.card-outline) .card-header a {
   color: #1F2D3D;
 }
 
-.card-white.card-tabs:not(.card-outline) .card-header a.active {
+.card-white:not(.card-outline) .card-header a.active {
   color: #1F2D3D;
 }
 
-.card-white.card-tabs.card-outline {
+.card-white.card-outline {
   border-top: 3px solid #ffffff;
 }
 
@@ -17346,20 +17358,20 @@ html.maximized-card {
   color: #1F2D3D;
 }
 
-.card-gray.card-tabs:not(.card-outline) .card-header {
+.card-gray:not(.card-outline) .card-header {
   background-color: #6c757d;
 }
 
-.card-gray.card-tabs:not(.card-outline) .card-header,
-.card-gray.card-tabs:not(.card-outline) .card-header a {
+.card-gray:not(.card-outline) .card-header,
+.card-gray:not(.card-outline) .card-header a {
   color: #ffffff;
 }
 
-.card-gray.card-tabs:not(.card-outline) .card-header a.active {
+.card-gray:not(.card-outline) .card-header a.active {
   color: #1F2D3D;
 }
 
-.card-gray.card-tabs.card-outline {
+.card-gray.card-outline {
   border-top: 3px solid #6c757d;
 }
 
@@ -17417,20 +17429,20 @@ html.maximized-card {
   color: #ffffff;
 }
 
-.card-gray-dark.card-tabs:not(.card-outline) .card-header {
+.card-gray-dark:not(.card-outline) .card-header {
   background-color: #343a40;
 }
 
-.card-gray-dark.card-tabs:not(.card-outline) .card-header,
-.card-gray-dark.card-tabs:not(.card-outline) .card-header a {
+.card-gray-dark:not(.card-outline) .card-header,
+.card-gray-dark:not(.card-outline) .card-header a {
   color: #ffffff;
 }
 
-.card-gray-dark.card-tabs:not(.card-outline) .card-header a.active {
+.card-gray-dark:not(.card-outline) .card-header a.active {
   color: #1F2D3D;
 }
 
-.card-gray-dark.card-tabs.card-outline {
+.card-gray-dark.card-outline {
   border-top: 3px solid #343a40;
 }
 
@@ -21282,6 +21294,10 @@ html.maximized-card {
 .select2-container--default .select2-gray-dark.select2-container--focus .select2-selection--multiple,
 .select2-gray-dark .select2-container--default.select2-container--focus .select2-selection--multiple {
   border-color: #6d7a86;
+}
+
+.slider .tooltip.in {
+  opacity: 0.9;
 }
 
 .slider.slider-vertical {
@@ -26489,13 +26505,6 @@ blockquote.quote-gray-dark h6 {
   padding-bottom: .5rem;
 }
 
-a:-moz-focusring,
-button:-moz-focusring,
-input.btn:-moz-focusring {
-  border: 0;
-  outline: none;
-}
-
 @media print {
   .no-print, .main-sidebar,
   .main-header,
@@ -28910,7 +28919,7 @@ li.nav-item.active a{
 @charset "UTF-8";
 
 /*!
- * Font Awesome Free 5.11.2 by @fontawesome - https://fontawesome.com
+ * Font Awesome Free 5.12.0 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
 
@@ -29485,6 +29494,10 @@ readers do not read off random characters that represent icons */
   content: "\F7E5";
 }
 
+.fa-bahai:before {
+  content: "\F666";
+}
+
 .fa-balance-scale:before {
   content: "\F24E";
 }
@@ -29905,6 +29918,10 @@ readers do not read off random characters that represent icons */
   content: "\F5E4";
 }
 
+.fa-caravan:before {
+  content: "\F8FF";
+}
+
 .fa-caret-down:before {
   content: "\F0D7";
 }
@@ -30315,6 +30332,10 @@ readers do not read off random characters that represent icons */
 
 .fa-compress:before {
   content: "\F066";
+}
+
+.fa-compress-alt:before {
+  content: "\F422";
 }
 
 .fa-compress-arrows-alt:before {
@@ -30849,6 +30870,10 @@ readers do not read off random characters that represent icons */
   content: "\F065";
 }
 
+.fa-expand-alt:before {
+  content: "\F424";
+}
+
 .fa-expand-arrows-alt:before {
   content: "\F31E";
 }
@@ -31067,6 +31092,10 @@ readers do not read off random characters that represent icons */
 
 .fa-firefox:before {
   content: "\F269";
+}
+
+.fa-firefox-browser:before {
+  content: "\F907";
 }
 
 .fa-first-aid:before {
@@ -31641,10 +31670,6 @@ readers do not read off random characters that represent icons */
   content: "\F6E8";
 }
 
-.fa-haykal:before {
-  content: "\F666";
-}
-
 .fa-hdd:before {
   content: "\F0A0";
 }
@@ -31823,6 +31848,10 @@ readers do not read off random characters that represent icons */
 
 .fa-id-card-alt:before {
   content: "\F47F";
+}
+
+.fa-ideal:before {
+  content: "\F913";
 }
 
 .fa-igloo:before {
@@ -32345,6 +32374,10 @@ readers do not read off random characters that represent icons */
   content: "\F753";
 }
 
+.fa-microblog:before {
+  content: "\F91A";
+}
+
 .fa-microchip:before {
   content: "\F2DB";
 }
@@ -32795,6 +32828,10 @@ readers do not read off random characters that represent icons */
 
 .fa-pied-piper-pp:before {
   content: "\F1A7";
+}
+
+.fa-pied-piper-square:before {
+  content: "\F91E";
 }
 
 .fa-piggy-bank:before {
@@ -34093,6 +34130,10 @@ readers do not read off random characters that represent icons */
   content: "\F637";
 }
 
+.fa-trailer:before {
+  content: "\F941";
+}
+
 .fa-train:before {
   content: "\F238";
 }
@@ -34235,6 +34276,10 @@ readers do not read off random characters that represent icons */
 
 .fa-uniregistry:before {
   content: "\F404";
+}
+
+.fa-unity:before {
+  content: "\F949";
 }
 
 .fa-universal-access:before {
@@ -34747,7 +34792,7 @@ readers do not read off random characters that represent icons */
 }
 
 /*!
- * Font Awesome Free 5.11.2 by @fontawesome - https://fontawesome.com
+ * Font Awesome Free 5.12.0 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
 
@@ -34756,8 +34801,8 @@ readers do not read off random characters that represent icons */
   font-style: normal;
   font-weight: 900;
   font-display: auto;
-  src: url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.eot?8e4a6dcc692b3887f9f542cd6894d6d4);
-  src: url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.eot?8e4a6dcc692b3887f9f542cd6894d6d4) format("embedded-opentype"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.woff2?44d537ab79f921fde5a28b2c1636f397) format("woff2"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.woff?333bae208dc363746961b234ff6c2500) format("woff"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.ttf?0bff33a5fd7ec390235476b4859747a0) format("truetype"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.svg?c2801fb415f03c7b170934769d7b5397) format("svg");
+  src: url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.eot?7fb1cdd9c3b889161216a13267b55fe2);
+  src: url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.eot?7fb1cdd9c3b889161216a13267b55fe2) format("embedded-opentype"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.woff2?f6121be597a72928f54e7ab5b95512a1) format("woff2"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.woff?93f284548b42ab76fe3fd03a9d3a2180) format("woff"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.ttf?2aa6edf8f296a43b32df35f330b7c81c) format("truetype"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-solid-900.svg?7a5de9b08012e4da40504f2cf126a351) format("svg");
 }
 
 .fa,
@@ -34767,7 +34812,7 @@ readers do not read off random characters that represent icons */
 }
 
 /*!
- * Font Awesome Free 5.11.2 by @fontawesome - https://fontawesome.com
+ * Font Awesome Free 5.12.0 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
 
@@ -34776,8 +34821,8 @@ readers do not read off random characters that represent icons */
   font-style: normal;
   font-weight: normal;
   font-display: auto;
-  src: url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.eot?5063b105c7646c8043d58c5289f02cca);
-  src: url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.eot?5063b105c7646c8043d58c5289f02cca) format("embedded-opentype"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.woff2?cccc9d29470e879e40eb70249d9a2705) format("woff2"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.woff?c5e0f14f88a828261ba01558ce2bf26f) format("woff"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.ttf?06147b6cd88c7346cecd1edd060cd5de) format("truetype"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.svg?a9c4bb7348f42626454c988dbde1d0a0) format("svg");
+  src: url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.eot?088a34f78f530102fd9661173b4a4f26);
+  src: url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.eot?088a34f78f530102fd9661173b4a4f26) format("embedded-opentype"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.woff2?822d94f19fe57477865209e1242a3c63) format("woff2"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.woff?f4920c94c0861c537f72ba36590f6362) format("woff"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.ttf?273dc9bf9778fd37fa61357645d46a28) format("truetype"), url(/fonts/vendor/@fortawesome/fontawesome-free/webfa-brands-400.svg?d72293118cda50ec50c39957d9d836d0) format("svg");
 }
 
 .fab {

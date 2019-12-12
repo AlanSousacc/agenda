@@ -5,7 +5,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title">Editar Empresa</h4>
       </div>
-      <form action="{{route('empresa.update','id')}}" method="post">
+      <form enctype="multipart/form-data" action="{{route('empresa.update','id')}}" method="post">
 				{{method_field('patch')}}
 				{{csrf_field()}}
         <div class="modal-body">

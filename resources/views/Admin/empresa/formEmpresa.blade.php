@@ -65,7 +65,7 @@
     <div class="form-group">
       <label for="ie">Inscrição Estadual</label>
       <div class="input-group">
-        <input type="text" class="form-control ie" id="ie" placeholder="Digite a Inscrição estadual" value="{{old('ie')}}" name="ie" required autofocus maxlength="14">
+        <input type="text" class="form-control ie" id="ie" placeholder="Digite a Inscrição estadual" value="{{old('ie')}}" name="ie" autofocus maxlength="14">
       </div>
     </div>
   </div>
@@ -74,7 +74,7 @@
     <div class="form-group">
       <label for="im">Inscrição Municipal</label>
       <div class="input-group">
-        <input type="text" class="form-control im" id="im" placeholder="Digite a inscrição municipal" value="{{old('im')}}" name="im" required autofocus>
+        <input type="text" class="form-control im" id="im" placeholder="Digite a inscrição municipal" value="{{old('im')}}" name="im" autofocus>
       </div>
     </div>
   </div>

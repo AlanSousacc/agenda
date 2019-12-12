@@ -15,10 +15,9 @@ class FullCalendarController extends Controller
   }
 
   public function index(){
-		$empresa = Empresa::Where('id', '=', Auth::user()->empresa_id)->first();
-    $events   = Event::all();
+    $events  = Event::all();
     $contato = Contato::all();
 
-    return view('Admin.fullcalendar.master', compact('events', 'contato', 'empresa'));
+    return view('Admin.fullcalendar.master', compact('events', 'contato'));
   }
 }

@@ -15,8 +15,8 @@ Route::any('search-contato', 'ContatoController@search')->name('routeContatoSear
 // empresa
 Route::resource('empresa', 'EmpresaController');
 Route::any('search-empresa', 'EmpresaController@search')->name('routeEmpresaSearch');
-// Route::get('my-empresa/{user}', 'EmpresaController@myEmpresa')->name('routeEmpresamyEmpresa');
-Route::post('empresa', 'EmpresaController@logoUploadPost')->name('routeEmpresaLogo');
+Route::post('minha-empresa', 'EmpresaController@logoUploadPost')->name('routeEmpresaLogo');
+Route::post('empresa', 'EmpresaController@store')->name('empresa.store');
 
 // user
 Route::get('list-user', 'UserController@index')->name('routeUserList');

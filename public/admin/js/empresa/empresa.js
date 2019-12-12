@@ -110,13 +110,13 @@ $('#editar').on('show.bs.modal', function (event) {
   var numero = button.data('numero');
   var cep = button.data('cep');
   var bairro = button.data('bairro');
-  var logo = button.data('logo');
   var modal = $(this);
   modal.find('.modal-body #cidade').val(cidade);
   modal.find('.modal-body #razaosocial').val(razaosocial);
   modal.find('.modal-body #nomefantasia').val(nomefantasia);
   modal.find('.modal-body #apelido').val(apelido);
   modal.find('.modal-body #cnpj').val(cnpj);
+  modal.find('.modal-body #cnpj').prop("readonly", true);
   modal.find('.modal-body #ie').val(ie);
   modal.find('.modal-body #im').val(im);
   modal.find('.modal-body #telefone').val(telefone);
@@ -125,7 +125,6 @@ $('#editar').on('show.bs.modal', function (event) {
   modal.find('.modal-body #numero').val(numero);
   modal.find('.modal-body #cep').val(cep);
   modal.find('.modal-body #bairro').val(bairro);
-  modal.find('.modal-body #logo').val(logo);
   modal.find('.modal-body #emprid').val(emprid);
 }); // Função delete
 
@@ -138,7 +137,7 @@ $('#delete').on('show.bs.modal', function (event) {
 $(document).ready(function () {
   $('.telefone').mask('(00) 00000-0000');
   $('.cep').mask('00000-000');
-  $('.cnpj').mask('000.000.000-00', {
+  $('.cnpj').mask('00.000.000/0000-00', {
     reverse: true
   });
 });
