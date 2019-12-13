@@ -15,9 +15,9 @@ $(function(){
     let title = $("#modalCalendar input[name='title']").val();
 
     let Event = {
-        id: id,
-        title: title,
-        _method: 'DELETE'
+      id: id,
+      title: title,
+      _method: 'DELETE'
     };
 
     let route = routeEvents('routeEventDelete');
@@ -27,6 +27,8 @@ $(function(){
 
   $(".saveEvent").click(function(){
     let title = $("#modalCalendar input[name='title']").val();
+
+    let empresa_id = $("#modalCalendar input[name='empresa_id']").val();
 
     let id = $("#modalCalendar input[name='id']").val();
 
@@ -42,22 +44,23 @@ $(function(){
 
 
     let Event = {
-        title: title,
-        start: start,
-        end: end,
-        color: color,
-        description: description,
-        contato_id: contato,
+      title: title,
+      empresa_id: empresa_id,
+      start: start,
+      end: end,
+      color: color,
+      description: description,
+      contato_id: contato,
     };
 
     let route;
 
     if(id == ''){
-        route = routeEvents('routeEventStore');
+      route = routeEvents('routeEventStore');
     } else{
-        route = routeEvents('routeEventUpdate');
-        Event.id = id;
-        Event._method = 'PUT'
+      route = routeEvents('routeEventUpdate');
+      Event.id = id;
+      Event._method = 'PUT'
     }
 
     sendEvent(route, Event)
@@ -66,45 +69,45 @@ $(function(){
 });
 
 function sendEvent(route, data_){
-    $.ajax({
-        url: route,
-        data: data_,
-        method: 'POST',
-        dataType: 'json',
-        success:function(json){
-            if(json){
-                // recarrega a página sempre que houver uma nova requisição
-                location.reload();
-            }
-        },
-        error:function(json){
-            console.log(json.responseJSON);
-            let responseJSON = json.responseJSON.errors;
+  $.ajax({
+    url: route,
+    data: data_,
+    method: 'POST',
+    dataType: 'json',
+    success:function(json){
+      if(json){
+        // recarrega a página sempre que houver uma nova requisição
+        location.reload();
+      }
+    },
+    error:function(json){
+      console.log(json.responseJSON);
+      let responseJSON = json.responseJSON.errors;
 
-            $("#message").html(loadErrors(responseJSON));
-        }
-    });
+      $("#message").html(loadErrors(responseJSON));
+    }
+  });
 }
 
 function loadErrors(response){
-    let boxAlert = `<div class="alert alert-danger">`;
+  let boxAlert = `<div class="alert alert-danger">`;
 
-    for(let fields in response){
-        boxAlert += `<span>${response[fields]}</span><br/>`;
-    }
+  for(let fields in response){
+    boxAlert += `<span>${response[fields]}</span><br/>`;
+  }
 
-    boxAlert += `</div>`;
-    return boxAlert.replace(/\,/g, "<br/>")
+  boxAlert += `</div>`;
+  return boxAlert.replace(/\,/g, "<br/>")
 }
 
 function routeEvents(route) {
-    return document.getElementById('calendar').dataset[route];
+  return document.getElementById('calendar').dataset[route];
 }
 
 function clearMessages(element){
-    $(element).text('');
+  $(element).text('');
 }
 
 function resetForm(form){
-    $(form)[0].reset();
+  $(form)[0].reset();
 }

@@ -42,16 +42,19 @@
                 <textarea name="description" placeholder="Descrição do evento" id="description" cols="40" rows="4"></textarea>
             </div>
           </div>
-            <div class="form-group row">
-                <div class="col-md-6">
-                    <select id="contato_id" class="form-control">
-                        <option selected>Contatos</option>
-                        @foreach ($contato as $item)
-                        <option value="{{$item->id}}" id="{{$item->id}}">{{$item->nome}}</option>
-                        @endforeach
-                    </select>
-                </div>
+          <input type="hidden" name="empresa_id" id="empresa_id" value="{{Auth::user()->empresa_id}}">
+
+          <div class="form-group row">
+            <label for="description" class="col-sm-4 col-form-label">Contatos</label>
+            <div class="col-sm-8">
+              <select id="contato_id" class="form-control">
+                <option selected>Contatos</option>
+                @foreach ($contato as $item)
+                <option value="{{$item->id}}" id="{{$item->id}}">{{$item->nome}}</option>
+                @endforeach
+            </select>
             </div>
+          </div>
         </form>
       </div>
       <div class="modal-footer">

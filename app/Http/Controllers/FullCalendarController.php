@@ -7,6 +7,8 @@ use App\Models\Empresa;
 use App\Models\Event;
 use App\Models\Contato;
 use Auth;
+use App\User;
+
 class FullCalendarController extends Controller
 {
   public function __construct()
@@ -15,8 +17,11 @@ class FullCalendarController extends Controller
   }
 
   public function index(){
-    $events  = Event::all();
-    $contato = Contato::all();
+    $user    = Auth::user()->empresa_id;
+    // $events  = Event::where('empresa_id', '=', $user)->get();
+    $events = Event::where('empresa_id', '=', $user)->get();
+    // dd($events);
+    $contato = Contato::where('tipocontato', '=', 'paciente')->get();
 
     return view('Admin.fullcalendar.master', compact('events', 'contato'));
   }

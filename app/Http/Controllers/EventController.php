@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use App\Http\Requests\EventRequest;
+use Auth;
+use App\User;
 
 class EventController extends Controller
 {
@@ -14,7 +16,9 @@ class EventController extends Controller
 
   public function loadEvents()
   {
-    $events = Event::all();
+    $user    = Auth::user()->empresa_id;
+    $events = Event::where('empresa_id', '=', $user)->get();
+    // dd($events);
 
     return response()->json($events);
   }
