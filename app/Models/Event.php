@@ -10,7 +10,7 @@ class Event extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['title', 'start', 'end', 'description', 'contato_id', 'color'];
+    protected $fillable = ['title', 'start', 'end', 'description', 'contato_id', 'color', 'empresa_id'];
 
     public function contatos(){
       return $this->hasMany(Contato::class);

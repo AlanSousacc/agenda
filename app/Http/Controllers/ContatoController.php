@@ -15,7 +15,8 @@ class ContatoController extends Controller
 {
   public function index()
   {
-    $consulta = Contato::paginate(10);
+    $user 		= Auth::user()->empresa_id;
+    $consulta = Contato::where('empresa_id', '=', $user)->paginate(10);
 
     return view('Admin.contatos.listagem', compact('consulta'));
   }
@@ -38,7 +39,7 @@ class ContatoController extends Controller
   {
     $data = $request->all();
     try{
-			$contato = new Contato;
+      $contato = new Contato;
 
       $contato->nome           = $data['nome'];
       $contato->endereco       = $data['endereco'];
@@ -50,6 +51,7 @@ class ContatoController extends Controller
       $contato->email          = $data['email'];
 			$contato->datanascimento = $data['datanascimento'];
       $contato->tipocontato    = $data['tipocontato'];
+      $contato->empresa_id     = Auth::user()->empresa_id;
 
     } catch (Exception $e) {
       return redirect('contato')->with('error', $e->getMessage());
@@ -96,6 +98,7 @@ class ContatoController extends Controller
       $contato->email          = $data['email'];
 			$contato->datanascimento = $data['datanascimento'];
       $contato->tipocontato    = $data['tipocontato'];
+      $contato->empresa_id     = Auth::user()->empresa_id;
 
     } catch (Exception $e) {
       return redirect('contato')->with('error', $e->getMessage());

@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Empresa;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -25,7 +26,8 @@ class User extends Authenticatable implements MustVerifyEmail
 	public function search($value){
 		return $this->where(function ($query) use ($value) {
 			if(isset($value['name']))
-				$query->where('name', 'like', '%'.$value['name'].'%');
+        $query->where('name', 'like', '%'.$value['name'].'%')
+              ->where('empresa_id', '=', Auth::user()->empresa_id);
 		})
 		// ->toSql();
 		// dd($resultado);

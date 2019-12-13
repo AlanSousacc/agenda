@@ -46,6 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let end   = moment(element.event.end).format("YYYY-MM-DD HH:mm:ss");
         let contato = element.event.extendedProps.contato_id;
         let title = element.event.title;
+        let empresa_id = element.event.empresa_id;
         let description = element.event.extendedProps.description;
 
         let newEvent = {
@@ -55,6 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
           end: end,
           contato_id: contato,
           title: title,
+          empresa_id: empresa_id,
           description: description
         };
 
@@ -71,6 +73,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         let title = element.event.title;
         $("#modalCalendar input[name='title']").val(title);
+
+        let empresa_id = element.event.empresa_id;
+        $("#modalCalendar input[name='empresa_id']").val(empresa_id);
 
         let id = element.event.id;
         $("#modalCalendar input[name='id']").val(id);
@@ -96,6 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let end   = moment(element.event.end).format("YYYY-MM-DD HH:mm:ss");
         let contato = element.event.extendedProps.contato_id;
         let title = element.event.title;
+        let empresa_id = element.event.empresa_id;
         let description = element.event.extendedProps.description;
 
         let newEvent = {
@@ -105,6 +111,7 @@ document.addEventListener('DOMContentLoaded', function() {
           end: end,
           contato_id: contato,
           title: title,
+          empresa_id: empresa_id,
           description: description
         };
 
