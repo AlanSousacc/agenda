@@ -9,6 +9,7 @@ use Auth;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\EmpresaRequest;
 use Image;
+use File;
 
 class EmpresaController extends Controller
 {
@@ -34,15 +35,16 @@ class EmpresaController extends Controller
 
   public function store(EmpresaRequest $request)
   {
-    $data = $request->all();
+		
+		$data = $request->all();
+		
     try{
       if($request->hasFile('logo')){
         $logo     = $request->file('logo');
-        $fileName = $logo->getClientOriginalName();
-        Image::make($logo)->resize(100,100)->save(public_path('/uploads/logos/' . $fileName));
-
-        $empresa = Empresa::Where('id', '=', Auth::user()->empresa_id)->first();
-        $empresa->logo = $fileName;
+				$fileName = $logo->getClientOriginalName();
+				if (!File::exists(public_path('/uploads/logos/' . $fileName)))
+					Image::make($logo)->resize(100,100)->save(public_path('/uploads/logos/' . $fileName));
+        
       }
 
 			$empresa = new Empresa;
@@ -60,6 +62,7 @@ class EmpresaController extends Controller
       $empresa->numero    		= $data['numero'];
       $empresa->cep    				= $data['cep'];
       $empresa->bairro    		= $data['bairro'];
+      $empresa->logo 					= $fileName;
 			$empresa->status    		= $data['status'];
 
     } catch (Exception $e) {
@@ -94,8 +97,9 @@ class EmpresaController extends Controller
 
       if($request->hasFile('logo')){
         $logo     = $request->file('logo');
-        $fileName = $logo->getClientOriginalName();
-        Image::make($logo)->resize(100,100)->save(public_path('/uploads/logos/' . $fileName));
+				$fileName = $logo->getClientOriginalName();
+				if (!File::exists(public_path('/uploads/logos/' . $fileName)))
+        	Image::make($logo)->resize(100,100)->save(public_path('/uploads/logos/' . $fileName));
 
         $empresa->logo  = $fileName;
       }
@@ -115,7 +119,6 @@ class EmpresaController extends Controller
       $empresa->numero    		= $data['numero'];
       $empresa->cep    				= $data['cep'];
       $empresa->bairro    		= $data['bairro'];
-			$empresa->logo    			= $data['logo'];
 			$empresa->status    		= $data['status'];
 
     } catch (Exception $e) {
@@ -199,7 +202,8 @@ class EmpresaController extends Controller
 		if($request->hasFile('logo')){
 			$logo = $request->file('logo');
 			$fileName = $logo->getClientOriginalName();
-			Image::make($logo)->resize(100,100)->save(public_path('/uploads/logos/' . $fileName));
+			if (!File::exists(public_path('/uploads/logos/' . $fileName)))
+				Image::make($logo)->resize(100,100)->save(public_path('/uploads/logos/' . $fileName));
 
 			$empresa = Empresa::Where('id', '=', Auth::user()->empresa_id)->first();
 			$empresa->logo = $fileName;
@@ -210,8 +214,11 @@ class EmpresaController extends Controller
 	}
 
 	public function show($id){
-		$consulta = Empresa::Where('id', '=', $id)->first();
-		// dd($consulta->razaosocial);
-    return view('Admin.empresa.show', compact('consulta'));
+		if(Auth::user()->isAdmin == 1){
+			$consulta = Empresa::Where('id', '=', $id)->first();
+		return view('Admin.empresa.show', compact('consulta'));
+		} else {
+			return back()->with('error', 'Você não tem permissão para acessar esta rota');
+		}
 	}
 }

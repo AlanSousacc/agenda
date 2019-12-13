@@ -103,7 +103,7 @@
     <div class="form-group">
       <label for="cidade">Cidade</label>
       <div class="input-group">
-        <input type="text" class="form-control cidade" id="cidade" placeholder="Digite a cidade" value="{{old('cidade')}}" name="cidade" required autofocus>
+        <input type="text" class="form-control cidade" id="cidade" placeholder="Digite a cidade" value="{{old('cidade')}}" name="cidade" autofocus>
       </div>
     </div>
   </div>
@@ -114,7 +114,7 @@
     <div class="form-group">
       <label for="endereco">Endereço</label>
       <div class="input-group">
-        <input type="text" class="form-control endereco" id="endereco" placeholder="Digite endereço" value="{{old('endereco')}}" name="endereco" required autofocus minlength="3" maxlength="30">
+        <input type="text" class="form-control endereco" id="endereco" placeholder="Digite endereço" value="{{old('endereco')}}" name="endereco" autofocus minlength="3" maxlength="30">
       </div>
     </div>
   </div>
@@ -123,7 +123,7 @@
     <div class="form-group">
       <label for="numero">Número</label>
       <div class="input-group">
-        <input type="text" class="form-control numero" id="numero" placeholder="Número" value="{{old('numero')}}" name="numero" required autofocus min="1" max="5">
+        <input type="text" class="form-control numero" id="numero" placeholder="Número" value="{{old('numero')}}" name="numero" autofocus min="1" max="5">
       </div>
     </div>
   </div>
@@ -132,7 +132,7 @@
     <div class="form-group">
       <label for="cep">CEP</label>
       <div class="input-group">
-        <input type="text" class="form-control cep" id="cep" placeholder="CEP" value="{{old('cep')}}" name="cep" required autofocus min="9">
+        <input type="text" class="form-control cep" id="cep" placeholder="CEP" value="{{old('cep')}}" name="cep" autofocus min="9">
       </div>
     </div>
   </div>
@@ -141,7 +141,7 @@
     <div class="form-group">
       <label for="bairro">Bairro</label>
       <div class="input-group">
-        <input type="text" class="form-control bairro" id="bairro" placeholder="Digite a bairro" value="{{old('bairro')}}" name="bairro" required autofocus>
+        <input type="text" class="form-control bairro" id="bairro" placeholder="Digite a bairro" value="{{old('bairro')}}" name="bairro" autofocus>
       </div>
     </div>
   </div>

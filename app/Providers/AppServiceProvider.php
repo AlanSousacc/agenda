@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
   */
   public function boot()
   {
-    view()->composer('*', function($view)
+    view()->composer('layouts.master-admin', function($view)
     {
       $empresa = Empresa::Where('id', '=', Auth::user()->empresa_id)->first();
       if (Auth::check()) {
