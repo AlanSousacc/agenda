@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return {
           title: eventEl.innerText.trim()
         }
-      }
+      },
     });
 
     /* initialize the calendar
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
       header: {
         left: 'prev,next today',
         center: 'title',
-        right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+        right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek',
       },
       locale: 'pt-br',
       navLinks: true,
@@ -136,6 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
       },
       events: routeEvents('routeLoadEvents'),
     });
+
     calendar.render();
 
   });

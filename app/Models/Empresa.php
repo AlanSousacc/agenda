@@ -24,6 +24,10 @@ class Empresa extends Model
     return $this->hasMany(User::class);
   }
 
+	public function events(){
+    return $this->hasMany(Event::class);
+  }
+
 	public function contatos(){
     return $this->hasMany(Contato::class);
   }

@@ -81,7 +81,7 @@ function sendEvent(route, data_){
 				$( '.btn-success' ).click(function() {
 					location.reload();
 			 });
-				
+
       }
     },
     error:function(json){
