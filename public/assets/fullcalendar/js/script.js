@@ -76,8 +76,12 @@ function sendEvent(route, data_){
     dataType: 'json',
     success:function(json){
       if(json){
-        // recarrega a página sempre que houver uma nova requisição
-        location.reload();
+				console.log(data_._method)
+				$( "#sucesso").modal('show');
+				$( '.btn-success' ).click(function() {
+					location.reload();
+			 });
+				
       }
     },
     error:function(json){

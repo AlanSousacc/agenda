@@ -74,8 +74,8 @@ document.addEventListener('DOMContentLoaded', function() {
         let title = element.event.title;
         $("#modalCalendar input[name='title']").val(title);
 
-        let empresa_id = element.event.empresa_id;
-        $("#modalCalendar input[name='empresa_id']").val(empresa_id);
+        let empresa_id = element.event.extendedProps.empresa_id;
+				$("#modalCalendar input[name='empresa_id']").val(empresa_id);
 
         let id = element.event.id;
         $("#modalCalendar input[name='id']").val(id);
