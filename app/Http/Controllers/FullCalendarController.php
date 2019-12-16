@@ -21,7 +21,8 @@ class FullCalendarController extends Controller
     // $events  = Event::where('empresa_id', '=', $user)->get();
     $events = Event::where('empresa_id', '=', $user)->get();
     // dd($events);
-    $contato = Contato::where('tipocontato', '=', 'paciente')->get();
+		$contato = Contato::where('tipocontato', '=', 'paciente')
+												->where('empresa_id', '=', $user)->get();
 
     return view('Admin.fullcalendar.master', compact('events', 'contato'));
   }
