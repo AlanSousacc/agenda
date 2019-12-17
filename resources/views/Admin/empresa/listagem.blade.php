@@ -70,6 +70,7 @@
 										data-cep="{{$item->cep}}"
 										data-logo="{{$item->logo}}"
 										data-bairro="{{$item->bairro}}"
+										data-tipo="{{$item->tipo}}"
 										data-target="#editar"
 										data-toggle="modal"> Editar <i class="fa fa-edit"></i></a>
                   <div class="dropdown-divider"></div>

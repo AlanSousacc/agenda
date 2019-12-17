@@ -19,7 +19,7 @@
 			<label for="tipocontato">Tipo de Contato*</label>
 			<div class="input-group">
 				<select class="form-control tipocontato" id="tipocontato" name="tipocontato" value="{{old('tipocontato')}}">
-          <option value="paciente">Paciente</option>
+          <option value="paciente" selected>Paciente</option>
           <option value="profissional">Profissional</option>
 				</select>
 			</div>
