@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contato;
+use App\Models\Empresa;
 use Illuminate\Http\Request;
 use App\Http\Requests\ContatoRequest;
 use Illuminate\Support\Facades\DB;
@@ -22,11 +23,8 @@ class ContatoController extends Controller
   }
 
   public function search(Request $request, Contato $cont){
-		$contato = $request->except('_token');
-
+		$contato  = $request->except('_token');
     $consulta = $cont->search($contato);
-
-    // dd($contato);
 
     return view('Admin.contatos.listagem', compact('consulta', 'contato'));
   }
@@ -37,7 +35,7 @@ class ContatoController extends Controller
 
   public function store(ContatoRequest $request)
   {
-    $data = $request->all();
+    $data      = $request->all();
     try{
       $contato = new Contato;
 
@@ -50,8 +48,17 @@ class ContatoController extends Controller
       $contato->status         = $data['status'];
       $contato->email          = $data['email'];
 			$contato->datanascimento = $data['datanascimento'];
-      $contato->tipocontato    = $data['tipocontato'];
+      // $contato->tipocontato    = $data['tipocontato'];
       $contato->empresa_id     = Auth::user()->empresa_id;
+
+      // define o tipo do contato baseado no tipo da empresa do usuário
+      $emp = Empresa::where('id', '=', $contato->empresa_id)->first();
+      // dd($emp->tipo);
+      if($emp->tipo == 'estetica'){
+        $contato->tipocontato    = 'cliente';
+      } else if($emp->tipo == 'clinica'){
+        $contato->tipocontato    = 'paciente';
+      }
 
     } catch (Exception $e) {
       return redirect('contato')->with('error', $e->getMessage());
@@ -97,8 +104,16 @@ class ContatoController extends Controller
       $contato->status         = $data['status'];
       $contato->email          = $data['email'];
 			$contato->datanascimento = $data['datanascimento'];
-      $contato->tipocontato    = $data['tipocontato'];
       $contato->empresa_id     = Auth::user()->empresa_id;
+
+      // define o tipo do contato baseado no tipo da empresa do usuário
+      $emp = Empresa::where('id', '=', $contato->empresa_id)->first();
+      // dd($emp->tipo);
+      if($emp->tipo == 'estetica'){
+        $contato->tipocontato    = 'cliente';
+      } else if($emp->tipo == 'clinica'){
+        $contato->tipocontato    = 'paciente';
+      }
 
     } catch (Exception $e) {
       return redirect('contato')->with('error', $e->getMessage());

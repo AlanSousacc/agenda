@@ -14,7 +14,7 @@
 		</div>
 	</div>
 
-	<div class="col-md-3">
+	{{-- <div class="col-md-3">
 		<div class="form-group">
 			<label for="tipocontato">Tipo de Contato*</label>
 			<div class="input-group">
@@ -24,7 +24,7 @@
 				</select>
 			</div>
 		</div>
-	</div>
+	</div> --}}
 
 	<div class="col-md-3">
 		<div class="form-group">

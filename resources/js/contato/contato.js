@@ -8,7 +8,7 @@ $('#editar').on('show.bs.modal', function (event) {
   var telefone        = button.data('telefone');
   var status          = button.data('status');
   var email           = button.data('email');
-  var tipocontato     = button.data('tipocontato');
+  // var tipocontato     = button.data('tipocontato');
   var datanascimento  = button.data('datanascimento');
   var numero          = button.data('numero');
   var cidade          = button.data('cidade');
@@ -22,7 +22,7 @@ $('#editar').on('show.bs.modal', function (event) {
   modal.find('.modal-body #endereco').val(endereco);
   modal.find('.modal-body #numero').val(numero);
   modal.find('.modal-body #email').val(email);
-  modal.find('.modal-body #tipocontato').val(tipocontato);
+  // modal.find('.modal-body #tipocontato').val(tipocontato);
   modal.find('.modal-body #datanascimento').val(nascimento);
   modal.find('.modal-body #cidade').val(cidade);
   modal.find('.modal-body #contid').val(contid);

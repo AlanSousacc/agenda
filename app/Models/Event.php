@@ -16,6 +16,10 @@ class Event extends Model
       return $this->hasMany(Contato::class);
     }
 
+    public function empresa(){
+      return $this->belongsTo(Empresa::class);
+    }
+
     public function getStartAttribute($value){
       $dateStart = Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('Y-m-d');
       $timeStart = Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('H:i:s');

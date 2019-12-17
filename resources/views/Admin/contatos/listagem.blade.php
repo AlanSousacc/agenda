@@ -67,7 +67,7 @@
 										data-telefone="{{$item->telefone}}"
 										data-email="{{$item->email}}"
 										data-datanascimento="{{$item->datanascimento}}"
-										data-tipocontato="{{$item->tipocontato}}"
+										{{-- data-tipocontato="{{$item->tipocontato}}" --}}
 										data-status="{{$item->status}}"
 										data-cidade="{{$item->cidade}}"
 										data-target="#editar"
