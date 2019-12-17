@@ -30,7 +30,6 @@ class ContatoRequest extends FormRequest
       'numero'          => 'max:5',
       'email'           => 'required|email:rfc,filter',
       // 'datanascimento'  => 'date_format:Y-m-d',
-      'tipocontato'     => 'required',
       'status'          => 'required',
       'cidade'          => 'max:20',
     ];
@@ -47,7 +46,6 @@ class ContatoRequest extends FormRequest
       'numero.max'                  => 'O campo Número deve conter no máximo 5 caracteres!',
       'cidade.max'                  => 'O campo Cidade deve conter no máximo 20 caracteres!',
       'email.required'              => 'O campo Email é obrigatório!',
-      'tipocontato.required'        => 'O campo Tipo Contato é obrigatório!',
       'status.required'             => 'O campo Status é obrigatório!',
       // 'datanascimento.date_format'  => 'Preencha uma data com formáto válido!',
     ];

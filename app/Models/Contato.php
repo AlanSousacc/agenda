@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class Contato extends Model
 {
-  protected $filable = ['nome', 'documento', 'endereco', 'numero', 'cidade', 'status', 'telefone', 'email', 'tipocontato', 'datanascimento', 'empresa_id'];
+  protected $filable = ['nome', 'documento', 'endereco', 'numero', 'cidade', 'status', 'telefone', 'email', 'datanascimento', 'empresa_id'];
 
   public function search($value){
 		return $this->where(function ($query) use ($value) {
