@@ -29,6 +29,7 @@ class EmpresaRequest extends FormRequest
 			'email'         => 'required|email:rfc,filter',
       'status'        => 'required',
       'logo'          => 'mimes:jpg,png,jpeg|max:2048',
+      'tipo'          => 'required',
     ];
 
     if(!$this->has('id')){
@@ -53,6 +54,7 @@ class EmpresaRequest extends FormRequest
 			'email.required'        => 'O campo Email é obrigatório!',
 			'logo.mimes'            => 'Formatos suportados: jpg, png, jpeg',
 			'logo.max'              => 'Tamanho máximo permitido do arquivo: 2048Mb',
+			'tipo.required'  				=> 'O campo tipo é obrigatório!',
 		];
 	}
 }

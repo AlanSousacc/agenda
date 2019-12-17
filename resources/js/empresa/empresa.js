@@ -15,6 +15,7 @@ $('#editar').on('show.bs.modal', function (event) {
   var numero       = button.data('numero');
   var cep          = button.data('cep');
   var bairro       = button.data('bairro');
+  var tipo       	 = button.data('tipo');
   var modal        = $(this);
 
   modal.find('.modal-body #cidade').val(cidade);
@@ -31,6 +32,7 @@ $('#editar').on('show.bs.modal', function (event) {
   modal.find('.modal-body #numero').val(numero);
   modal.find('.modal-body #cep').val(cep);
   modal.find('.modal-body #bairro').val(bairro);
+  modal.find('.modal-body #tipo').val(tipo);
   modal.find('.modal-body #emprid').val(emprid);
 }); // Função delete
 

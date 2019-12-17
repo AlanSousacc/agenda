@@ -64,6 +64,7 @@ class EmpresaController extends Controller
       $empresa->bairro    		= $data['bairro'];
       $empresa->logo 					= $fileName;
 			$empresa->status    		= $data['status'];
+			$empresa->tipo    			= $data['tipo'];
 
     } catch (Exception $e) {
       return redirect('empresa')->with('error', $e->getMessage());
@@ -120,6 +121,7 @@ class EmpresaController extends Controller
       $empresa->cep    				= $data['cep'];
       $empresa->bairro    		= $data['bairro'];
 			$empresa->status    		= $data['status'];
+			$empresa->tipo    			= $data['tipo'];
 
     } catch (Exception $e) {
       return redirect('empresa')->with('error', $e->getMessage());
