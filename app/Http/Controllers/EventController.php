@@ -6,6 +6,7 @@ use App\Models\Event;
 use App\Http\Requests\EventRequest;
 use Auth;
 use App\User;
+use Illuminate\Http\Request;
 
 class EventController extends Controller
 {
@@ -47,4 +48,26 @@ class EventController extends Controller
 
     return response()->json(true);
   }
+
+  public function search(Request $request, Event $event){
+		$evento   = $request->except('_token');
+    $consulta = $event->search($contato);
+
+    return view('Admin.fullcalendar.listagem', compact('consulta', 'evento'));
+  }
+
+  public function index(){
+    $user 		= Auth::user()->empresa_id;
+    // $consulta = Event::where('empresa_id', '=', $user)->paginate(10);
+
+    $event = Event::all();
+    $consulta = $event;
+    // ->with('user') // bring along details of the friend
+    // ->join('votes', 'votes.user_id', '=', 'friends.friend_id')
+    // ->get(['votes.*']); // exclude extra details from friends table
+    dd($consulta);
+
+    return view('Admin.fullcalendar.listagem', compact('consulta'));
+  }
+
 }

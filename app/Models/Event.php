@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Contato;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Event extends Model
@@ -12,12 +13,24 @@ class Event extends Model
 
     protected $fillable = ['title', 'start', 'end', 'description', 'contato_id', 'color', 'empresa_id'];
 
-    public function contatos(){
-      return $this->hasMany(Contato::class);
+    public function contato(){
+      return $this->hasOne(Contato::class);
     }
 
     public function empresa(){
       return $this->belongsTo(Empresa::class);
+    }
+
+    public function search($value){
+      return $this->where(function ($query) use ($value) {
+        if(isset($value['contato.nome']))
+          $query->join('contato', 'contato.id', '=', 'events.contato_id')->where('contato.nome', 'like', '%'.$value['contato.nome'].'%');
+          // $query->where('nome', 'like', '%'.$value['nome'].'%')
+          //       ->where('empresa_id', '=', Auth::user()->empresa_id);
+      })->toSql();
+      // ->toSql();
+      dd($resultado);
+      // ->paginate(10);
     }
 
     public function getStartAttribute($value){
