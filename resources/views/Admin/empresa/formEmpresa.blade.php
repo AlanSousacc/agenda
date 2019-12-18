@@ -159,9 +159,9 @@
     </div>
   </div>
 </div>
-<div class="row">
-  <div class="col-md-12">
-    <input type="file" id="logo" name="logo">
-  </div>
+<div class="custom-file">
+  <input type="file" class="custom-file-input" name="logo" id="logo" lang="pt-BR">
+  <label class="custom-file-label" for="logo">Selecionar logo</label>
 </div>
+<br>
 <br>
