@@ -65,7 +65,7 @@
 		<!-- Main Sidebar Container -->
 		<aside class="main-sidebar sidebar-dark-primary elevation-4">
 			<!-- Brand Logo -->
-			<a href="/" class="brand-link">
+			<a class="brand-link" style="color: #fff">
 				@if ($empresa->logo)
 				<img src="/uploads/logos/{{$empresa->logo}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="max-width:35px; max-height:35px">
 				@else
@@ -91,6 +91,30 @@
 							</li> --}}
 
 							{{--  Sidebar cadastros  --}}
+							<li class="nav-item has-treeview menu-open">
+								<a href="#" class="nav-link">
+									<i class="nav-icon fa fa-calendar-alt"></i>
+									<p>
+										Agendamentos
+									</p>
+								</a>
+								<ul class="nav nav-treeview">
+									<li class="nav-item">
+										<a href="/" class="nav-link">
+											<i class="fa fa-calendar-check nav-icon"></i>
+											<p>Agenda</p>
+										</a>
+									</li>
+								</ul>
+								<ul class="nav nav-treeview">
+									<li class="nav-item">
+										<a href="#" class="nav-link">
+											<i class="fa fa-calendar-minus nav-icon"></i>
+											<p>Listagem</p>
+										</a>
+									</li>
+								</ul>
+							</li>
 							<li class="nav-item has-treeview menu-open">
 								<a href="#" class="nav-link">
 									<i class="nav-icon fa fa-list"></i>

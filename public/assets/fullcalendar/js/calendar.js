@@ -21,16 +21,6 @@ document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
 
     var calendar = new Calendar(calendarEl, {
-      eventRender: function(event, $el) {
-        // console.log(event.event.extendedProps.contato_id)
-        // console.log(event.el).find('.fc-title')
-        // element.find('.fc-title').append(" " + event.description);
-        //  element.bind('dblclick', function() {
-        //         $('#ModalEdit #id').val(event.id);
-        //         $('#ModalEdit #title').val(event.title);
-        //         $('#ModalEdit').modal('show');
-        //     });
-    },
       plugins: [ 'interaction', 'dayGrid', 'timeGrid', 'list' ],
       header: {
         left: 'prev,next today',
