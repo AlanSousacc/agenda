@@ -108,7 +108,7 @@
 								</ul>
 								<ul class="nav nav-treeview">
 									<li class="nav-item">
-										<a href="#" class="nav-link">
+										<a href="{{route('routeEventList')}}" class="nav-link">
 											<i class="fa fa-calendar-minus nav-icon"></i>
 											<p>Listagem</p>
 										</a>

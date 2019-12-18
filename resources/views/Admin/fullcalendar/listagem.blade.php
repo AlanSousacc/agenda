@@ -13,7 +13,7 @@
       </div>
 
       <div class="com-md-6 float-md-right search">
-        <form action="{{route('routeEmpresaSearch')}}" method="POST" class="form-inline">
+        <form action="{{route('routeEventSearch')}}" method="POST" class="form-inline">
           @csrf
           <div class="input-group input-group-sm">
             <input type="search" placeholder="Consultar Razão Social" aria-label="Consultar" name="razaosocial" class="form-control form-control-navbar">
@@ -31,7 +31,7 @@
           <th class="th-sm" style="width: 200px;" >Data/Hora inicio</th>
           <th class="th-sm" style="width: 200px;" >Data/Hora Final</th>
           <th class="th-sm" style="width: 150px;" >Descrição</th>
-          <th class="th-sm" style="width: 120px;" >Conatato</th>
+          {{-- <th class="th-sm" style="width: 120px;" >Conatato</th> --}}
           <th class="text-center" style="width: 120px;" >Opções</th>
         </tr>
       </thead>
@@ -42,7 +42,7 @@
           <td class="sorting_1">{{$item->start}}</td>
           <td>{{$item->end}}</td>
           <td>{{$item->description}}</td>
-          <td>{{$item->contato->nome}}</td>
+          {{-- <td>{{$item->contato->nome}}</td> --}}
             <td class="text-center" style="padding: 0.45rem">
               <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -70,14 +70,14 @@
         @endforeach
       </tbody>
     </table>
-    <div class="row">
+    {{-- <div class="row">
       <div class="col-md-6 pl-4 mt-md-2"><p>Mostrando {{$consulta->count()}} agendamento(s) de um total de {{$consulta->total()}}</p></div>
       @if (isset($empresas))
       <div class="col-md-6 pr-4">{{$consulta->appends($empresas)->links()}}</div>
       @else
       <div class="col-md-6 pr-4">{{$consulta->links()}}</div>
       @endif
-		</div>
+		</div> --}}
 
 		<!-- Modal editar-->
 		@include('Admin.fullcalendar.modaleditar')
