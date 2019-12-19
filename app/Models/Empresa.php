@@ -21,15 +21,15 @@ class Empresa extends Model
 	}
 
 	public function users(){
-    return $this->hasMany(User::class);
+    return $this->hasMany('App\User');
   }
 
 	public function events(){
-    return $this->hasMany(Event::class);
+    return $this->hasMany('App\Models\Event');
   }
 
 	public function contatos(){
-    return $this->hasMany(Contato::class);
+    return $this->hasMany('App\Models\Contato');
   }
 
 }

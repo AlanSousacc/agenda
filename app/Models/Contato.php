@@ -10,6 +10,14 @@ class Contato extends Model
 {
   protected $filable = ['nome', 'documento', 'endereco', 'numero', 'cidade', 'status', 'telefone', 'email', 'datanascimento', 'empresa_id'];
 
+  public function events(){
+    return $this->hasMany('App\Models\Event');
+  }
+
+  public function empresa(){
+    return $this->belongsTo('App\Models\Empresa');
+  }
+
   public function search($value){
 		return $this->where(function ($query) use ($value) {
 			if(isset($value['nome']))
@@ -25,12 +33,4 @@ class Contato extends Model
     if (!empty($date))
       return Carbon::createFromFormat('Y-m-d', $date)->format('d/m/Y');
 	}
-
-  public function event(){
-    return $this->belongsTo(Event::class);
-  }
-
-  public function empresa(){
-    return $this->belongsTo(Empresa::class);
-  }
 }

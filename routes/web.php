@@ -9,6 +9,7 @@ Route::post('/event-store', 'EventController@store')->name('routeEventStore');
 Route::delete('/event-destroy', 'EventController@destroy')->name('routeEventDelete');
 Route::any('search-event', 'EventController@search')->name('routeEventSearch');
 Route::get('list-event', 'EventController@index')->name('routeEventList');
+Route::delete('/users-delete/{contato}', 'EventController@delete')->name('routeAgendaDelete');
 
 // contatos
 Route::resource('contato', 'ContatoController');

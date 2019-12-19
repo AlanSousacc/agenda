@@ -6,10 +6,50 @@ use App\Models\Event;
 use App\Http\Requests\EventRequest;
 use Auth;
 use App\User;
+use App\Models\Empresa;
+use App\Models\Contato;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EventController extends Controller
 {
+  public function index()
+  {
+    $user 		= Auth::user()->empresa_id;
+    $consulta = Event::where('empresa_id', '=', $user)->paginate(10);
+
+    $emp = Empresa::where('id', '=', $user)->first();
+    if($emp->tipo == 'estetica'){
+      $tipoContato    = 'cliente';
+    } else if($emp->tipo == 'clinica'){
+      $tipoContato    = 'paciente';
+    }
+
+    $contato = Contato::where('tipocontato', '=', $tipoContato)
+                        ->where('empresa_id', '=', $user)->get();
+
+    return view('Admin.fullcalendar.listagem', compact('consulta', 'contato'));
+  }
+
+  public function search(Request $request, Event $event)
+  {
+    $user 		= Auth::user()->empresa_id;
+    $evento   = $request->except('_token');
+    $consulta = $event->search($evento);
+
+    $emp = Empresa::where('id', '=', $user)->first();
+    if($emp->tipo == 'estetica'){
+      $tipoContato = 'cliente';
+    } else if($emp->tipo == 'clinica'){
+      $tipoContato = 'paciente';
+    }
+
+    $contato = Contato::where('tipocontato', '=', $tipoContato)
+                        ->where('empresa_id', '=', $user)->get();
+
+    return view('Admin.fullcalendar.listagem', compact('consulta', 'evento', 'contato'));
+  }
+
   public function __construct()
   {
     $this->middleware('auth');
@@ -18,8 +58,7 @@ class EventController extends Controller
   public function loadEvents()
   {
     $user    = Auth::user()->empresa_id;
-    $events = Event::where('empresa_id', '=', $user)->get();
-    // dd($events);
+    $events  = Event::where('empresa_id', '=', $user)->get();
 
     return response()->json($events);
   }
@@ -34,40 +73,45 @@ class EventController extends Controller
   public function update(EventRequest $request)
   {
     $event = Event::where('id', $request->id)->first();
-
     $event->fill($request->all());
-
     $event->save();
-
     return response()->json(true);
   }
 
   public function destroy(EventRequest $request)
   {
     Event::where('id', $request->id)->delete();
-
     return response()->json(true);
   }
 
-  public function search(Request $request, Event $event){
-		$evento   = $request->except('_token');
-    $consulta = $event->search($contato);
+  public function delete(Request $request)
+  {
+    try{
+			$event = Event::find($request->agenda_id);
 
-    return view('Admin.fullcalendar.listagem', compact('consulta', 'evento'));
-  }
+      if (!$event)
+        throw new Exception("Nenhum agendamento encontrado");
 
-  public function index(){
-    $user 		= Auth::user()->empresa_id;
-    // $consulta = Event::where('empresa_id', '=', $user)->paginate(10);
+    } catch (Exception $e) {
+      return redirect('list-event')->with('error', $e->getMessage());
+      exit();
+    }
 
-    $event = Event::all();
-    $consulta = $event;
-    // ->with('user') // bring along details of the friend
-    // ->join('votes', 'votes.user_id', '=', 'friends.friend_id')
-    // ->get(['votes.*']); // exclude extra details from friends table
-    dd($consulta);
+    try{
+      DB::beginTransaction();
+      $saved = $event->delete();
 
-    return view('Admin.fullcalendar.listagem', compact('consulta'));
+      if (!$saved){
+        throw new Exception('Falha ao remover agendamento!');
+      }
+
+      DB::commit();
+      return redirect('list-event')->with('success', 'Agendamento #' . $event->id . ' removido com sucesso!');
+    } catch (Exception $e) {
+			DB::rollBack();
+
+      return redirect('list-event')->with('error', $e->getMessage());
+    }
   }
 
 }
