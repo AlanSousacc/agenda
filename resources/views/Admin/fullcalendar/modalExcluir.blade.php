@@ -5,12 +5,12 @@
 				<button type="button" class="close" data-dismiss="modal" style="color:#fff">&times;</button>
 				<h4 class="modal-title text-center">Confirmação de exclusão</h4>
 			</div>
-			<form action="{{route('empresa.destroy', 'id')}}" method="post">
+			<form action="{{route('routeAgendaDelete', 'id')}}" method="post">
 				{{method_field('delete')}}
 				{{ csrf_field() }}
 				<div class="modal-body">
-					<p class="text-center">Você tem certeza que deseja excluir esta agenamento?</p>
-					<input type="hidden" name="agendamento_id" id="agenid" value="">
+					<p class="text-center">Você tem certeza que deseja excluir este agenamento?</p>
+					<input type="hidden" name="agenda_id" id="agenid" value="">
 				</div>
 				<div class="modal-footer">
 					<center>
