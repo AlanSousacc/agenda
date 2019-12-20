@@ -7,5 +7,4 @@ mix
 	.js('resources/js/adminlte.js', 'public/admin/js')
 	.js('resources/js/contato/contato.js', 'public/admin/js/contato')
 	.js('resources/js/empresa/empresa.js', 'public/admin/js/empresa')
-	.js('resources/js/users/users.js', 'public/admin/js/users')
-	.js('resources/js/agenda/agenda.js', 'public/admin/js/agenda');
+	.js('resources/js/users/users.js', 'public/admin/js/users');

@@ -57,12 +57,12 @@
     <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
       <thead>
         <tr>
-          <th class="text-center" style="width: 150px;" >Cliente</th>
+          <th class="text-center" style="width: 200px;" >Contato</th>
           <th class="text-center" style="width: 200px;" >Título</th>
-          <th class="text-center" style="width: 200px;" >Data/Hora inicio</th>
-          <th class="text-center" style="width: 200px;" >Data/Hora Final</th>
+          <th class="text-center" style="width: 100px;" >Data/Hora inicio</th>
+          <th class="text-center" style="width: 100px;" >Data/Hora Final</th>
           <th class="text-center" style="width: 150px;" >Descrição</th>
-          <th class="text-center" style="width: 120px;" >Opções</th>
+          <th class="text-center" style="width: 20px;" >Cor</th>
         </tr>
       </thead>
       <tbody>
@@ -73,28 +73,7 @@
           <td class="text-center">{{Carbon\Carbon::parse($item->start)->format('d/m/Y H:m:i')}}</td>
           <td class="text-center">{{Carbon\Carbon::parse($item->end)->format('d/m/Y H:m:i')}}</td>
           <td class="text-center">{{$item->description}}</td>
-          <td class="text-center" style="padding: 0.45rem">
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Ação
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                @if (Auth::user()->profile == 'Administrador' )
-                <a class="dropdown-item" href="{{$item->id}}"
-                  data-agenid="{{$item->id}}"
-                  data-title="{{$item->title}}"
-                  data-start="{{Carbon\Carbon::parse($item->start)->format('d/m/Y hh:mm')}}"
-                  data-end="{{Carbon\Carbon::parse($item->end)->format('d/m/Y hh:mm')}}"
-                  data-description="{{$item->description}}"
-                  data-contato="{{$item->nome}}"
-                  data-target="#editar"
-                  data-toggle="modal"> Editar <i class="fa fa-edit"></i></a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="{{$item->id}}" data-agenid={{$item->id}} data-target="#delete" data-toggle="modal">Excluir <i class="fa fa-trash"></i></a>
-                  @endif
-                </div>
-              </div>
-            </td>
+          <td class="text-center"><i class="fa fa-circle" style="color:{{$item->color}}"></i></td>
           </tr>
           @endforeach
         </tbody>
@@ -107,13 +86,6 @@
         <div class="col-md-6 pr-4">{{$consulta->links()}}</div>
         @endif
       </div>
-
-      <!-- Modal editar-->
-      @include('Admin.fullcalendar.modaleditar')
-
-      {{-- modal Deletar--}}
-      @include('Admin.fullcalendar.modalExcluir')
-      {{-- Modal --}}
     </div>
   </div>
   <!-- /.card -->
