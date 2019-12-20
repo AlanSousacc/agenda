@@ -44,20 +44,15 @@
           <td class="text-center">{{$item->id}}</td>
           <td class="sorting_1">{{$item->nome}}</td>
           <td>{{$item->documento}}</td>
-          {{-- <td>{{$item->endereco}}</td>
-          <td>{{$item->cidade}}</td> --}}
           <td>{{$item->telefone}}</td>
           <td>{{$item->email}}</td>
-          {{-- <td>{{$item->datanascimento}}</td> --}}
             <td class="text-center" style="padding: 0.45rem">
               <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Ação
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="http://"> Visualizar  <i class="fa fa-eye"></i></a>
                   @if (Auth::user()->profile == 'Administrador' )
-                  <div class="dropdown-divider"></div>
 									<a class="dropdown-item" href="{{$item->id}}"
 										data-contid="{{$item->id}}"
 										data-nome="{{$item->nome}}"

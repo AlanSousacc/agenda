@@ -49,9 +49,7 @@
                 Ação
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="http://"> Visualizar  <i class="fa fa-eye"></i></a>
                 @if (Auth::user()->profile == 'Administrador' )
-                  <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="{{$item->id}}"
 										data-userid="{{$item->id}}"
 										data-name="{{$item->name}}"
