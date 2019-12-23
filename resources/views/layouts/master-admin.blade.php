@@ -81,7 +81,7 @@
         <!-- Sidebar Menu -->
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            {{--  Sidebar cadastros  --}}
+            {{--  Sidebar agendamento  --}}
             <li class="nav-item has-treeview menu-open">
               <a href="#" class="nav-link">
                 <i class="nav-icon fa fa-calendar-alt"></i>
@@ -105,7 +105,27 @@
                   </a>
                 </li>
               </ul>
-            </li>
+						</li>
+						{{-- end agendamentos --}}
+						{{-- Sidebar movimentação --}}
+						<li class="nav-item has-treeview menu-open">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fa fa-money-check-alt"></i>
+                <p>
+                  Movimentação
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="/" class="nav-link">
+                    <i class="fa fa-dollar-sign nav-icon"></i>
+                    <p>Entradas</p>
+                  </a>
+                </li>
+              </ul>
+						</li>
+						{{-- end movimentação --}}
+						{{-- Sidebar cadastros --}}
             <li class="nav-item has-treeview menu-open">
               <a href="#" class="nav-link">
                 <i class="nav-icon fa fa-list"></i>

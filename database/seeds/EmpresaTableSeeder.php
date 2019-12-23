@@ -21,7 +21,8 @@ class EmpresaTableSeeder extends Seeder
       'numero'        => '351',
       'cep'           => '14660-000',
       'bairro'        => 'Centro',
-      'status'        => 1,
+			'status'        => 1,
+			'logo'					=> 'default.png'
     ]);
   }
 }
