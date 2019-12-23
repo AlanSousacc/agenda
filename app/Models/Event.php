@@ -34,6 +34,10 @@ class Event extends Model
       ->paginate(10);
     }
 
+    public function movimentos(){
+      return $this->hasOne('App\Models\Movimento');
+    }
+
     // public function getStartAttribute($value){
     //   $dateStart = Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('Y-m-d');
     //   $timeStart = Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('H:i:s');

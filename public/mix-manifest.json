@@ -6,5 +6,7 @@
     "/admin/js/contato/contato.js": "/admin/js/contato/contato.js",
     "/admin/js/empresa/empresa.js": "/admin/js/empresa/empresa.js",
     "/admin/js/jquery.js": "/admin/js/jquery.js",
+    "/admin/js/movimentacao/jquery.maskMoney.js": "/admin/js/movimentacao/jquery.maskMoney.js",
+    "/admin/js/movimentacao/movimentacao.js": "/admin/js/movimentacao/movimentacao.js",
     "/admin/js/users/users.js": "/admin/js/users/users.js"
 }

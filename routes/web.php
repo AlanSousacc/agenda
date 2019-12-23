@@ -29,6 +29,9 @@ Route::patch('users/{user}/update', 'UserController@updateMyAccount')->name('rou
 Route::patch('users', 'UserController@update')->name('routeUserEdit');
 Route::delete('/users-delete', 'UserController@destroy')->name('routeUserDelete');
 
+// movimentacoes
+Route::get('movimentacao', 'MovimentacaoController@index');
+
 Auth::routes();
 
 Auth::routes(['verify' => true]);

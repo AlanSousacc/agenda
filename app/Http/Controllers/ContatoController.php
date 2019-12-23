@@ -173,7 +173,6 @@ class ContatoController extends Controller
       // se chegou aqui é pq deu tudo certo
       return redirect('contato')->with('success', 'Contato #' . $contato->id . ' removido com sucesso!');
     } catch (Exception $e) {
-      // se deu pau ao salvar no banco de dados, faz rollback de tudo e retorna erro
 			DB::rollBack();
 
       return redirect('contato')->with('error', $e->getMessage());

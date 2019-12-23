@@ -24,6 +24,10 @@ class Empresa extends Model
     return $this->hasMany('App\User');
   }
 
+	public function movimentos(){
+    return $this->hasMany('App\Models\Movimento');
+  }
+
 	public function events(){
     return $this->hasMany('App\Models\Event');
   }

@@ -9,7 +9,7 @@
   <div class="card">
     <div class="card-header">
       <div class="com-md-6">
-        <h3 class="card-title mt-md-2"> Listagem de Entrdas</h3>
+        <h3 class="card-title mt-md-2"> Listagem de Movimentação</h3>
       </div>
 
       <div class="com-md-6 float-md-right search">
@@ -28,12 +28,12 @@
       <thead>
         <tr>
           <th class="text-center" style="width: 50px;" >#ID</th>
-          <th class="th-sm" style="width: 200px;" >Contato</th>
-          <th class="th-sm" style="width: 100px;" >Condição de Pagamento</th>
-          <th class="th-sm" style="width: 70px;" >Tipo</th>
-          <th class="th-sm" style="width: 160px;" >Observação</th>
+          <th class="text-center" style="width: 150px;" >Contato</th>
+          <th class="text-center" style="width: 150px;" >Condição de Pagamento</th>
+          <th class="text-center" style="width: 70px;" >Tipo</th>
+          <th class="text-center" style="width: 160px;" >Observação</th>
           <th class="text-center" style="width: 70px;" >Valor</th>
-          <th class="text-center" style="width: 100px;" >Dt Movimentação</th>
+          <th class="text-center" style="width: 80px;" >Dt Movimentação</th>
           <th class="text-center" style="width: 80px;" >Opções</th>
         </tr>
       </thead>
@@ -41,12 +41,12 @@
         @foreach ($consulta as $item)
         <tr role="row" class="odd">
           <td class="text-center">{{$item->id}}</td>
-          <td class="sorting_1">{{$item->contato}}</td>
-          <td>{{$item->condicao_pagamento_id}}</td>
-          <td>{{$item->tipo}}</td>
-          <td>{{$item->observacao}}</td>
-          <td>{{$item->valor}}</td>
-          <td>{{$item->movimented_at}}</td>
+          <td class="text-center">{{$item->contato->nome}}</td>
+          <td class="text-center">{{$item->condicao_pagamento->nome}}</td>
+          <td class="text-center" alt="entrada" title="Entrada"><i class="fa fa-arrow-alt-circle-up" style="color: #009908"></i></td>
+          <td class="text-center">{{$item->observacao}}</td>
+          <td class="text-center">R$ {{number_format($item->valor, 2, ',', '.')}}</td>
+          <td class="text-center">{{Carbon\Carbon::parse($item->movimented_at)->format('d/m/Y H:i:s')}}</td>
             <td class="text-center" style="padding: 0.45rem">
               <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -55,19 +55,15 @@
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                   @if (Auth::user()->profile == 'Administrador' )
 									<a class="dropdown-item" href="{{$item->id}}"
-										data-contid="{{$item->id}}"
-										data-nome="{{$item->nome}}"
-										data-documento="{{$item->documento}}"
-										data-endereco="{{$item->endereco}}"
-										data-numero="{{$item->numero}}"
-										data-telefone="{{$item->telefone}}"
-										data-email="{{$item->email}}"
-										data-datanascimento="{{$item->datanascimento}}"
-										{{-- data-tipocontato="{{$item->tipocontato}}" --}}
-										data-status="{{$item->status}}"
-										data-cidade="{{$item->cidade}}"
-										data-target="#editar"
-										data-toggle="modal"> Editar <i class="fa fa-edit"></i></a>
+										data-movid="{{$item->id}}"
+										data-contato="{{$item->contato->nome}}"
+										data-pagamento="{{$item->condicao_pagamento->nome}}"
+										data-tipo="{{$item->tipo}}"
+										data-observacao="{{$item->observacao}}"
+										data-valor="{{$item->valor}}"
+										data-movimented_at="{{$item->movimented_at}}"
+										data-target="#visualizar"
+										data-toggle="modal"> Visualiar <i class="fa fa-edit"></i></a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="{{$item->id}}" data-contid={{$item->id}} data-target="#delete" data-toggle="modal">Excluir <i class="fa fa-trash"></i></a>
                   @endif
@@ -77,30 +73,41 @@
         </tr>
         @endforeach
       </tbody>
+      <tfoot>
+        <tr>
+          <td class="text-center" colspan="5"></td>
+          <td class="text-center" style="font-weight:600">Total R$ {{number_format($total, 2, ',', '.')}}</td>
+          <td class="text-center" colspan="2"></td>
+        </tr>
+      </tfoot>
     </table>
     <div class="row">
-      <div class="col-md-6 pl-4 mt-md-2"><p>Mostrando {{$consulta->count()}} contatos de um total de {{$consulta->total()}}</p></div>
+      <div class="col-md-6 pl-4 mt-md-2"><p>Mostrando {{$consulta->count()}} movimentações de um total de {{$consulta->total()}}</p></div>
       @if (isset($contato))
-      <div class="col-md-6 pr-4">{{$consulta->appends($contato)->links()}}</div>
+      {{-- <div class="col-md-6 pr-4">{{$consulta->appends($contato)->links()}}</div> --}}
       @else
       <div class="col-md-6 pr-4">{{$consulta->links()}}</div>
       @endif
 		</div>
 
 		<!-- Modal editar-->
-		@include('Admin.contatos.modalEditar')
+		@include('Admin.movimentacao.modalVisualizar')
 
 		{{-- modal Deletar--}}
-		@include('Admin.contatos.modalExcluir')
+		@include('Admin.movimentacao.modalExcluir')
 		{{-- Modal --}}
+  </div>
+  <div class="row" >
+    <div class="col-md-12">
+      <button class="btn btn-outline-danger btn-lg float-right" disabled>Nova Baixa</button>
+      <button class="btn btn-outline-success btn-lg float-right mr-3">Nova Entrada</button>
+    </div>
   </div>
 </div>
 <!-- /.card -->
 @push('scripts')
-	<script src='{{asset('admin/js/contato/contato.js')}}'></script>
-	<script>
-		$('.alert').alert()
-	</script>
+	<script src='{{asset('admin/js/movimentacao/movimentacao.js')}}'></script>
+	<script src='{{asset('admin/js/movimentacao/jquery.maskMoney.js')}}'></script>
 @endpush
 @endsection
 
