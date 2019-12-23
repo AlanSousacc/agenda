@@ -32,5 +32,9 @@ class Contato extends Model
   public function getdatanascimentoAttribute($date) {
     if (!empty($date))
       return Carbon::createFromFormat('Y-m-d', $date)->format('d/m/Y');
-	}
+  }
+
+  public function movimentos(){
+    return $this->hasMany('App\Models\Movimento');
+  }
 }

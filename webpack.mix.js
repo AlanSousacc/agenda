@@ -7,4 +7,6 @@ mix
 	.js('resources/js/adminlte.js', 'public/admin/js')
 	.js('resources/js/contato/contato.js', 'public/admin/js/contato')
 	.js('resources/js/empresa/empresa.js', 'public/admin/js/empresa')
-	.js('resources/js/users/users.js', 'public/admin/js/users');
+	.js('resources/js/users/users.js', 'public/admin/js/users')
+	.js('resources/js/movimentacao/movimentacao.js', 'public/admin/js/movimentacao')
+	.js('resources/js/movimentacao/jquery.maskMoney.js', 'public/admin/js/movimentacao');
