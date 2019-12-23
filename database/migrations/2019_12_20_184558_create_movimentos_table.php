@@ -19,6 +19,7 @@ class CreateMovimentosTable extends Migration
       $table->unsignedBigInteger('contato_id');
       $table->unsignedBigInteger('empresa_id');
       $table->unsignedBigInteger('condicao_pagamento_id');
+      $table->unsignedBigInteger('event_id')->nullable();
       $table->string('tipo', 50);
       $table->text('observacao');
       $table->double('valor', 5, 2);
@@ -29,6 +30,7 @@ class CreateMovimentosTable extends Migration
       $table->foreign('contato_id')->references('id')->on('contatos')->onDelete('cascade');
       $table->foreign('empresa_id')->references('id')->on('empresas')->onDelete('cascade');
       $table->foreign('condicao_pagamento_id')->references('id')->on('condicao_pagamento')->onDelete('cascade');
+      $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
     });
   }
 
