@@ -109,8 +109,13 @@
 </div>
 <!-- /.card -->
 @push('scripts')
-	<script src='{{asset('admin/js/movimentacao/movimentacao.js')}}'></script>
-	<script src='{{asset('admin/js/movimentacao/jquery.maskMoney.js')}}'></script>
+  <script src='https://cdnjs.com/libraries/jquery.mask'></script>
+  <script src='{{asset('admin/js/movimentacao/movimentacao.js')}}'></script>
+  <script>
+    $(document).ready(function () {
+      $('#valor').mask('000.000.000.000.000,00');
+    });
+  </script>
 @endpush
 @endsection
 

@@ -1,13 +1,16 @@
-{{-- <div class="row">
+<div class="row">
   <div class="col-md-3">
 		<div class="form-group">
 			<label for="tipo">Tipo Mov.</label>
 			<div class="input-group">
-				<input type="text" disabled="true" name="tipo" value="Entrada" class="form-control tipo" id="tipo">
+				<select class="form-control contato" id="tipo" name="tipo" value="{{old('tipo')}}" required>
+          <option value="Entrada" selected disabled>Entrada</option>
+          {{-- <option value="Saida">Saida</option> --}}
+				</select>
 			</div>
 		</div>
   </div>
-</div> --}}
+</div>
 
 <div class="row">
 	<div class="col-md-12">
@@ -16,7 +19,7 @@
 			<div class="input-group">
         <select class="form-control contato" id="contato" name="contato_id" value="{{old('contato')}}" required>
           @foreach ($contato as $item)
-            <option id="{{$item->id}}" value="{{$item->nome}}">{{$item->nome}}</option>
+            <option id="{{$item->id}}" value="{{$item->id}}">{{$item->nome}}</option>
           @endforeach
 				</select>
 			</div>
@@ -31,7 +34,7 @@
 			<div class="input-group">
         <select class="form-control pagamento" id="pagamento" name="condicao_pagamento_id" value="{{old('condicao_pagamento_id')}}" required>
           @foreach ($pagamento as $item)
-            <option id="{{$item->id}}" value="{{$item->nome}}">{{$item->nome}}</option>
+            <option id="{{$item->id}}" value="{{$item->id}}">{{$item->nome}}</option>
           @endforeach
 				</select>
 			</div>
