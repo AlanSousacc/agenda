@@ -1,22 +1,13 @@
-<div class="row">
+{{-- <div class="row">
   <div class="col-md-3">
 		<div class="form-group">
 			<label for="tipo">Tipo Mov.</label>
 			<div class="input-group">
-				<input type="text" class="form-control tipo" id="tipo" value="Entrada" name="tipo" readonly>
+				<input type="text" disabled="true" name="tipo" value="Entrada" class="form-control tipo" id="tipo">
 			</div>
 		</div>
   </div>
-
-  <div class="col-md-9">
-		<div class="form-group">
-			<label for="user_id">Usuário</label>
-			<div class="input-group">
-				<label id="user_id" value="{{$item->user->name}}" name="user_id" style="padding-top: 5px">{{$item->user->name}}</label>
-			</div>
-		</div>
-  </div>
-</div>
+</div> --}}
 
 <div class="row">
 	<div class="col-md-12">

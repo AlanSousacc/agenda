@@ -27,20 +27,20 @@
     <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
       <thead>
         <tr>
-          <th class="text-center" style="width: 50px;" >#ID</th>
+          {{-- <th class="text-center" style="width: 50px;" >#ID</th> --}}
           <th class="text-center" style="width: 150px;" >Contato</th>
-          <th class="text-center" style="width: 150px;" >Condição de Pagamento</th>
+          <th class="text-center" style="width: 160px;" >Condição de Pagamento</th>
           <th class="text-center" style="width: 70px;" >Tipo</th>
-          <th class="text-center" style="width: 160px;" >Observação</th>
-          <th class="text-center" style="width: 70px;" >Valor</th>
-          <th class="text-center" style="width: 80px;" >Dt Movimentação</th>
+          <th class="text-center" style="width: 150px;" >Observação</th>
+          <th class="text-center" style="width: 80px;" >Valor</th>
+          <th class="text-center" style="width: 70px;" >Dt Movimentação</th>
           <th class="text-center" style="width: 80px;" >Opções</th>
         </tr>
       </thead>
       <tbody>
         @foreach ($consulta as $item)
         <tr role="row" class="odd">
-          <td class="text-center">{{$item->id}}</td>
+          {{-- <td class="text-center">{{$item->id}}</td> --}}
           <td class="text-center">{{$item->contato->nome}}</td>
           <td class="text-center">{{$item->condicao_pagamento->nome}}</td>
           <td class="text-center" alt="entrada" title="Entrada"><i class="fa fa-arrow-alt-circle-up" style="color: #009908"></i></td>
@@ -58,7 +58,7 @@
 										data-movid="{{$item->id}}"
 										data-contato="{{$item->contato->nome}}"
 										data-pagamento="{{$item->condicao_pagamento->nome}}"
-										data-tipo="{{$item->tipo}}"
+										{{-- data-tipo="{{$item->tipo}}" --}}
 										data-observacao="{{$item->observacao}}"
 										data-valor="{{$item->valor}}"
 										data-movimented_at="{{$item->movimented_at}}"
@@ -75,7 +75,7 @@
       </tbody>
       <tfoot>
         <tr>
-          <td class="text-center" colspan="5"></td>
+          <td class="text-center" colspan="4"></td>
           <td class="text-center" style="font-weight:600">Total R$ {{number_format($total, 2, ',', '.')}}</td>
           <td class="text-center" colspan="2"></td>
         </tr>
@@ -90,17 +90,20 @@
       @endif
 		</div>
 
+		{{-- adicionar --}}
+		@include('Admin.movimentacao.modalNovo')
 		<!-- Modal editar-->
 		@include('Admin.movimentacao.modalVisualizar')
 
 		{{-- modal Deletar--}}
 		@include('Admin.movimentacao.modalExcluir')
 		{{-- Modal --}}
+
   </div>
   <div class="row" >
     <div class="col-md-12">
       <button class="btn btn-outline-danger btn-lg float-right" disabled>Nova Baixa</button>
-      <button class="btn btn-outline-success btn-lg float-right mr-3">Nova Entrada</button>
+      <button class="btn btn-outline-success btn-lg float-right mr-3" data-target="#novo" data-toggle="modal">Nova Entrada</button>
     </div>
   </div>
 </div>

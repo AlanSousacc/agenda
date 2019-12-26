@@ -31,6 +31,7 @@ Route::delete('/users-delete', 'UserController@destroy')->name('routeUserDelete'
 
 // movimentacoes
 Route::get('movimentacao', 'MovimentacaoController@index');
+Route::post('movimentacao', 'MovimentacaoController@store')->name('movimentacao.store');
 
 Auth::routes();
 
