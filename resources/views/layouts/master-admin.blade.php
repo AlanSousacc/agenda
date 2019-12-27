@@ -122,6 +122,28 @@
                     <p>Entradas</p>
                   </a>
                 </li>
+                <li class="nav-item">
+                  <a href="movimentacao" class="nav-link">
+                    <i class="fa fa fa-chart-bar nav-icon"></i>
+                    <p>Relatórios
+                    <i class="right fas fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="" data-contid='' data-target="#personalizado" data-toggle="modal" class="nav-link">
+                        <i class="fa fa-chart-area nav-icon"></i>
+                        <p>Personalizado</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a  href="{{route('relatorio-mes-atual')}}" target="_blank" class="nav-link">
+                        <i class="fa fa-chart-pie nav-icon"></i>
+                        <p>Mensal Atual</p>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
               </ul>
 						</li>
 						{{-- end movimentação --}}
@@ -262,6 +284,9 @@
         <strong>Copyright &copy; 2019 AgendaBETHA</strong> Todos os direitos reservados.
       </footer>
     </div>
+
+    {{-- adicionar --}}
+		@include('Admin.movimentacao.relatorios.consulta-periodo')
     <!-- ./wrapper -->
 
     <script src="{{ asset('admin/js/jquery.js')}}"></script>

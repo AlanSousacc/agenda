@@ -6,6 +6,12 @@
 	@include('layouts.master-message')
 </div>
 <div class="col-md-12">
+  <div class="row mb-4" >
+    <div class="col-md-12">
+      <a href="#" class="btn btn-outline-success btn-lg float-right mr-3" title="Relatório por periodo e/ou contato" data-target="#personalizado" data-toggle="modal">Período e/ou Contato <i class="fa fa-calendar"></i></a>
+      <a href="{{route('relatorio-mes-atual')}}" target="_blank" class="btn btn-outline-success btn-lg float-right mr-3">Mês Atual <i class="fa fa-file-pdf"></i></a>
+    </div>
+  </div>
   <div class="card">
     <div class="card-header">
       <div class="com-md-6">
