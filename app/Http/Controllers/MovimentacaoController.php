@@ -111,7 +111,7 @@ class MovimentacaoController extends Controller
       date_default_timezone_set('America/Sao_Paulo');
       $date = strftime('%B de %Y', strtotime('today'));
 
-      return PDF::loadView('Admin.movimentacao.RME', compact('total', 'consulta', 'date'))
+      return PDF::loadView('Admin.movimentacao.relatorios.RME', compact('total', 'consulta', 'date'))
       // Se quiser que fique no formato a4 retrato:
         ->setPaper('a4', 'landscape')
         ->stream('relatorio-entradas.pdf');
