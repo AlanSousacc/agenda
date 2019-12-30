@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\DB;
 use Auth;
 use App\User;
 use Exception;
-// use Illuminate\Support\Facades\Route;
 
 class ContatoController extends Controller
 {

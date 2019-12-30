@@ -46,6 +46,3 @@ $('#delete').on('show.bs.modal', function (event) {
   modal.find('.modal-body #movid').val(movid);
 });
 
-$(document).ready(function () {
-  window.print()
-});
