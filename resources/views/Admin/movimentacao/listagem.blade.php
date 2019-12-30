@@ -109,6 +109,31 @@
 </div>
 <!-- /.card -->
 @push('scripts')
+<script>
+  $(function() {
+    $('input[name="mstart"]').daterangepicker({
+      singleDatePicker: true,
+      showDropdowns: true,
+      minYear: 2019,
+      "locale": {
+        "format": "DD/MM/YYYY"
+    },
+      maxYear: parseInt(moment().format('YYYY'),10)
+    });
+  });
+
+  $(function() {
+    $('input[name="mend"]').daterangepicker({
+      singleDatePicker: true,
+      showDropdowns: true,
+      minYear: 2019,
+      "locale": {
+        "format": "DD/MM/YYYY"
+    },
+      maxYear: parseInt(moment().format('YYYY'),10)
+    });
+  });
+  </script>
   <script src='https://cdnjs.com/libraries/jquery.mask'></script>
   <script src='{{asset('admin/js/movimentacao/movimentacao.js')}}'></script>
   <script>

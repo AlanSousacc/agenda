@@ -117,10 +117,10 @@ class MovimentacaoController extends Controller
         ->stream('relatorio-entradas.pdf');
         // ->download('relatorio-entradas.pdf');
 		}
-		
-    public function relPeriodo($contato)
+
+    public function relPeriodo(Request $request)
     {
-			dd($contato);
+			dd($request->except('_token'));
 
       // $user 		  = Auth::user()->empresa_id;
       // $consulta   = Movimento::where('empresa_id', '=', $user)->whereMonth('movimented_at', date('m'))->paginate(10);
