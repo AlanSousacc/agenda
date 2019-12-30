@@ -5,16 +5,16 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title">Consultar por Período</h4>
       </div>
-      <form action="{{route('relatorio.periodo.contato')}}" method="POST" class="form-inline float-md-right ">
+      <form action="{{route('relatorio.periodo.contato')}}" method="POST">
 				@csrf
         <div class="modal-body">
           <div class="col-12 mb-3">
             <h5 class="modal-title" style="text-align:center">Consultar por Período e/ou Contato</h5>
           </div>
           <div class="form-group row">
-            <label for="start" class="col-sm-4 col-form-label">Contato</label>
+            <label class="col-sm-4 col-form-label">Contato</label>
             <div class="col-sm-8">
-              <select id="contato_id" class="form-control">
+              <select id="contato_id" name="contato_id" class="form-control">
                 <option selected>Escolha um contato</option>
                 @foreach ($contato as $item)
                 <option value="{{$item->id}}" id="{{$item->id}}">{{$item->nome}}</option>
@@ -23,15 +23,15 @@
             </div>
           </div>
           <div class="form-group row">
-            <label for="start" class="col-sm-4 col-form-label">Data Inicio</label>
+            <label for="mstart" class="col-sm-4 col-form-label">Data/Hora Inicio</label>
             <div class="col-sm-8">
-              <input type="date" class="form-control date-time" id="start" placeholder="Data Inicio" name="start">
+              <input type="text" class="form-control date-time" id="mstart" placeholder="Data/Hora Inicio" name="mstart">
             </div>
           </div>
           <div class="form-group row">
-            <label for="end" class="col-sm-4 col-form-label">Data Final</label>
+            <label for="mend" class="col-sm-4 col-form-label">Data/Hora Final</label>
             <div class="col-sm-8">
-              <input type="date" class="form-control date-time" id="end" placeholder="Data Final" name="end">
+              <input type="text" class="form-control date-time" id="mend" placeholder="Data/Hora Final" name="mend">
             </div>
           </div>
         </div>
