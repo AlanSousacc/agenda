@@ -123,7 +123,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="movimentacao" class="nav-link">
+                  <a href="" class="nav-link">
                     <i class="fa fa fa-chart-bar nav-icon"></i>
                     <p>Relatórios
                     <i class="right fas fa-angle-left"></i>
@@ -137,9 +137,9 @@
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a  href="{{route('relatorio-mes-atual')}}" target="_blank" class="nav-link">
+                      <a  href="{{route('relatorio.mes.atual')}}" target="_blank" class="nav-link">
                         <i class="fa fa-chart-pie nav-icon"></i>
-                        <p>Mensal Atual</p>
+                        <p>Mês Atual</p>
                       </a>
                     </li>
                   </ul>

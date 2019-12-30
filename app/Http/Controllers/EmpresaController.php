@@ -71,7 +71,6 @@ class EmpresaController extends Controller
       exit();
     }
 
-    // aqui inicia a gravação no bd
     try{
       DB::beginTransaction();
 
@@ -80,11 +79,9 @@ class EmpresaController extends Controller
         throw new Exception('Falha ao salvar empresa!');
       }
       DB::commit();
-      // se chegou aqui é pq deu tudo certo
 			return redirect('empresa')->with('success', 'Empresa criada com sucesso!');
 
     } catch (Exception $e) {
-      // se deu pau ao salvar no banco de dados, faz rollback de tudo e retorna erro
       DB::rollBack();
       return redirect('empresa')->with('error', $e->getMessage());
     }
@@ -107,7 +104,6 @@ class EmpresaController extends Controller
       if (!$empresa)
         throw new Exception("Nenhuma empresa encontrada");
 
-      // aqui então faz todo o tratamento e seta o que foi alterado;
 			$empresa->razaosocial   = $data['razaosocial'];
       $empresa->nomefantasia  = $data['nomefantasia'];
       $empresa->apelido       = $data['apelido'];
@@ -128,7 +124,6 @@ class EmpresaController extends Controller
       exit();
     }
 
-    // aqui inicia a gravação no bd
     try{
       DB::beginTransaction();
 
@@ -137,10 +132,8 @@ class EmpresaController extends Controller
           throw new Exception('Falha ao salvar empresa!');
       }
       DB::commit();
-      // se chegou aqui é pq deu tudo certo
       return redirect('empresa')->with('success', 'Empresa #' . $empresa->id . ' alterada com sucesso.');
     } catch (Exception $e) {
-      // se deu pau ao salvar no banco de dados, faz rollback de tudo e retorna erro
       DB::rollBack();
       return redirect('empresa')->with('error', $e->getMessage());
     }
@@ -151,7 +144,6 @@ class EmpresaController extends Controller
     try{
 			$empresa = Empresa::find($request->empresa_id);
 
-      // verifica se esta empresa esta vinculado a um usuario
       $event = DB::table('empresas')
 			->join('users', 'empresas.id', '=', 'users.empresa_id')->whereRaw('users.empresa_id = '. $request->empresa_id)->get();
 
@@ -174,7 +166,6 @@ class EmpresaController extends Controller
       exit();
     }
 
-    // aqui inicia a gravação no bd
     try{
       DB::beginTransaction();
 
@@ -183,10 +174,8 @@ class EmpresaController extends Controller
         throw new Exception('Falha ao remover empresa!');
       }
       DB::commit();
-      // se chegou aqui é pq deu tudo certo
       return redirect('empresa')->with('success', 'Empresa #' . $empresa->id . ' removida com sucesso!');
     } catch (Exception $e) {
-      // se deu pau ao salvar no banco de dados, faz rollback de tudo e retorna erro
 			DB::rollBack();
 
       return redirect('empresa')->with('error', $e->getMessage());

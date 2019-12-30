@@ -5,9 +5,8 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title">Consultar por Período</h4>
       </div>
-      <form action="" method="post">
-				{{method_field('patch')}}
-				{{csrf_field()}}
+      <form action="{{route('relatorio.periodo.contato')}}" method="get">
+				@csrf
         <div class="modal-body">
           <div class="col-12 mb-3">
             <h5 class="modal-title" style="text-align:center">Consultar por Período e/ou Contato</h5>

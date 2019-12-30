@@ -130,9 +130,6 @@ $('#delete').on('show.bs.modal', function (event) {
   var modal = $(this);
   modal.find('.modal-body #movid').val(movid);
 });
-$(document).ready(function () {
-  window.print();
-});
 
 /***/ }),
 
