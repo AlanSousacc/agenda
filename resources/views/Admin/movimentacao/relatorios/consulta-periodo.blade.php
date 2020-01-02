@@ -5,7 +5,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title">Consultar por Período</h4>
       </div>
-      <form action="{{route('relatorio.periodo.contato')}}" method="POST">
+      <form autocomplete="off" class="personalizado" action="{{route('relatorio.periodo.contato')}}" method="POST">
 				@csrf
         <div class="modal-body">
           <div class="col-12 mb-3">
@@ -15,7 +15,7 @@
             <label class="col-sm-4 col-form-label">Contato</label>
             <div class="col-sm-8">
               <select id="contato_id" name="contato_id" class="form-control">
-                <option selected>Escolha um contato</option>
+                <option value="">Escolha um contato</option>
                 @foreach ($contato as $item)
                 <option value="{{$item->id}}" id="{{$item->id}}">{{$item->nome}}</option>
                 @endforeach
@@ -23,16 +23,19 @@
             </div>
           </div>
           <div class="form-group row">
-            <label for="mstart" class="col-sm-4 col-form-label">Data/Hora Inicio</label>
+            <label for="mstart" class="col-sm-4 col-form-label">Data Inicio</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control date-time" id="mstart" placeholder="Data/Hora Inicio" name="mstart">
+							<input type="text" class="form-control date-time" autocomplete="off" id="mstart" placeholder="Data/Hora Inicio" name="mstart">
             </div>
           </div>
           <div class="form-group row">
-            <label for="mend" class="col-sm-4 col-form-label">Data/Hora Final</label>
+            <label for="mend" class="col-sm-4 col-form-label">Data Final</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control date-time" id="mend" placeholder="Data/Hora Final" name="mend">
-            </div>
+							<input type="text" class="form-control date-time" autocomplete="off" id="mend" placeholder="Data/Hora Final" name="mend">
+							<div class="invalid-feedback">
+								Por favor informe uma data final quando informado uma data inicial!
+							</div>
+						</div>
           </div>
         </div>
         <div class="modal-footer">

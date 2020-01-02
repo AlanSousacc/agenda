@@ -113,8 +113,9 @@
   $(function() {
     $('input[name="mstart"]').daterangepicker({
       singleDatePicker: true,
-      showDropdowns: true,
-      minYear: 2019,
+			showDropdowns: true,
+			autoUpdateInput: false,
+      minYear: 2020,
       "locale": {
         "format": "DD/MM/YYYY"
     },
@@ -125,8 +126,9 @@
   $(function() {
     $('input[name="mend"]').daterangepicker({
       singleDatePicker: true,
-      showDropdowns: true,
-      minYear: 2019,
+			showDropdowns: true,
+			autoUpdateInput: false,
+      minYear: 2020,
       "locale": {
         "format": "DD/MM/YYYY"
     },
@@ -140,7 +142,18 @@
     $(document).ready(function () {
       $('#valor').mask('000.000.000.000.000,00');
     });
-  </script>
+	</script>
+	
+	<script>
+	$(document).on('submit','form.personalizado', function(e){
+		
+		if(($('#mstart').val() != '') && ($('$mend' == ''))){
+			e.preventDefault();
+			$( "#mend" ).addClass( "is-invalid" );
+			$( ".invalid-feedback" ).show();			
+		}
+	})
+	</script>
 @endpush
 @endsection
 
