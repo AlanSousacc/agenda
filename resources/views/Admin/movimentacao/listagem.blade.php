@@ -27,20 +27,18 @@
     <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
       <thead>
         <tr>
-          {{-- <th class="text-center" style="width: 50px;" >#ID</th> --}}
-          <th class="text-center" style="width: 150px;" >Contato</th>
-          <th class="text-center" style="width: 160px;" >Condição de Pagamento</th>
-          <th class="text-center" style="width: 70px;" >Tipo</th>
-          <th class="text-center" style="width: 150px;" >Observação</th>
-          <th class="text-center" style="width: 80px;" >Valor</th>
-          <th class="text-center" style="width: 70px;" >Dt Movimentação</th>
-          <th class="text-center" style="width: 80px;" >Opções</th>
+          <th class="text-center" style="width: 150px;">Contato</th>
+          <th class="text-center" style="width: 160px;">Condição de Pagamento</th>
+          <th class="text-center" style="width: 70px;">Tipo</th>
+          <th class="text-center" style="width: 150px;">Observação</th>
+          <th class="text-center" style="width: 80px;">Valor</th>
+          <th class="text-center" style="width: 70px;">Dt Movimentação</th>
+          <th class="text-center" style="width: 80px;">Opções</th>
         </tr>
       </thead>
       <tbody>
         @foreach ($consulta as $item)
         <tr role="row" class="odd">
-          {{-- <td class="text-center">{{$item->id}}</td> --}}
           <td class="text-center">{{$item->contato->nome}}</td>
           <td class="text-center">{{$item->condicao_pagamento->nome}}</td>
           <td class="text-center" alt="entrada" title="Entrada"><i class="fa fa-arrow-alt-circle-up" style="color: #009908"></i></td>
@@ -92,12 +90,12 @@
 
 		{{-- adicionar --}}
 		@include('Admin.movimentacao.modalNovo')
-		<!-- Modal editar-->
+    
+    <!-- Modal editar-->
 		@include('Admin.movimentacao.modalVisualizar')
 
 		{{-- modal Deletar--}}
 		@include('Admin.movimentacao.modalExcluir')
-		{{-- Modal --}}
 
   </div>
   <div class="row" >
@@ -109,38 +107,12 @@
 </div>
 <!-- /.card -->
 @push('scripts')
-<script>
-  $(function() {
-    $('input[name="mstart"]').daterangepicker({
-      singleDatePicker: true,
-      showDropdowns: true,
-      minYear: 2019,
-      "locale": {
-        "format": "DD/MM/YYYY"
-    },
-      maxYear: parseInt(moment().format('YYYY'),10)
-    });
-  });
-
-  $(function() {
-    $('input[name="mend"]').daterangepicker({
-      singleDatePicker: true,
-      showDropdowns: true,
-      minYear: 2019,
-      "locale": {
-        "format": "DD/MM/YYYY"
-    },
-      maxYear: parseInt(moment().format('YYYY'),10)
-    });
-  });
-  </script>
-  <script src='https://cdnjs.com/libraries/jquery.mask'></script>
   <script src='{{asset('admin/js/movimentacao/movimentacao.js')}}'></script>
   <script>
     $(document).ready(function () {
       $('#valor').mask('000.000.000.000.000,00');
     });
-  </script>
+	</script>
 @endpush
 @endsection
 

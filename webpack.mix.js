@@ -9,4 +9,5 @@ mix
 	.js('resources/js/empresa/empresa.js', 'public/admin/js/empresa')
 	.js('resources/js/users/users.js', 'public/admin/js/users')
 	.js('resources/js/movimentacao/movimentacao.js', 'public/admin/js/movimentacao')
-	.js('resources/js/movimentacao/jquery.maskMoney.js', 'public/admin/js/movimentacao');
+	.js('resources/js/movimentacao/jquery.maskMoney.js', 'public/admin/js/movimentacao')
+	.js('resources/js/movimentacao/consultapersonalizada.js', 'public/admin/js/movimentacao');

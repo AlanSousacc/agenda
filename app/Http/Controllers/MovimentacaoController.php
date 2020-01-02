@@ -11,6 +11,7 @@ use App\Models\Contato;
 use App\Models\Condicao_pagamento;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\MovimentacaoRequest;
+use Carbon\Carbon;
 use \PDF;
 
 class MovimentacaoController extends Controller
@@ -19,6 +20,7 @@ class MovimentacaoController extends Controller
   {
     $user 		  = Auth::user()->empresa_id;
     $consulta   = Movimento::where('empresa_id', '=', $user)->whereMonth('movimented_at', date('m'))->paginate(10);
+    dd($consulta);
     $total      = $consulta->sum('valor');
 
     $contato    = Contato::where('empresa_id', '=', $user)->get();
@@ -36,8 +38,6 @@ class MovimentacaoController extends Controller
   {
     $user			 = Auth::user();
     $data      = $request->all();
-
-    // dd($data);
 
     try{
       $moviment = new Movimento;
@@ -118,13 +118,21 @@ class MovimentacaoController extends Controller
         // ->download('relatorio-entradas.pdf');
 		}
 
-    public function relPeriodo(Request $request)
+    public function relPeriodo(Request $request, Movimento $rel)
     {
-			dd($request->except('_token'));
+			$mov = $request->except('_token');
+			if(!empty($mov['mstart']))
+				$mov['mstart'] 	= Carbon::createFromFormat('d/m/Y', $mov['mstart'])->format('Y-m-d');
+			if(!empty($mov['mend']))
+				$mov['mend'] 		= Carbon::createFromFormat('d/m/Y', $mov['mend'])->format('Y-m-d');
 
-      // $user 		  = Auth::user()->empresa_id;
-      // $consulta   = Movimento::where('empresa_id', '=', $user)->whereMonth('movimented_at', date('m'))->paginate(10);
-      // $total      = $consulta->sum('valor');
+			$consulta = $rel->personalizado($mov);
+
+			dd($consulta);
+
+      $user 		  = Auth::user()->empresa_id;
+      $consulta   = Movimento::where('empresa_id', '=', $user)->whereMonth('movimented_at', date('m'))->paginate(10);
+      $total      = $consulta->sum('valor');
 
       // setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
       // date_default_timezone_set('America/Sao_Paulo');

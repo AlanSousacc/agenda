@@ -6,7 +6,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class Movimento extends Model
 {
-  protected $filable = ['tipo', 'observacao', 'valor', 'movimented_at', 'event_id', 'condicao_pagamento_id', 'empresa_id', 'contato_id', 'user_id'];
+	protected $filable = ['tipo', 'observacao', 'valor', 'movimented_at', 'event_id', 'condicao_pagamento_id', 'empresa_id', 'contato_id', 'user_id'];
+	
+	public function personalizado($value){
+		return $this->where(function ($query) use ($value) {
+			if(isset($value['contato_id']))
+				$query->where('contato_id', $value['contato_id']);
+
+			if(isset($value['mstart']) || isset($value['mend']))
+				$query->whereBetween('movimented_at', array($value['mstart'], $value['mend']));
+		})
+		// ->toSql();
+		// dd($resultado);
+		->paginate(10);
+	}
 
 
   public function user(){

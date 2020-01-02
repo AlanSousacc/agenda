@@ -318,6 +318,10 @@
 
     <script src='{{asset('assets/fullcalendar/js/calendar.js')}}'></script>
 
+    <script src='{{asset('admin/js/movimentacao/consultapersonalizada.js')}}'></script>
+    
+    <script src='https://cdnjs.com/libraries/jquery.mask'></script>
+
     {{-- set active page --}}
     <script>
       $(function () {

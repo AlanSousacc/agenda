@@ -97,9 +97,6 @@
 <!-- /.card -->
 @push('scripts')
 	<script src='{{asset('admin/js/contato/contato.js')}}'></script>
-	<script>
-		$('.alert').alert()
-	</script>
 @endpush
 @endsection
 
