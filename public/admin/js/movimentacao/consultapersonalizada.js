@@ -81,50 +81,63 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 7);
+/******/ 	return __webpack_require__(__webpack_require__.s = 9);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/movimentacao/movimentacao.js":
-/*!***************************************************!*\
-  !*** ./resources/js/movimentacao/movimentacao.js ***!
-  \***************************************************/
+/***/ "./resources/js/movimentacao/consultapersonalizada.js":
+/*!************************************************************!*\
+  !*** ./resources/js/movimentacao/consultapersonalizada.js ***!
+  \************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// tabela com listagem de clientes
-$('#visualizar').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget);
-  var movid = button.data('movid');
-  var contato = button.data('contato');
-  var pagamento = button.data('pagamento');
-  var observacao = button.data('observacao');
-  var valor = button.data('valor');
-  var modal = $(this);
-  modal.find('.modal-body #contato').val(contato).prop("disabled", true);
-  modal.find('.modal-body #pagamento').val(pagamento).prop("disabled", true);
-  modal.find('.modal-body #observacao').val(observacao).prop("disabled", true);
-  modal.find('.modal-body #valor').val(valor).prop("disabled", true);
-  modal.find('.modal-body #movid').val(movid);
-});
-$('#delete').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget);
-  var movid = button.data('movid');
-  var modal = $(this);
-  modal.find('.modal-body #movid').val(movid);
+// define o input como um calendario
+$(function () {
+  $('input[name="mstart"]').daterangepicker({
+    singleDatePicker: true,
+    showDropdowns: true,
+    autoUpdateInput: false,
+    minYear: 2020,
+    "locale": {
+      "format": "DD/MM/YYYY"
+    },
+    maxYear: parseInt(moment().format('YYYY'), 10)
+  });
+}); // define o input como um calendario
+
+$(function () {
+  $('input[name="mend"]').daterangepicker({
+    singleDatePicker: true,
+    showDropdowns: true,
+    autoUpdateInput: false,
+    minYear: 2020,
+    "locale": {
+      "format": "DD/MM/YYYY"
+    },
+    maxYear: parseInt(moment().format('YYYY'), 10)
+  });
+}); // caso o campo de consulta data inicial estiver preenchido, o campo de data final também deve ser, caso contrario exibe erro
+
+$(document).on('submit', 'form.personalizado', function (e) {
+  if ($('#mstart').val() != '' && $('$mend' == '')) {
+    e.preventDefault();
+    $("#mend").addClass("is-invalid");
+    $(".invalid-feedback").show();
+  }
 });
 
 /***/ }),
 
-/***/ 7:
-/*!*********************************************************!*\
-  !*** multi ./resources/js/movimentacao/movimentacao.js ***!
-  \*********************************************************/
+/***/ 9:
+/*!******************************************************************!*\
+  !*** multi ./resources/js/movimentacao/consultapersonalizada.js ***!
+  \******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\wamp64\www\Laravel 6\agenda\resources\js\movimentacao\movimentacao.js */"./resources/js/movimentacao/movimentacao.js");
+module.exports = __webpack_require__(/*! C:\wamp64\www\Laravel 6\agenda\resources\js\movimentacao\consultapersonalizada.js */"./resources/js/movimentacao/consultapersonalizada.js");
 
 
 /***/ })

@@ -20,6 +20,7 @@ class MovimentacaoController extends Controller
   {
     $user 		  = Auth::user()->empresa_id;
     $consulta   = Movimento::where('empresa_id', '=', $user)->whereMonth('movimented_at', date('m'))->paginate(10);
+    dd($consulta);
     $total      = $consulta->sum('valor');
 
     $contato    = Contato::where('empresa_id', '=', $user)->get();
@@ -37,8 +38,6 @@ class MovimentacaoController extends Controller
   {
     $user			 = Auth::user();
     $data      = $request->all();
-
-    // dd($data);
 
     try{
       $moviment = new Movimento;
