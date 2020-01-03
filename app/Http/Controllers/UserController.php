@@ -25,7 +25,6 @@ class UserController extends Controller
 
   public function myAccount(){
     $user = Auth::user();
-    // dd($user);
     return view('Admin.users.myAccount', compact('user'));
   }
 
