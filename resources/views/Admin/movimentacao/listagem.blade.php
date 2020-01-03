@@ -29,7 +29,7 @@
         <tr>
           <th class="text-center" style="width: 150px;">Contato</th>
           <th class="text-center" style="width: 160px;">Condição de Pagamento</th>
-          <th class="text-center" style="width: 70px;">Tipo</th>
+          {{-- <th class="text-center" style="width: 70px;">Tipo</th> --}}
           <th class="text-center" style="width: 150px;">Observação</th>
           <th class="text-center" style="width: 80px;">Valor</th>
           <th class="text-center" style="width: 70px;">Dt Movimentação</th>
@@ -41,7 +41,7 @@
         <tr role="row" class="odd">
           <td class="text-center">{{$item->contato->nome}}</td>
           <td class="text-center">{{$item->condicao_pagamento->nome}}</td>
-          <td class="text-center" alt="entrada" title="Entrada"><i class="fa fa-arrow-alt-circle-up" style="color: #009908"></i></td>
+          {{-- <td class="text-center" alt="entrada" title="Entrada"><i class="fa fa-arrow-alt-circle-up" style="color: #009908"></i></td> --}}
           <td class="text-center">{{$item->observacao}}</td>
           <td class="text-center">R$ {{number_format($item->valor, 2, ',', '.')}}</td>
           <td class="text-center">{{Carbon\Carbon::parse($item->movimented_at)->format('d/m/Y H:i:s')}}</td>
@@ -56,7 +56,6 @@
 										data-movid="{{$item->id}}"
 										data-contato="{{$item->contato->nome}}"
 										data-pagamento="{{$item->condicao_pagamento->nome}}"
-										{{-- data-tipo="{{$item->tipo}}" --}}
 										data-observacao="{{$item->observacao}}"
 										data-valor="{{$item->valor}}"
 										data-movimented_at="{{$item->movimented_at}}"
