@@ -19,8 +19,7 @@ class MovimentacaoController extends Controller
   public function index()
   {
     $user 		  = Auth::user()->empresa_id;
-    $consulta   = Movimento::where('empresa_id', '=', $user)->whereMonth('movimented_at', date('m'))->paginate(10);
-    dd($consulta);
+    $consulta   = Movimento::where('empresa_id', '=', $user)->paginate(10);
     $total      = $consulta->sum('valor');
 
     $contato    = Contato::where('empresa_id', '=', $user)->get();
@@ -128,7 +127,7 @@ class MovimentacaoController extends Controller
 
 			$consulta = $rel->personalizado($mov);
 
-			dd($consulta);
+			dd($mov);
 
       $user 		  = Auth::user()->empresa_id;
       $consulta   = Movimento::where('empresa_id', '=', $user)->whereMonth('movimented_at', date('m'))->paginate(10);
