@@ -59,10 +59,17 @@
 				<div class="form-group row">
 					<div class="col-md-10 offset-md-1">
 						<select id="empresa_id" name="empresa_id" class="form-control">
-							<option selected>Empresas</option>
-							@foreach (App\Models\Empresa::All() as $item)
-							<option value="{{$item->id}}">{{$item->razaosocial}}</option>
-							@endforeach
+              <option selected disabled>Empresas</option>
+              @if ($user->isAdmin == 1)
+                @foreach ($empresa as $item)
+                  <option value="{{$item->id}}">{{$item->razaosocial}}</option>
+                @endforeach
+              @elseif($user->isAdmin == 0)
+                @foreach ($empall as $item)
+                  <option selected disabled>teste</option>
+                  <option value="{{$item->id}}">{{$item->razaosocial}}</option>
+                @endforeach
+              @endif
 						</select>
 					</div>
 				</div>
