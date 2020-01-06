@@ -5,7 +5,7 @@
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				<h4 class="modal-title">Consultar por Período</h4>
 			</div>
-			<form autocomplete="off" class="personalizado" action="{{route('relatorio.periodo.contato')}}" method="POST">
+			<form autocomplete="off" target="_blank" class="personalizado" action="{{route('relatorio.periodo.contato')}}" method="POST">
 				@csrf
 				<div class="modal-body">
 					<div class="col-12 mb-3">
