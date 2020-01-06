@@ -13,12 +13,6 @@ class User extends Authenticatable implements MustVerifyEmail
 {
   use Notifiable;
 
-  // public function getcreatedAtAttribute($value){
-  //   $criacao = Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d/m/Y H:i:s');
-
-  //   return $criacao;
-	// }
-
 	public function empresa(){
     return $this->belongsTo(Empresa::class);
   }
@@ -33,23 +27,6 @@ class User extends Authenticatable implements MustVerifyEmail
 		// dd($resultado);
 		->paginate(10);
   }
-
-  // public function getemailVerifiedAtAttribute($date) {
-  //   if (!empty($date))
-  //     return Carbon::createFromFormat('Y-m-d', $date)->format('d/m/Y');
-  // }
-
-  // public function getupdatedAtAttribute($value){
-  //   $alteracao = Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d/m/Y H:i:s');
-
-  //   return $alteracao;
-  // }
-
-  // public function getemailVerifiedAtAttribute($value){
-  //   $email_verificado = Carbon::createFromFormat('Y-m-d H:i:s', $value)->format('d/m/Y H:i:s');
-
-  //   return $email_verificado;
-  // }
 
   protected $fillable = [
     'name', 'email', 'password', 'profile', 'empresa_id'
