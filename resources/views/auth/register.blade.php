@@ -55,14 +55,18 @@
 						<input id="password-confirm" type="password" class="form-control" name="password_confirmation" required placeholder="Confirme a senha">
 					</div>
 				</div>
-
+				
 				<div class="form-group row">
 					<div class="col-md-10 offset-md-1">
 						<select id="empresa_id" name="empresa_id" class="form-control">
-							<option selected>Empresas</option>
-							@foreach (App\Models\Empresa::All() as $item)
-							<option value="{{$item->id}}">{{$item->razaosocial}}</option>
-							@endforeach
+              <option selected disabled>Empresa</option>
+              @if (\Auth::user()->isAdmin == 1)
+                @foreach (App\Models\Empresa::all() as $item)
+                  <option value="{{$item->id}}">{{$item->razaosocial}}</option>
+                @endforeach
+              @elseif(\Auth::user()->isAdmin == 0)
+								<option value="{{\Auth::user()->empresa_id}}">{{\Auth::user()->empresa->nomefantasia}}</option>
+              @endif
 						</select>
 					</div>
 				</div>

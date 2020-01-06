@@ -19,8 +19,7 @@ class MovimentacaoController extends Controller
   public function index()
   {
     $user 		  = Auth::user()->empresa_id;
-    $consulta   = Movimento::where('empresa_id', '=', $user)->whereMonth('movimented_at', date('m'))->paginate(10);
-    dd($consulta);
+    $consulta   = Movimento::where('empresa_id', '=', $user)->paginate(10);
     $total      = $consulta->sum('valor');
 
     $contato    = Contato::where('empresa_id', '=', $user)->get();
@@ -128,20 +127,16 @@ class MovimentacaoController extends Controller
 
 			$consulta = $rel->personalizado($mov);
 
-			dd($consulta);
+			// dd($consulta);
 
-      $user 		  = Auth::user()->empresa_id;
-      $consulta   = Movimento::where('empresa_id', '=', $user)->whereMonth('movimented_at', date('m'))->paginate(10);
+      // $user 		  = Auth::user()->empresa_id;
+      // $consulta   = Movimento::where('empresa_id', '=', $user)->whereMonth('movimented_at', date('m'))->paginate(10);
       $total      = $consulta->sum('valor');
 
-      // setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
-      // date_default_timezone_set('America/Sao_Paulo');
-      // $date = strftime('%B de %Y', strtotime('today'));
-
-      // return PDF::loadView('Admin.movimentacao.relatorios.RME', compact('total', 'consulta', 'date'))
-      // // Se quiser que fique no formato a4 retrato:
-      //   ->setPaper('a4', 'landscape')
-      //   ->stream('relatorio-entradas.pdf');
+      return PDF::loadView('Admin.movimentacao.relatorios.RME', compact('total', 'consulta'))
+      // Se quiser que fique no formato a4 retrato:
+        ->setPaper('a4', 'landscape')
+        ->stream('relatorio-personalizado.pdf');
         // ->download('relatorio-entradas.pdf');
     }
   }
