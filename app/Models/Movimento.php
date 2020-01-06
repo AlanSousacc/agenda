@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Auth;
+use App\User;
 
 class Movimento extends Model
 {
@@ -15,7 +17,8 @@ class Movimento extends Model
 
 			if(isset($value['mstart']) || isset($value['mend']))
 				$query->whereBetween('movimented_at', array($value['mstart'], $value['mend']));
-		})
+				
+		})->where('empresa_id', '=', Auth::user()->empresa_id)
 		// ->toSql();
 		// dd($resultado);
 		->paginate(10);

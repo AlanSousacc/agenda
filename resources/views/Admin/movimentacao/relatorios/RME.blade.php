@@ -8,7 +8,13 @@
   <title>Relatório de Entradas de Movimentações</title>
 </head>
 <body>
-	<h1 style="text-align:center; margin:60px 0;">Relatório de entradas no mês: {{$date}}</h1>
+	<h1 style="text-align:center; margin:60px 0;">
+		@if (isset($date))
+		Relatório de entradas no mês: {{$date}}
+		@else
+		Relatório de entradas personalizado		
+		@endif
+	</h1>
 	@if ($consulta->count() == 0)
 		<h3 style="text-align:center">Nenhuma movimentação registrada nesse período!</h3>
 	@else

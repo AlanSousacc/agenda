@@ -67,11 +67,11 @@
 			<!-- Brand Logo -->
 			<a class="brand-link" style="color: #fff">
 				@if ($empresa->logo)
-				<img src="/uploads/logos/{{$empresa->logo}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="max-width:35px; max-height:35px">
-				@else
-				<img src="{{URL::asset('assets/master-admin/img/schedule.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="max-width:35px; max-height:35px">
-				@endif
+				<img src="/uploads/logos/{{$empresa->logo}}" alt="{{$empresa->apelido}}" class="brand-image img-circle elevation-3" style="max-width:35px; max-height:35px">
 				<span class="brand-text font-weight-light">{{$empresa->apelido}}</span>
+				@else
+				<img src="{{URL::asset('assets/master-admin/img/schedule.png')}}" alt="{{$empresa->apelido}}" class="brand-image img-circle elevation-3" style="max-width:35px; max-height:35px">
+				@endif
 			</a>
 			
 			<!-- Sidebar -->
