@@ -89,7 +89,7 @@
 
 		{{-- adicionar --}}
 		@include('Admin.movimentacao.modalNovo')
-    
+
     <!-- Modal editar-->
 		@include('Admin.movimentacao.modalVisualizar')
 
