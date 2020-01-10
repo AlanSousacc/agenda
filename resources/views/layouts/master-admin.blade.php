@@ -4,27 +4,27 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	
+
 	{{-- star fullcalendar --}}
 	<meta charset='utf-8' />
 	<link href='{{asset('assets/fullcalendar/packages/core/main.css')}}' rel='stylesheet' />
 	<link href='{{asset('assets/fullcalendar/packages/daygrid/main.css')}}' rel='stylesheet' />
 	<link href='{{asset('assets/fullcalendar/packages/timegrid/main.css')}}' rel='stylesheet' />
 	<link href='{{asset('assets/fullcalendar/packages/list/main.css')}}' rel='stylesheet' />
-	
+
 	<link href='{{asset('assets/fullcalendar/css/style.css')}}' rel='stylesheet' />
 	<link href='{{asset('admin/css/app.css')}}' rel='stylesheet' />
-	
+
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	{{-- end fullcalendar--}}
-	
+
 	<title>AgendaBETHA</title>
 	<!-- Google Font: Source Sans Pro -->
 	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 <body class="sidebar-mini layout-fixed layout-navbar-fixed">
 	<div class="wrapper" id="app">
-		
+
 		<!-- Navbar -->
 		<nav class="main-header navbar navbar-expand navbar-white navbar-light">
 			<div class="col-md-6 float-left">
@@ -37,7 +37,7 @@
 						<a href="/" class="nav-link">Home</a>
 					</li>
 					<li class="nav-item d-none d-sm-inline-block">
-						
+
 						<a href="{{route('contato.index')}}" class="nav-link">Contatos</a>
 					</li>
 				</ul>
@@ -61,7 +61,7 @@
 			</div>
 		</nav>
 		<!-- /.navbar -->
-		
+
 		<!-- Main Sidebar Container -->
 		<aside class="main-sidebar sidebar-dark-primary elevation-4">
 			<!-- Brand Logo -->
@@ -73,11 +73,11 @@
 				<img src="{{URL::asset('assets/master-admin/img/schedule.png')}}" alt="{{$empresa->apelido}}" class="brand-image img-circle elevation-3" style="max-width:35px; max-height:35px">
 				@endif
 			</a>
-			
+
 			<!-- Sidebar -->
 			<div class="sidebar">
 				<!-- Sidebar user panel (optional) -->
-				
+
 				<!-- Sidebar Menu -->
 				<nav class="mt-2">
 					<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -107,7 +107,7 @@
 							</ul>
 						</li>
 						{{-- end agendamentos --}}
-						
+
 						{{-- Sidebar movimentação --}}
 						<li class="nav-item has-treeview menu-open">
 							<a href="#" class="nav-link">
@@ -231,7 +231,7 @@
 								</li>
 							</ul>
 						</li>
-						
+
 						<li class="nav-item has-treeview menu-open">
 							<a href="#" class="nav-link">
 								<i class="fa fa-cog nav-icon"></i>
@@ -253,14 +253,14 @@
 				</div>
 				<!-- /.sidebar -->
 			</aside>
-			
+
 			<!-- Content Wrapper. Contains page content -->
 			<div class="content-wrapper">
 				<!-- Content Header (Page header) -->
 				<div class="content-header">
 				</div>
 				<!-- /.content-header -->
-				
+
 				<!-- Main content -->
 				<div class="content">
 					<div class="container-fluid">
@@ -273,12 +273,12 @@
 				<!-- /.content -->
 			</div>
 			<!-- /.content-wrapper -->
-			
+
 			<!-- Control Sidebar -->
 			<aside class="control-sidebar control-sidebar-dark">
 			</aside>
 			<!-- /.control-sidebar -->
-			
+
 			<!-- Main Footer -->
 			<footer class="main-footer">
 				<!-- To the right -->
@@ -286,56 +286,56 @@
 				<strong>Copyright &copy; 2019 AgendaBETHA</strong> Todos os direitos reservados.
 			</footer>
 		</div>
-		
+
 		@include('Admin.movimentacao.relatorios.consulta-periodo')
 		<!-- ./wrapper -->
-		
+
 		<script src="{{ asset('admin/js/jquery.js')}}"></script>
-		
+
 		<!-- REQUIRED SCRIPTS -->
 		<script src="{{ asset('admin/js/app.js')}}"></script>
 		{{-- start full calendar --}}
 		<script src='{{asset('assets/fullcalendar/packages/core/main.js')}}'></script>
-		
+
 		<script src='{{asset('assets/fullcalendar/packages/interaction/main.js')}}'></script>
 		<script src='{{asset('assets/fullcalendar/packages/daygrid/main.js')}}'></script>
 		<script src='{{asset('assets/fullcalendar/packages/timegrid/main.js')}}'></script>
 		<script src='{{asset('assets/fullcalendar/packages/list/main.js')}}'></script>
-		
-		
-		
+
+
+
 		<script src='{{asset('assets/fullcalendar/packages/core/locales-all.js')}}'></script>
-		
+
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-		
+
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-		
+
 		{{-- DATE PICKER --}}
 		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-		
+
 		<script src='{{asset('assets/fullcalendar/js/script.js')}}'></script>
-		
+
 		<script src='{{asset('assets/fullcalendar/js/calendar.js')}}'></script>
-		
+
 		<script src='{{asset('admin/js/movimentacao/consultapersonalizada.js')}}'></script>
-		
+
 		<script src='https://cdnjs.com/libraries/jquery.mask'></script>
-		
+
 		{{-- set active page --}}
 		<script>
 			$(function () {
 				setNavigation();
 				setNavigationOpenMenu();
 			});
-			
+
 			function setNavigation() {
 				var path = window.location.pathname;
 				path = path.replace(/\/$/, "");
 				path = decodeURIComponent(path);
 				path = 'http://agendabetha' + path
-				
+
 				$('.nav a').each(function () {
 					var href = $(this).attr('href');
 					if (path == href) {
@@ -343,13 +343,13 @@
 					}
 				});
 			}
-			
+
 			function setNavigationOpenMenu() {
 				var path = window.location.pathname;
 				path = path.replace(/\/$/, "");
 				path = decodeURIComponent(path);
 				path = 'http://agendabetha' + path
-				
+
 				$('.sidebar a').each(function () {
 					if (path == (this.href)) {
 						$(this).closest('li').addClass('menu-open');
@@ -359,7 +359,7 @@
 			}
 		</script>
 		{{-- end set active page --}}
-		
+
 		{{-- end fullcalendar --}}
 		<script>
 			$(document).ready(function(){
@@ -372,6 +372,6 @@
 		</script>
 		@stack('scripts')
 	</div>
-	
+
 </body>
 </html>
