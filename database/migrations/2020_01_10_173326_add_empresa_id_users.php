@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddLogoToEmpresas extends Migration
+class AddEmpresaIdUsers extends Migration
 {
   /**
   * Run the migrations.
@@ -13,8 +13,9 @@ class AddLogoToEmpresas extends Migration
   */
   public function up()
   {
-    Schema::table('empresas', function (Blueprint $table) {
-      $table->string( 'logo' )->default('logo.jpg')->change();
+    Schema::table('users', function (Blueprint $table) {
+      $table->unsignedBigInteger('empresa_id')->unsigned();
+      $table->foreign('empresa_id')->references('id')->on('users')->onDelete('cascade');
     });
   }
 
@@ -25,8 +26,6 @@ class AddLogoToEmpresas extends Migration
   */
   public function down()
   {
-    Schema::table('empresas', function (Blueprint $table) {
-      //
-    });
+    //
   }
 }

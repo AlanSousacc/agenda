@@ -23,6 +23,9 @@ class CreateEventsTable extends Migration
       $table->timestamps();
       $table->softDeletes();
       $table->unsignedBigInteger('contato_id')->unsigned();
+      $table->unsignedBigInteger('empresa_id')->unsigned();
+
+      $table->foreign('empresa_id')->references('id')->on('empresas')->onDelete('cascade');
       $table->foreign('contato_id')->references('id')->on('contatos');
     });
   }

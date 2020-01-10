@@ -24,6 +24,7 @@ class CreateMovimentosTable extends Migration
       $table->text('observacao');
       $table->double('valor', 5, 2);
       $table->dateTime('movimented_at');
+      $table->text('observacao')->nullable(true)->change();
       $table->timestamps();
 
       $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

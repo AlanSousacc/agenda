@@ -8,7 +8,18 @@ use Illuminate\Support\Facades\Auth;
 
 class Contato extends Model
 {
-  protected $filable = ['nome', 'documento', 'endereco', 'numero', 'cidade', 'status', 'telefone', 'email', 'datanascimento', 'empresa_id'];
+  protected $filable = [
+    'nome',
+    'documento',
+    'endereco',
+    'numero',
+    'cidade',
+    'status',
+    'telefone',
+    'email',
+    'datanascimento',
+    'empresa_id'
+  ];
 
   public function events(){
     return $this->hasMany('App\Models\Event');
@@ -23,10 +34,7 @@ class Contato extends Model
 			if(isset($value['nome']))
         $query->where('nome', 'like', '%'.$value['nome'].'%')
               ->where('empresa_id', '=', Auth::user()->empresa_id);
-		})
-		// ->toSql();
-		// dd($resultado);
-		->paginate(10);
+		})->paginate(10);
   }
 
   public function getdatanascimentoAttribute($date) {
