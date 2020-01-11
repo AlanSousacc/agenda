@@ -79,7 +79,7 @@ class ContatoController extends Controller
     } catch (Exception $e) {
       // se deu pau ao salvar no banco de dados, faz rollback de tudo e retorna erro
       DB::rollBack();
-      return redirect('cliente')->with('error', $e->getMessage());
+      return redirect('contato')->with('error', $e->getMessage());
     }
   }
 
