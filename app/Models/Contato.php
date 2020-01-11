@@ -18,8 +18,23 @@ class Contato extends Model
     'telefone',
     'email',
     'datanascimento',
-    'empresa_id'
+    'empresa_id',
+    'tipocontato',
+    'valorsessao',
+    'sexo',
+    'escolaridade',
+    'profissao',
+    'nomeresponsavel',
+    'cpfresponsavel',
+    'nomeparente',
+    'telefoneparente',
+    'observacao',
+    'grupo_id'
   ];
+
+  public function grupo(){
+    return $this->belongsTo('App\Models\Grupo');
+  }
 
   public function events(){
     return $this->hasMany('App\Models\Event');

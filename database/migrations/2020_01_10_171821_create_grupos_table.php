@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddObservacaoToMovimentos extends Migration
+class CreateGruposTable extends Migration
 {
   /**
   * Run the migrations.
@@ -13,8 +13,9 @@ class AddObservacaoToMovimentos extends Migration
   */
   public function up()
   {
-    Schema::table('movimentos', function (Blueprint $table) {
-      $table->text('observacao')->nullable(true)->change();
+    Schema::create('grupos', function (Blueprint $table) {
+      $table->bigIncrements('id');
+      $table->string('descricao', 100);
     });
   }
 
@@ -25,8 +26,6 @@ class AddObservacaoToMovimentos extends Migration
   */
   public function down()
   {
-    Schema::table('movimentos', function (Blueprint $table) {
-      //
-    });
+    Schema::dropIfExists('grupos');
   }
 }

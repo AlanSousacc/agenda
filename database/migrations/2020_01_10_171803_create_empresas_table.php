@@ -30,6 +30,9 @@ class CreateEmpresasTable extends Migration
       $table->string('cep', 19)->nullable();
       $table->string('bairro', 20)->nullable();
       $table->binary('logo')->nullable();
+      $table->boolean('status');
+      $table->string( 'logo' )->default('default.jpg')->change();
+      $table->enum('tipo', ['estetica', 'clinica',]);
     });
   }
 
