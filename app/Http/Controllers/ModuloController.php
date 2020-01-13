@@ -15,10 +15,12 @@ class ModuloController extends Controller
 {
 	public function index()
   {
-		$user 		  = Auth::user()->empresa_id;
-    $consulta   = Modulo::where('empresa_id', '=', $user)->paginate(10);
-    $total      = $consulta->sum('valor');
+		
+		//  $user 		  = Auth::user()->empresa_id;
+    //  $consulta   = Modulo::where('empresa_id', '=', $user)->paginate(10);
+    $consulta   = Modulo::orderBy('id')->paginate(10);
+    // $total      = $consulta->sum('valor');
 
-    return view('#nome da view aqui', compact('consulta'));
+    return view('Admin.modulos.listagem', compact('consulta'));
 	}
 }
