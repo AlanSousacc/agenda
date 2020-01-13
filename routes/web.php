@@ -36,6 +36,9 @@ Route::get('relatorio-mes', 'MovimentacaoController@listagemEntradas')->name('re
 Route::any('relatorio-periodo-contato', 'MovimentacaoController@relPeriodo')->name('relatorio.periodo.contato');
 // Route::get('relatorios', 'MovimentacaoController@listagemEntradas')->name('relatorios');
 
+// módulos do sistema
+Route::get('modulos', 'ModuloController@index')->name('routeModulosList');
+
 Auth::routes();
 
 Auth::routes(['verify' => true]);

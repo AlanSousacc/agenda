@@ -29,5 +29,6 @@ class UsersTableSeeder extends Seeder
         'profile'     => 'Administrador',
         'empresa_id'  => 1,
       ]);
+
     }
 }
