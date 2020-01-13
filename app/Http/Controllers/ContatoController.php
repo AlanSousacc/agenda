@@ -32,6 +32,13 @@ class ContatoController extends Controller
     return view('Admin.contatos.novo');
   }
 
+  public function show($id){
+    $contatos = Contato::find($id);
+
+    // dd($contatos);
+    return view('Admin.contatos.editar', compact('contatos'));
+  }
+
 	// Salva os dados do contato
   public function store(ContatoRequest $request)
   {
@@ -59,7 +66,7 @@ class ContatoController extends Controller
       $contato->grupo_id        = $data['grupo_id'];
       $contato->tipocontato     = $data['tipocontato'];
 			$contato->empresa_id      = Auth::user()->empresa_id;
-			
+
       // $emp = Empresa::where('id', '=', $contato->empresa_id)->first();
 
     } catch (Exception $e) {
@@ -72,9 +79,9 @@ class ContatoController extends Controller
       DB::beginTransaction();
       $saved = $contato->save();
       if (!$saved)
-        throw new Exception('Falha ao salvar contatos!');			
-			
-			DB::commit();			
+        throw new Exception('Falha ao salvar contatos!');
+
+			DB::commit();
 			return redirect('contato')->with('success', 'Contato criado com sucesso!');
 
     } catch (Exception $e) {
@@ -86,9 +93,10 @@ class ContatoController extends Controller
 
   public function update(ContatoRequest $request)
   {
-		$data = $request->all();
-		
+    $data = $request->all();
+
     try{
+
       $contato = Contato::find($data['contato_id']);
       if (!$contato)
         throw new Exception("Nenhum contato encontrado");
@@ -125,11 +133,11 @@ class ContatoController extends Controller
     try{
 
       DB::beginTransaction();
-			$saved = $contato->save();			
+			$saved = $contato->save();
       if (!$saved)
 				throw new Exception('Falha ao salvar contato!');
-			
-			
+
+
       DB::commit();
       return redirect('contato')->with('success', 'Contato #' . $contato->id . ' alterado com sucesso.');
     } catch (Exception $e) {
