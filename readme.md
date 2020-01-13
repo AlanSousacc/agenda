@@ -11,3 +11,9 @@ INSERT INTO `condicao_pagamento` (`id`,`nome`,`qtde_parcela`,`created_at`,`updat
 INSERT INTO `condicao_pagamento` (`id`,`nome`,`qtde_parcela`,`created_at`,`updated_at`) VALUES (4,'Cartão Crédito 2x',2,NULL,NULL);
 INSERT INTO `condicao_pagamento` (`id`,`nome`,`qtde_parcela`,`created_at`,`updated_at`) VALUES (5,'Cartão Crédito 3x',3,NULL,NULL);
 INSERT INTO `condicao_pagamento` (`id`,`nome`,`qtde_parcela`,`created_at`,`updated_at`) VALUES (6,'Conta Cliente',0,NULL,NULL);
+
+//Inserir os grupos
+INSERT INTO `` (`id`,`descricao`) VALUES (1,'Infantil');
+INSERT INTO `` (`id`,`descricao`) VALUES (2,'Adolescente');
+INSERT INTO `` (`id`,`descricao`) VALUES (3,'Adulto');
+INSERT INTO `` (`id`,`descricao`) VALUES (4,'Idoso');

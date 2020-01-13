@@ -16,18 +16,18 @@ class CreateContatosTable extends Migration
     Schema::create('contatos', function (Blueprint $table) {
       $table->bigIncrements('id');
       $table->string('nome', 100);
-      $table->string('documento', 30);
-      $table->string('endereco', 60);
-      $table->string('numero', 5);
+      $table->string('documento', 30)->nullable();
+      $table->string('endereco', 60)->nullable();
+      $table->string('numero', 5)->nullable();
       $table->string('telefone', 25);
       $table->string('email', 60)->unique();
-      $table->date('datanascimento');
-      $table->enum('tipocontato', ['profissional', 'paciente']);
+      $table->date('datanascimento')->nullable();
+      $table->enum('tipocontato', ['Profissional', 'Paciente', 'Cliente', 'Aluno', 'Fornecedor', 'Funcionario']);
       $table->boolean('status');
-      $table->string('cidade', 50);
+      $table->string('cidade', 50)->nullable();
       $table->double('valorsessao', 5, 2)->nullable();
       $table->enum('sexo', ['Masculino', 'Feminino']);
-      $table->string('escolaridade', 50)->nullable();
+      $table->enum('escolaridade', ['Ensino Fundamental Completo', 'Ensino Fundamental Incompleto', 'Ensino Médio Completo', 'Ensino Médio Incompleto', 'Ensino Superior Completo', 'Ensino Superior Incompleto']);
       $table->string('profissao', 50)->nullable();
       $table->string('nomeresponsavel', 50)->nullable();
       $table->string('cpfresponsavel', 20)->nullable();
