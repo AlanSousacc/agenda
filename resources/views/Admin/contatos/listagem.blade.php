@@ -53,20 +53,7 @@
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                   @if (Auth::user()->profile == 'Administrador' )
-									<a class="dropdown-item" href="{{$item->id}}"
-										data-contid="{{$item->id}}"
-										data-nome="{{$item->nome}}"
-										data-documento="{{$item->documento}}"
-										data-endereco="{{$item->endereco}}"
-										data-numero="{{$item->numero}}"
-										data-telefone="{{$item->telefone}}"
-										data-email="{{$item->email}}"
-										data-datanascimento="{{$item->datanascimento}}"
-										{{-- data-tipocontato="{{$item->tipocontato}}" --}}
-										data-status="{{$item->status}}"
-										data-cidade="{{$item->cidade}}"
-										data-target="#editar"
-										data-toggle="modal"> Editar <i class="fa fa-edit"></i></a>
+									<a class="dropdown-item" href="{{route('contato.show', $item->id)}}"> Detalhar <i class="fab fa-wpforms"></i></a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="{{$item->id}}" data-contid={{$item->id}} data-target="#delete" data-toggle="modal">Excluir <i class="fa fa-trash"></i></a>
                   @endif

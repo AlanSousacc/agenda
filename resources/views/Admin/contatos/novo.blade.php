@@ -8,8 +8,9 @@
           {{csrf_field()}}
           <div class="panel-body">
             <h1 class="text-center">Cadastrar Contato</h1><br>
-            @include('Admin.contatos.formContato')            
+            @include('Admin.contatos.formContato')
           </div>
+          <button type="submit" class="btn btn-primary" style="margin-left: 7px;">Savar Cadastro</button>
         </form>
       </div>
     </div>
