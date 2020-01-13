@@ -8,8 +8,7 @@
           {{csrf_field()}}
           <div class="panel-body">
             <h1 class="text-center">Cadastrar Contato</h1><br>
-            @include('Admin.contatos.formContato')
-            <input type="submit" name="submit" class="btn-alt btn btn-success btn-sm" value="Cadastrar" />
+            @include('Admin.contatos.formContato')            
           </div>
         </form>
       </div>
