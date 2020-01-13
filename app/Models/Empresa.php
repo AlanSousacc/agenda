@@ -34,6 +34,10 @@ class Empresa extends Model
 
 	public function contatos(){
     return $this->hasMany('App\Models\Contato');
-  }
+	}
+	
+	public function modulos(){
+		return $this->belongsToMany(Modulo::class, 'aux_modulo_empresa');
+	}
 
 }

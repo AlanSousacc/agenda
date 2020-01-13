@@ -19,6 +19,15 @@ class UsersTableSeeder extends Seeder
         'isAdmin'     => 1,
         'profile'     => 'Administrador',
         'empresa_id'  => 1,
+			]);
+			
+			User::create ([
+        'name'        => 'Daniel Braga Takegava',
+        'email'       => 'takegavadaniel@gmail.com',
+        'password'    => bcrypt('32132131'),
+        'isAdmin'     => 1,
+        'profile'     => 'Administrador',
+        'empresa_id'  => 1,
       ]);
     }
 }
