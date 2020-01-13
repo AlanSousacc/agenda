@@ -6,21 +6,11 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class ContatoRequest extends FormRequest
 {
-  /**
-  * Determine if the user is authorized to make this request.
-  *
-  * @return bool
-  */
   public function authorize()
   {
     return true;
-  }
-
-  /**
-  * Get the validation rules that apply to the request.
-  *
-  * @return array
-  */
+	}
+	
   public function rules()
   {
     return [
@@ -29,9 +19,15 @@ class ContatoRequest extends FormRequest
       'endereco'        => 'max:50',
       'numero'          => 'max:5',
       'email'           => 'required|email:rfc,filter',
-      // 'datanascimento'  => 'date_format:Y-m-d',
       'status'          => 'required',
+      'tipocontato'     => 'required',
       'cidade'          => 'max:20',
+      'nomeresponsavel' => 'max:30',
+      'cpfresponsavel'  => 'max:14',
+      'nomeparente'     => 'max:30',
+      'telefoneparente' => 'max:20',
+      'observacao'      => 'max:300',
+      'sexo'          	=> 'required',
     ];
   }
 
@@ -47,7 +43,13 @@ class ContatoRequest extends FormRequest
       'cidade.max'                  => 'O campo Cidade deve conter no máximo 20 caracteres!',
       'email.required'              => 'O campo Email é obrigatório!',
       'status.required'             => 'O campo Status é obrigatório!',
-      // 'datanascimento.date_format'  => 'Preencha uma data com formáto válido!',
+      'sexo.required'               => 'O campo Sexo é obrigatório!',
+      'profissao.max'               => 'O campo Profissão conter no máximo 50 caracteres!',
+      'nomeresponsavel.max'         => 'O campo Nome do Responsável conter no máximo 30 caracteres!',
+      'cpfresponsavel.max'          => 'O campo CPF do Responsável conter no máximo 14 caracteres!',
+      'nomeparente.max'             => 'O campo Nome de um Parenteconter no máximo 30 caracteres!',
+      'telefoneparente.max'         => 'O campo Telefone de um parente conter no máximo 20 caracteres!',
+      'observacao.max'              => 'O campo Observaçãoconter no máximo 300 caracteres!',
     ];
   }
 }

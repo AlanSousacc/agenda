@@ -32,52 +32,53 @@ class ContatoController extends Controller
     return view('Admin.contatos.novo');
   }
 
+	// Salva os dados do contato
   public function store(ContatoRequest $request)
   {
-    $data      = $request->all();
+    $data = $request->all();
     try{
-      $contato = new Contato;
-
-      $contato->nome           = $data['nome'];
-      $contato->endereco       = $data['endereco'];
-      $contato->telefone       = $data['telefone'];
-      $contato->numero         = $data['numero'];
-      $contato->cidade         = $data['cidade'];
-      $contato->documento      = $data['documento'];
-      $contato->status         = $data['status'];
-      $contato->email          = $data['email'];
-			$contato->datanascimento = $data['datanascimento'];
-      // $contato->tipocontato    = $data['tipocontato'];
-      $contato->empresa_id     = Auth::user()->empresa_id;
-
-      // define o tipo do contato baseado no tipo da empresa do usuário
-      $emp = Empresa::where('id', '=', $contato->empresa_id)->first();
-      // dd($emp->tipo);
-      if($emp->tipo == 'estetica'){
-        $contato->tipocontato    = 'cliente';
-      } else if($emp->tipo == 'clinica'){
-        $contato->tipocontato    = 'paciente';
-      }
+      $contato 									= new Contato;
+      $contato->nome            = $data['nome'];
+      $contato->endereco        = $data['endereco'];
+      $contato->telefone        = $data['telefone'];
+      $contato->numero          = $data['numero'];
+      $contato->cidade          = $data['cidade'];
+      $contato->documento       = $data['documento'];
+      $contato->status          = $data['status'];
+			$contato->email           = $data['email'];
+			$contato->datanascimento  = $data['datanascimento'];
+      $contato->valorsessao     = $data['valorsessao'];
+      $contato->sexo            = $data['sexo'];
+      $contato->escolaridade    = $data['escolaridade'];
+      $contato->profissao       = $data['profissao'];
+      $contato->nomeresponsavel = $data['nomeresponsavel'];
+      $contato->cpfresponsavel  = $data['cpfresponsavel'];
+      $contato->nomeparente     = $data['nomeparente'];
+      $contato->telefoneparente = $data['telefoneparente'];
+      $contato->observacao      = $data['observacao'];
+      $contato->grupo_id        = $data['grupo_id'];
+      $contato->tipocontato     = $data['tipocontato'];
+			$contato->empresa_id      = Auth::user()->empresa_id;
+			
+      // $emp = Empresa::where('id', '=', $contato->empresa_id)->first();
 
     } catch (Exception $e) {
       return redirect('contato')->with('error', $e->getMessage());
       exit();
     }
 
-    // aqui inicia a gravação no bd
     try{
-      DB::beginTransaction();
 
+      DB::beginTransaction();
       $saved = $contato->save();
-      if (!$saved){
-        throw new Exception('Falha ao salvar contatos!');
-      }
-      DB::commit();
-      // se chegou aqui é pq deu tudo certo
+      if (!$saved)
+        throw new Exception('Falha ao salvar contatos!');			
+			
+			DB::commit();			
 			return redirect('contato')->with('success', 'Contato criado com sucesso!');
 
     } catch (Exception $e) {
-      // se deu pau ao salvar no banco de dados, faz rollback de tudo e retorna erro
+
       DB::rollBack();
       return redirect('contato')->with('error', $e->getMessage());
     }
@@ -85,53 +86,54 @@ class ContatoController extends Controller
 
   public function update(ContatoRequest $request)
   {
-    $data = $request->all();
-    // aqui faz todas as valições possiveis
+		$data = $request->all();
+		
     try{
-			// dd($data['contato_id']);
       $contato = Contato::find($data['contato_id']);
       if (!$contato)
         throw new Exception("Nenhum contato encontrado");
 
-      // aqui então faz todo o tratamento e seta o que foi alterado;
-			$contato->nome           = $data['nome'];
-      $contato->endereco       = $data['endereco'];
-      $contato->telefone       = $data['telefone'];
-      $contato->numero         = $data['numero'];
-      $contato->cidade         = $data['cidade'];
-      $contato->documento      = $data['documento'];
-      $contato->status         = $data['status'];
-      $contato->email          = $data['email'];
-			$contato->datanascimento = $data['datanascimento'];
-      $contato->empresa_id     = Auth::user()->empresa_id;
+			$contato->nome            = $data['nome'];
+      $contato->endereco        = $data['endereco'];
+      $contato->telefone        = $data['telefone'];
+      $contato->numero          = $data['numero'];
+      $contato->cidade          = $data['cidade'];
+      $contato->documento       = $data['documento'];
+      $contato->status          = $data['status'];
+			$contato->email           = $data['email'];
+			$contato->datanascimento  = $data['datanascimento'];
+      $contato->valorsessao     = $data['valorsessao'];
+      $contato->sexo            = $data['sexo'];
+      $contato->escolaridade    = $data['escolaridade'];
+      $contato->profissao       = $data['profissao'];
+      $contato->nomeresponsavel = $data['nomeresponsavel'];
+      $contato->cpfresponsavel  = $data['cpfresponsavel'];
+      $contato->nomeparente     = $data['nomeparente'];
+      $contato->telefoneparente = $data['telefoneparente'];
+      $contato->observacao      = $data['observacao'];
+      $contato->grupo_id        = $data['grupo_id'];
+      $contato->tipocontato     = $data['tipocontato'];
+			$contato->empresa_id      = Auth::user()->empresa_id;
 
-      // define o tipo do contato baseado no tipo da empresa do usuário
-      $emp = Empresa::where('id', '=', $contato->empresa_id)->first();
-      // dd($emp->tipo);
-      if($emp->tipo == 'estetica'){
-        $contato->tipocontato    = 'cliente';
-      } else if($emp->tipo == 'clinica'){
-        $contato->tipocontato    = 'paciente';
-      }
+			// $emp = Empresa::where('id', '=', $contato->empresa_id)->first();
 
     } catch (Exception $e) {
       return redirect('contato')->with('error', $e->getMessage());
       exit();
     }
 
-    // aqui inicia a gravação no bd
     try{
-      DB::beginTransaction();
 
-      $saved = $contato->save();
-      if (!$saved){
-          throw new Exception('Falha ao salvar contato!');
-      }
+      DB::beginTransaction();
+			$saved = $contato->save();			
+      if (!$saved)
+				throw new Exception('Falha ao salvar contato!');
+			
+			
       DB::commit();
-      // se chegou aqui é pq deu tudo certo
       return redirect('contato')->with('success', 'Contato #' . $contato->id . ' alterado com sucesso.');
     } catch (Exception $e) {
-      // se deu pau ao salvar no banco de dados, faz rollback de tudo e retorna erro
+
       DB::rollBack();
       return redirect('contato')->with('error', $e->getMessage());
     }
