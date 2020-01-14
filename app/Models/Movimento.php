@@ -8,10 +8,23 @@ use App\User;
 
 class Movimento extends Model
 {
-	protected $filable = ['tipo', 'observacao', 'valor', 'movimented_at', 'event_id', 'condicao_pagamento_id', 'empresa_id', 'contato_id', 'user_id'];
+	protected $filable = [
+    'tipo',
+    'observacao',
+    'valortotal',
+    'valorrecebido',
+    'valorpendente',
+    'status',
+    'movimented_at',
+    'event_id',
+    'condicao_pagamento_id',
+    'empresa_id',
+    'contato_id',
+    'user_id'
+  ];
 
 	protected $dates = ['movimented_at'];
-	
+
 	public function personalizado($value){
 		return $this->where(function ($query) use ($value) {
 			if(isset($value['contato_id']))
@@ -19,7 +32,7 @@ class Movimento extends Model
 
 			if(isset($value['mstart']) || isset($value['mend']))
 				$query->whereBetween('movimented_at', array($value['mstart'], $value['mend']));
-				
+
 		})->where('empresa_id', '=', Auth::user()->empresa_id)
 		// ->toSql();
 		// dd($resultado);
