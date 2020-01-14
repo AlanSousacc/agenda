@@ -20,7 +20,7 @@ class MovimentacaoController extends Controller
   {
     $user 		  = Auth::user()->empresa_id;
     $consulta   = Movimento::where('empresa_id', '=', $user)->paginate(10);
-    $total      = $consulta->sum('valor');
+    $total      = $consulta->sum('valortotal');
 
     $contato    = Contato::where('empresa_id', '=', $user)->get();
     $pagamento  = Condicao_pagamento::all();
@@ -47,7 +47,7 @@ class MovimentacaoController extends Controller
       $moviment->condicao_pagamento_id  = $data['condicao_pagamento_id'];
 			$moviment->tipo      							= 'Entrada';
 			$moviment->observacao         		= $data['observacao'];
-			$moviment->valor          				= $data['valor'];
+			$moviment->valortotal      				= $data['valortotal'];
 			$moviment->movimented_at 					= date('Y-m-d H:i:s');
 
       } catch (Exception $e) {

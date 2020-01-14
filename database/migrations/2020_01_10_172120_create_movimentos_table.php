@@ -20,11 +20,13 @@ class CreateMovimentosTable extends Migration
       $table->unsignedBigInteger('empresa_id');
       $table->unsignedBigInteger('condicao_pagamento_id');
       $table->unsignedBigInteger('event_id')->nullable();
-      $table->string('tipo', 50);
-      $table->text('observacao');
-      $table->double('valor', 5, 2);
+      $table->enum('tipo', ['Entrada', 'Saída']);
+      $table->text('observacao')->nullable();
+      $table->double('valortotal', 5, 2);
+      $table->double('valorrecebido', 5, 2);
+      $table->double('valorpendente', 5, 2);
       $table->dateTime('movimented_at');
-      $table->text('observacao')->nullable(true)->change();
+      $table->boolean('status');
       $table->timestamps();
 
       $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
