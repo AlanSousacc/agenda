@@ -30,7 +30,7 @@ Route::patch('users', 'UserController@update')->name('routeUserEdit');
 Route::delete('/users-delete', 'UserController@destroy')->name('routeUserDelete');
 
 // movimentacoes
-Route::get('movimentacao', 'MovimentacaoController@index');
+Route::get('movimentacao', 'MovimentacaoController@index')->name('movimentação.index');
 Route::post('movimentacao', 'MovimentacaoController@store')->name('movimentacao.store');
 Route::get('relatorio-mes', 'MovimentacaoController@listagemEntradas')->name('relatorio.mes.atual');
 Route::any('relatorio-periodo-contato', 'MovimentacaoController@relPeriodo')->name('relatorio.periodo.contato');

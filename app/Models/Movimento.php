@@ -9,6 +9,8 @@ use App\User;
 class Movimento extends Model
 {
 	protected $filable = ['tipo', 'observacao', 'valor', 'movimented_at', 'event_id', 'condicao_pagamento_id', 'empresa_id', 'contato_id', 'user_id'];
+
+	protected $dates = ['movimented_at'];
 	
 	public function personalizado($value){
 		return $this->where(function ($query) use ($value) {

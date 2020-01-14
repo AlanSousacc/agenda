@@ -98,7 +98,7 @@
 
   </div>
   <div class="row" >
-    <div class="col-md-12">
+    <div class="col-md-12 mb-3">
       <button class="btn btn-outline-danger btn-lg float-right" disabled>Nova Baixa</button>
       <button class="btn btn-outline-success btn-lg float-right mr-3" data-target="#novo" data-toggle="modal">Nova Entrada</button>
     </div>

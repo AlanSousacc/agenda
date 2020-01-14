@@ -84,7 +84,7 @@
               <div class="form-group">
                 <label for="datanascimento">Data de Nascimento</label>
                 <div class="input-group">
-                  <input type="date" class="form-control datanascimento" id="datanascimento" placeholder="Data de nascimento" value="{{isset($contatos) ? $contatos->datanascimento : ''}}" name="datanascimento">
+                  <input type="date" class="form-control datanascimento" id="datanascimento" value="{{isset($contatos) ? $contatos->datanascimento : ''}}" name="datanascimento">
                 </div>
               </div>
             </div>
@@ -255,37 +255,49 @@
 
         {{-- campos Financeiro --}}
         <div class="tab-pane fade" id="custom-tabs-three-financeiro" role="tabpanel" aria-labelledby="custom-tabs-three-financeiro-tab">
+					@if (\Request::route()->getName() == "contato.create")
+						<h5 class="text-center">Não foi encontrado nenhuma movimentação!</h5>
+					@else
           <table id="dtBasicExample" class="table table-striped table-bordered table-sm" width="100%">
             <thead>
               <tr>
-                <th class="text-center" style="width: 50px;" >Condição Pagamento</th>
-                <th class="th-sm" style="width: 200px;" >Data de Movimentação</th>
-                <th class="th-sm" style="width: 120px;" >Observação</th>
-                <th class="th-sm" style="width: 150px;" >Status Pagamento</th>
-                <th class="th-sm" style="width: 161px;" >Email</th>
+                <th class="text-center" style="width: 120px;" >Condição Pagamento</th>
+                <th class="text-center" style="width: 120px;" >Observação</th>
+                <th class="text-center" style="width: 70px;" >Valor</th>
+								<th class="text-center" style="width: 130px;" >Data de Movimentação</th>
+                <th class="text-center" style="width: 50px;" >Status</th>
                 <th class="text-center" style="width: 120px;" >Opções</th>
               </tr>
             </thead>
             <tbody>
+							@foreach ($consulta as $item)
               <tr role="row" class="odd">
-                <td class="text-center">testes</td>
-                <td class="text-center">testes</td>
-                <td class="text-center">testes</td>
-                <td class="text-center">testes</td>
-                <td class="text-center">testes</td>
-                <td class="text-center">testes</td>
+                <td class="text-center">{{$item->condicao_pagamento->nome}}</td>
+                <td class="text-center">{{$item->observacao}}</td>
+                <td class="text-center">R$ {{number_format($item->valor, 2, ',', '.')}}</td>
+								<td class="text-center">{{$item->movimented_at->format('d/m/Y')}}</td>
+								@if ($item->condicao_pagamento->id == 6)
+									<td class="text-center text-danger"><i class="fa fa-times-circle"></i></td>
+									<td class="text-center">Receber</td>
+								@else
+								<td class="text-center text-success"><i class="fa fa-check-circle"></i></td>
+									<td class="text-center">-</td>
+								@endif
               </tr>
-              {{-- @foreach ($consulta as $item)
-              <tr role="row" class="odd">
-                <td class="text-center">{{$item->id}}</td>
-                <td class="sorting_1">{{$item->nome}}</td>
-                <td>{{$item->documento}}</td>
-                <td>{{$item->telefone}}</td>
-                <td>{{$item->email}}</td>
-              </tr>
-              @endforeach --}}
+              @endforeach
             </tbody>
-          </table>
+					</table>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="col-md-3 float-right">
+								<h5 class="text-right"><i class="fa fa-arrow-alt-circle-down text-danger"></i> Débito Total: <strong> R$ {{number_format($totaldeb, 2, ',', '.')}}<strong></h5>
+							</div>
+							<div class="col-md-3 offset-md-6 float-right">
+								<h5 class="text-right"><i class="fa fa-arrow-alt-circle-up text-success"></i> Valor Pago: <strong> R$ {{number_format($totalpago, 2, ',', '.')}}<strong></h5>
+							</div>						
+						</div>
+					</div>
+					@endif
         </div>
         {{-- fim campos Financeiro --}}
       </div>

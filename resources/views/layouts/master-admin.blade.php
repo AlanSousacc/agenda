@@ -118,7 +118,7 @@
 							</a>
 							<ul class="nav nav-treeview">
 								<li class="nav-item">
-									<a href="movimentacao" class="nav-link">
+									<a href="{{route('movimentação.index')}}" class="nav-link">
 										<i class="fa fa-dollar-sign nav-icon"></i>
 										<p>Entradas</p>
 									</a>
