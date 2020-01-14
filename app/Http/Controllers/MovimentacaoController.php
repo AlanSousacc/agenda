@@ -35,25 +35,20 @@ class MovimentacaoController extends Controller
 
   public function store(MovimentacaoRequest $request)
   {
-    $user			 = Auth::user();
-    $data      = $request->all();
+    $user	= Auth::user();
+    $data = $request->all();
 
     try{
-      $moviment = new Movimento;
 
+      $moviment = new Movimento;
       $moviment->user_id        				= $user->id;
       $moviment->contato_id     				= $data['contato_id'];
       $moviment->empresa_id     				= $user->empresa_id;
       $moviment->condicao_pagamento_id  = $data['condicao_pagamento_id'];
-
-      // if(!isset($data['event_id'])){
-        // 	$moviment->event_id         		= $data['event_id'];
-        // }
-
-        $moviment->tipo      							= 'Entrada';
-        $moviment->observacao         		= $data['observacao'];
-        $moviment->valor          				= $data['valor'];
-        $moviment->movimented_at 					= date('Y-m-d H:i:s');
+			$moviment->tipo      							= 'Entrada';
+			$moviment->observacao         		= $data['observacao'];
+			$moviment->valor          				= $data['valor'];
+			$moviment->movimented_at 					= date('Y-m-d H:i:s');
 
       } catch (Exception $e) {
         return redirect('movimentacao')->with('error', $e->getMessage());
@@ -77,26 +72,6 @@ class MovimentacaoController extends Controller
         DB::rollBack();
         return redirect('movimentacao')->with('error', $e->getMessage());
       }
-    }
-
-    public function show($id)
-    {
-      //
-    }
-
-    public function edit($id)
-    {
-      //
-    }
-
-    public function update(Request $request, $id)
-    {
-      //
-    }
-
-    public function destroy($id)
-    {
-      //
     }
 
     // RELATÓRIO
