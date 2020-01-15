@@ -4,6 +4,7 @@
     "/admin/css/app.css": "/admin/css/app.css",
     "/admin/js/bootstrap.bundle.js": "/admin/js/bootstrap.bundle.js",
     "/admin/js/contato/contato.js": "/admin/js/contato/contato.js",
+    "/admin/js/contato/contatomovimentos.js": "/admin/js/contato/contatomovimentos.js",
     "/admin/js/empresa/empresa.js": "/admin/js/empresa/empresa.js",
     "/admin/js/jquery.js": "/admin/js/jquery.js",
     "/admin/js/movimentacao/consultapersonalizada.js": "/admin/js/movimentacao/consultapersonalizada.js",

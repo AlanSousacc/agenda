@@ -28,10 +28,10 @@
       <thead>
         <tr>
           <th class="text-center" style="width: 150px;">Contato</th>
-          <th class="text-center" style="width: 160px;">Condição de Pagamento</th>
-          <th class="text-center" style="width: 150px;">Observação</th>
+					<th class="text-center" style="width: 100px;">Cond. Pag.</th>
+					<th class="text-center" style="width: 60px;">Dt Movimentação</th>
           <th class="text-center" style="width: 80px;">Valor Total</th>
-          <th class="text-center" style="width: 70px;">Dt Movimentação</th>
+          <th class="text-center" style="width: 100px;">Valor Recebido</th>
           <th class="text-center" style="width: 80px;">Opções</th>
         </tr>
       </thead>
@@ -39,10 +39,10 @@
         @foreach ($consulta as $item)
         <tr role="row" class="odd">
           <td class="text-center">{{$item->contato->nome}}</td>
-          <td class="text-center">{{$item->condicao_pagamento->nome}}</td>
-          <td class="text-center">{{$item->observacao}}</td>
-          <td class="text-center">R$ {{number_format($item->valor, 2, ',', '.')}}</td>
-          <td class="text-center">{{Carbon\Carbon::parse($item->movimented_at)->format('d/m/Y H:i:s')}}</td>
+					<td class="text-center">{{$item->condicao_pagamento->nome}}</td>
+					<td class="text-center">{{($item->movimented_at)->format('d/m/Y H:i:s')}}</td>
+          <td class="text-center">R$ {{number_format($item->valortotal, 2, ',', '.')}}</td>
+          <td class="text-center">R$ {{number_format($item->valorrecebido, 2, ',', '.')}}</td>
             <td class="text-center" style="padding: 0.45rem">
               <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -70,7 +70,7 @@
       </tbody>
       <tfoot>
         <tr>
-          <td class="text-center" colspan="4"></td>
+          <td class="text-center" colspan="3"></td>
           <td class="text-center" style="font-weight:600">Total R$ {{number_format($total, 2, ',', '.')}}</td>
           <td class="text-center" colspan="2"></td>
         </tr>
@@ -107,7 +107,8 @@
   <script src='{{asset('admin/js/movimentacao/movimentacao.js')}}'></script>
   <script>
     $(document).ready(function () {
-      $('#valor').mask('000.000.000.000.000,00');
+      $('#valortotal').mask('000.000.000.000.000,00');
+      $('#valorrecebido').mask('000.000.000.000.000,00');
     });
 	</script>
 @endpush

@@ -22,10 +22,10 @@ class MovimentacaoController extends Controller
     $consulta   = Movimento::where('empresa_id', '=', $user)->paginate(10);
     $total      = $consulta->sum('valortotal');
 
-    $contato    = Contato::where('empresa_id', '=', $user)->get();
+    $contatos   = Contato::where('empresa_id', '=', $user)->get();
     $pagamento  = Condicao_pagamento::all();
 
-    return view('Admin.movimentacao.listagem', compact('consulta', 'contato', 'pagamento', 'total'));
+    return view('Admin.movimentacao.listagem', compact('consulta', 'contatos', 'pagamento', 'total'));
   }
 
   public function create()
@@ -37,18 +37,26 @@ class MovimentacaoController extends Controller
   {
     $user	= Auth::user();
     $data = $request->all();
-
+		$dif  = $data['valortotal'] - $data['valorrecebido'];
+		
     try{
 
-      $moviment = new Movimento;
-      $moviment->user_id        				= $user->id;
-      $moviment->contato_id     				= $data['contato_id'];
-      $moviment->empresa_id     				= $user->empresa_id;
-      $moviment->condicao_pagamento_id  = $data['condicao_pagamento_id'];
-			$moviment->tipo      							= 'Entrada';
-			$moviment->observacao         		= $data['observacao'];
-			$moviment->valortotal      				= $data['valortotal'];
-			$moviment->movimented_at 					= date('Y-m-d H:i:s');
+			$mov 												= new Movimento;
+      $mov->user_id        				= $user->id;
+      $mov->contato_id     				= $data['contato_id'];
+      $mov->empresa_id     				= $user->empresa_id;
+      $mov->condicao_pagamento_id = $data['condicao_pagamento_id'];
+			$mov->tipo      						= 'Entrada';
+			$mov->observacao         		= $data['observacao'];
+			$mov->valortotal      			= $data['valortotal'];
+			$mov->valorrecebido      		= $data['valorrecebido'];
+			$mov->valorpendente					= $dif;
+			$mov->movimented_at 				= date('Y-m-d H:i:s');
+			if($dif == 0){
+				$mov->status = 1;
+			} else{
+				$mov->status = 0;
+			}
 
       } catch (Exception $e) {
         return redirect('movimentacao')->with('error', $e->getMessage());
@@ -59,7 +67,7 @@ class MovimentacaoController extends Controller
       try{
         DB::beginTransaction();
 
-        $saved = $moviment->save();
+        $saved = $mov->save();
         if (!$saved){
           throw new Exception('Falha ao salvar Movimentação!');
         }
