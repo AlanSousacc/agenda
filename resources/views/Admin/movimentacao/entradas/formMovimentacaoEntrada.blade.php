@@ -5,7 +5,6 @@
       <div class="input-group">
         <select class="form-control contato" id="tipo" name="tipo" value="{{old('tipo')}}" required>
           <option value="Entrada" selected disabled>Entrada</option>
-          {{-- <option value="Saida">Saida</option> --}}
         </select>
       </div>
     </div>
@@ -18,7 +17,7 @@
 					<input type="text" class="form-control usuario" id="usuario" value="{{old('usuario')}}" name="usuario">
 				</div>
 			</div>
-		</div>		
+		</div>
 	@endif
 </div>
 
