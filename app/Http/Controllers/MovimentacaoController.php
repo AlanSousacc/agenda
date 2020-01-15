@@ -38,7 +38,7 @@ class MovimentacaoController extends Controller
     $user	= Auth::user();
     $data = $request->all();
 		$dif  = $data['valortotal'] - $data['valorrecebido'];
-		
+
     try{
 
 			$mov 												= new Movimento;

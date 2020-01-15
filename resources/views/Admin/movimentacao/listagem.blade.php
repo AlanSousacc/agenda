@@ -86,13 +86,13 @@
 		</div>
 
 		{{-- adicionar --}}
-		@include('Admin.movimentacao.modalNovo')
+		@include('Admin.movimentacao.entradas.modalNovaEntrada')
 
     <!-- Modal editar-->
-		@include('Admin.movimentacao.modalVisualizar')
+		@include('Admin.movimentacao.entradas.modalVisualizarEntrada')
 
 		{{-- modal Deletar--}}
-		@include('Admin.movimentacao.modalExcluir')
+		@include('Admin.movimentacao.entradas.modalExcluirEntrada')
 
   </div>
   <div class="row" >
