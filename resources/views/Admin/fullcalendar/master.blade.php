@@ -2,7 +2,7 @@
 
 @section('master')
 <div id='wrap'>
-  @include('admin.fullcalendar.modal-calendar')
+  @include('Admin.fullcalendar.modal-calendar')
   <div id='external-events' style="width: 0; display:none; float: none;">
     <div id='external-events-list'>
     </div>
