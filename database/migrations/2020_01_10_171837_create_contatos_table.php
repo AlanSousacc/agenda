@@ -29,9 +29,9 @@ class CreateContatosTable extends Migration
       $table->enum('sexo', ['Masculino', 'Feminino']);
       $table->enum('escolaridade', ['Ensino Fundamental Completo', 'Ensino Fundamental Incompleto', 'Ensino Médio Completo', 'Ensino Médio Incompleto', 'Ensino Superior Completo', 'Ensino Superior Incompleto']);
       $table->string('profissao', 50)->nullable();
-      $table->string('nomeresponsavel', 50)->nullable();
+      $table->string('nomeresponsavel', 80)->nullable();
       $table->string('cpfresponsavel', 20)->nullable();
-      $table->string('nomeparente', 50)->nullable();
+      $table->string('nomeparente', 80)->nullable();
       $table->string('telefoneparente', 50)->nullable();
       $table->text('observacao')->nullable();
       $table->unsignedBigInteger('empresa_id')->unsigned();

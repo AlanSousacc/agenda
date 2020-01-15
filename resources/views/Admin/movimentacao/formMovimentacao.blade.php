@@ -9,7 +9,17 @@
         </select>
       </div>
     </div>
-  </div>
+	</div>
+	@if (\Request::route()->getName() == "contato.show")
+		<div class="col-md-9">
+			<div class="form-group">
+				<label for="usuario">Usuário: </label>
+				<div class="input-group">
+					<input type="text" class="form-control usuario" id="usuario" value="{{old('usuario')}}" name="usuario">
+				</div>
+			</div>
+		</div>		
+	@endif
 </div>
 
 <div class="row">
@@ -18,7 +28,7 @@
       <label for="contato">Escolha um Contato</label>
       <div class="input-group">
         <select class="form-control contato" id="contato" name="contato_id" value="{{old('contato')}}" required>
-          @foreach ($contato as $item)
+          @foreach ($contatos as $item)
           <option id="{{$item->id}}" value="{{$item->id}}">{{$item->nome}}</option>
           @endforeach
         </select>
@@ -51,9 +61,9 @@
   </div>
 </div>
 
-<div class="row">
+<div class="row pb-4">
   <div class="col-md-6">
-    <label for="valortotal" class="col-sm-4 col-form-label">Valor Total</label>
+    <label for="valortotal" class="col-sm-12 col-form-label">Valor Total</label>
     <div class="input-group input-group-lg">
       <div class="input-group-prepend">
         <span class="input-group-text">R$</span>
@@ -63,7 +73,7 @@
   </div>
 
   <div class="col-md-6">
-    <label for="valorrecebido" class="col-sm-4 col-form-label">Valor Recebido</label>
+    <label for="valorrecebido" class="col-sm-12 col-form-label">Valor Recebido</label>
     <div class="input-group input-group-lg">
       <div class="input-group-prepend">
         <span class="input-group-text">R$</span>

@@ -4,11 +4,11 @@
   <div class="row">
     <div class="col-md-12 mb-3">
       <div class="panel-default">
-        <form action="{{route('contato.update', $contatos->id)}}" method="post">
+        <form action="{{route('contato.update', $contato->id)}}" method="post">
           {{method_field('patch')}}
           {{csrf_field()}}
           <div class="panel-body">
-            <input type="hidden" name="contato_id" id="contid" value="{{$contatos->id}}">
+            <input type="hidden" name="contato_id" id="contid" value="{{$contato->id}}">
             <h1 class="text-center">Detalhes do Contato</h1><br>
             @include('Admin.contatos.formContato')
           </div>
@@ -16,10 +16,13 @@
         </form>
       </div>
     </div>
-  </div>
+	</div>
+	{{-- Detalhar --}}
+	@include('Admin.movimentacao.modalVisualizar')
 </div>
 
 @push('scripts')
 <script src='{{asset('admin/js/contato/contato.js')}}'></script>
+<script src='{{asset('admin/js/contato/contatomovimentos.js')}}'></script>
 @endpush
 @endsection

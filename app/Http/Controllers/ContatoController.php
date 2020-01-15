@@ -38,16 +38,17 @@ class ContatoController extends Controller
   }
 
   public function show($id){
-		$contatos = Contato::find($id);
+		$contato = Contato::find($id);
 		
 		$user 		 = Auth::user()->empresa_id;
 		$pagamento = Condicao_pagamento::all();
+		$contatos  = Contato::where('empresa_id', '=', $user)->get();
 
-		$consulta  = Movimento::where('empresa_id', '=', $user)->where('contato_id', '=', $contatos->id)->paginate(10);
-		$totalpago = $consulta->where('condicao_pagamento_id', '!=', 6)->sum('valor');
-		$totaldeb  = $consulta->where('condicao_pagamento_id', '==', 6)->sum('valor');
+		$consulta  = Movimento::where('empresa_id', '=', $user)->where('contato_id', '=', $contato->id)->paginate(10);
+		$total		 = $consulta->sum('valortotal');
+		$totaldeb	 = $consulta->sum('valorpendente');
 
-    return view('Admin.contatos.editar', compact('contatos', 'consulta', 'totalpago', 'totaldeb'));
+    return view('Admin.contatos.editar', compact('contato', 'consulta', 'total', 'totaldeb', 'pagamento', 'contatos'));
   }
 
 	// Salva os dados do contato

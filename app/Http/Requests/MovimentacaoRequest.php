@@ -20,7 +20,7 @@ class MovimentacaoRequest extends FormRequest
       'condicao_pagamento_id' => 'required',
       'observacao'          	=> 'max:255',
       'valortotal'     				=> 'required',
-      'valorrecebido'     		=> 'required',
+			'valorrecebido'     		=> 'required',
 		];
 	}
 
