@@ -1,6 +1,6 @@
 <?php
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', 'FullCalendarController@index')->name('index');
 Route::get('/load-events', 'EventController@loadEvents')->name('routeLoadEvents');
