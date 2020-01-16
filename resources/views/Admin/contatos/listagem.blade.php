@@ -50,7 +50,7 @@
 							</button>
 							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 								@if (Auth::user()->profile == 'Administrador' )
-								<a class="dropdown-item" href="{{route('contato.show', $item->id)}}">Detalhar <i class="fab fa-wpforms"></i></a>
+								<a class="dropdown-item" href="{{route('contato.show', $item->id)}}"> Detalhar <i class="fab fa-wpforms"></i></a>
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="{{$item->id}}" data-contid={{$item->id}} data-target="#delete" data-toggle="modal">Excluir <i class="fa fa-trash"></i></a>
 								@endif

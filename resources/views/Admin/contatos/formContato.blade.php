@@ -301,8 +301,8 @@
 												data-valorpendente="{{$item->valorpendente}}"
 												data-status="{{$item->status}}"
 												data-movimented_at="{{$item->movimented_at}}"
-												data-target="#visualizar"
-												data-toggle="modal"> Detalhar <i class="fab fa-wpforms"></i></a>
+												data-target="#Visualizar"
+												data-toggle="modal"> Visualizar <i class="fab fa-wpforms"></i></a>
 											<div class="dropdown-divider"></div>
 											@if ($item->status == 0)
 												<a class="dropdown-item" href="{{$item->id}}" data-contid={{$item->id}} data-target="#delete" data-toggle="modal">Receber <i class="fa fa-money-bill-alt"></i></a>

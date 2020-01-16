@@ -9,7 +9,7 @@
 				{{method_field('delete')}}
 				{{ csrf_field() }}
 				<div class="modal-body">
-					<p class="text-center">Você tem certeza que deseja excluir este usuário?</p>
+					<p class="text-center">Você tem certeza que deseja excluir esta Movimentação?</p>
 					<input type="hidden" name="user_id" id="userid" value="">
 				</div>
 				<div class="modal-footer">
