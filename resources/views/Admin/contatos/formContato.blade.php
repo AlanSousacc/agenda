@@ -287,21 +287,22 @@
 									<div class="dropdown">
 										<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 											Ação
-										</button>
+                    </button>
+
 										<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 											@if (Auth::user()->profile == 'Administrador' )
 											<a class="dropdown-item" href="{{$item->id}}"
 												data-movid="{{$item->id}}"
-												data-contato="{{$item->contato->nome}}"
-												data-usuario="{{$item->user->name}}"
-												data-pagamento="{{$item->condicao_pagamento->nome}}"
+												data-contato_id="{{$item->contato->nome}}"
+												data-user_id="{{$item->user->name}}"
+												data-condicao_pagamento_id="{{$item->condicao_pagamento->nome}}"
 												data-observacao="{{$item->observacao}}"
 												data-valortotal="{{$item->valortotal}}"
 												data-valorrecebido="{{$item->valorrecebido}}"
 												data-valorpendente="{{$item->valorpendente}}"
 												data-status="{{$item->status}}"
 												data-movimented_at="{{$item->movimented_at}}"
-												data-target="#Visualizar"
+												data-target="#visualizar"
 												data-toggle="modal"> Visualizar <i class="fab fa-wpforms"></i></a>
 											<div class="dropdown-divider"></div>
 											@if ($item->status == 0)
@@ -310,7 +311,8 @@
 												<p class="text-center">-</p>
 											@endif
 											@endif
-										</div>
+                    </div>
+
 									</div>
 								</td>
               </tr>
@@ -324,7 +326,7 @@
 							</div>
 							<div class="col-md-3 offset-md-6 float-right">
 								<h5 class="text-right"><i class="fa fa-arrow-alt-circle-up text-success"></i> Valor Pago: <strong> R$ {{number_format($total, 2, ',', '.')}}<strong></h5>
-							</div>						
+							</div>
 						</div>
 					</div>
 					@endif

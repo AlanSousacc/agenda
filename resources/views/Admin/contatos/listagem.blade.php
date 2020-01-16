@@ -11,7 +11,7 @@
 			<div class="com-md-6">
 				<h3 class="card-title mt-md-2"> Listagem de Contatos</h3>
 			</div>
-			
+
 			<div class="com-md-6 float-md-right search">
 				<form action="{{route('routeContatoSearch')}}" method="POST" class="form-inline">
 					@csrf
@@ -69,7 +69,7 @@
 			<div class="col-md-6 pr-4">{{$consulta->links()}}</div>
 			@endif
 		</div>
-		
+
 		{{-- modal Deletar--}}
 		@include('Admin.contatos.modalExcluir')
 	</div>
