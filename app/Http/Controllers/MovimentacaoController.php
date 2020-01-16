@@ -30,7 +30,11 @@ class MovimentacaoController extends Controller
 
   public function create()
   {
-    //
+    $user 		 = Auth::user();
+    $contatos  = Contato::where('empresa_id', '=', $user->empresa_id)->get();
+		$pagamento = Condicao_pagamento::all();
+
+    return view('Admin.movimentacao.novaMovimentacao', compact('contatos', 'pagamento', 'user'));
   }
 
   public function store(MovimentacaoRequest $request)

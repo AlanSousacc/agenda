@@ -3,18 +3,21 @@
     <div class="form-group">
       <label for="tipo">Tipo Mov.</label>
       <div class="input-group">
-        <select class="form-control tipo" id="tipo" name="tipo" value="{{old('tipo')}}">
-          <option value="Entrada" selected disabled>Entrada</option>
+        <select class="form-control tipo" id="tipo" name="tipo" required value="{{old('tipo')}}">
+          <option value="">Tipo de movimentação</option>
+          <option value="Entrada">Entrada</option>
+          <option value="Entrada">Saída</option>
         </select>
       </div>
     </div>
-	</div>
-	@if (\Request::route()->getName() == "contato.show")
-		<div class="col-md-9">
+  </div>
+
+	@if (\Request::route()->getName() != "contato.show")
+		<div class="col-md-3">
 			<div class="form-group">
-				<label for="usuario">Usuário: </label>
+				<label for="user_id">Usuário: </label>
 				<div class="input-group">
-					<input type="text" class="form-control usuario" id="usuario" value="{{old('usuario')}}" name="usuario">
+					<input type="text" readonly class="form-control user_id" id="user_id" value="{{$user->name}}" name="user_id">
 				</div>
 			</div>
 		</div>
@@ -24,9 +27,10 @@
 <div class="row">
   <div class="col-md-12">
     <div class="form-group">
-      <label for="contato">Escolha um Contato</label>
+      <label for="contato_id">Escolha um Contato</label>
       <div class="input-group">
-        <select class="form-control contato" id="contato" name="contato_id" value="{{old('contato')}}" required>
+        <select class="form-control contato_id" id="contato_id" name="contato_id" value="{{old('contato_id')}}" required>
+          <option value="">Escolha um Contato</option>
           @foreach ($contatos as $item)
           <option id="{{$item->id}}" value="{{$item->id}}">{{$item->nome}}</option>
           @endforeach
@@ -39,9 +43,10 @@
 <div class="row">
   <div class="col-md-12">
     <div class="form-group">
-      <label for="pagamento">Forma de Pagamento</label>
+      <label for="condicao_pagamento_id">Forma de Pagamento</label>
       <div class="input-group">
-        <select class="form-control pagamento" id="pagamento" name="condicao_pagamento_id" value="{{old('condicao_pagamento_id')}}" required>
+        <select class="form-control condicao_pagamento_id" id="condicao_pagamento_id" name="condicao_pagamento_id" value="{{old('condicao_pagamento_id')}}" required>
+          <option value="">Condição de Pagamento</option>
           @foreach ($pagamento as $item)
           <option id="{{$item->id}}" value="{{$item->id}}">{{$item->nome}}</option>
           @endforeach
@@ -80,7 +85,7 @@
       <input type="text" name="valorrecebido" class="form-control valorrecebido" id="valorrecebido">
     </div>
 	</div>
-	
+
 	<div class="col-md-4">
     <label for="valorpendente" class="col-sm-12 col-form-label">Valor Débito</label>
     <div class="input-group input-group-lg">

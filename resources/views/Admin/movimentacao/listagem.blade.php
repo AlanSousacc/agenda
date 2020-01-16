@@ -85,20 +85,18 @@
       @endif
 		</div>
 
-		{{-- adicionar --}}
-		@include('Admin.movimentacao.entradas.modalNovaEntrada')
-
     <!-- Modal editar-->
-		@include('Admin.movimentacao.entradas.modalVisualizarEntrada')
+		@include('Admin.movimentacao.modalVisualizar')
 
 		{{-- modal Deletar--}}
-		@include('Admin.movimentacao.entradas.modalExcluirEntrada')
+		@include('Admin.movimentacao.modalExcluir')
 
   </div>
   <div class="row" >
     <div class="col-md-12 mb-3">
       <button class="btn btn-outline-danger btn-lg float-right" disabled>Nova Baixa</button>
-      <button class="btn btn-outline-success btn-lg float-right mr-3" data-target="#novo" data-toggle="modal">Nova Entrada</button>
+      <a href="{{route('movimentacao.create')}}" class="btn btn-outline-success btn-lg float-right mr-3">Nova Entrada</a>
+      {{-- <button class="btn btn-outline-success btn-lg float-right mr-3">Nova Entrada</button> --}}
     </div>
   </div>
 </div>

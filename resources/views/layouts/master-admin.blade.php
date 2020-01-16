@@ -119,8 +119,8 @@
 							<ul class="nav nav-treeview">
 								<li class="nav-item">
 									<a href="{{route('movimentação.index')}}" class="nav-link">
-										<i class="fa fa-dollar-sign nav-icon"></i>
-										<p>Entradas</p>
+										<i class="fa fa-list nav-icon"></i>
+										<p>Listagem</p>
 									</a>
 								</li>
 								<li class="nav-item has-treeview">
@@ -133,7 +133,7 @@
 									<ul class="nav nav-treeview">
 										<li class="nav-item">
 											<a href="relatorio.periodo.contato" data-target="#personalizado" data-toggle="modal" class="nav-link">
-												<i class="fa fa-chart-area nav-icon"></i>
+												<i class="fa fa-filter nav-icon"></i>
 												<p>Personalizado</p>
 											</a>
 										</li>
@@ -152,7 +152,7 @@
 						{{-- Sidebar cadastros --}}
 						<li class="nav-item has-treeview menu-open">
 							<a href="#" class="nav-link">
-								<i class="nav-icon fa fa-list"></i>
+								<i class="nav-icon fa fa-address-book"></i>
 								<p>Cadastros</p>
 							</a>
 							<ul class="nav nav-treeview">
