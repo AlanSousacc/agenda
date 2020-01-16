@@ -7,7 +7,7 @@
       </div>
       <form>
         <div class="modal-body">
-          @include('Admin.movimentacao.formMovimentacao')
+          @include('Admin.movimentacao.entradas.formMovimentacaoEntrada')
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>

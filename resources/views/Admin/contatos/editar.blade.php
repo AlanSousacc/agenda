@@ -23,6 +23,6 @@
 
 @push('scripts')
 <script src='{{asset('admin/js/contato/contato.js')}}'></script>
-<script src='{{asset('admin/js/contato/contatomovimentos.js')}}'></script>
+<script src='{{asset('admin/js/movimentacao/movimentacao.js')}}'></script>
 @endpush
 @endsection

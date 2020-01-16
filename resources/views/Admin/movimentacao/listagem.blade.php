@@ -58,7 +58,7 @@
 										data-valortotal="{{$item->valortotal}}"
 										data-movimented_at="{{$item->movimented_at}}"
 										data-target="#visualizar"
-										data-toggle="modal"> Visualiar <i class="fa fa-edit"></i></a>
+										data-toggle="modal"> Visualizar <i class="fab fa-wpforms"></i></a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="{{$item->id}}" data-contid={{$item->id}} data-target="#delete" data-toggle="modal">Excluir <i class="fa fa-trash"></i></a>
                   @endif

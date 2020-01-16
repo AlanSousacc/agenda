@@ -3,7 +3,7 @@
     <div class="form-group">
       <label for="tipo">Tipo Mov.</label>
       <div class="input-group">
-        <select class="form-control contato" id="tipo" name="tipo" value="{{old('tipo')}}" required>
+        <select class="form-control tipo" id="tipo" name="tipo" value="{{old('tipo')}}">
           <option value="Entrada" selected disabled>Entrada</option>
         </select>
       </div>
@@ -39,7 +39,7 @@
 <div class="row">
   <div class="col-md-12">
     <div class="form-group">
-      <label for="pagamento">Forma de pagamento</label>
+      <label for="pagamento">Forma de Pagamento</label>
       <div class="input-group">
         <select class="form-control pagamento" id="pagamento" name="condicao_pagamento_id" value="{{old('condicao_pagamento_id')}}" required>
           @foreach ($pagamento as $item)
@@ -61,7 +61,7 @@
 </div>
 
 <div class="row pb-4">
-  <div class="col-md-6">
+  <div class="col-md-4">
     <label for="valortotal" class="col-sm-12 col-form-label">Valor Total</label>
     <div class="input-group input-group-lg">
       <div class="input-group-prepend">
@@ -71,13 +71,23 @@
     </div>
   </div>
 
-  <div class="col-md-6">
+  <div class="col-md-4">
     <label for="valorrecebido" class="col-sm-12 col-form-label">Valor Recebido</label>
     <div class="input-group input-group-lg">
       <div class="input-group-prepend">
         <span class="input-group-text">R$</span>
       </div>
       <input type="text" name="valorrecebido" class="form-control valorrecebido" id="valorrecebido">
+    </div>
+	</div>
+	
+	<div class="col-md-4">
+    <label for="valorpendente" class="col-sm-12 col-form-label">Valor Débito</label>
+    <div class="input-group input-group-lg">
+      <div class="input-group-prepend">
+        <span class="input-group-text">R$</span>
+      </div>
+      <input type="text" name="valorpendente" class="form-control valorpendente" id="valorpendente">
     </div>
   </div>
 </div>
