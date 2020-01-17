@@ -34,17 +34,17 @@ class MovimentacaoController extends Controller
   public function createIn()
   {
     $user 		 = Auth::user()->empresa_id;
-    $contatos  = Contato::where('empresa_id', '=', $user)->where('tipocontato', '!=', 'Fornecedor')->get();
+    $contatos  = Contato::where('empresa_id', '=', $user)->get();
 		$pagamento = Condicao_pagamento::all();
 
     return view('Admin.movimentacao.novaMovimentacao', compact('contatos', 'pagamento'));
 	}
-	
+
 	// gera tela de cadastro de movimentação de saída
 	public function createOut()
   {
     $user 		 = Auth::user()->empresa_id;
-    $contatos  = Contato::where('empresa_id', '=', $user)->where('tipocontato', '=', 'Fornecedor')->get();
+    $contatos  = Contato::where('empresa_id', '=', $user)->get();
 		$pagamento = Condicao_pagamento::all();
 
     return view('Admin.movimentacao.novaMovimentacao', compact('contatos', 'pagamento'));

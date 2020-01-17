@@ -292,18 +292,18 @@
 										<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 											@if (Auth::user()->profile == 'Administrador' )
 											<a class="dropdown-item" href="{{$item->id}}"
-												data-movid="{{$item->id}}"
-												data-contato_id="{{$item->contato->nome}}"
-												data-user_id="{{$item->user->name}}"
-												data-condicao_pagamento_id="{{$item->condicao_pagamento->nome}}"
-												data-observacao="{{$item->observacao}}"
-												data-valortotal="{{$item->valortotal}}"
-												data-valorrecebido="{{$item->valorrecebido}}"
-												data-valorpendente="{{$item->valorpendente}}"
-												data-status="{{$item->status}}"
-												data-movimented_at="{{$item->movimented_at}}"
-												data-target="#visualizar"
-												data-toggle="modal"> Visualizar <i class="fab fa-wpforms"></i></a>
+                        data-movid="{{$item->id}}"
+                        data-tipo="{{$item->tipo}}"
+                        data-contato_id="{{$item->contato->id}}"
+                        data-user_id="{{$item->user->name}}"
+                        data-condicao_pagamento_id="{{$item->condicao_pagamento->id}}"
+                        data-observacao="{{$item->observacao}}"
+                        data-valortotal="{{$item->valortotal}}"
+                        data-valorrecebido="{{$item->valorrecebido}}"
+                        data-valorpendente="{{$item->valorpendente}}"
+                        data-movimented_at="{{$item->movimented_at->format('d/m/Y')}}"
+                        data-target="#visualizar"
+                        data-toggle="modal"> Visualizar <i class="fab fa-wpforms"></i></a>
 											<div class="dropdown-divider"></div>
 											@if ($item->status == 0)
 												<a class="dropdown-item" href="{{$item->id}}" data-contid={{$item->id}} data-target="#delete" data-toggle="modal">Receber <i class="fa fa-money-bill-alt"></i></a>

@@ -11,13 +11,13 @@ $(document).ready(function () {
 
 $(document).ready(function () {
 	$('.telefone').mask('(00) 00000-0000');
-	
+
 	$('.telefoneparente').mask('(00) 00000-0000');
-	
+
   $('.documento').mask('000.000.000-00', {
     reverse: true
 	});
-	
+
   $('.cpfresponsavel').mask('000.000.000-00', {
     reverse: true
 	});
