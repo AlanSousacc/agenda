@@ -72,7 +72,16 @@
 			{{-- modal Deletar--}}
 			{{-- @include('Admin.contatos.modalExcluir') --}}
 			{{-- Modal --}}
+
+			<div class="card-footer">
+				<div class="col-md-6 offset-md-4 float-right">
+				<a class="btn btn-primary float-right" href="{{ route('modulos.novo') }}" role="button">Novo Módulo</a>
+				</div>
+			</div>
 		</div>
+		
+
+
 	</div>
 	<!-- /.card -->
 	{{-- @push('scripts')
