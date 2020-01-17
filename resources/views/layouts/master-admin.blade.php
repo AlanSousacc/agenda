@@ -241,8 +241,8 @@
 							</a>
 							<ul class="nav nav-treeview">
 								<li class="nav-item">
-									<a href="{{ route('modulos.list') }}" class="nav-link">
-										<i class="fa fa-sliders-h nav-icon"></i>
+                  <a href="{{ route('modulos.list') }}" class="nav-link">
+										<i class="fa fa-folder-minus nav-icon"></i>
 										<p>Módulos</p>
 									</a>
 								</li>

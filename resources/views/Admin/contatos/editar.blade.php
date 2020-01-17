@@ -18,7 +18,7 @@
     </div>
 	</div>
 	{{-- Detalhar --}}
-	@include('Admin.movimentacao.entradas.modalVisualizarEntrada')
+	@include('Admin.movimentacao.modalVisualizar')
 </div>
 
 @push('scripts')

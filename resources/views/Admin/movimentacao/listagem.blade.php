@@ -13,7 +13,7 @@
 					<li class="nav-item">
 						<a class="nav-link active" id="custom-tabs-three-entradas-tab" data-toggle="pill" href="#custom-tabs-three-entradas" role="tab" aria-controls="custom-tabs-three-home" aria-selected="true">Entradas</a>
 					</li>
-					
+
 					<li class="nav-item">
 						<a class="nav-link" id="custom-tabs-three-saidas-tab" data-toggle="pill" href="#custom-tabs-three-saidas" role="tab" aria-controls="custom-tabs-three-saidas" aria-selected="false">Saídas</a>
 					</li>
@@ -49,20 +49,24 @@
 											Ação
 										</button>
 										<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-											@if (Auth::user()->profile == 'Administrador' )
-											<a class="dropdown-item" href="{{$item->id}}"
-												data-movid="{{$item->id}}"
-												data-contato="{{$item->contato->nome}}"
-												data-pagamento="{{$item->condicao_pagamento->nome}}"
-												data-observacao="{{$item->observacao}}"
-												data-valortotal="{{$item->valortotal}}"
-												data-movimented_at="{{$item->movimented_at}}"
-												data-target="#visualizar"
-												data-toggle="modal"> Visualizar <i class="fab fa-wpforms"></i></a>
-												<div class="dropdown-divider"></div>
-												<a class="dropdown-item" href="{{$item->id}}" data-contid={{$item->id}} data-target="#delete" data-toggle="modal">Excluir <i class="fa fa-trash"></i></a>
-												@endif
-											</div>
+                      @if (Auth::user()->profile == 'Administrador' )
+                      <a class="dropdown-item" href="{{$item->id}}"
+                        data-movid="{{$item->id}}"
+                        data-tipo="{{$item->tipo}}"
+                        data-contato_id="{{$item->contato->id}}"
+                        data-user_id="{{$item->user->id}}"
+                        data-condicao_pagamento_id="{{$item->condicao_pagamento->id}}"
+                        data-observacao="{{$item->observacao}}"
+                        data-valortotal="{{$item->valortotal}}"
+                        data-valorrecebido="{{$item->valorrecebido}}"
+                        data-valorpendente="{{$item->valorpendente}}"
+                        data-movimented_at="{{$item->movimented_at}}"
+                        data-target="#visualizar"
+                        data-toggle="modal"> Visualizar <i class="fab fa-wpforms"></i></a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{$item->id}}" data-contid={{$item->id}} data-target="#delete" data-toggle="modal">Excluir <i class="fa fa-trash"></i></a>
+                        @endif
+                      </div>
 										</div>
 									</td>
 								</tr>
@@ -85,19 +89,19 @@
 						</div>
 					</div>
 					{{-- fim campos entradas --}}
-					
+
 					{{-- campos saidas --}}
 					<div class="tab-pane fade" id="custom-tabs-three-saidas" role="tabpanel" aria-labelledby="custom-tabs-three-saidas-tab">
 						<table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
 							<thead>
 								<tr>
-									<th class="text-center" >Contato</th>
-									<th class="text-center" >Cond. Pag.</th>
-									<th class="text-center" >Dt Movimentação</th>
-									<th class="text-center" >Valor Total</th>
-									<th class="text-center" >Valor Pago</th>
-									<th class="text-center" >Valor Restante</th>
-									<th class="text-center" >Opções</th>
+									<th class="text-center">Contato</th>
+									<th class="text-center">Cond. Pag.</th>
+									<th class="text-center">Dt Movimentação</th>
+									<th class="text-center">Valor Total</th>
+									<th class="text-center">Valor Pago</th>
+									<th class="text-center">Valor Restante</th>
+									<th class="text-center">Opções</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -118,10 +122,14 @@
 												@if (Auth::user()->profile == 'Administrador' )
 												<a class="dropdown-item" href="{{$item->id}}"
 													data-movid="{{$item->id}}"
-													data-contato="{{$item->contato->nome}}"
-													data-pagamento="{{$item->condicao_pagamento->nome}}"
+													data-tipo="{{$item->tipo}}"
+													data-contato_id="{{$item->contato->nome}}"
+													data-user_id="{{$item->user->name}}"
+													data-condicao_pagamento_id="{{$item->condicao_pagamento->nome}}"
 													data-observacao="{{$item->observacao}}"
 													data-valortotal="{{$item->valortotal}}"
+													data-valorrecebido="{{$item->valorrecebido}}"
+													data-valorpendente="{{$item->valorpendente}}"
 													data-movimented_at="{{$item->movimented_at}}"
 													data-target="#visualizar"
 													data-toggle="modal"> Visualizar <i class="fab fa-wpforms"></i></a>
@@ -156,15 +164,14 @@
 			</div>
 		<!-- Modal editar-->
 		@include('Admin.movimentacao.modalVisualizar')
-		
+
 		{{-- modal Deletar--}}
 		@include('Admin.movimentacao.modalExcluir')
-		
+
 		<div class="row" >
 			<div class="col-md-12 mb-3">
-				<a href="{{route('movimentacao.createOut')}}" class="btn btn-outline-danger btn-lg float-right">Nova Saída</a>
-				<a href="{{route('movimentacao.createIn')}}" class="btn btn-outline-success btn-lg float-right mr-3">Nova Entrada</a>
-				{{-- <button class="btn btn-outline-success btn-lg float-right mr-3">Nova Entrada</button> --}}
+				<a href="{{route('movimentacao.createOut')}}" class="btn btn-danger btn-lg float-right mr-2">Nova Saída</a>
+				<a href="{{route('movimentacao.createIn')}}" class="btn btn-success btn-lg float-right mr-3">Nova Entrada</a>
 			</div>
 		</div>
 	</div>
