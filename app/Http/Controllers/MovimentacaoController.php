@@ -19,22 +19,35 @@ class MovimentacaoController extends Controller
   public function index()
   {
     $user 		  = Auth::user()->empresa_id;
-    $consulta   = Movimento::where('empresa_id', '=', $user)->paginate(10);
-    $total      = $consulta->sum('valortotal');
+    $movIn   		= Movimento::where('empresa_id', '=', $user)->where('tipo', '=', 'Entrada')->paginate(10);
+    $movOut   	= Movimento::where('empresa_id', '=', $user)->where('tipo', '=', 'Saída')->paginate(10);
+    $totalIn    = $movIn->sum('valortotal');
+    $totalOut   = $movOut->sum('valortotal');
 
     $contatos   = Contato::where('empresa_id', '=', $user)->get();
     $pagamento  = Condicao_pagamento::all();
 
-    return view('Admin.movimentacao.listagem', compact('consulta', 'contatos', 'pagamento', 'total'));
+    return view('Admin.movimentacao.listagem', compact('movIn', 'movOut', 'contatos', 'pagamento', 'totalIn', 'totalOut'));
   }
 
-  public function create()
+	// gera tela de cadastro de movimentação de entrada
+  public function createIn()
   {
-    $user 		 = Auth::user();
-    $contatos  = Contato::where('empresa_id', '=', $user->empresa_id)->get();
+    $user 		 = Auth::user()->empresa_id;
+    $contatos  = Contato::where('empresa_id', '=', $user)->where('tipocontato', '!=', 'Fornecedor')->get();
 		$pagamento = Condicao_pagamento::all();
 
-    return view('Admin.movimentacao.novaMovimentacao', compact('contatos', 'pagamento', 'user'));
+    return view('Admin.movimentacao.novaMovimentacao', compact('contatos', 'pagamento'));
+	}
+	
+	// gera tela de cadastro de movimentação de saída
+	public function createOut()
+  {
+    $user 		 = Auth::user()->empresa_id;
+    $contatos  = Contato::where('empresa_id', '=', $user)->where('tipocontato', '=', 'Fornecedor')->get();
+		$pagamento = Condicao_pagamento::all();
+
+    return view('Admin.movimentacao.novaMovimentacao', compact('contatos', 'pagamento'));
   }
 
   public function store(MovimentacaoRequest $request)
@@ -50,7 +63,7 @@ class MovimentacaoController extends Controller
       $mov->contato_id     				= $data['contato_id'];
       $mov->empresa_id     				= $user->empresa_id;
       $mov->condicao_pagamento_id = $data['condicao_pagamento_id'];
-			$mov->tipo      						= 'Entrada';
+			$mov->tipo      						= $data['tipo'];
 			$mov->observacao         		= $data['observacao'];
 			$mov->valortotal      			= $data['valortotal'];
 			$mov->valorrecebido      		= $data['valorrecebido'];

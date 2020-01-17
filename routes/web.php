@@ -1,7 +1,5 @@
 <?php
-
 // Route::get('/home', 'HomeController@index')->name('home');
-
 Route::get('/', 'FullCalendarController@index')->name('index');
 Route::get('/load-events', 'EventController@loadEvents')->name('routeLoadEvents');
 Route::put('/event-update', 'EventController@update')->name('routeEventUpdate');
@@ -31,15 +29,18 @@ Route::delete('/users-delete', 'UserController@destroy')->name('routeUserDelete'
 
 // movimentacoes
 Route::get('movimentacao', 'MovimentacaoController@index')->name('movimentação.index');
-Route::get('movimentacao/create', 'MovimentacaoController@create')->name('movimentacao.create');
+Route::get('movimentacao/create/entrada', 'MovimentacaoController@createIn')->name('movimentacao.createIn');
+Route::get('movimentacao/create/saida', 'MovimentacaoController@createOut')->name('movimentacao.createOut');
 Route::post('movimentacao', 'MovimentacaoController@store')->name('movimentacao.store');
 Route::get('relatorio-mes', 'MovimentacaoController@listagemEntradas')->name('relatorio.mes.atual');
 Route::any('relatorio-periodo-contato', 'MovimentacaoController@relPeriodo')->name('relatorio.periodo.contato');
-// Route::get('relatorios', 'MovimentacaoController@listagemEntradas')->name('relatorios');
+
 
 // módulos do sistema
-Route::get('modulos', 'ModuloController@index')->name('routeModulosList');
+// Route::get('modulos', 'ModuloController@index')->name('routeModulosList');
+Route::get('modulos', 'ModuloController@index')->name('modulos.list');
+Route::get('modulos/novo', 'ModuloController@create')->name('modulos.novo');
+Route::post('modulos/salvar', 'ModuloController@store')->name('modulos.store');
 
 Auth::routes();
-
 Auth::routes(['verify' => true]);
