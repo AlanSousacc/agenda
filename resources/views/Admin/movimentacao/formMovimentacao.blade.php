@@ -3,11 +3,20 @@
     <div class="form-group">
       <label for="tipo">Tipo Mov.</label>
       <div class="input-group">
+				@if (\Request::route()->getName() == "movimentacao.createIn")
         <select class="form-control tipo" id="tipo" name="tipo" required value="{{old('tipo')}}">
-          <option value="">Tipo de movimentação</option>
           <option value="Entrada">Entrada</option>
-          <option value="Entrada">Saída</option>
-        </select>
+				</select>
+				@elseif(\Request::route()->getName() == "movimentacao.createOut")
+				<select class="form-control tipo" id="tipo" name="tipo" required value="{{old('tipo')}}">
+          <option value="Saída">Saída</option>
+				</select>
+				@else
+				<select class="form-control tipo" id="tipo" name="tipo" required value="{{old('tipo')}}">
+          <option value="Entrada">Entrada</option>
+          <option value="Saída">Saída</option>
+				</select>
+				@endif
       </div>
     </div>
   </div>
@@ -17,7 +26,7 @@
 			<div class="form-group">
 				<label for="user_id">Usuário: </label>
 				<div class="input-group">
-					<input type="text" readonly class="form-control user_id" id="user_id" value="{{$user->name}}" name="user_id">
+					<input type="text" readonly class="form-control user_id" id="user_id" value="{{\Auth::user()->name}}" name="user_id">
 				</div>
 			</div>
 		</div>
@@ -25,7 +34,7 @@
 </div>
 
 <div class="row">
-  <div class="col-md-12">
+  <div class="col-md-6">
     <div class="form-group">
       <label for="contato_id">Escolha um Contato</label>
       <div class="input-group">
@@ -37,11 +46,9 @@
         </select>
       </div>
     </div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-md-12">
+	</div>
+	
+  <div class="col-md-6">
     <div class="form-group">
       <label for="condicao_pagamento_id">Forma de Pagamento</label>
       <div class="input-group">
@@ -77,7 +84,13 @@
   </div>
 
   <div class="col-md-4">
-    <label for="valorrecebido" class="col-sm-12 col-form-label">Valor Recebido</label>
+		@if (\Request::route()->getName() == "movimentacao.createIn")
+		<label for="valorrecebido" class="col-sm-12 col-form-label">Valor Recebido</label>
+		@elseif(\Request::route()->getName() == "movimentacao.createOut")
+		<label for="valorrecebido" class="col-sm-12 col-form-label">Valor Pago</label>
+		@else
+		<label for="valorrecebido" class="col-sm-12 col-form-label">Valor Pago</label>
+		@endif
     <div class="input-group input-group-lg">
       <div class="input-group-prepend">
         <span class="input-group-text">R$</span>
@@ -85,7 +98,7 @@
       <input type="text" name="valorrecebido" class="form-control valorrecebido" id="valorrecebido">
     </div>
 	</div>
-
+	@if (\Request::route()->getName() != "movimentacao.createIn" && \Request::route()->getName() != "movimentacao.createOut")
 	<div class="col-md-4">
     <label for="valorpendente" class="col-sm-12 col-form-label">Valor Débito</label>
     <div class="input-group input-group-lg">
@@ -94,5 +107,6 @@
       </div>
       <input type="text" name="valorpendente" class="form-control valorpendente" id="valorpendente">
     </div>
-  </div>
+	</div>
+	@endif
 </div>

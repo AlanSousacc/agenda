@@ -95,8 +95,8 @@
     },
     "linkedCalendars": false,
     "autoUpdateInput": false,
-    "startDate": "12/10/2019",
-    "endDate": "12/16/2019",
+    // "startDate": "12/10/2019",
+    // "endDate": "12/16/2019",
     "opens": "center",
     "applyButtonClasses": "btn-success"
   }, function(start, end, label) {
@@ -151,8 +151,8 @@
     },
     "linkedCalendars": false,
     "autoUpdateInput": false,
-    "startDate": "12/10/2019",
-    "endDate": "12/16/2019",
+    // "startDate": "12/10/2019",
+    // "endDate": "12/16/2019",
     "opens": "center",
     "applyButtonClasses": "btn-success"
   }, function(start, end, label) {
