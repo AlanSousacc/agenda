@@ -37,13 +37,17 @@ Route::any('relatorio-periodo-contato', 'MovimentacaoController@relPeriodo')->na
 
 
 // módulos do sistema
-// Route::get('modulos', 'ModuloController@index')->name('routeModulosList');
 Route::get('modulos', 'ModuloController@index')->name('modulos.list');
 Route::get('modulos/novo', 'ModuloController@create')->name('modulos.novo');
 Route::post('modulos/salvar', 'ModuloController@store')->name('modulos.store');
 Route::delete('modulos/delete', 'ModuloController@destroy')->name('modulos.destroy');
 Route::get('modulos/edit/{id}', 'ModuloController@edit')->name('modulos.edit');
 Route::put('modulos/update/{id}', 'ModuloController@update')->name('modulos.update');
+
+// centros de custo
+Route::get('centrodecusto', 'CentroCustoController@index')->name('cc.list');
+Route::get('centrodecusto/novo', 'CentroCustoController@create')->name('cc.novo');
+Route::post('centrodecusto/salvar', 'CentroCustoController@store')->name('cc.store');
 
 Auth::routes();
 Auth::routes(['verify' => true]);

@@ -9,7 +9,7 @@
 	<div class="card">
 		<div class="card-header">
 			<div class="com-md-6">
-				<h3 class="card-title mt-md-2"> Listagem de Módulos do Sistema</h3>
+				<h3 class="card-title mt-md-2"> Listagem de Centro de Custo</h3>
 			</div>
 			
 			<div class="com-md-6 float-md-right search">
@@ -28,27 +28,39 @@
 			<thead>
 				<tr>
 					<th class="text-center" style="width: 50px;" >#ID</th>
-					<th class="th-sm" style="width: 200px;" >Nome</th>
-					<th class="th-sm" style="width: 120px;" >Descrição</th>
+					<th class="th-sm" style="width: 75px;" >Tipo</th>
+					<th class="text-center" style="width: 50px;" >#</th>
+					<th class="th-sm" style="width: 250px;" >Descrição</th>
+					<th class="th-sm" style="width: 120px;" >Criado em</th>
+					<th class="th-sm" style="width: 120px;" >Atualizado em</th>
 					<th class="text-center" style="width: 120px;" >Opções</th>
 				</tr>
 			</thead>
 			<tbody>
-				@foreach ($consulta as $modulo)
+				@foreach ($consulta as $cc)
 				<tr role="row" class="odd">
-					<td class="text-center">{{$modulo->id}}</td>
-					<td class="sorting_1">{{$modulo->nome}}</td>
-					<td>{{$modulo->descricao}}</td>
+					<td class="text-center">{{$cc->id}}</td>
+					<td class="sorting_1">{{$cc->tipo}}</td>
+					<td class="text-center">
+							@if ( $cc->tipo == 'Receita')
+								<i class="fa fa-arrow-alt-circle-up fa-lg" style="color:green"></i>
+							@else
+								<i class="fa fa-arrow-alt-circle-down fa-lg" style="color:red"></i>
+							@endif
+						</td>
+					<td>{{$cc->descricao}}</td>
+					<td>{{ date('d/m/Y H:m', strtotime($cc->created_at)) }}</td>
+          <td>{{ date('d/m/Y H:m', strtotime($cc->updated_at)) }}</td>
 					<td class="text-center" style="padding: 0.45rem">
 						<div class="dropdown">
 							<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								Ação
 							</button>
-							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+								{{-- <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 									<a class="dropdown-item" href="{{ route('modulos.edit', $modulo->id) }}"> Editar <i class="fa fa-edit"></i></a>
 									<div class="dropdown-divider"></div>
 									<a class="dropdown-item" href="{{$modulo->id}}" data-moduloid={{$modulo->id}} data-target="#delete" data-toggle="modal">Excluir <i class="fa fa-trash"></i></a>
-								</div> 
+								</div>  --}}
 							</div>
 						</td>
 					</tr>
@@ -65,12 +77,12 @@
 			</div>  --}}
 
 			{{-- modal Deletar--}}
-			@include('Admin.modulos.modalExcluir')
+			{{-- @include('Admin.modulos.modalExcluir') --}}
 
 
 			<div class="card-footer">
 				<div class="col-md-6 offset-md-4 float-right">
-				<a class="btn btn-primary float-right" href="{{ route('modulos.novo') }}" role="button">Novo Módulo</a>
+				<a class="btn btn-primary float-right" href="{{ route('cc.novo') }}" role="button">Novo Centro de Custo</a>
 				</div>
 			</div>
 		</div>
@@ -80,7 +92,7 @@
 	</div>
 	<!-- /.card -->
 	@push('scripts')
-	<script src='{{asset('admin/js/modulo/modulo.js')}}'></script>
+	{{-- <script src='{{asset('admin/js/modulo/modulo.js')}}'></script> --}}
 	@endpush
 
 
