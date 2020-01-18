@@ -239,6 +239,19 @@
 									Configurações
 								</p>
 							</a>
+							
+							@if (Auth::user()->profile == 'Administrador')
+							<ul class="nav nav-treeview">
+								<li class="nav-item">
+                  <a href="{{ route('cc.list') }}" class="nav-link">
+										<i class="fa fa-money-check-alt nav-icon"></i>
+										<p>Centro de Custo</p>
+									</a>
+								</li>
+							</ul>
+							@endif
+
+							@if (Auth::user()->isAdmin == 1)
 							<ul class="nav nav-treeview">
 								<li class="nav-item">
                   <a href="{{ route('modulos.list') }}" class="nav-link">
@@ -247,6 +260,8 @@
 									</a>
 								</li>
 							</ul>
+							@endif
+							
 						</li>
 					</nav>
 					<!-- /.sidebar-menu -->
