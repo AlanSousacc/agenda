@@ -20,21 +20,24 @@ class ModuloController extends Controller
 	// LISTAGEM DE MÓDULOS
 	public function index()
   {
-		
-		//  $user 		  = Auth::user()->empresa_id;
-    //  $consulta   = Modulo::where('empresa_id', '=', $user)->paginate(10);
+		try{
+			if(Auth::user()->isAdmin == 0){
+				throw new Exception("Este usuário não tem permissão para acessar esta página!");
+			}
+
     $consulta   = Modulo::orderBy('id')->paginate(10);
-    // $total      = $consulta->sum('valor');
+			return view('Admin.modulos.listagem', compact('consulta'));
 
-    return view('Admin.modulos.listagem', compact('consulta'));
+		} catch (Exception $e) {
+			 return redirect()->back()->with('error', $e->getMessage());
+			exit();
+    }
 	}
-
 	// CHAMA FORMULÁRIO PARA CRIAR UM NOVO MÓDULO
 	public function create(){
     return view('Admin.modulos.novo');
 	}
 	
-
 	// SALVA O NOVO MÓDULO
 	public function store(ModuloRequest $request)
   {
@@ -66,6 +69,22 @@ class ModuloController extends Controller
       return redirect()->route('modulos.list')->with('error', $e->getMessage());
     }
 	}
+
+	
+	public function edit($id)
+	{
+			$consulta = Modulo::find($id);
+			return view('Admin.modulos.editar',compact('consulta'));
+	}
+
+	public function update(ModuloRequest $request, $id)
+	{
+			$mod = Modulo::find($id);
+			$mod->nome       = $request->nome;
+			$mod->descricao  = $request->descricao;      
+			$mod->save();
+			return redirect()->route('modulos.list')->with('success', 'Módulo #' . $mod->id . ' atualizado com sucesso!');
+	}
 	
 	// DELETA UM MÓDULO
 	public function destroy(Request $request)
@@ -73,15 +92,11 @@ class ModuloController extends Controller
     try{
 			$modulo = Modulo::find($request->modulo_id);
 
-      // verifica se este modulo esta vinculado a algo
-      // $event = DB::table('modulos')
-      // ->join('events', 'contatos.id', '=', 'events.contato_id')->whereRaw('events.contato_id = '. $request->contato_id)->get();
-
       if (!$modulo)
         throw new Exception("Nenhum módulo encontrado");
 
-      if(Auth::user()->isadmin != 1)
-        throw new Exception("Este usuário não tem permissão para remover contatos!");
+      if(Auth::user()->isAdmin == 0)
+        throw new Exception("Este usuário não tem permissão para remover Módulos!");
 
       // if (count($event) > 0)
       //   throw new Exception("Este módulo está vinculado a um perfil!");

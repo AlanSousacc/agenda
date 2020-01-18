@@ -41,6 +41,9 @@ Route::any('relatorio-periodo-contato', 'MovimentacaoController@relPeriodo')->na
 Route::get('modulos', 'ModuloController@index')->name('modulos.list');
 Route::get('modulos/novo', 'ModuloController@create')->name('modulos.novo');
 Route::post('modulos/salvar', 'ModuloController@store')->name('modulos.store');
+Route::delete('modulos/delete', 'ModuloController@destroy')->name('modulos.destroy');
+Route::get('modulos/edit/{id}', 'ModuloController@edit')->name('modulos.edit');
+Route::put('modulos/update/{id}', 'ModuloController@update')->name('modulos.update');
 
 Auth::routes();
 Auth::routes(['verify' => true]);
