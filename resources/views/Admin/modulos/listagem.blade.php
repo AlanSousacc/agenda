@@ -44,33 +44,31 @@
 							<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								Ação
 							</button>
-							{{-- <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-								@if (Auth::user()->profile == 'Administrador' )
-								<a class="dropdown-item" href="{{$modulo->id}}"> Editar <i class="fa fa-edit"></i></a>
+							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+									<a class="dropdown-item" href="{{ route('modulos.edit', $modulo->id) }}"> Editar <i class="fa fa-edit"></i></a>
 									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="{{$modulo->id}}" data-contid={{$modulo->id}} data-target="#delete" data-toggle="modal">Excluir <i class="fa fa-trash"></i></a>
-									@endif
-								</div> --}}
+									<a class="dropdown-item" href="{{$modulo->id}}" data-moduloid={{$modulo->id}} data-target="#delete" data-toggle="modal">Excluir <i class="fa fa-trash"></i></a>
+								</div> 
 							</div>
 						</td>
 					</tr>
 					@endforeach
 				</tbody>
 			</table>
-			{{-- <div class="row">
+			{{--  <div class="row">
 				<div class="col-md-6 pl-4 mt-md-2"><p>Mostrando {{$consulta->count()}} contatos de um total de {{$consulta->total()}}</p></div>
 				@if (isset($modulo))
 				<div class="col-md-6 pr-4">{{$consulta->appends($modulo)->links()}}</div>
 				@else
 				<div class="col-md-6 pr-4">{{$consulta->links()}}</div>
 				@endif
-			</div> --}}
+			</div>  --}}
 			
 			<!-- Modal editar-->
 			{{-- @include('Admin.contatos.modalEditar') --}}
 			
 			{{-- modal Deletar--}}
-			{{-- @include('Admin.contatos.modalExcluir') --}}
+			@include('Admin.modulos.modalExcluir')
 			{{-- Modal --}}
 
 			<div class="card-footer">
@@ -84,9 +82,11 @@
 
 	</div>
 	<!-- /.card -->
-	{{-- @push('scripts')
-	<script src='{{asset('admin/js/contato/contato.js')}}'></script>
-	@endpush --}}
+	@push('scripts')
+	<script src='{{asset('admin/js/modulo/modulo.js')}}'></script>
+	@endpush
+
+
 	@endsection
 	
 	

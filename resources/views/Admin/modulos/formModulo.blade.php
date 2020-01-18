@@ -17,7 +17,7 @@
               <div class="form-group">
                 <label for="nome">Nome do Módulo</label>
                 <div class="input-group">
-                  <input type="text" class="form-control nome" id="nome" placeholder="Digite o nome do módulo" name="nome" autofocus minlength="3" maxlength="30">
+                  <input type="text" class="form-control nome" id="nome" placeholder="Digite o nome do módulo" name="nome" autofocus minlength="5" maxlength="30">
                 </div>
               </div>
             </div>
