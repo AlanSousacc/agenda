@@ -81,62 +81,35 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 7);
+/******/ 	return __webpack_require__(__webpack_require__.s = 11);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/movimentacao/movimentacao.js":
-/*!***************************************************!*\
-  !*** ./resources/js/movimentacao/movimentacao.js ***!
-  \***************************************************/
+/***/ "./resources/js/centrocusto/centrocusto.js":
+/*!*************************************************!*\
+  !*** ./resources/js/centrocusto/centrocusto.js ***!
+  \*************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-$('#visualizar').on('show.bs.modal', function (event) {
+$('#delete').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget);
-  var movid = button.data('movid');
-  var tipo = button.data('tipo');
-  var contato_id = button.data('contato_id');
-  var centrocusto_id = button.data('centrocusto_id');
-  var user_id = button.data('user_id');
-  var condicao_pagamento_id = button.data('condicao_pagamento_id');
-  var observacao = button.data('observacao');
-  var valortotal = button.data('valortotal');
-  var valorrecebido = button.data('valorrecebido');
-  var valorpendente = button.data('valorpendente');
-  var movimented_at = button.data('movimented_at');
-  var status = button.data('status');
+  var centroid = button.data('centroid');
   var modal = $(this);
-  modal.find('.modal-body #contato_id').val(contato_id).prop("disabled", true);
-  modal.find('.modal-body #centrocusto_id').val(centrocusto_id).prop("disabled", true);
-  modal.find('.modal-body #tipo').val(tipo).prop("disabled", true);
-  modal.find('.modal-body #user_id').val(user_id).prop("disabled", true);
-  modal.find('.modal-body #condicao_pagamento_id').val(condicao_pagamento_id).prop("disabled", true);
-  modal.find('.modal-body #observacao').val(observacao).prop("disabled", true);
-  modal.find('.modal-body #valortotal').val(valortotal).prop("disabled", true);
-  modal.find('.modal-body #valorrecebido').val(valorrecebido).prop("disabled", true);
-  modal.find('.modal-body #valorpendente').val(valorpendente).prop("disabled", true);
-  modal.find('.modal-body #movimented_at').val(movimented_at).prop("disabled", true);
-  modal.find('.modal-body #status').val(status).prop("disabled", true);
-  modal.find('.modal-body #movid').val(movid);
-});
-$(document).ready(function () {
-  $('#valorpendente').mask('000.000.000.000.000,00');
-  $('#valortotal').mask('000.000.000.000.000,00');
-  $('#valorrecebido').mask('000.000.000.000.000,00');
+  modal.find('.modal-body #centroid').val(centroid);
 });
 
 /***/ }),
 
-/***/ 7:
-/*!*********************************************************!*\
-  !*** multi ./resources/js/movimentacao/movimentacao.js ***!
-  \*********************************************************/
+/***/ 11:
+/*!*******************************************************!*\
+  !*** multi ./resources/js/centrocusto/centrocusto.js ***!
+  \*******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! Z:\Laragon\www\agenda\resources\js\movimentacao\movimentacao.js */"./resources/js/movimentacao/movimentacao.js");
+module.exports = __webpack_require__(/*! Z:\Laragon\www\agenda\resources\js\centrocusto\centrocusto.js */"./resources/js/centrocusto/centrocusto.js");
 
 
 /***/ })

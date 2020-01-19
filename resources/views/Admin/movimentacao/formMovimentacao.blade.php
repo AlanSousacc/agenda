@@ -1,14 +1,14 @@
 <div class="row">
-  <div class="col-md-3">
+  <div class="col-md-4">
     <div class="form-group">
       <label for="tipo">Tipo Mov.</label>
       <div class="input-group">
         @if (\Request::route()->getName() == "movimentacao.createIn")
-        <select class="form-control tipo" id="tipo" name="tipo" required value="{{old('tipo')}}">
+        <select readonly class="form-control tipo" id="tipo" name="tipo" required value="{{old('tipo')}}">
           <option value="Entrada">Entrada</option>
         </select>
         @elseif(\Request::route()->getName() == "movimentacao.createOut")
-        <select class="form-control tipo" id="tipo" name="tipo" required value="{{old('tipo')}}">
+        <select readonly class="form-control tipo" id="tipo" name="tipo" required value="{{old('tipo')}}">
           <option value="Saída">Saída</option>
         </select>
         @else
@@ -21,7 +21,7 @@
     </div>
   </div>
 
-  <div class="col-md-3">
+  <div class="col-md-4">
     <div class="form-group">
       <label for="user_id">Usuário: </label>
       <div class="input-group">
@@ -30,20 +30,24 @@
     </div>
   </div>
 
-  <div class="col-md-3">
+  <div class="col-md-4">
     <div class="form-group">
       <label for="movimented_at">Data Movimentação: </label>
       <div class="input-group">
         <input type="text" readonly class="form-control movimented_at" id="movimented_at" value="{{old('movimented_at')}}" name="movimented_at">
       </div>
     </div>
-  </div>
+	</div>
+
 </div>
 
+
+
 <div class="row">
-  <div class="col-md-6">
+
+  <div class="col-md-4">
     <div class="form-group">
-      <label for="contato_id">Escolha um Contato</label>
+      <label for="contato_id">Nome do Contato:</label>
       <div class="input-group">
         <select class="form-control contato_id" id="contato_id" name="contato_id" value="{{old('contato_id')}}" required>
           <option value="">Escolha um Contato</option>
@@ -55,9 +59,9 @@
     </div>
   </div>
 
-  <div class="col-md-6">
+  <div class="col-md-4">
     <div class="form-group">
-      <label for="condicao_pagamento_id">Forma de Pagamento</label>
+      <label for="condicao_pagamento_id">Forma de Pagamento:</label>
       <div class="input-group">
         <select class="form-control condicao_pagamento_id" id="condicao_pagamento_id" name="condicao_pagamento_id" value="{{old('condicao_pagamento_id')}}" required>
           <option value="">Condição de Pagamento</option>
@@ -67,7 +71,22 @@
         </select>
       </div>
     </div>
+	</div>
+	
+	<div class="col-md-4">
+    <div class="form-group">
+      <label for="centrocusto_id">Centro de Custo:</label>
+      <div class="input-group">
+        <select class="form-control centrocusto_id" id="centrocusto_id" name="centrocusto_id" value="{{old('centrocusto_id')}}" required>
+          <option value="">Escolha um Centro de Custo</option>
+          @foreach ($centro as $cc)
+          	<option id="{{$cc->id}}" value="{{$cc->id}}">{{$cc->descricao}}</option>
+          @endforeach
+        </select>
+      </div>
+    </div>
   </div>
+
 </div>
 
 <div class="row">

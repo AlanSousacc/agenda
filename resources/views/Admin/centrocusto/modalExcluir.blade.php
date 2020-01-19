@@ -5,12 +5,12 @@
 				<button type="button" class="close" data-dismiss="modal" style="color:#fff">&times;</button>
 				<h4 class="modal-title text-center">Confirmação de exclusão</h4>
 			</div>
-			<form action="{{route('modulos.destroy', 'id')}}" method="post">
+			<form action="{{route('cc.destroy', 'id')}}" method="post">
 				{{method_field('delete')}}
 				{{ csrf_field() }}
 				<div class="modal-body">
-					<p class="text-center">Você tem certeza que deseja excluir este Módulo?</p>
-					<input type="hidden" name="modulo_id" id="moduloid" value="">
+					<p class="text-center">Você tem certeza que deseja excluir este Centro de Custo?</p>
+					<input type="hidden" name="centrocusto_id" id="centroid" value="">
 				</div>
 				<div class="modal-footer">
 					<center>

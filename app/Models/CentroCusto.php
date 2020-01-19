@@ -9,7 +9,7 @@ class CentroCusto extends Model
 {
 	protected $table      = 'centro_custo';
 	protected $primaryKey = 'id';
-	protected $guarded 		= ['id', 'empresaIid', 'created_at', 'update_at'];
+	protected $guarded 		= ['id', 'empresa_id', 'created_at', 'update_at'];
 	protected $filable 		= [
 		'tipo',
 		'descricao',

@@ -4,6 +4,7 @@ $('#visualizar').on('show.bs.modal', function (event) {
   var movid         	      = button.data('movid');
   var tipo         	        = button.data('tipo');
   var contato_id     	      = button.data('contato_id');
+  var centrocusto_id 	      = button.data('centrocusto_id');
   var user_id       	      = button.data('user_id');
   var condicao_pagamento_id = button.data('condicao_pagamento_id');
   var observacao    	      = button.data('observacao');
@@ -15,6 +16,7 @@ $('#visualizar').on('show.bs.modal', function (event) {
   var modal         	      = $(this);
 
   modal.find('.modal-body #contato_id').val(contato_id).prop("disabled", true);
+  modal.find('.modal-body #centrocusto_id').val(centrocusto_id).prop("disabled", true);
   modal.find('.modal-body #tipo').val(tipo).prop("disabled", true);
   modal.find('.modal-body #user_id').val(user_id).prop("disabled", true);
   modal.find('.modal-body #condicao_pagamento_id').val(condicao_pagamento_id).prop("disabled", true);

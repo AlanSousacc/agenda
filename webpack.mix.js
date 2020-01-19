@@ -6,9 +6,10 @@ mix
   .js('resources/js/bootstrap/js/bootstrap.bundle.js', 'public/admin/js')
 	.js('resources/js/adminlte.js', 'public/admin/js')
 	.js('resources/js/contato/contato.js', 'public/admin/js/contato')
-	.js('resources/js/modulo/modulo.js', 'public/admin/js/modulo')
 	.js('resources/js/empresa/empresa.js', 'public/admin/js/empresa')
 	.js('resources/js/users/users.js', 'public/admin/js/users')
 	.js('resources/js/movimentacao/movimentacao.js', 'public/admin/js/movimentacao')
 	.js('resources/js/movimentacao/jquery.maskMoney.js', 'public/admin/js/movimentacao')
-	.js('resources/js/movimentacao/consultapersonalizada.js', 'public/admin/js/movimentacao');
+	.js('resources/js/movimentacao/consultapersonalizada.js', 'public/admin/js/movimentacao')
+	.js('resources/js/modulo/modulo.js', 'public/admin/js/modulo')
+	.js('resources/js/centrocusto/centrocusto.js', 'public/admin/js/centrocusto');

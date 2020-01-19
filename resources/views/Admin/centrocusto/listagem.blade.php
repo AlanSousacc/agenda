@@ -37,7 +37,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				@foreach ($consulta as $cc)
+				@foreach ($centro as $cc)
 				<tr role="row" class="odd">
 					<td class="text-center">{{$cc->id}}</td>
 					<td class="sorting_1">{{$cc->tipo}}</td>
@@ -56,33 +56,35 @@
 							<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								Ação
 							</button>
-								{{-- <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-									<a class="dropdown-item" href="{{ route('modulos.edit', $modulo->id) }}"> Editar <i class="fa fa-edit"></i></a>
+								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+									<a class="dropdown-item" href="{{ route('cc.edit', $cc->id) }}"> Editar <i class="fa fa-edit"></i></a>
 									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="{{$modulo->id}}" data-moduloid={{$modulo->id}} data-target="#delete" data-toggle="modal">Excluir <i class="fa fa-trash"></i></a>
-								</div>  --}}
+									<a class="dropdown-item" href="{{$cc->id}}" data-centroid={{$cc->id}} data-target="#delete" data-toggle="modal">Excluir <i class="fa fa-trash"></i></a>
+								</div>
 							</div>
 						</td>
 					</tr>
 					@endforeach
 				</tbody>
 			</table>
-			{{--  <div class="row">
-				<div class="col-md-6 pl-4 mt-md-2"><p>Mostrando {{$consulta->count()}} contatos de um total de {{$consulta->total()}}</p></div>
+
+			<!-- Paginator - Configurado com a consulta. -->
+			<!-- <div class="row">
+				<div class="col-md-6 pl-4 mt-md-2"><p>Mostrando {{$centro->count()}} contatos de um total de {{$centro->total()}}</p></div>
 				@if (isset($modulo))
-				<div class="col-md-6 pr-4">{{$consulta->appends($modulo)->links()}}</div>
+					<div class="col-md-6 pr-4">{{$centro->appends($modulo)->links()}}</div>
 				@else
-				<div class="col-md-6 pr-4">{{$consulta->links()}}</div>
+					<div class="col-md-6 pr-4">{{$centro->links()}}</div>
 				@endif
-			</div>  --}}
+			</div>  -->
 
 			{{-- modal Deletar--}}
-			{{-- @include('Admin.modulos.modalExcluir') --}}
+			@include('Admin.centrocusto.modalExcluir')
 
 
 			<div class="card-footer">
 				<div class="col-md-6 offset-md-4 float-right">
-				<a class="btn btn-primary float-right" href="{{ route('cc.novo') }}" role="button">Novo Centro de Custo</a>
+					<a class="btn btn-primary float-right" href="{{ route('cc.novo') }}" role="button">Novo Centro de Custo</a>
 				</div>
 			</div>
 		</div>
@@ -92,7 +94,7 @@
 	</div>
 	<!-- /.card -->
 	@push('scripts')
-	{{-- <script src='{{asset('admin/js/modulo/modulo.js')}}'></script> --}}
+		<script src='{{asset('admin/js/centrocusto/centrocusto.js')}}'></script>
 	@endpush
 
 

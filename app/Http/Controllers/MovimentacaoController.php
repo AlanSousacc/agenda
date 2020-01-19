@@ -9,6 +9,7 @@ use App\Models\Empresa;
 use App\Models\Movimento;
 use App\Models\Contato;
 use App\Models\Condicao_pagamento;
+use App\Models\CentroCusto;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\MovimentacaoRequest;
 use Carbon\Carbon;
@@ -24,10 +25,11 @@ class MovimentacaoController extends Controller
     $totalIn    = $movIn->sum('valortotal');
     $totalOut   = $movOut->sum('valortotal');
 
-    $contatos   = Contato::where('empresa_id', '=', $user)->get();
+		$contatos   = Contato::where('empresa_id', '=', $user)->get();
+		$centro   = CentroCusto::where('empresa_id', '=', $user)->get();
     $pagamento  = Condicao_pagamento::all();
 
-    return view('Admin.movimentacao.listagem', compact('movIn', 'movOut', 'contatos', 'pagamento', 'totalIn', 'totalOut'));
+    return view('Admin.movimentacao.listagem', compact('movIn', 'movOut', 'contatos', 'centro', 'pagamento', 'totalIn', 'totalOut'));
   }
 
 	// gera tela de cadastro de movimentação de entrada
@@ -35,9 +37,10 @@ class MovimentacaoController extends Controller
   {
     $user 		 = Auth::user()->empresa_id;
     $contatos  = Contato::where('empresa_id', '=', $user)->get();
+    $centro  	 = CentroCusto::where('empresa_id', '=', $user )->where('tipo', '=', 'Receita')->get();
 		$pagamento = Condicao_pagamento::all();
 
-    return view('Admin.movimentacao.novaMovimentacao', compact('contatos', 'pagamento'));
+    return view('Admin.movimentacao.novaMovimentacao', compact('contatos', 'centro', 'pagamento'));
 	}
 
 	// gera tela de cadastro de movimentação de saída
@@ -45,9 +48,10 @@ class MovimentacaoController extends Controller
   {
     $user 		 = Auth::user()->empresa_id;
     $contatos  = Contato::where('empresa_id', '=', $user)->get();
+    $centro 	 = CentroCusto::where('empresa_id', '=', $user )->where('tipo', '=', 'Despesa')->get();
 		$pagamento = Condicao_pagamento::all();
 
-    return view('Admin.movimentacao.novaMovimentacao', compact('contatos', 'pagamento'));
+    return view('Admin.movimentacao.novaMovimentacao', compact('contatos', 'centro', 'pagamento'));
   }
 
   public function store(MovimentacaoRequest $request)
@@ -62,6 +66,7 @@ class MovimentacaoController extends Controller
       $mov->user_id        				= $user->id;
       $mov->contato_id     				= $data['contato_id'];
       $mov->empresa_id     				= $user->empresa_id;
+      $mov->centrocusto_id 				= $data['centrocusto_id'];
       $mov->condicao_pagamento_id = $data['condicao_pagamento_id'];
 			$mov->tipo      						= $data['tipo'];
 			$mov->observacao         		= $data['observacao'];

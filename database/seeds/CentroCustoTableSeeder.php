@@ -13,13 +13,13 @@ class CentroCustoTableSeeder extends Seeder
     public function run()
     {
 
-			Modulo::create ([
+			CentroCusto::create ([
         'tipo'        => 'Receita',
 				'descricao'   => 'Receitas Gerais',
 				'empresa_id'	=> 1,
 			]);
 
-			Modulo::create ([
+			CentroCusto::create ([
         'tipo'        => 'Despesa',
 				'descricao'   => 'Despesas Gerais',
 				'empresa_id'	=> 1,

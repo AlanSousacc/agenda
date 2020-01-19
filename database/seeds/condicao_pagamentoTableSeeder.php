@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use App\Models\Condicao_pagamento;
 
 class condicao_pagamentoTableSeeder extends Seeder
 {

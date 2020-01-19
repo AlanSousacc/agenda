@@ -18,8 +18,8 @@
 										<label for="tipo">Tipo*</label>
 										<div class="input-group">
 											<select class="form-control tipo" id="tipo" name="tipo" {{old('tipo')}}>
-												<option value="Receita" @if (isset($cc->tipo) && ($cc->tipo == 'Receita')) selected @endif>Receita</option>
-												<option value="Despesa" @if (isset($cc->tipo) && ($cc->tipo == 'Despesa')) selected @endif>Despesa</option>
+												<option value="Receita" @if (isset($centro->tipo) && ($centro->tipo == 'Receita')) selected @endif>Receita</option>
+												<option value="Despesa" @if (isset($centro->tipo) && ($centro->tipo == 'Despesa')) selected @endif>Despesa</option>
 											</select>
 										</div>
 									</div>
@@ -29,7 +29,7 @@
               <div class="form-group">
                 <label for="descricao">Descrição do Centro de Custo</label>
                 <div class="input-group">
-                  <input type="text" class="form-control descricao" id="descricao" placeholder="Descreva o Centro de Custo" value="{{isset($cc) ? $cc->descricao : ''}}" name="descricao" autofocus minlength="5" maxlength="80">
+                  <input type="text" class="form-control descricao" id="descricao" placeholder="Descreva o Centro de Custo" value="{{isset($centro) ? $centro->descricao : ''}}" name="descricao" autofocus minlength="5" maxlength="80">
                 </div>
               </div>
             </div>
