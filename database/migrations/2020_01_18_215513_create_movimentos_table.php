@@ -18,6 +18,7 @@ class CreateMovimentosTable extends Migration
       $table->unsignedBigInteger('user_id');
       $table->unsignedBigInteger('contato_id');
       $table->unsignedBigInteger('empresa_id');
+      $table->unsignedBigInteger('centrocusto_id');
       $table->unsignedBigInteger('condicao_pagamento_id');
       $table->unsignedBigInteger('event_id')->nullable();
       $table->enum('tipo', ['Entrada', 'Saída']);
@@ -32,6 +33,7 @@ class CreateMovimentosTable extends Migration
       $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
       $table->foreign('contato_id')->references('id')->on('contatos')->onDelete('cascade');
       $table->foreign('empresa_id')->references('id')->on('empresas')->onDelete('cascade');
+      $table->foreign('centrocusto_id')->references('id')->on('centro_custo')->onDelete('cascade');
       $table->foreign('condicao_pagamento_id')->references('id')->on('condicao_pagamento')->onDelete('cascade');
       $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
     });

@@ -40,4 +40,8 @@ class Empresa extends Model
 		return $this->belongsToMany(Modulo::class, 'aux_modulo_empresa');
 	}
 
+	public function centrocusto(){
+    return $this->hasMany('App\Models\CentroCusto');
+	}
+
 }

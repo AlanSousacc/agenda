@@ -48,6 +48,10 @@ Route::put('modulos/update/{id}', 'ModuloController@update')->name('modulos.upda
 Route::get('centrodecusto', 'CentroCustoController@index')->name('cc.list');
 Route::get('centrodecusto/novo', 'CentroCustoController@create')->name('cc.novo');
 Route::post('centrodecusto/salvar', 'CentroCustoController@store')->name('cc.store');
+Route::get('centrodecusto/edit/{id}', 'CentroCustoController@edit')->name('cc.edit');
+Route::put('centrodecusto/update/{id}', 'CentroCustoController@update')->name('cc.update');
+Route::delete('centrodecusto/delete', 'CentroCustoController@destroy')->name('cc.destroy');
+
 
 Auth::routes();
 Auth::routes(['verify' => true]);
