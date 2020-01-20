@@ -13,7 +13,7 @@ class CentroCusto extends Model
 	protected $filable 		= [
 		'tipo',
 		'descricao',
-	];
+  ];
 
 
 	public function empresa(){

@@ -21,10 +21,6 @@ class CentroCustoController extends Controller
 	public function index()
   {
 		try{
-			if(Auth::user()->profile != 'Administrador'){
-				throw new Exception("Este usuário não tem permissão para acessar esta página!");
-			}
-
     $centro   = CentroCusto::orderBy('id')->paginate(10);
 			return view('Admin.centrocusto.listagem', compact('centro'));
 
@@ -39,33 +35,33 @@ class CentroCustoController extends Controller
 		public function create(){
 			return view('Admin.centrocusto.novo');
 		}
-		
+
 		// SALVA O NOVO CENTRO DE CUSTO
 		public function store(CentroCustoRequest $request)
 		{
-			
+
 			try{
 				$centrocusto = new CentroCusto;
-	
+
 				$centrocusto->tipo  		  = $request['tipo'];
 				$centrocusto->descricao   = $request['descricao'];
 				$centrocusto->empresa_id  = Auth::user()->empresa_id;
-		
+
 			} catch (Exception $e) {
 				return redirect()->route('cc.list')->with('error', $e->getMessage());
 				exit();
 			}
-	
+
 			try{
 				DB::beginTransaction();
-	
+
 				$saved = $centrocusto->save();
 				if (!$saved){
 					throw new Exception('Falha ao salvar Centro de Custo!');
 				}
 				DB::commit();
 				return redirect()->route('cc.list')->with('success', 'Centro de Custo criado com sucesso!');
-	
+
 			} catch (Exception $e) {
 				DB::rollBack();
 				return redirect()->route('cc.list')->with('error', $e->getMessage());
@@ -73,7 +69,7 @@ class CentroCustoController extends Controller
 		}
 
 
-		
+
 	public function edit($id)
 	{
 			$centro = CentroCusto::find($id);
@@ -84,11 +80,11 @@ class CentroCustoController extends Controller
 	{
 			$cc = CentroCusto::find($id);
 			$cc->tipo       = $request->tipo;
-			$cc->descricao  = $request->descricao;      
+			$cc->descricao  = $request->descricao;
 			$cc->save();
 			return redirect()->route('cc.list')->with('success', 'Centro de Custo #' . $cc->id . ' atualizado com sucesso!');
 	}
-	
+
 	// DELETA UM MÓDULO
 	public function destroy(Request $request)
   {

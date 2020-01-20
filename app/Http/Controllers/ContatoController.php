@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Contato;
 use App\Models\Empresa;
 use App\Models\Movimento;
+use App\Models\CentroCusto;
 use App\Models\Condicao_pagamento;
 use Illuminate\Http\Request;
 use App\Http\Requests\ContatoRequest;
@@ -39,16 +40,17 @@ class ContatoController extends Controller
 
   public function show($id){
 		$contato = Contato::find($id);
-		
+
 		$user 		 = Auth::user()->empresa_id;
 		$pagamento = Condicao_pagamento::all();
 		$contatos  = Contato::where('empresa_id', '=', $user)->get();
+		$centro  = CentroCusto::where('empresa_id', '=', $user)->get();
 
 		$consulta  = Movimento::where('empresa_id', '=', $user)->where('contato_id', '=', $contato->id)->paginate(10);
 		$total		 = $consulta->sum('valortotal');
 		$totaldeb	 = $consulta->sum('valorpendente');
 
-    return view('Admin.contatos.editar', compact('contato', 'consulta', 'total', 'totaldeb', 'pagamento', 'contatos'));
+    return view('Admin.contatos.editar', compact('contato', 'consulta', 'total', 'totaldeb', 'pagamento', 'contatos', 'centro'));
   }
 
 	// Salva os dados do contato

@@ -290,7 +290,6 @@
                     </button>
 
 										<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-											@if (Auth::user()->profile == 'Administrador' )
 											<a class="dropdown-item" href="{{$item->id}}"
                         data-movid="{{$item->id}}"
                         data-tipo="{{$item->tipo}}"
@@ -309,7 +308,6 @@
 												<a class="dropdown-item" href="{{$item->id}}" data-contid={{$item->id}} data-target="#delete" data-toggle="modal">Receber <i class="fa fa-money-bill-alt"></i></a>
 											@else
 												<p class="text-center">-</p>
-											@endif
 											@endif
                     </div>
 

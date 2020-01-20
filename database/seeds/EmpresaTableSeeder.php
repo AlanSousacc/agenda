@@ -23,6 +23,7 @@ class EmpresaTableSeeder extends Seeder
 			'bairro'       			 => 'Centro',
 			'status'       			 => '1',
 			'tipo'       				 => 'estetica',
+			'logo'       				 => 'default.png',
 		]);
 	}
 }
