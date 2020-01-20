@@ -124,7 +124,11 @@ $('#delete').on('show.bs.modal', function (event) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
+module.exports = __webpack_require__(/*! Z:\Laragon\www\agenda\resources\js\users\users.js */"./resources/js/users/users.js");
+=======
 module.exports = __webpack_require__(/*! C:\laragon\www\agendabetha\resources\js\users\users.js */"./resources/js/users/users.js");
+>>>>>>> 57b0127df21b45aee46e227f5e46502e787a5396
 
 
 /***/ })
