@@ -256,6 +256,7 @@
 								<li class="nav-item">
                   <a href="{{ route('modulos.list') }}" class="nav-link">
 										<i class="fa fa-folder-minus nav-icon"></i>
+											{{-- <p>Módulos    <span class="badge badge-pill badge-success">{{$zmodulos->count()}}</span></p> --}}
 										<p>Módulos</p>
 									</a>
 								</li>

@@ -25,8 +25,8 @@ class ModuloController extends Controller
 				throw new Exception("Este usuário não tem permissão para acessar esta página!");
 			}
 
-    $consulta   = Modulo::orderBy('id')->paginate(10);
-			return view('Admin.modulos.listagem', compact('consulta'));
+    $zmodulos   = Modulo::orderBy('id')->paginate(10);
+			return view('Admin.modulos.listagem', compact('zmodulos'));
 
 		} catch (Exception $e) {
 			 return redirect()->back()->with('error', $e->getMessage());
@@ -73,8 +73,8 @@ class ModuloController extends Controller
 	
 	public function edit($id)
 	{
-			$consulta = Modulo::find($id);
-			return view('Admin.modulos.editar',compact('consulta'));
+			$zmodulos = Modulo::find($id);
+			return view('Admin.modulos.editar',compact('zmodulos'));
 	}
 
 	public function update(ModuloRequest $request, $id)
