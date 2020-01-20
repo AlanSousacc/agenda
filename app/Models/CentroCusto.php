@@ -13,7 +13,8 @@ class CentroCusto extends Model
 	protected $filable 		= [
 		'tipo',
 		'descricao',
-	];
+  ];
+
 
 	public function empresa(){
     return $this->belongsto('App\Models\Empresa');
