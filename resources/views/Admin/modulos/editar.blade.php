@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="panel-default">
-        <form action="{{route('modulos.update', $consulta->id)}}" method="POST">
+        <form action="{{route('modulos.update', $zmodulos->id)}}" method="POST">
 					{{-- ADICIONAR AS 2 LINHAS SEGUINTES PARA TRATAR OS MÉTODOS QUE O HTML NÃO SUPORTA (PUT, PATCH, DELETE) --}}
                     <input type="hidden" name="_method" value="PUT">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">

@@ -34,7 +34,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				@foreach ($consulta as $modulo)
+				@foreach ($zmodulos as $modulo)
 				<tr role="row" class="odd">
 					<td class="text-center">{{$modulo->id}}</td>
 					<td class="sorting_1">{{$modulo->nome}}</td>
@@ -56,11 +56,11 @@
 				</tbody>
 			</table>
 			{{--  <div class="row">
-				<div class="col-md-6 pl-4 mt-md-2"><p>Mostrando {{$consulta->count()}} contatos de um total de {{$consulta->total()}}</p></div>
+				<div class="col-md-6 pl-4 mt-md-2"><p>Mostrando {{$zmodulos->count()}} contatos de um total de {{$zmodulos->total()}}</p></div>
 				@if (isset($modulo))
-				<div class="col-md-6 pr-4">{{$consulta->appends($modulo)->links()}}</div>
+				<div class="col-md-6 pr-4">{{$zmodulos->appends($modulo)->links()}}</div>
 				@else
-				<div class="col-md-6 pr-4">{{$consulta->links()}}</div>
+				<div class="col-md-6 pr-4">{{$zmodulos->links()}}</div>
 				@endif
 			</div>  --}}
 

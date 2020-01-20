@@ -17,7 +17,7 @@
               <div class="form-group">
                 <label for="nome">Nome do Módulo*</label>
                 <div class="input-group">
-                  <input type="text" class="form-control nome" id="nome" placeholder="Digite o nome do módulo" value="{{isset($consulta) ? $consulta->nome : ''}}" name="nome" autofocus minlength="5" maxlength="30">
+                  <input type="text" class="form-control nome" id="nome" placeholder="Digite o nome do módulo" value="{{isset($zmodulos) ? $zmodulos->nome : ''}}" name="nome" autofocus minlength="5" maxlength="30">
                 </div>
               </div>
             </div>
@@ -26,7 +26,7 @@
               <div class="form-group">
                 <label for="descricao">Descrição*</label>
                 <div class="input-group">
-                  <input type="text" class="form-control descricao" id="descricao" placeholder="Digite a uma breve descrição sobre o Módulo" value="{{isset($consulta) ? $consulta->descricao : ''}}" name="descricao" autofocus minlength="5" maxlength="80">
+                  <input type="text" class="form-control descricao" id="descricao" placeholder="Digite a uma breve descrição sobre o Módulo" value="{{isset($zmodulos) ? $zmodulos->descricao : ''}}" name="descricao" autofocus minlength="5" maxlength="80">
                 </div>
               </div>
             </div>
