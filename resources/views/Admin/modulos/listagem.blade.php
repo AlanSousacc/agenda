@@ -11,7 +11,7 @@
 			<div class="com-md-6">
 				<h3 class="card-title mt-md-2"> Listagem de Módulos do Sistema</h3>
 			</div>
-			
+
 			<div class="com-md-6 float-md-right search">
 				{{-- <form action="{{route('routeModuloSearch')}}" method="POST" class="form-inline"> --}}
 					@csrf
@@ -48,13 +48,13 @@
 									<a class="dropdown-item" href="{{ route('modulos.edit', $modulo->id) }}"> Editar <i class="fa fa-edit"></i></a>
 									<div class="dropdown-divider"></div>
 									<a class="dropdown-item" href="{{$modulo->id}}" data-moduloid={{$modulo->id}} data-target="#delete" data-toggle="modal">Excluir <i class="fa fa-trash"></i></a>
-								</div> 
+								</div>
 							</div>
 						</td>
 					</tr>
 					@endforeach
 				</tbody>
-			</table>
+      </table>
 			{{--  <div class="row">
 				<div class="col-md-6 pl-4 mt-md-2"><p>Mostrando {{$zmodulos->count()}} contatos de um total de {{$zmodulos->total()}}</p></div>
 				@if (isset($modulo))
@@ -74,7 +74,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 
 
 	</div>
@@ -85,7 +85,6 @@
 
 
 	@endsection
-	
-	
-	
-	
+
+
+

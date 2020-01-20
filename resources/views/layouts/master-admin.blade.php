@@ -203,7 +203,7 @@
 											</a>
 										</li>
 									</ul>
-								</li>
+                </li>
 								<li class="nav-item has-treeview">
 									<a href="#" class="nav-link">
 										<i class="fa fa-user-circle nav-icon"></i>
@@ -229,7 +229,17 @@
 										</li>
 									</ul>
 								</li>
-							</ul>
+              </ul>
+              @if (Auth::user()->profile == 'Administrador')
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="{{ route('cc.list') }}" class="nav-link">
+                      <i class="fa fa-money-check-alt nav-icon"></i>
+                      <p>Centro de Custo</p>
+                    </a>
+                  </li>
+                </ul>
+                @endif
 						</li>
 
 						<li class="nav-item has-treeview menu-open">
@@ -239,17 +249,6 @@
 									Configurações
 								</p>
 							</a>
-							
-							@if (Auth::user()->profile == 'Administrador')
-							<ul class="nav nav-treeview">
-								<li class="nav-item">
-                  <a href="{{ route('cc.list') }}" class="nav-link">
-										<i class="fa fa-money-check-alt nav-icon"></i>
-										<p>Centro de Custo</p>
-									</a>
-								</li>
-							</ul>
-							@endif
 
 							@if (Auth::user()->isAdmin == 1)
 							<ul class="nav nav-treeview">
@@ -262,7 +261,7 @@
 								</li>
 							</ul>
 							@endif
-							
+
 						</li>
 					</nav>
 					<!-- /.sidebar-menu -->
