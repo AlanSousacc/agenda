@@ -19,17 +19,21 @@ class MovimentacaoController extends Controller
 {
   public function index()
   {
-    $user 		  = Auth::user()->empresa_id;
-    $movIn   		= Movimento::where('empresa_id', '=', $user)->where('tipo', '=', 'Entrada')->paginate(10);
-    $movOut   	= Movimento::where('empresa_id', '=', $user)->where('tipo', '=', 'Saída')->paginate(10);
-    $totalIn    = $movIn->sum('valortotal');
-    $totalOut   = $movOut->sum('valortotal');
+    $user 		  		= Auth::user()->empresa_id;
+    $movIn   				= Movimento::where('empresa_id', '=', $user)->where('tipo', '=', 'Entrada')->paginate(10);
+    $movOut   			= Movimento::where('empresa_id', '=', $user)->where('tipo', '=', 'Saída')->paginate(10);
+		$totalIn    		= $movIn->sum('valortotal'); //total de entrada
+		$totalRecebIn   = $movIn->sum('valorrecebido'); //total de entrada recebida
+		$totalPendIn    = $movIn->sum('valorpendente'); //total de entrada pendente
+    $totalOut   		= $movOut->sum('valortotal'); //total de saida
+    $totalPagbOut	  = $movOut->sum('valorrecebido'); //total de saida recebida
+		$totalPendOut   = $movOut->sum('valorpendente'); //total de saida pendente
+		
+		$contatos   		= Contato::where('empresa_id', '=', $user)->get();
+		$centro   			= CentroCusto::where('empresa_id', '=', $user)->get();
+    $pagamento  		= Condicao_pagamento::all();
 
-		$contatos   = Contato::where('empresa_id', '=', $user)->get();
-		$centro   = CentroCusto::where('empresa_id', '=', $user)->get();
-    $pagamento  = Condicao_pagamento::all();
-
-    return view('Admin.movimentacao.listagem', compact('movIn', 'movOut', 'contatos', 'centro', 'pagamento', 'totalIn', 'totalOut'));
+    return view('Admin.movimentacao.listagem', compact('movIn', 'movOut', 'contatos', 'centro', 'pagamento', 'totalIn', 'totalOut', 'totalPendOut', 'totalPagbOut', 'totalPendIn', 'totalRecebIn'));
   }
 
 	// gera tela de cadastro de movimentação de entrada

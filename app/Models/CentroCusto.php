@@ -18,5 +18,9 @@ class CentroCusto extends Model
 
 	public function empresa(){
     return $this->belongsto('App\Models\Empresa');
+	}
+	
+	public function movimentos(){
+    return $this->hasMany('App\Models\Movimento');
   }
 }

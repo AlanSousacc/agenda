@@ -9,28 +9,28 @@
   <div class="card">
     <div class="card-header">
       <div class="row">
-        <div class="col-md-5">
+        <div class="col-md-3">
           <h3 class="card-title mt-md-4"> Listagem de Agendamentos</h3>
         </div>
-        <div class="col-md-7 search float-md-right">
+        <div class="col-md-9 search float-md-right">
           <form action="{{route('routeEventSearch')}}" method="POST" class="form-inline float-md-right ">
             @csrf
             <div class="row">
-              <div class="col-sm-3">
+              <div class="col-md-3">
                 <div class="form-group">
                   <label for="start">Dt. Inicial</label>
                     <input type="date" class="form-control start" id="start" value="{{old('start')}}" name="start">
                 </div>
               </div>
 
-              <div class="col-sm-3">
+              <div class="col-md-3">
                 <div class="form-group">
                   <label for="end">Dt. Final</label>
                     <input type="date" class="form-control end" id="end" value="{{old('end')}}" name="end">
                 </div>
               </div>
 
-              <div class="col-sm-3">
+              <div class="col-md-3">
                 <div class="form-group">
                   <label for="documento">Contato</label>
                   <select class="form-control contato_id" id="contato_id" name="contato_id" {{old('contato_id')}}>
@@ -42,9 +42,9 @@
                 </div>
               </div>
 
-              <div class="col-sm-3">
+              <div class="col-md-3">
                 <div class="form-group mt-4 float-md-right">
-                  <button type="submit" class="btn btn-success"> Pesquisar <i class="fa pl-2 fa-search"></i></button>
+                  <button type="submit" class="btn btn-success"><i class="fa fa-search"></i></button>
                 </div>
               </div>
             </div>
@@ -57,12 +57,12 @@
     <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
       <thead>
         <tr>
-          <th class="text-center" style="width: 200px;" >Contato</th>
-          <th class="text-center" style="width: 200px;" >Título</th>
-          <th class="text-center" style="width: 100px;" >Data/Hora inicio</th>
-          <th class="text-center" style="width: 100px;" >Data/Hora Final</th>
-          <th class="text-center" style="width: 150px;" >Descrição</th>
-          <th class="text-center" style="width: 20px;" >Cor</th>
+          <th class="text-center">Contato</th>
+          <th class="text-center">Título</th>
+          <th class="text-center">Data/Hora inicio</th>
+          <th class="text-center">Data/Hora Final</th>
+          <th class="text-center">Descrição</th>
+          <th class="text-center">Cor</th>
         </tr>
       </thead>
       <tbody>
