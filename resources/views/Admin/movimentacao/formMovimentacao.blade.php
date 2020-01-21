@@ -41,8 +41,6 @@
 
 </div>
 
-
-
 <div class="row">
 
   <div class="col-md-4">
@@ -78,7 +76,6 @@
       <label for="centrocusto_id">Centro de Custo:</label>
       <div class="input-group">
         <select class="form-control centrocusto_id" id="centrocusto_id" name="centrocusto_id" value="{{old('centrocusto_id')}}" required>
-          <option value="">Escolha um Centro de Custo</option>
           @foreach ($centro as $cc)
           	<option id="{{$cc->id}}" value="{{$cc->id}}">{{$cc->descricao}}</option>
           @endforeach
@@ -99,7 +96,7 @@
 </div>
 
 <div class="row pb-4">
-  <div class="col-md-4">
+  <div class="col-md-3">
     <label for="valortotal" class="col-sm-12 col-form-label">Valor Total</label>
     <div class="input-group input-group-md">
       <div class="input-group-prepend">
@@ -109,13 +106,13 @@
     </div>
   </div>
 
-  <div class="col-md-4">
+  <div class="col-md-3">
     @if (\Request::route()->getName() == "movimentacao.createIn")
     <label for="valorrecebido" class="col-sm-12 col-form-label">Valor Recebido</label>
     @elseif(\Request::route()->getName() == "movimentacao.createOut")
     <label for="valorrecebido" class="col-sm-12 col-form-label">Valor Pago</label>
     @else
-    <label for="valorrecebido" class="col-sm-12 col-form-label">Valor Pago / Recebido</label>
+    <label for="valorrecebido" class="col-sm-12 col-form-label">Valor Pag. / Rec.</label>
     @endif
     <div class="input-group input-group-md">
       <div class="input-group-prepend">
@@ -125,7 +122,7 @@
     </div>
   </div>
   @if (\Request::route()->getName() != "movimentacao.createIn" && \Request::route()->getName() != "movimentacao.createOut")
-  <div class="col-md-4">
+  <div class="col-md-3">
     <label for="valorpendente" class="col-sm-12 col-form-label">Valor Débito</label>
     <div class="input-group input-group-md">
       <div class="input-group-prepend">
@@ -134,5 +131,11 @@
       <input type="text" name="valorpendente" class="form-control valorpendente" id="valorpendente">
     </div>
   </div>
-  @endif
+	@endif
+	<div class="col-md-3">
+    <label for="status" class="col-sm-12 col-form-label">Status</label>
+    <div class="input-group input-group-md">
+      <input type="text" name="status" class="form-control status" id="status">
+    </div>
+  </div>
 </div>

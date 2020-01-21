@@ -27,7 +27,7 @@ class CreateContatosTable extends Migration
       $table->string('cidade', 50)->nullable();
       $table->double('valorsessao', 5, 2)->nullable();
       $table->enum('sexo', ['Masculino', 'Feminino']);
-      $table->enum('escolaridade', ['Ensino Fundamental Completo', 'Ensino Fundamental Incompleto', 'Ensino Médio Completo', 'Ensino Médio Incompleto', 'Ensino Superior Completo', 'Ensino Superior Incompleto']);
+      $table->enum('escolaridade', ['Ensino Fundamental Completo', 'Ensino Fundamental Incompleto', 'Ensino Médio Completo', 'Ensino Médio Incompleto', 'Ensino Superior Completo', 'Ensino Superior Incompleto'])->nullable();
       $table->string('profissao', 50)->nullable();
       $table->string('nomeresponsavel', 80)->nullable();
       $table->string('cpfresponsavel', 20)->nullable();

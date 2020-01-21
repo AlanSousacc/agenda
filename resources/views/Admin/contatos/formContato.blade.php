@@ -261,19 +261,27 @@
           <table id="dtBasicExample" class="table table-striped table-bordered table-md" width="100%">
             <thead>
               <tr>
-                <th class="text-center" style="width: 120px;" >Cond Pag.</th>
-								<th class="text-center" style="width: 100px;" >Dt. de Movi.</th>
-                <th class="text-center" style="width: 70px;" >Valor Total</th>
-                <th class="text-center" style="width: 70px;" >Valor Pago</th>
-                <th class="text-center" style="width: 70px;" >Valor Deb.</th>
-                <th class="text-center" style="width: 50px;" >Status</th>
-                <th class="text-center" style="width: 120px;" >Opções</th>
+                <th class="text-center">Cond Pag.</th>
+                <th class="text-center">Tipo</th>
+								<th class="text-center">Dt. de Movi.</th>
+                <th class="text-center">Valor Total</th>
+                <th class="text-center">Valor Pago</th>
+                <th class="text-center">Valor Deb.</th>
+                <th class="text-center">Status</th>
+                <th class="text-center" >Opções</th>
               </tr>
             </thead>
             <tbody>
 							@foreach ($consulta as $item)
               <tr role="row" class="odd">
                 <td class="text-center">{{$item->condicao_pagamento->nome}}</td>
+                <td class="text-center">
+									@if ($item->tipo == 'Entrada')
+										<i class="fa fa-arrow-alt-circle-up text-success"></i>
+									@else
+										<i class="fa fa-arrow-alt-circle-down text-danger"></i>
+									@endif
+								</td>
 								<td class="text-center">{{$item->movimented_at->format('d/m/Y')}}</td>
                 <td class="text-center">R$ {{number_format($item->valortotal, 2, ',', '.')}}</td>
                 <td class="text-center">R$ {{number_format($item->valorrecebido, 2, ',', '.')}}</td>
@@ -294,13 +302,15 @@
                         data-movid="{{$item->id}}"
                         data-tipo="{{$item->tipo}}"
                         data-contato_id="{{$item->contato->id}}"
-                        data-user_id="{{$item->user->name}}"
+												data-user_id="{{$item->user->name}}"
+												data-centrocusto_id="{{$item->centrocusto->id}}"
                         data-condicao_pagamento_id="{{$item->condicao_pagamento->id}}"
                         data-observacao="{{$item->observacao}}"
                         data-valortotal="{{$item->valortotal}}"
                         data-valorrecebido="{{$item->valorrecebido}}"
                         data-valorpendente="{{$item->valorpendente}}"
                         data-movimented_at="{{$item->movimented_at->format('d/m/Y')}}"
+                        data-status="{{$item->status == 0 ? 'Aberto' : 'Completo'}}"
                         data-target="#visualizar"
                         data-toggle="modal"> Visualizar <i class="fab fa-wpforms"></i></a>
 											<div class="dropdown-divider"></div>

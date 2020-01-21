@@ -53,13 +53,15 @@
                         data-movid="{{$item->id}}"
                         data-tipo="{{$item->tipo}}"
                         data-contato_id="{{$item->contato->id}}"
-                        data-user_id="{{$item->user->id}}"
+                        data-centrocusto_id="{{$item->centrocusto->id}}"
+                        data-user_id="{{$item->user->name}}"
                         data-condicao_pagamento_id="{{$item->condicao_pagamento->id}}"
                         data-observacao="{{$item->observacao}}"
                         data-valortotal="{{$item->valortotal}}"
                         data-valorrecebido="{{$item->valorrecebido}}"
                         data-valorpendente="{{$item->valorpendente}}"
-                        data-movimented_at="{{$item->movimented_at}}"
+                        data-movimented_at="{{$item->movimented_at->format('d/m/Y H:m')}}"
+                        data-status="{{$item->status == 0 ? 'Aberto' : 'Completo'}}"
                         data-target="#visualizar"
                         data-toggle="modal"> Visualizar <i class="fab fa-wpforms"></i></a>
                         <div class="dropdown-divider"></div>
@@ -74,7 +76,9 @@
                 <tr>
                   <td class="text-center" colspan="3"></td>
                   <td class="text-center" style="font-weight:600">Total R$ {{number_format($totalIn, 2, ',', '.')}}</td>
-                  <td class="text-center" colspan="3"></td>
+                  <td class="text-center" style="font-weight:600">Total Rec. R$ {{number_format($totalRecebIn, 2, ',', '.')}}</td>
+                  <td class="text-center" style="font-weight:600">Total Pend. R$ {{number_format($totalPendIn, 2, ',', '.')}}</td>
+                  <td class="text-center" colspan="1"></td>
                 </tr>
               </tfoot>
             </table>
@@ -118,18 +122,20 @@
                       </button>
                       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="{{$item->id}}"
-                          data-movid="{{$item->id}}"
-                          data-tipo="{{$item->tipo}}"
-                          data-contato_id="{{$item->contato->nome}}"
-                          data-user_id="{{$item->user->name}}"
-                          data-condicao_pagamento_id="{{$item->condicao_pagamento->nome}}"
-                          data-observacao="{{$item->observacao}}"
-                          data-valortotal="{{$item->valortotal}}"
-                          data-valorrecebido="{{$item->valorrecebido}}"
-                          data-valorpendente="{{$item->valorpendente}}"
-                          data-movimented_at="{{$item->movimented_at}}"
-                          data-target="#visualizar"
-                          data-toggle="modal"> Visualizar <i class="fab fa-wpforms"></i></a>
+													data-movid="{{$item->id}}"
+													data-tipo="{{$item->tipo}}"
+													data-contato_id="{{$item->contato->id}}"
+													data-centrocusto_id="{{$item->centrocusto->id}}"
+													data-user_id="{{$item->user->name}}"
+													data-condicao_pagamento_id="{{$item->condicao_pagamento->id}}"
+													data-observacao="{{$item->observacao}}"
+													data-valortotal="{{$item->valortotal}}"
+													data-valorrecebido="{{$item->valorrecebido}}"
+													data-valorpendente="{{$item->valorpendente}}"
+													data-movimented_at="{{$item->movimented_at->format('d/m/Y H:m')}}"
+													data-status="{{$item->status == 0 ? 'Aberto' : 'Completo'}}"
+													data-target="#visualizar"
+													data-toggle="modal"> Visualizar <i class="fab fa-wpforms"></i></a>
                           <div class="dropdown-divider"></div>
                           <a class="dropdown-item" href="{{$item->id}}" data-contid={{$item->id}} data-target="#delete" data-toggle="modal">Excluir <i class="fa fa-trash"></i></a>
                         </div>
@@ -142,7 +148,9 @@
                   <tr>
                     <td class="text-center" colspan="3"></td>
                     <td class="text-center" style="font-weight:600">Total R$ {{number_format($totalOut, 2, ',', '.')}}</td>
-                    <td class="text-center" colspan="3"></td>
+                    <td class="text-center" style="font-weight:600">Total Pag. R$ {{number_format($totalPagbOut, 2, ',', '.')}}</td>
+                    <td class="text-center" style="font-weight:600">Total Pend. R$ {{number_format($totalPendOut, 2, ',', '.')}}</td>
+                    <td class="text-center" colspan="1"></td>
                   </tr>
                 </tfoot>
               </table>

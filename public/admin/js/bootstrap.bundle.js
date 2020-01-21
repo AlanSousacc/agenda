@@ -17750,11 +17750,7 @@ module.exports = g;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
-module.exports = __webpack_require__(/*! Z:\Laragon\www\agenda\resources\js\bootstrap\js\bootstrap.bundle.js */"./resources/js/bootstrap/js/bootstrap.bundle.js");
-=======
-module.exports = __webpack_require__(/*! C:\laragon\www\agendabetha\resources\js\bootstrap\js\bootstrap.bundle.js */"./resources/js/bootstrap/js/bootstrap.bundle.js");
->>>>>>> 57b0127df21b45aee46e227f5e46502e787a5396
+module.exports = __webpack_require__(/*! C:\wamp64\www\Laravel 6\agenda\resources\js\bootstrap\js\bootstrap.bundle.js */"./resources/js/bootstrap/js/bootstrap.bundle.js");
 
 
 /***/ })

@@ -54,6 +54,10 @@ class Movimento extends Model
 
   public function condicao_pagamento(){
     return $this->belongsto('App\Models\Condicao_pagamento');
+	}
+	
+  public function centrocusto(){
+    return $this->belongsto('App\Models\CentroCusto');
   }
 
   public function event(){

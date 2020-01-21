@@ -1,13 +1,13 @@
 <?php
 
 Route::get('/', 'FullCalendarController@index')->name('index');
+Route::get('list-event', 'EventController@index')->name('routeEventList');
 Route::get('/load-events', 'EventController@loadEvents')->name('routeLoadEvents');
 Route::put('/event-update', 'EventController@update')->name('routeEventUpdate');
 Route::post('/event-store', 'EventController@store')->name('routeEventStore');
-Route::delete('/event-destroy', 'EventController@destroy')->name('routeEventDelete');
 Route::any('search-event', 'EventController@search')->name('routeEventSearch');
-Route::get('list-event', 'EventController@index')->name('routeEventList');
 Route::delete('/users-delete/{contato}', 'EventController@delete')->name('routeAgendaDelete');
+Route::delete('/event-destroy', 'EventController@destroy')->name('routeEventDelete');
 
 // contatos
 Route::resource('contato', 'ContatoController');
