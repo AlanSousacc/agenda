@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Empresa;
+use App\Models\Movimento;
 
 class CentroCusto extends Model
 {
