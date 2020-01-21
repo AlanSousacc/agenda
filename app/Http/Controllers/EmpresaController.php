@@ -35,16 +35,16 @@ class EmpresaController extends Controller
 
   public function store(EmpresaRequest $request)
   {
-		
-		$data = $request->all();
-		
+    $data = $request->all();
+
     try{
       if($request->hasFile('logo')){
         $logo     = $request->file('logo');
-				$fileName = $logo->getClientOriginalName();
-				if (!File::exists(public_path('/uploads/logos/' . $fileName)))
+        $fileName = $logo->getClientOriginalName();
+        if (!File::exists(public_path('/uploads/logos/' . $fileName)))
 					Image::make($logo)->resize(100,100)->save(public_path('/uploads/logos/' . $fileName));
-        
+      } else {
+        $fileName = 'default.png';
       }
 
 			$empresa = new Empresa;

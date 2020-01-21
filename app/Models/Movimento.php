@@ -55,7 +55,7 @@ class Movimento extends Model
   public function condicao_pagamento(){
     return $this->belongsto('App\Models\Condicao_pagamento');
 	}
-	
+
   public function centrocusto(){
     return $this->belongsto('App\Models\CentroCusto');
   }
@@ -63,9 +63,4 @@ class Movimento extends Model
   public function event(){
     return $this->hasOne('App\Models\Event');
   }
-
-  // function getValorAttribute($value)
-  // {
-  //   return 'R$ '. number_format($value, 2, ',', '.');
-  // }
 }
