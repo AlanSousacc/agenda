@@ -20,13 +20,13 @@
       </div>
     </div>
 	</div>
-	
+
   <div class="col-md-3">
     <div class="form-group">
       <label for="status">Tipo de empresa</label>
       <div class="input-group">
 				<select class="form-control tipo" id="tipo" name="tipo" {{old('tipo')}} required>
-					<option selected disabled>Tipo</option>
+					<option value="">Tipo</option>
           <option value="estetica">Estética</option>
           <option value="clinica">Clínica</option>
         </select>

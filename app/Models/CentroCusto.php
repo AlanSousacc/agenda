@@ -15,11 +15,10 @@ class CentroCusto extends Model
 		'descricao',
   ];
 
-
 	public function empresa(){
     return $this->belongsto('App\Models\Empresa');
 	}
-	
+
 	public function movimentos(){
     return $this->hasMany('App\Models\Movimento');
   }

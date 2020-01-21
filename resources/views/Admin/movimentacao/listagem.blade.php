@@ -66,6 +66,12 @@
                         data-toggle="modal"> Visualizar <i class="fab fa-wpforms"></i></a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{$item->id}}" data-contid={{$item->id}} data-target="#delete" data-toggle="modal">Excluir <i class="fa fa-trash"></i></a>
+                        <div class="dropdown-divider"></div>
+                        @if ($item->status == 0)
+                          <a class="dropdown-item" href="{{$item->id}}" data-contid={{$item->id}} data-target="#fecharconta" data-toggle="modal">Receber <i class="fa fa-money-bill-alt"></i></a>
+                        @else
+                          <p class="text-center">-</p>
+                        @endif
                       </div>
                     </div>
                   </td>
@@ -138,6 +144,11 @@
 													data-toggle="modal"> Visualizar <i class="fab fa-wpforms"></i></a>
                           <div class="dropdown-divider"></div>
                           <a class="dropdown-item" href="{{$item->id}}" data-contid={{$item->id}} data-target="#delete" data-toggle="modal">Excluir <i class="fa fa-trash"></i></a>
+                          @if ($item->status == 0)
+                            <a class="dropdown-item" href="{{$item->id}}" data-contid={{$item->id}} data-target="#delete" data-toggle="modal">Receber <i class="fa fa-money-bill-alt"></i></a>
+                          @else
+                            <p class="text-center">-</p>
+                          @endif
                         </div>
                       </div>
                     </td>
@@ -171,6 +182,9 @@
 
       {{-- modal Deletar--}}
       @include('Admin.movimentacao.modalExcluir')
+
+      {{-- modal Deletar--}}
+      @include('Admin.movimentacao.modalFecharConta')
 
       <div class="row" >
         <div class="col-md-12 mb-3">
