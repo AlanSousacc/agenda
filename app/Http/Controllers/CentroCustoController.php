@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Auth;
 use Exception;
-
 use App\User;
 use App\Models\CentroCusto;
 use App\Http\Requests\CentroCustoRequest;

@@ -68,7 +68,13 @@
                         <a class="dropdown-item" href="{{$item->id}}" data-contid={{$item->id}} data-target="#delete" data-toggle="modal">Excluir <i class="fa fa-trash"></i></a>
                         <div class="dropdown-divider"></div>
                         @if ($item->status == 0)
-                          <a class="dropdown-item" href="{{$item->id}}" data-contid={{$item->id}} data-target="#fecharconta" data-toggle="modal">Receber <i class="fa fa-money-bill-alt"></i></a>
+													<a class="dropdown-item" href="{{$item->id}}"
+														data-movid={{$item->id}}
+														data-valortotal="{{$item->valortotal}}"
+														data-valorrecebido="{{$item->valorrecebido}}"
+														data-valorpendente="{{$item->valorpendente}}"
+														data-target="#fecharconta"
+														data-toggle="modal">Receber <i class="fa fa-money-bill-alt"></i></a>
                         @else
                           <p class="text-center">-</p>
                         @endif
@@ -144,11 +150,18 @@
 													data-toggle="modal"> Visualizar <i class="fab fa-wpforms"></i></a>
                           <div class="dropdown-divider"></div>
                           <a class="dropdown-item" href="{{$item->id}}" data-contid={{$item->id}} data-target="#delete" data-toggle="modal">Excluir <i class="fa fa-trash"></i></a>
-                          @if ($item->status == 0)
-                            <a class="dropdown-item" href="{{$item->id}}" data-contid={{$item->id}} data-target="#delete" data-toggle="modal">Receber <i class="fa fa-money-bill-alt"></i></a>
-                          @else
-                            <p class="text-center">-</p>
-                          @endif
+													<div class="dropdown-divider"></div>
+													@if ($item->status == 0)
+														<a class="dropdown-item" href="{{$item->id}}"
+															data-movid={{$item->id}}
+															data-valortotal="{{$item->valortotal}}"
+															data-valorrecebido="{{$item->valorrecebido}}"
+															data-valorpendente="{{$item->valorpendente}}"
+															data-target="#fecharconta"
+															data-toggle="modal">Receber <i class="fa fa-money-bill-alt"></i></a>
+													@else
+														<p class="text-center">-</p>
+													@endif
                         </div>
                       </div>
                     </td>
@@ -195,11 +208,12 @@
     </div>
     <!-- /.card -->
     @push('scripts')
-    <script src='{{asset('admin/js/movimentacao/movimentacao.js')}}'></script>
+		<script src='{{asset('admin/js/movimentacao/movimentacao.js')}}'></script>
     <script>
       $(document).ready(function () {
         $('#valortotal').mask('000.000.000.000.000,00');
         $('#valorrecebido').mask('000.000.000.000.000,00');
+        $('#valorpendente').mask('000.000.000.000.000,00');
       });
     </script>
     @endpush
