@@ -18,6 +18,9 @@
 </div>
 
 @push('scripts')
-<script src='{{asset('admin/js/contato/contato.js')}}'></script>
+<script>
+  $('.valorsessao').mask("#.##0,00", {reverse: true});
+</script>
+{{-- <script src='{{asset('admin/js/contato/contato.js')}}'></script> --}}
 @endpush
 @endsection
