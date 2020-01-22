@@ -8,6 +8,7 @@ use Exception;
 use Auth;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\EmpresaRequest;
+use App\Models\CentroCusto;
 use Image;
 use File;
 
@@ -74,10 +75,33 @@ class EmpresaController extends Controller
     try{
       DB::beginTransaction();
 
-      $saved = $empresa->save();
-      if (!$saved){
+			$saved = $empresa->save();
+
+			if (!$saved){
         throw new Exception('Falha ao salvar empresa!');
-      }
+			}
+
+			// adiciona centro de custo ao cadastrar empresa
+			$ccr 							= new CentroCusto;
+			$ccr->tipo  		  = 'Receita';
+			$ccr->descricao   = 'Receitas Gerais';
+			$ccr->empresa_id  = $empresa->id;
+			$saved		 				= $ccr->save();
+
+			if (!$saved){
+        throw new Exception('Falha ao salvar Centro de Custo #Receitas#!');
+			}
+
+			$ccd 							= new CentroCusto;
+			$ccd->tipo  		  = 'Despesa';
+			$ccd->descricao   = 'Despesas Gerais';
+			$ccd->empresa_id  = $empresa->id;
+			$saved						= $ccd->save();
+
+			if (!$saved){
+        throw new Exception('Falha ao salvar Centro de Custo #Despesas#!');
+			}
+			
       DB::commit();
 			return redirect('empresa')->with('success', 'Empresa criada com sucesso!');
 

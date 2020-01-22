@@ -17,7 +17,7 @@ class CreateCentroCustoTable extends Migration
 						$table->bigIncrements('id');
 						$table->unsignedBigInteger('empresa_id');
 						$table->enum('tipo',['Receita','Despesa']);
-						$table->string('descricao', 100)->unique();
+						$table->string('descricao', 100);
 						$table->timestamps();
 						
 						$table->foreign('empresa_id')->references('id')->on('empresas')->onDelete('cascade');
