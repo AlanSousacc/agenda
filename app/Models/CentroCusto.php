@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Empresa;
+use App\Models\Movimento;
 
 class CentroCusto extends Model
 {
@@ -19,6 +20,7 @@ class CentroCusto extends Model
     return $this->belongsto('App\Models\Empresa');
 	}
 
+	
 	public function movimentos(){
     return $this->hasMany('App\Models\Movimento');
   }

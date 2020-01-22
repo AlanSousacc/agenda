@@ -13,6 +13,7 @@ class Grupo extends Model
     'descricao',
   ];
 
+	
   public function contatos(){
     return $this->hasMany('App\Models\Contato');
   }

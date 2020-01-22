@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\User;
+use App\Models\Modulo;
 
 class Empresa extends Model
 {
@@ -37,7 +38,7 @@ class Empresa extends Model
 	}
 	
 	public function modulos(){
-		return $this->belongsToMany(Modulo::class, 'aux_modulo_empresa');
+		return $this->belongsToMany(Modulo::class, 'aux_modulo_empresa', 'empresa_id','modulo_id')->withPivot('status')->withTimestamps();
 	}
 
 	public function centrocusto(){
