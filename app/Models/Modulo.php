@@ -15,6 +15,7 @@ class Modulo extends Model
     'descricao',
   ];
 
+	
   public function empresas(){
     return $this->belongsToMany(Empresa::class, 'aux_modulo_empresa','modulo_id','empresa_id');
   }

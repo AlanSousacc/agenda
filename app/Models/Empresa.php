@@ -38,7 +38,7 @@ class Empresa extends Model
 	}
 	
 	public function modulos(){
-		return $this->belongsToMany(Modulo::class, 'aux_modulo_empresa', 'empresa_id','modulo_id');
+		return $this->belongsToMany(Modulo::class, 'aux_modulo_empresa', 'empresa_id','modulo_id')->withPivot('status')->withTimestamps();
 	}
 
 	public function centrocusto(){

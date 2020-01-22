@@ -64,5 +64,8 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
 // access do sistema
 Route::get('unauthorized', 'AccessController@index')->name('unauthorized');
 
+// relacionamento módulos da empresa
+Route::get('teste', 'AuxModuloEmpresaController@index')->name('modulosempresa.list');
+
 Auth::routes();
 Auth::routes(['verify' => true]);
