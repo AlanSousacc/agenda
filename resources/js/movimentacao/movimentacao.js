@@ -47,7 +47,20 @@ $('#fecharconta').on('show.bs.modal', function (event) {
 });
 
 $(document).ready(function () {
-	$('#valorpendente').mask('000.000.000.000.000,00');
-	$('#valortotal').mask('000.000.000.000.000,00');
-	$('#valorrecebido').mask('000.000.000.000.000,00');
+	$('.valortotal').mask("#.##0,00", {reverse: true});
+  $('.valorrecebido').mask("#.##0,00", {reverse: true});
+  $('.valorpendente').mask("#.##0,00", {reverse: true});
+});
+
+$(document).ready(function () {
+	var total = $('.valortotal').val();
+	var recebido = $('.valorrecebido').val()
+	var pendente = $('.valorpendente').val()
+});
+
+$("input#valorrecebido").on('focus', function() {
+	var total = $('#valortotal').val();
+	var recebido = $('#valorrecebido').val()
+	var pendente = $('#valorpendente').val()
+	console.log(this.total);
 });

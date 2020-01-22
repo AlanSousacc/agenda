@@ -16,5 +16,12 @@
     </div>
   </div>
 </div>
-
+@push('scripts')
+<script>
+  $('.valortotal').mask("#.##0,00", {reverse: true});
+  $('.valorrecebido').mask("#.##0,00", {reverse: true});
+  $('.valorpendente').mask("#.##0,00", {reverse: true});
+</script>
+{{-- <script src='{{asset('admin/js/contato/contato.js')}}'></script> --}}
+@endpush
 @endsection

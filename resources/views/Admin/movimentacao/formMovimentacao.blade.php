@@ -70,7 +70,7 @@
       </div>
     </div>
 	</div>
-	
+
 	<div class="col-md-4">
     <div class="form-group">
       <label for="centrocusto_id">Centro de Custo:</label>
@@ -131,11 +131,13 @@
       <input type="text" name="valorpendente" class="form-control valorpendente" id="valorpendente">
     </div>
   </div>
-	@endif
+  @endif
+  @if (\Request::route()->getName() == "movimentacao.createIn" && \Request::route()->getName() == "movimentacao.createOut")
 	<div class="col-md-3">
     <label for="status" class="col-sm-12 col-form-label">Status</label>
     <div class="input-group input-group-md">
       <input type="text" name="status" class="form-control status" id="status">
     </div>
   </div>
+  @endif
 </div>

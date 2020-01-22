@@ -209,12 +209,5 @@
     <!-- /.card -->
     @push('scripts')
 		<script src='{{asset('admin/js/movimentacao/movimentacao.js')}}'></script>
-    <script>
-      $(document).ready(function () {
-        $('#valortotal').mask('000.000.000.000.000,00');
-        $('#valorrecebido').mask('000.000.000.000.000,00');
-        $('#valorpendente').mask('000.000.000.000.000,00');
-      });
-    </script>
     @endpush
     @endsection
