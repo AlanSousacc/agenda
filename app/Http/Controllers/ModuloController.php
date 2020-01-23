@@ -61,7 +61,7 @@ class ModuloController extends Controller
       if (!$saved){
         throw new Exception('Falha ao salvar módulo!');
 			}
-			
+
 			$empresas = Empresa::all();
 			$arr = array();
 			foreach($empresas as $emp){
@@ -72,7 +72,6 @@ class ModuloController extends Controller
 			if (!$modulo){
 				throw new Exception('Falha ao salvar os módulos da Empresa!');
 			}
-
 
       DB::commit();
       return redirect()->route('modulos.list')->with('success', 'Módulo criado com sucesso!');

@@ -28,7 +28,7 @@ class MovimentacaoController extends Controller
     $totalOut   		= $movOut->sum('valortotal'); //total de saida
     $totalPagbOut	  = $movOut->sum('valorrecebido'); //total de saida recebida
 		$totalPendOut   = $movOut->sum('valorpendente'); //total de saida pendente
-		
+
 		$contatos   		= Contato::where('empresa_id', '=', $user)->get();
 		$centro   			= CentroCusto::where('empresa_id', '=', $user)->get();
     $pagamento  		= Condicao_pagamento::all();
@@ -62,8 +62,12 @@ class MovimentacaoController extends Controller
   {
     $user	= Auth::user();
 		$data = $request->all();
-		
-		$dif  = str_replace(",",".", $data['valortotal']) - str_replace(",",".", $data['valorrecebido']);
+
+
+    // sprintf('%.2f', $data['valortotal']);
+    // dd($data['valortotal']);
+    $dif  = sprintf('%.3f', $data['valortotal']) - sprintf('%.3f', $data['valorrecebido']);
+    // dd($data['valortotal']);
     try{
 
 			$mov 												= new Movimento;
@@ -74,9 +78,9 @@ class MovimentacaoController extends Controller
       $mov->condicao_pagamento_id = $data['condicao_pagamento_id'];
 			$mov->tipo      						= $data['tipo'];
 			$mov->observacao         		= $data['observacao'];
-			$mov->valortotal      			= str_replace(",",".", $data['valortotal']);
-			$mov->valorrecebido      		= str_replace(",",".", $data['valorrecebido']);
-			$mov->valorpendente					= $dif;
+			$mov->valortotal      			= sprintf('%.3f', $data['valortotal']);
+			$mov->valorrecebido      		= sprintf('%.3f', $data['valorrecebido']);
+			$mov->valorpendente					= sprintf('%.3f', $dif);
 			$mov->movimented_at 				= date('Y-m-d H:i:s');
 			if($dif == 0){
 				$mov->status = 1;
@@ -107,21 +111,22 @@ class MovimentacaoController extends Controller
         return redirect('movimentacao')->with('error', $e->getMessage());
       }
 		}
-		
+
 		public function update(Request $request){
-			$data = $request->all();
+      $data = $request->all();
+
 			// aqui faz todas as valições possiveis
 			try{
 				$mov = Movimento::find($data['movimentacao_id']);
 				if (!$mov)
 				throw new Exception("Nenhuma movimentação encontrada!");
-	
-				// dd($data['valorpendente']);
+
 				$mov->user_id									= $mov->user_id;
 				$mov->contato_id							= $mov->contato_id;
 				$mov->condicao_pagamento_id		= $mov->condicao_pagamento_id;
 				$mov->centrocusto_id					= $mov->centrocusto_id;
-				$mov->valorpendente						= $data['valorpendente'];
+        $mov->valorpendente						= str_replace(",",".", $data['valorpendente']);
+
 				$mov->valorrecebido						= $mov->valorpendente + $mov->valorrecebido;
 				if ($mov->valorrecebido == $mov->valortotal){
 					$mov->valorpendente = 0;
@@ -130,16 +135,16 @@ class MovimentacaoController extends Controller
 					$mov->valorpendente = $mov->valortotal - $mov->valorrecebido;
 					$mov->status = 0;
 				}
-	
+
 			} catch (Exception $e) {
 				return redirect('movimentacao')->with('error', $e->getMessage());
 				exit();
 			}
-	
+
 			// aqui inicia a gravação no bd
 			try{
 				DB::beginTransaction();
-	
+
 				$saved = $mov->save();
 				if (!$saved){
 					throw new Exception('Falha ao salvar movimentação!');
@@ -152,7 +157,7 @@ class MovimentacaoController extends Controller
 				DB::rollBack();
 				return redirect('movimentacao')->with('error', $e->getMessage());
 			}
-	
+
 		}
 
     // RELATÓRIO
