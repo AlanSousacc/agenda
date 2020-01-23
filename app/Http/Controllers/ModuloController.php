@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Auth;
 use Exception;
 use App\User;
 use App\Models\Modulo;
+use App\Models\Empresa;
 use App\Http\Requests\ModuloRequest;
 
 
@@ -58,7 +60,20 @@ class ModuloController extends Controller
       $saved = $modulo->save();
       if (!$saved){
         throw new Exception('Falha ao salvar módulo!');
-      }
+			}
+			
+			$empresas = Empresa::all();
+			$arr = array();
+			foreach($empresas as $emp){
+				$arr[] = $emp->id;
+			}
+			// Insere na tabela Aux_Modulo_Empresa, o Módulo criado em todos as empresas cadastradas
+			$modulo->empresas()->attach($arr);
+			if (!$modulo){
+				throw new Exception('Falha ao salvar os módulos da Empresa!');
+			}
+
+
       DB::commit();
       return redirect()->route('modulos.list')->with('success', 'Módulo criado com sucesso!');
 

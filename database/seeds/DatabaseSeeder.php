@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
 		$this->call(condicao_pagamentoTableSeeder::class);
 		$this->call(CentroCustoTableSeeder::class);
 		$this->call(ContatosTableSeeder::class);
+		$this->call(AuxModuloEmpresaTableSeeder::class);
 	}
 }
