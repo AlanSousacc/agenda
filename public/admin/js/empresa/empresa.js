@@ -137,7 +137,7 @@ $('#delete').on('show.bs.modal', function (event) {
   modal.find('.modal-body #emprid').val(emprid);
 });
 $(document).ready(function () {
-  $('.telefone').mask('(00) 00000-0000');
+  $('.telefone').mask('(00) 0000-0000');
   $('.cep').mask('00000-000');
   $('.cnpj').mask('00.000.000/0000-00', {
     reverse: true
@@ -153,7 +153,7 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\wamp64\www\Laravel 6\agenda\resources\js\empresa\empresa.js */"./resources/js/empresa/empresa.js");
+module.exports = __webpack_require__(/*! C:\laragon\www\agendabetha\resources\js\empresa\empresa.js */"./resources/js/empresa/empresa.js");
 
 
 /***/ })
