@@ -87,7 +87,7 @@
     <div class="form-group">
       <label for="im">Inscrição Municipal</label>
       <div class="input-group">
-        <input type="text" class="form-control im" id="im" placeholder="Digite a inscrição municipal" value="{{old('im')}}" name="im" autofocus>
+        <input type="text" class="form-control im" id="im" placeholder="Digite a inscrição municipal" value="{{old('im')}}" name="im" autofocus maxlength="14">
       </div>
     </div>
   </div>

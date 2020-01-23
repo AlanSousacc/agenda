@@ -13,7 +13,7 @@ use App\Models\Modulo;
 class AuxModuloEmpresaController extends Controller
 {
 	public function teste(){
-		$empresa = Empresa::get()->where('id',1)->first();
+		$empresa = Empresa::get()->where('id',4)->first();
 		echo "<b>{$empresa->razaosocial}</b><br><br>";
 		
 		$modulos = $empresa->modulos;
@@ -26,7 +26,7 @@ class AuxModuloEmpresaController extends Controller
 	
 	public function teste2(){
 		//Seleciona empresa com id = 1
-		$empresa = Empresa::get()->where('id',1)->first();
+		$empresa = Empresa::get()->where('id',4)->first();
 		echo "<b>{$empresa->razaosocial}</b><br><br>";
 		
 		//Coleta todos os módulos cadastrados
@@ -50,20 +50,21 @@ class AuxModuloEmpresaController extends Controller
 	
 	public function editarpermissao($id)
 	{
-		$zpermissao = Empresa::find($id);
-		return view('Admin.empresa.moduloempresa.editar',compact('zpermissao'));
+		$zempresa = Empresa::find($id);
+		return view('Admin.empresa.moduloempresa.editar',compact('zempresa'));
 	}
 	
 	public function moduloempresa($id){
 		
 		$empresa = Empresa::find($id);
 		// dd($empresa);
-		$modulos = $empresa->modulos;
-		foreach($modulos as $mod){
-			echo "{$mod->nome} ___";
-			echo "{$mod->descricao} ___";
-			echo "{$mod->pivot->status} ";
-			echo "<br>";
-		}
+		$modulosempresa = $empresa->modulos;
+		// foreach($modulos as $mod){
+		// 	echo "{$mod->nome} ___";
+		// 	echo "{$mod->descricao} ___";
+		// 	echo "{$mod->pivot->status} ";
+		// 	echo "<br>";
+		// }
+		return view('Admin.empresa.moduloempresa.editar',compact('modulosempresa'));
 	}
 }

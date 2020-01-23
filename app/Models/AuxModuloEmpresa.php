@@ -9,8 +9,8 @@ use Illuminate\Database\Eloquent\Model;
 class AuxModuloEmpresa extends Model
 {
 	protected $table      = 'aux_modulo_empresa';
-	protected $primaryKey = ['modulo_id', 'empresa_id'];
-	protected $guarded 		= ['created_at', 'update_at'];
+	protected $primaryKey = 'id';
+	protected $guarded 		= ['modulo_id', 'empresa_id', 'created_at', 'update_at'];
 	protected $filable 		= [
 		'modulo_id',
 		'empresa_id',
