@@ -26,6 +26,7 @@
     },
     "dependencies": {
         "admin-lte": "^3.0.2",
+        "bootstrap4-toggle": "^3.6.1",
         "toastr": "^2.1.4"
     }
 }
