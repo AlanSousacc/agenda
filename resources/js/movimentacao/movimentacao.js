@@ -40,8 +40,8 @@ $('#fecharconta').on('show.bs.modal', function (event) {
   var modal         	      = $(this);
 
   modal.find('.modal-body #valortotal').val(valortotal).prop("disabled", true);
-  modal.find('.modal-body #valorrecebido').val(valorrecebido);
-  modal.find('.modal-body #valorpendente').val(valorpendente).prop("disabled", true);
+  modal.find('.modal-body #valorrecebido').val(valorrecebido).prop("disabled", true);
+  modal.find('.modal-body #valorpendente').val(valorpendente);
   modal.find('.modal-body #movid').val(movid);
 
 });
@@ -52,15 +52,15 @@ $(document).ready(function () {
   $('.valorpendente').mask("#.##0,00", {reverse: true});
 });
 
-$(document).ready(function () {
-	var total = $('.valortotal').val();
-	var recebido = $('.valorrecebido').val()
-	var pendente = $('.valorpendente').val()
-});
+// $(document).ready(function () {
+// 	var total = $('.valortotal').val();
+// 	var recebido = $('.valorrecebido').val()
+// 	var pendente = $('.valorpendente').val()
+// });
 
-$("input#valorrecebido").on('focus', function() {
-	var total = $('#valortotal').val();
-	var recebido = $('#valorrecebido').val()
-	var pendente = $('#valorpendente').val()
-	console.log(this.total);
-});
+// $("input#valorrecebido").on('focus', function() {
+// 	var total = $('#valortotal').val();
+// 	var recebido = $('#valorrecebido').val()
+// 	var pendente = $('#valorpendente').val()
+// 	console.log(this.total);
+// });

@@ -61,9 +61,9 @@ class MovimentacaoController extends Controller
   public function store(MovimentacaoRequest $request)
   {
     $user	= Auth::user();
-    $data = $request->all();
-		$dif  = $data['valortotal'] - $data['valorrecebido'];
-
+		$data = $request->all();
+		
+		$dif  = str_replace(",",".", $data['valortotal']) - str_replace(",",".", $data['valorrecebido']);
     try{
 
 			$mov 												= new Movimento;
@@ -74,8 +74,8 @@ class MovimentacaoController extends Controller
       $mov->condicao_pagamento_id = $data['condicao_pagamento_id'];
 			$mov->tipo      						= $data['tipo'];
 			$mov->observacao         		= $data['observacao'];
-			$mov->valortotal      			= $data['valortotal'];
-			$mov->valorrecebido      		= $data['valorrecebido'];
+			$mov->valortotal      			= str_replace(",",".", $data['valortotal']);
+			$mov->valorrecebido      		= str_replace(",",".", $data['valorrecebido']);
 			$mov->valorpendente					= $dif;
 			$mov->movimented_at 				= date('Y-m-d H:i:s');
 			if($dif == 0){
@@ -106,7 +106,54 @@ class MovimentacaoController extends Controller
         DB::rollBack();
         return redirect('movimentacao')->with('error', $e->getMessage());
       }
-    }
+		}
+		
+		public function update(Request $request){
+			$data = $request->all();
+			// aqui faz todas as valições possiveis
+			try{
+				$mov = Movimento::find($data['movimentacao_id']);
+				if (!$mov)
+				throw new Exception("Nenhuma movimentação encontrada!");
+	
+				// dd($data['valorpendente']);
+				$mov->user_id									= $mov->user_id;
+				$mov->contato_id							= $mov->contato_id;
+				$mov->condicao_pagamento_id		= $mov->condicao_pagamento_id;
+				$mov->centrocusto_id					= $mov->centrocusto_id;
+				$mov->valorpendente						= $data['valorpendente'];
+				$mov->valorrecebido						= $mov->valorpendente + $mov->valorrecebido;
+				if ($mov->valorrecebido == $mov->valortotal){
+					$mov->valorpendente = 0;
+					$mov->status = 1;
+				} else {
+					$mov->valorpendente = $mov->valortotal - $mov->valorrecebido;
+					$mov->status = 0;
+				}
+	
+			} catch (Exception $e) {
+				return redirect('movimentacao')->with('error', $e->getMessage());
+				exit();
+			}
+	
+			// aqui inicia a gravação no bd
+			try{
+				DB::beginTransaction();
+	
+				$saved = $mov->save();
+				if (!$saved){
+					throw new Exception('Falha ao salvar movimentação!');
+				}
+				DB::commit();
+				// se chegou aqui é pq deu tudo certo
+				return redirect('movimentacao')->with('success', 'Movimentação #' . $mov->id . ' registrada com sucesso!');
+			} catch (Exception $e) {
+				// se deu pau ao salvar no banco de dados, faz rollback de tudo e retorna erro
+				DB::rollBack();
+				return redirect('movimentacao')->with('error', $e->getMessage());
+			}
+	
+		}
 
     // RELATÓRIO
     public function listagemEntradas()
