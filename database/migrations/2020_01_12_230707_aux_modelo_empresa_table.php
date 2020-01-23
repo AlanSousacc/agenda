@@ -14,10 +14,10 @@ class AuxModeloEmpresaTable extends Migration
     public function up()
     {
 			Schema::create('aux_modulo_empresa', function (Blueprint $table) {
-				//$table->bigIncrements('id');
+				$table->bigIncrements('id');
 				$table->unsignedBigInteger('modulo_id');
 				$table->unsignedBigInteger('empresa_id');
-				$table->boolean('status');
+				$table->boolean('status')->default(0);
 				$table->timestamps();
 
 				$table->foreign('modulo_id')->references('id')->on('modulos')->onDelete('cascade');
