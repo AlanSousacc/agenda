@@ -70,9 +70,11 @@
 										data-bairro="{{$item->bairro}}"
 										data-tipo="{{$item->tipo}}"
 										data-target="#editar"
-										data-toggle="modal"> Editar <i class="fa fa-edit"></i></a>
+										data-toggle="modal"><i class="fa fa-edit"> Editar</i></a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="{{$item->id}}" data-emprid={{$item->id}} data-target="#delete" data-toggle="modal">Excluir <i class="fa fa-trash"></i></a>
+                  <a class="dropdown-item" href="{{$item->id}}" data-emprid={{$item->id}} data-target="#delete" data-toggle="modal"><i class="fa fa-trash"></i> Excluir</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="{{ route('modulosempresa.list', $item->id) }}" ><i class="fa fa-trash"></i> Permissões</a>
                   @endif
                 </div>
               </div>
