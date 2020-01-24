@@ -48,11 +48,11 @@ class AuxModuloEmpresaController extends Controller
 		
 	}
 	
-	public function editarpermissao($id)
-	{
-		$zempresa = Empresa::find($id);
-		return view('Admin.empresa.moduloempresa.editar',compact('zempresa'));
-	}
+	// public function editarpermissao($id)
+	// {
+	// 	$zempresa = Empresa::find($id);
+	// 	return view('Admin.empresa.moduloempresa.editar',compact('zempresa'));
+	// }
 	
 	public function moduloempresa($id){
 		
@@ -67,4 +67,33 @@ class AuxModuloEmpresaController extends Controller
 		// }
 		return view('Admin.empresa.moduloempresa.editar',compact('modulosempresa'));
 	}
+
+	public function update(Request $request, $id)
+	{
+			$empresa 		= Empresa::find($id);
+			$zmodulos 	= Modulo::all();
+			$empresa->tipo       = $request->tipo;
+			$empresa->descricao  = $request->descricao;
+			$empresa->save();
+			return view('Admin.empresa.moduloempresa.editar',compact('modulosempresa'));
+
+
+
+
+				// ######################################################## Cadastro dos Módulos da Empresa
+				$zmodulos 				= Modulo::all();
+				// Joga para um Array todos os ids dos módulos cadastrados
+				$arr = array();
+				foreach($zmodulos as $mod){
+					$arr[] = $mod->id;
+				}
+				// Insere na tabela auxiliar, a empresa 1, e todos os ids de módulos
+				$empresa->modulos()->attach($arr);
+				if (!$empresa){
+					throw new Exception('Falha ao salvar os módulos da Empresa!');
+				}
+				// ########################################################  Final do Cadastro dos Módulos da Empresa
+	}
+
+
 }

@@ -18,7 +18,7 @@
             <h1 class="text-center">Alterar Permissões de Acesso da Empresa</h1><br>
 						@include('Admin.empresa.moduloempresa.formModuloEmpresa')
 					</div>
-						{{-- <button type="submit" class="btn btn-primary" style="margin-left: 7px;">Salvar Cadastro</button> --}}
+						<button type="submit" class="btn btn-primary" style="margin-left: 7px;">Salvar Cadastro</button>
 				</form>
       </div>
     </div>

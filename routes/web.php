@@ -66,9 +66,9 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
 Route::get('unauthorized', 'AccessController@index')->name('unauthorized');
 
 // relacionamento módulos da empresa
-Route::get('teste', 'AuxModuloEmpresaController@teste')->name('modulosempresa.teste1');
-Route::get('teste2', 'AuxModuloEmpresaController@teste2')->name('modulosempresa.teste2');
-Route::get('modulosempresa/edit/{id}', 'AuxModuloEmpresaController@editarpermissao')->name('modulosempresa.edit');
+// Route::get('teste', 'AuxModuloEmpresaController@teste')->name('modulosempresa.teste1');
+// Route::get('teste2', 'AuxModuloEmpresaController@teste2')->name('modulosempresa.teste2');
+Route::get('modulosempresa/update/{id}', 'AuxModuloEmpresaController@update')->name('modulosempresa.update');
 Route::get('modulosempresa/{id}', 'AuxModuloEmpresaController@moduloempresa')->name('modulosempresa.list');
 
 Auth::routes();
