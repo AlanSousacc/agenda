@@ -68,7 +68,7 @@
 				</tbody>
 			</table>
 
-			<!-- Paginator - Configurado com a consulta. -->
+			{{-- <!-- Paginator - Configurado com a consulta. -->
 			<!-- <div class="row">
 				<div class="col-md-6 pl-4 mt-md-2"><p>Mostrando {{$centro->count()}} contatos de um total de {{$centro->total()}}</p></div>
 				@if (isset($modulo))
@@ -76,9 +76,9 @@
 				@else
 					<div class="col-md-6 pr-4">{{$centro->links()}}</div>
 				@endif
-			</div>  -->
+			</div>  --> --}}
 
-			{{-- modal Deletar--}}
+			{{-- modal Deletar --}}
 			@include('Admin.centrocusto.modalExcluir')
 
 
