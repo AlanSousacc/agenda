@@ -63,11 +63,7 @@ class MovimentacaoController extends Controller
     $user	= Auth::user();
 		$data = $request->all();
 
-
-    // sprintf('%.2f', $data['valortotal']);
-    // dd($data['valortotal']);
-    $dif  = sprintf('%.3f', $data['valortotal']) - sprintf('%.3f', $data['valorrecebido']);
-    // dd($data['valortotal']);
+    $dif  = str_replace (',', '.', str_replace ('.', '', $data['valortotal'])) - str_replace (',', '.', str_replace ('.', '', $data['valorrecebido']));
     try{
 
 			$mov 												= new Movimento;
@@ -78,9 +74,9 @@ class MovimentacaoController extends Controller
       $mov->condicao_pagamento_id = $data['condicao_pagamento_id'];
 			$mov->tipo      						= $data['tipo'];
 			$mov->observacao         		= $data['observacao'];
-			$mov->valortotal      			= sprintf('%.3f', $data['valortotal']);
-			$mov->valorrecebido      		= sprintf('%.3f', $data['valorrecebido']);
-			$mov->valorpendente					= sprintf('%.3f', $dif);
+			$mov->valortotal      			= str_replace (',', '.', str_replace ('.', '', $data['valortotal']));
+			$mov->valorrecebido      		= str_replace (',', '.', str_replace ('.', '', $data['valorrecebido']));
+			$mov->valorpendente					= str_replace (',', '.', str_replace ('.', '', $dif));
 			$mov->movimented_at 				= date('Y-m-d H:i:s');
 			if($dif == 0){
 				$mov->status = 1;
@@ -125,11 +121,15 @@ class MovimentacaoController extends Controller
 				$mov->contato_id							= $mov->contato_id;
 				$mov->condicao_pagamento_id		= $mov->condicao_pagamento_id;
 				$mov->centrocusto_id					= $mov->centrocusto_id;
-        $mov->valorpendente						= str_replace(",",".", $data['valorpendente']);
 
-				$mov->valorrecebido						= $mov->valorpendente + $mov->valorrecebido;
+        $valorpendente								= str_replace (',', '.', str_replace ('.', '', $data['valorpendente']));
+				
+				$mov->valorrecebido						= str_replace (',', '.', str_replace ('.', '', $valorpendente)) + str_replace (',', '.', str_replace ('.', '', $mov->valorrecebido));
+
+				dd($mov->valorrecebido);
+				
 				if ($mov->valorrecebido == $mov->valortotal){
-					$mov->valorpendente = 0;
+					$mov->valorpendente <= 0;
 					$mov->status = 1;
 				} else {
 					$mov->valorpendente = $mov->valortotal - $mov->valorrecebido;
