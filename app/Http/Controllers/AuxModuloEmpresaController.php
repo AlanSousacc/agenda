@@ -50,36 +50,40 @@ class AuxModuloEmpresaController extends Controller
 	
 	// public function editarpermissao($id)
 	// {
-	// 	$zempresa = Empresa::find($id);
-	// 	return view('Admin.empresa.moduloempresa.editar',compact('zempresa'));
-	// }
-	
-	public function moduloempresa($id){
-		
-		$empresa = Empresa::find($id);
-		// dd($empresa);
-		$modulosempresa = $empresa->modulos;
-		// foreach($modulos as $mod){
-		// 	echo "{$mod->nome} ___";
-		// 	echo "{$mod->descricao} ___";
-		// 	echo "{$mod->pivot->status} ";
-		// 	echo "<br>";
+		// 	$zempresa = Empresa::find($id);
+		// 	return view('Admin.empresa.moduloempresa.editar',compact('zempresa'));
 		// }
-		return view('Admin.empresa.moduloempresa.editar',compact('modulosempresa'));
-	}
+		
+		public function moduloempresa($id){
+			
+			$empresa = Empresa::find($id);
+			// dd($empresa);
+			$modulosempresa = $empresa->modulos;
+			// foreach($modulos as $mod){
+				// 	echo "{$mod->nome} ___";
+				// 	echo "{$mod->descricao} ___";
+				// 	echo "{$mod->pivot->status} ";
+				// 	echo "<br>";
+				// }
+				return view('Admin.empresa.moduloempresa.editar',compact('modulosempresa'));
+			}
+			
+			public function update(Request $request, $id)
+			{
+				$empresa 			= Empresa::find($id);
+				$modulos 			= Modulo::all();
+				$arr 					= array();
+				$arrstatus 		= array();
+				foreach($modulos as $auxmod){
+					$arr[] 				= $auxmod->id;
+					$arrstatus 		= (!isset($request['status']))? 0 : 1;
+				}
 
-	public function update(Request $request, $id)
-	{
-			$empresa 		= Empresa::find($id);
-			$zmodulos 	= Modulo::all();
-			$empresa->tipo       = $request->tipo;
-			$empresa->descricao  = $request->descricao;
-			$empresa->save();
-			return view('Admin.empresa.moduloempresa.editar',compact('modulosempresa'));
-
-
-
-
+				return view('Admin.empresa.moduloempresa.editar',compact('modulosempresa'));
+				
+				
+				
+				
 				// ######################################################## Cadastro dos Módulos da Empresa
 				$zmodulos 				= Modulo::all();
 				// Joga para um Array todos os ids dos módulos cadastrados
@@ -93,7 +97,7 @@ class AuxModuloEmpresaController extends Controller
 					throw new Exception('Falha ao salvar os módulos da Empresa!');
 				}
 				// ########################################################  Final do Cadastro dos Módulos da Empresa
-	}
-
-
-}
+			}
+			
+			
+		}
