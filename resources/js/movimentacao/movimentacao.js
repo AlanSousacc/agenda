@@ -48,6 +48,14 @@ $('#fecharconta').on('show.bs.modal', function (event) {
   modal.find('.modal-body #valor').val(valor);
   modal.find('.modal-body #movid').val(movid);
 
+  if(tipo == 'receber'){
+    modal.find('.salvar-conta').text('Receber');
+    modal.find('.modal-title').text('Fazer Recebimento');
+  } else {
+    modal.find('.salvar-conta').text('Pagar');
+    modal.find('.modal-title').text('Fazer Pagamento');
+  }
+
 });
 
 $(document).ready(function () {
@@ -56,16 +64,3 @@ $(document).ready(function () {
   $('.valorpendente').mask("#.##0,00", {reverse: true});
   $('.valor').mask("#.##0,00", {reverse: true});
 });
-
-// $(document).ready(function () {
-// 	var total = $('.valortotal').val();
-// 	var recebido = $('.valorrecebido').val()
-// 	var pendente = $('.valorpendente').val()
-// });
-
-// $("input#valorrecebido").on('focus', function() {
-// 	var total = $('#valortotal').val();
-// 	var recebido = $('#valorrecebido').val()
-// 	var pendente = $('#valorpendente').val()
-// 	console.log(this.total);
-// });

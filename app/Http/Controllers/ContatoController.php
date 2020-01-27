@@ -170,8 +170,13 @@ class ContatoController extends Controller
       $event = DB::table('contatos')
       ->join('events', 'contatos.id', '=', 'events.contato_id')->whereRaw('events.contato_id = '. $request->contato_id)->get();
 
+      $movi = Movimento::where('contato_id', $request->contato_id)->get();
+
+      if (count($movi) >= 1)
+        throw new Exception("Não é possível remover contatos que contém movimentação registrada!");
+
       if (!$contato)
-        throw new Exception("Nenhum contato encontrado");
+        throw new Exception("Nenhum contato encontrado!");
 
       if(Auth::user()->profile != 'Administrador')
         throw new Exception("Este usuário não tem permissão para remover contatos!");

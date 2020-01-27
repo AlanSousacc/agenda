@@ -11,7 +11,7 @@
 			<div class="com-md-6">
 				<h3 class="card-title mt-md-2"> Listagem de Centro de Custo</h3>
 			</div>
-			
+
 			<div class="com-md-6 float-md-right search">
 				{{-- <form action="{{route('routeModuloSearch')}}" method="POST" class="form-inline"> --}}
 					@csrf
@@ -57,9 +57,9 @@
 								Ação
 							</button>
 								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-									<a class="dropdown-item" href="{{ route('cc.edit', $cc->id) }}"> Editar <i class="fa fa-edit"></i></a>
+									<a class="dropdown-item" href="{{ route('cc.edit', $cc->id) }}"><i class="fa fa-edit"></i> Editar</a>
 									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="{{$cc->id}}" data-centroid={{$cc->id}} data-target="#delete" data-toggle="modal">Excluir <i class="fa fa-trash"></i></a>
+									<a class="dropdown-item" href="{{$cc->id}}" data-centroid={{$cc->id}} data-target="#delete" data-toggle="modal"><i class="fa fa-trash"></i> Excluir</a>
 								</div>
 							</div>
 						</td>
@@ -88,7 +88,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 
 
 	</div>
@@ -99,7 +99,6 @@
 
 
 	@endsection
-	
-	
-	
-	
+
+
+

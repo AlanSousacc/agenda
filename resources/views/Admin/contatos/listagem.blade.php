@@ -49,9 +49,11 @@
                 Ação
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="{{route('contato.show', $item->id)}}"> Detalhar <i class="fab fa-wpforms"></i></a>
+                <a class="dropdown-item" href="{{route('contato.show', $item->id)}}"><i class="fab fa-wpforms"></i> Detalhar</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{{$item->id}}" data-contid={{$item->id}} data-target="#delete" data-toggle="modal">Excluir <i class="fa fa-trash"></i></a>
+                <a class="dropdown-item" href="{{$item->id}}" data-contid={{$item->id}} data-target="#delete" data-toggle="modal"><i class="fa fa-trash"></i> Excluir</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{{$item->id}}" data-contid={{$item->id}} data-target="#delete" data-toggle="modal"><i class="fa fa-money-check-alt"></i> Financeiro</a>
               </div>
             </div>
           </td>

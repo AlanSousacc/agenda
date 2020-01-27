@@ -75,11 +75,10 @@ class MovimentacaoController extends Controller
       $mov->condicao_pagamento_id = $data['condicao_pagamento_id'];
 			$mov->tipo      						= $data['tipo'];
 			$mov->observacao         		= $data['observacao'];
-			$mov->valortotal      			= str_replace (',', '.', str_replace ('.', '', $data['valortotal']));
-			$mov->valorrecebido      		= str_replace (',', '.', str_replace ('.', '', $data['valorrecebido']));
+      $mov->valortotal      			= str_replace (',', '.', str_replace ('.', '', $data['valortotal']));
+      $mov->valorrecebido         = str_replace (',', '.', str_replace ('.', '', $data['valorrecebido']));
 			$mov->valorpendente					= str_replace (',', '.', str_replace ('.', '', $dif));
 			$mov->movimented_at 				= date('Y-m-d H:i:s');
-			dd($mov->valorpendente);
 			if($dif == 0){
 				$mov->status = 1;
 			} else{
@@ -135,7 +134,7 @@ class MovimentacaoController extends Controller
         $valor 								= str_replace (',', '.', str_replace ('.', '', $data['valor']));
 				$mov->valorpendente 	-= str_replace (',', '.', str_replace ('.', '', $valor)); //atualiza o valor pendete
 				$mov->valorrecebido 	+= $valor; //atualiza o valor recebido
-				
+
 				// verufica se o valor recebido for igual ao total aplica como status "pago" e define o valor 0 no pendente
 				if ($mov->valorrecebido == $mov->valortotal){
 					$mov->valorpendente = 0;
