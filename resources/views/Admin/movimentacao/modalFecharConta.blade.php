@@ -15,7 +15,7 @@
           @include('Admin.movimentacao.formFecharConta')
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-success">Receber</button>
+          <button type="submit" class="btn btn-success salvar-conta"></button>
           <button type="button" class="btn btn-danger mr-4" data-dismiss="modal">Cancelar</button>
         </div>
       </form>

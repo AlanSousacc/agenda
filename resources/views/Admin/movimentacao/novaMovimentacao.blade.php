@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col-md-10 offset-md-1 mb-3">
       <div class="panel-default">
-        <form action="{{route('movimentacao.store')}}" method="POST">
+        <form autocomplete="off" action="{{route('movimentacao.store')}}" method="POST">
           {{csrf_field()}}
           <div class="panel-body">
             <h1 class="text-center">Registrar Movimentação</h1><br>

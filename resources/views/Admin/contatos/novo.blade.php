@@ -22,5 +22,6 @@
   $('.valorsessao').mask("#.##0,00", {reverse: true});
 </script>
 {{-- <script src='{{asset('admin/js/contato/contato.js')}}'></script> --}}
+<script src='{{asset('admin/js/movimentacao/movimentacao.js')}}'></script>
 @endpush
 @endsection

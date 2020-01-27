@@ -63,10 +63,9 @@
                         data-movimented_at="{{$item->movimented_at->format('d/m/Y H:m')}}"
                         data-status="{{$item->status == 0 ? 'Aberto' : 'Completo'}}"
                         data-target="#visualizar"
-                        data-toggle="modal"> Visualizar <i class="fab fa-wpforms"></i></a>
+                        data-toggle="modal"><i class="fab fa-wpforms"></i> Visualizar</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{{$item->id}}" data-contid={{$item->id}} data-target="#delete" data-toggle="modal">Excluir <i class="fa fa-trash"></i></a>
-                        <div class="dropdown-divider"></div>
+                        {{-- <a class="dropdown-item" href="{{$item->id}}" data-contid={{$item->id}} data-target="#delete" data-toggle="modal">Excluir <i class="fa fa-trash"></i></a> --}}
                         @if ($item->status == 0)
 													<a class="dropdown-item" href="{{$item->id}}"
 														data-movid={{$item->id}}
@@ -75,7 +74,7 @@
 														data-valorrecebido="{{$item->valorrecebido}}"
 														data-valorpendente="{{$item->valorpendente}}"
 														data-target="#fecharconta"
-														data-toggle="modal">Receber <i class="fa fa-money-bill-alt"></i></a>
+														data-toggle="modal"><i class="fa fa-money-bill-alt"></i> Receber</a>
                         @else
                           <p class="text-center">-</p>
                         @endif
@@ -148,10 +147,9 @@
 													data-movimented_at="{{$item->movimented_at->format('d/m/Y H:m')}}"
 													data-status="{{$item->status == 0 ? 'Aberto' : 'Completo'}}"
 													data-target="#visualizar"
-													data-toggle="modal"> Visualizar <i class="fab fa-wpforms"></i></a>
+													data-toggle="modal"><i class="fab fa-wpforms"></i> Visualizar</a>
                           <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="{{$item->id}}" data-contid={{$item->id}} data-target="#delete" data-toggle="modal">Excluir <i class="fa fa-trash"></i></a>
-													<div class="dropdown-divider"></div>
+                          {{-- <a class="dropdown-item" href="{{$item->id}}" data-contid={{$item->id}} data-target="#delete" data-toggle="modal">Excluir <i class="fa fa-trash"></i></a> --}}
 													@if ($item->status == 0)
 														<a class="dropdown-item" href="{{$item->id}}"
 															data-movid={{$item->id}}
@@ -160,7 +158,7 @@
 															data-valorrecebido="{{$item->valorrecebido}}"
 															data-valorpendente="{{$item->valorpendente}}"
 															data-target="#fecharconta"
-															data-toggle="modal">Pagar <i class="fa fa-money-bill-alt"></i></a>
+															data-toggle="modal"><i class="fa fa-money-bill-alt"></i> Pagar</a>
 													@else
 														<p class="text-center">-</p>
 													@endif

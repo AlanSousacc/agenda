@@ -45,9 +45,9 @@
 								Ação
 							</button>
 							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-									<a class="dropdown-item" href="{{ route('modulos.edit', $modulo->id) }}"> Editar <i class="fa fa-edit"></i></a>
+									<a class="dropdown-item" href="{{ route('modulos.edit', $modulo->id) }}"><i class="fa fa-edit"></i> Editar</a>
 									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="{{$modulo->id}}" data-moduloid={{$modulo->id}} data-target="#delete" data-toggle="modal">Excluir <i class="fa fa-trash"></i></a>
+									<a class="dropdown-item" href="{{$modulo->id}}" data-moduloid={{$modulo->id}} data-target="#delete" data-toggle="modal"><i class="fa fa-trash"></i> Excluir</a>
 								</div>
 							</div>
 						</td>
