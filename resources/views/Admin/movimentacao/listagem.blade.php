@@ -70,6 +70,7 @@
                         @if ($item->status == 0)
 													<a class="dropdown-item" href="{{$item->id}}"
 														data-movid={{$item->id}}
+														data-tipo="receber"
 														data-valortotal="{{$item->valortotal}}"
 														data-valorrecebido="{{$item->valorrecebido}}"
 														data-valorpendente="{{$item->valorpendente}}"
@@ -154,11 +155,12 @@
 													@if ($item->status == 0)
 														<a class="dropdown-item" href="{{$item->id}}"
 															data-movid={{$item->id}}
+															data-tipo="pagar"
 															data-valortotal="{{$item->valortotal}}"
 															data-valorrecebido="{{$item->valorrecebido}}"
 															data-valorpendente="{{$item->valorpendente}}"
 															data-target="#fecharconta"
-															data-toggle="modal">Receber <i class="fa fa-money-bill-alt"></i></a>
+															data-toggle="modal">Pagar <i class="fa fa-money-bill-alt"></i></a>
 													@else
 														<p class="text-center">-</p>
 													@endif

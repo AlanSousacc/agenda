@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use Exception;
 use App\User;
 use App\Models\Empresa;
 use App\Models\Movimento;
@@ -78,6 +79,7 @@ class MovimentacaoController extends Controller
 			$mov->valorrecebido      		= str_replace (',', '.', str_replace ('.', '', $data['valorrecebido']));
 			$mov->valorpendente					= str_replace (',', '.', str_replace ('.', '', $dif));
 			$mov->movimented_at 				= date('Y-m-d H:i:s');
+			dd($mov->valorpendente);
 			if($dif == 0){
 				$mov->status = 1;
 			} else{
@@ -109,27 +111,34 @@ class MovimentacaoController extends Controller
 		}
 
 		public function update(Request $request){
-      $data = $request->all();
+			$data = $request->all();
 
-			// aqui faz todas as valições possiveis
 			try{
 				$mov = Movimento::find($data['movimentacao_id']);
 				if (!$mov)
-				throw new Exception("Nenhuma movimentação encontrada!");
+					throw new Exception("Nenhuma movimentação encontrada!");
+
+				// verifica se valor não é maior que zero
+				if ($data['valor'] <= 0)
+					throw new Exception("Valor não pode ser negativo, ou 0 [ZERO]!");
+
+				// verifica se valor é maior que o devido
+				if ($data['valor'] > $mov->valorpendente)
+					throw new Exception("Valor informado excedeu o valor restante de: R$" .number_format($mov->valorpendente, 2, ',', '.'));
 
 				$mov->user_id									= $mov->user_id;
 				$mov->contato_id							= $mov->contato_id;
 				$mov->condicao_pagamento_id		= $mov->condicao_pagamento_id;
 				$mov->centrocusto_id					= $mov->centrocusto_id;
 
-        $valorpendente								= str_replace (',', '.', str_replace ('.', '', $data['valorpendente']));
+				// atribui valores corretos ao valor pendente e valor recebido
+        $valor 								= str_replace (',', '.', str_replace ('.', '', $data['valor']));
+				$mov->valorpendente 	-= str_replace (',', '.', str_replace ('.', '', $valor)); //atualiza o valor pendete
+				$mov->valorrecebido 	+= $valor; //atualiza o valor recebido
 				
-				$mov->valorrecebido						= str_replace (',', '.', str_replace ('.', '', $valorpendente)) + str_replace (',', '.', str_replace ('.', '', $mov->valorrecebido));
-
-				dd($mov->valorrecebido);
-				
+				// verufica se o valor recebido for igual ao total aplica como status "pago" e define o valor 0 no pendente
 				if ($mov->valorrecebido == $mov->valortotal){
-					$mov->valorpendente <= 0;
+					$mov->valorpendente = 0;
 					$mov->status = 1;
 				} else {
 					$mov->valorpendente = $mov->valortotal - $mov->valorrecebido;
@@ -141,7 +150,6 @@ class MovimentacaoController extends Controller
 				exit();
 			}
 
-			// aqui inicia a gravação no bd
 			try{
 				DB::beginTransaction();
 
@@ -149,11 +157,10 @@ class MovimentacaoController extends Controller
 				if (!$saved){
 					throw new Exception('Falha ao salvar movimentação!');
 				}
+
 				DB::commit();
-				// se chegou aqui é pq deu tudo certo
 				return redirect('movimentacao')->with('success', 'Movimentação #' . $mov->id . ' registrada com sucesso!');
 			} catch (Exception $e) {
-				// se deu pau ao salvar no banco de dados, faz rollback de tudo e retorna erro
 				DB::rollBack();
 				return redirect('movimentacao')->with('error', $e->getMessage());
 			}

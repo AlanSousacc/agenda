@@ -33,15 +33,19 @@ $('#visualizar').on('show.bs.modal', function (event) {
 $('#fecharconta').on('show.bs.modal', function (event) {
 
   var button        	      = $(event.relatedTarget);
-  var movid         	      = button.data('movid');
+	var movid         	      = button.data('movid');
+	var tipo         	        = button.data('tipo');
   var valortotal    	      = button.data('valortotal');
   var valorrecebido 	      = button.data('valorrecebido');
   var valorpendente 	      = button.data('valorpendente');
+  var valor					 	      = button.data('valor');
   var modal         	      = $(this);
 
   modal.find('.modal-body #valortotal').val(valortotal).prop("disabled", true);
+  modal.find('.modal-body #tipo').val(tipo);
   modal.find('.modal-body #valorrecebido').val(valorrecebido).prop("disabled", true);
-  modal.find('.modal-body #valorpendente').val(valorpendente);
+  modal.find('.modal-body #valorpendente').val(valorpendente).prop("disabled", true);
+  modal.find('.modal-body #valor').val(valor);
   modal.find('.modal-body #movid').val(movid);
 
 });
@@ -50,6 +54,7 @@ $(document).ready(function () {
 	$('.valortotal').mask("#.##0,00", {reverse: true});
   $('.valorrecebido').mask("#.##0,00", {reverse: true});
   $('.valorpendente').mask("#.##0,00", {reverse: true});
+  $('.valor').mask("#.##0,00", {reverse: true});
 });
 
 // $(document).ready(function () {

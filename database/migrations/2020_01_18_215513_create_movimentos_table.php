@@ -23,9 +23,9 @@ class CreateMovimentosTable extends Migration
       $table->unsignedBigInteger('event_id')->nullable();
       $table->enum('tipo', ['Entrada', 'Saída']);
       $table->text('observacao')->nullable();
-      $table->double('valortotal', 5, 2);
-      $table->double('valorrecebido', 5, 2);
-      $table->double('valorpendente', 5, 2);
+      $table->double('valortotal', 10, 2);
+      $table->double('valorrecebido', 10, 2);
+      $table->double('valorpendente', 10, 2);
       $table->dateTime('movimented_at');
       $table->boolean('status');
       $table->timestamps();
