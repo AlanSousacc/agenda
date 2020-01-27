@@ -26,6 +26,7 @@ INSERT INTO `modulos` (`nome`, `descricao`) VALUES ('Contatos', 'Acesso às opç
 INSERT INTO `modulos` (`nome`, `descricao`) VALUES ('Empresas', 'Acesso às opções de Cadastros de novas Empresas no sistema.');
 INSERT INTO `modulos` (`nome`, `descricao`) VALUES ('Usuários', 'Acesso às opções de Cadastros de novos Usuários no sistema.');
 INSERT INTO `modulos` (`nome`, `descricao`) VALUES ('Movimentos', 'Acesso às opções de Pagamentos e Recebimentos no sistema.');
-
  -->
+ DOCUMENTAÇÃO DE MUDANÇAS BD
+ Mudança de campos valortotal, valorrecebido e valorpendente para double(10,2)
 

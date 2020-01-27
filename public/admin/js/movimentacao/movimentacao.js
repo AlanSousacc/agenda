@@ -124,13 +124,17 @@ $('#visualizar').on('show.bs.modal', function (event) {
 $('#fecharconta').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget);
   var movid = button.data('movid');
+  var tipo = button.data('tipo');
   var valortotal = button.data('valortotal');
   var valorrecebido = button.data('valorrecebido');
   var valorpendente = button.data('valorpendente');
+  var valor = button.data('valor');
   var modal = $(this);
   modal.find('.modal-body #valortotal').val(valortotal).prop("disabled", true);
+  modal.find('.modal-body #tipo').val(tipo);
   modal.find('.modal-body #valorrecebido').val(valorrecebido).prop("disabled", true);
-  modal.find('.modal-body #valorpendente').val(valorpendente);
+  modal.find('.modal-body #valorpendente').val(valorpendente).prop("disabled", true);
+  modal.find('.modal-body #valor').val(valor);
   modal.find('.modal-body #movid').val(movid);
 });
 $(document).ready(function () {
@@ -141,6 +145,9 @@ $(document).ready(function () {
     reverse: true
   });
   $('.valorpendente').mask("#.##0,00", {
+    reverse: true
+  });
+  $('.valor').mask("#.##0,00", {
     reverse: true
   });
 }); // $(document).ready(function () {
@@ -164,7 +171,7 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\laragon\www\agendabetha\resources\js\movimentacao\movimentacao.js */"./resources/js/movimentacao/movimentacao.js");
+module.exports = __webpack_require__(/*! C:\wamp64\www\Laravel 6\agenda\resources\js\movimentacao\movimentacao.js */"./resources/js/movimentacao/movimentacao.js");
 
 
 /***/ })

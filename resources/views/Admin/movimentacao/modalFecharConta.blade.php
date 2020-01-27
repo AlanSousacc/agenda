@@ -5,12 +5,13 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title">Receber</h4>
       </div>
-      <form action="{{route('receber','id')}}" method="post">
+      <form autocomplete="off" action="{{route('receber','id')}}" method="post">
 				{{method_field('patch')}}
 				{{csrf_field()}}
         <div class="modal-body">
           <input type="hidden" name="movimentacao_id" id="movid" value="">
           <input type="hidden" name="valorpendente" id="valorpendente" value="">
+          <input type="hidden" name="tipo" id="tipo" value="">
           @include('Admin.movimentacao.formFecharConta')
         </div>
         <div class="modal-footer">
