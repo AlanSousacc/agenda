@@ -53,7 +53,7 @@
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{{$item->id}}" data-contid={{$item->id}} data-target="#delete" data-toggle="modal"><i class="fa fa-trash"></i> Excluir</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{{$item->id}}" data-contid={{$item->id}} data-target="#delete" data-toggle="modal"><i class="fa fa-money-check-alt"></i> Financeiro</a>
+                <a class="dropdown-item" href="{{route('movimentacao.contato', $item->id)}}"><i class="fa fa-money-check-alt"></i> Financeiro</a>
               </div>
             </div>
           </td>
