@@ -74,7 +74,7 @@
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="{{$item->id}}" data-emprid={{$item->id}} data-target="#delete" data-toggle="modal"><i class="fa fa-trash"></i> Excluir</a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="{{ route('modulosempresa.list', $item->id) }}" ><i class="fa fa-lock"></i> Permissões</a>
+                  <a class="dropdown-item" href="{{ route('modulosempresa.edit', $item->id) }}" ><i class="fa fa-lock"></i> Permissões</a>
                   @endif
                 </div>
               </div>
