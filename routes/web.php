@@ -69,8 +69,9 @@ Route::get('unauthorized', 'AccessController@index')->name('unauthorized');
 // relacionamento módulos da empresa
 // Route::get('teste', 'AuxModuloEmpresaController@teste')->name('modulosempresa.teste1');
 // Route::get('teste2', 'AuxModuloEmpresaController@teste2')->name('modulosempresa.teste2');
-Route::get('modulosempresa/update/{id}', 'AuxModuloEmpresaController@update')->name('modulosempresa.update');
-Route::get('modulosempresa/{id}', 'AuxModuloEmpresaController@moduloempresa')->name('modulosempresa.list');
+Route::get('modulosempresa/edit/{id}', 'AuxModuloEmpresaController@edit')->name('modulosempresa.edit');
+Route::put('modulosempresa/update/{id}', 'AuxModuloEmpresaController@update')->name('modulosempresa.update');
+
 
 Auth::routes();
 Auth::routes(['verify' => true]);
