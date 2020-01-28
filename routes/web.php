@@ -38,6 +38,7 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
   Route::get('movimentacao/create/saida', 'MovimentacaoController@createOut')->name('movimentacao.createOut');
   Route::post('movimentacao', 'MovimentacaoController@store')->name('movimentacao.store');
 	Route::get('relatorio-mes', 'MovimentacaoController@listagemEntradas')->name('relatorio.mes.atual');
+	Route::get('movimentacao/contato/{id}', 'MovimentacaoController@show')->name('movimentacao.contato');
 	Route::patch('receber', 'MovimentacaoController@update')->name('receber');
   Route::any('relatorio-periodo-contato', 'MovimentacaoController@relPeriodo')->name('relatorio.periodo.contato');
 });

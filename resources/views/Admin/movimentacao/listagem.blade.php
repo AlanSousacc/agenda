@@ -196,7 +196,7 @@
       {{-- modal Deletar--}}
       @include('Admin.movimentacao.modalExcluir')
 
-      {{-- modal Deletar--}}
+      {{-- modal fechar conta--}}
       @include('Admin.movimentacao.modalFecharConta')
 
       <div class="row" >
