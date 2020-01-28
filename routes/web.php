@@ -53,12 +53,22 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
   Route::put('modulos/update/{id}', 'ModuloController@update')->name('modulos.update');
 });
 
+// tipo de evento sistema
+Route::get('tipo-evento', 'TipoEventoController@index')->name('tipoevento.list');
+Route::middleware(['auth', 'isAdmin'])->group(function () {
+  Route::get('tipo-evento/novo', 'TipoEventoController@create')->name('tipoevento.novo');
+  Route::post('tipo-evento/salvar', 'TipoEventoController@store')->name('tipoevento.store');
+  Route::get('tipo-evento/{id}/editar', 'TipoEventoController@edit')->name('tipoevento.edit');
+  Route::put('tipo-evento/update/{id}', 'TipoEventoController@update')->name('tipoevento.update');
+  Route::delete('tipo-evento/delete', 'TipoEventoController@destroy')->name('tipoevento.destroy');
+});
+
 // centros de custo
 Route::get('centrodecusto', 'CentroCustoController@index')->name('cc.list');
-Route::get('centrodecusto/edit/{id}', 'CentroCustoController@edit')->name('cc.edit');
 Route::middleware(['auth', 'isAdmin'])->group(function () {
   Route::get('centrodecusto/novo', 'CentroCustoController@create')->name('cc.novo');
   Route::post('centrodecusto/salvar', 'CentroCustoController@store')->name('cc.store');
+  Route::get('centrodecusto/edit/{id}', 'CentroCustoController@edit')->name('cc.edit');
   Route::put('centrodecusto/update/{id}', 'CentroCustoController@update')->name('cc.update');
   Route::delete('centrodecusto/delete', 'CentroCustoController@destroy')->name('cc.destroy');
 });

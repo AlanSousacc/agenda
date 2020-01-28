@@ -12,7 +12,7 @@ $(function(){
 
     let id = $("#modalCalendar input[name='id']").val();
 
-    let title = $("#modalCalendar input[name='title']").val();
+    let title = $("#title").val();
 
     let Event = {
       id: id,
@@ -26,7 +26,6 @@ $(function(){
   });
 
   $(".saveEvent").click(function(){
-    let title = $("#modalCalendar input[name='title']").val();
 
     let empresa_id = $("#modalCalendar input[name='empresa_id']").val();
 
@@ -41,6 +40,8 @@ $(function(){
     let description = $("#modalCalendar textarea[name='description']").val();
 
     let contato = $("#contato_id").val();
+
+    let title = $("#title :selected").text()
 
 
     let Event = {
@@ -76,7 +77,7 @@ function sendEvent(route, data_){
     dataType: 'json',
     success:function(json){
       if(json){
-				console.log(data_._method)
+				// console.log(data_._method)
 				$( "#sucesso").modal('show');
 				$( '.btn-success' ).click(function() {
 					location.reload();
@@ -85,7 +86,7 @@ function sendEvent(route, data_){
       }
     },
     error:function(json){
-      console.log(json.responseJSON);
+      // console.log(json.responseJSON);
       let responseJSON = json.responseJSON.errors;
 
       $("#message").html(loadErrors(responseJSON));
