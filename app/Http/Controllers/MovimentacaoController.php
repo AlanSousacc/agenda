@@ -36,7 +36,7 @@ class MovimentacaoController extends Controller
 
     return view('Admin.movimentacao.listagem', compact('movIn', 'movOut', 'contatos', 'centro', 'pagamento', 'totalIn', 'totalOut', 'totalPendOut', 'totalPagbOut', 'totalPendIn', 'totalRecebIn'));
 	}
-	
+
 	public function show($id){
 		$consulta = Movimento::where('contato_id', $id)->paginate(10);
 
@@ -78,8 +78,6 @@ class MovimentacaoController extends Controller
   {
     $user	= Auth::user();
 		$data = $request->all();
-
-    $dif  = str_replace (',', '.', str_replace ('.', '', $data['valortotal'])) - str_replace (',', '.', str_replace ('.', '', $data['valorrecebido']));
     try{
 
 			$mov 												= new Movimento;
@@ -92,9 +90,10 @@ class MovimentacaoController extends Controller
 			$mov->observacao         		= $data['observacao'];
       $mov->valortotal      			= str_replace (',', '.', str_replace ('.', '', $data['valortotal']));
       $mov->valorrecebido         = str_replace (',', '.', str_replace ('.', '', $data['valorrecebido']));
-			$mov->valorpendente					= str_replace (',', '.', str_replace ('.', '', $dif));
-			$mov->movimented_at 				= date('Y-m-d H:i:s');
-			if($dif == 0){
+			$mov->valorpendente					= $mov->valortotal - $mov->valorrecebido;
+      $mov->movimented_at 				= date('Y-m-d H:i:s');
+
+			if($mov->valorpendente == 0){
 				$mov->status = 1;
 			} else{
 				$mov->status = 0;
@@ -133,8 +132,8 @@ class MovimentacaoController extends Controller
 					throw new Exception("Nenhuma movimentação encontrada!");
 
 				// verifica se valor não é maior que zero
-				if ($data['valor'] <= 0)
-					throw new Exception("Valor não pode ser negativo, ou 0 [ZERO]!");
+				// if ($data['valor'] <= 0)
+				// 	throw new Exception("Valor não pode ser negativo, ou 0 [ZERO]!");
 
 				// verifica se valor é maior que o devido
 				if ($data['valor'] > $mov->valorpendente)
@@ -160,7 +159,7 @@ class MovimentacaoController extends Controller
 				}
 
 			} catch (Exception $e) {
-				return redirect('movimentacao')->with('error', $e->getMessage());
+				return redirect()->back()->with('error', $e->getMessage());
 				exit();
 			}
 
@@ -172,11 +171,11 @@ class MovimentacaoController extends Controller
 					throw new Exception('Falha ao salvar movimentação!');
 				}
 
-				DB::commit();
-				return redirect('movimentacao')->with('success', 'Movimentação #' . $mov->id . ' registrada com sucesso!');
+        DB::commit();
+        return redirect()->back()->with('success', 'Movimentação registrada com sucesso! ID:. #'.$mov->id);
 			} catch (Exception $e) {
 				DB::rollBack();
-				return redirect('movimentacao')->with('error', $e->getMessage());
+				return redirect()->back()->with('error', $e->getMessage());
 			}
 
 		}
