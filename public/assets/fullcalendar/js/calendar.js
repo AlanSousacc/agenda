@@ -72,9 +72,6 @@ document.addEventListener('DOMContentLoaded', function() {
         $("#modalCalendar #titleModal").text('Alterar Evento');
         $("#modalCalendar button.deleteEvent").css('display', 'flex');
 
-        let title = element.event.title;
-        $("#modalCalendar input[name='title']").val(title);
-
         let empresa_id = element.event.extendedProps.empresa_id;
 				$("#modalCalendar input[name='empresa_id']").val(empresa_id);
 
@@ -96,11 +93,15 @@ document.addEventListener('DOMContentLoaded', function() {
         let contato = element.event.extendedProps.contato_id;
         $("#contato_id").val(contato);
 
+        let title = element.event.title;
+        $("#title").val(title)
+
       },
       eventResize: function(element){
         let start = moment(element.event.start).format("YYYY-MM-DD HH:mm:ss");
         let end   = moment(element.event.end).format("YYYY-MM-DD HH:mm:ss");
         let contato = element.event.extendedProps.contato_id;
+        // let title = element.event.title;
         let title = element.event.title;
         let empresa_id = element.event.empresa_id;
         let description = element.event.extendedProps.description;
@@ -122,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
         clearMessages('#message');
         resetForm('#formEvent');
         $("#modalCalendar").modal('show');
-        $("#modalCalendar #titleModal").text('Adicionar Evento');
+        $("#modalCalendar #titleModal").text('Adicionar Agendamento');
         $("#modalCalendar button.deleteEvent").css('display', 'none');
 
         let start = moment(element.start).format("DD/MM/YYYY HH:mm:ss");

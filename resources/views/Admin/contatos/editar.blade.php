@@ -20,7 +20,6 @@
 	{{-- Detalhar --}}
 	@include('Admin.movimentacao.modalVisualizar')
 </div>
-
 @push('scripts')
 <script src='{{asset('admin/js/contato/contato.js')}}'></script>
 <script src='{{asset('admin/js/movimentacao/movimentacao.js')}}'></script>

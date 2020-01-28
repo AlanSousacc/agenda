@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use App\User;
 use App\Models\Modulo;
+use App\Models\TipoEvento;
 
 class Empresa extends Model
 {
@@ -35,8 +36,12 @@ class Empresa extends Model
 
 	public function contatos(){
     return $this->hasMany('App\Models\Contato');
+  }
+
+	public function tipo_eventos(){
+    return $this->hasMany(TipoEvento::class);
 	}
-	
+
 	public function modulos(){
 		return $this->belongsToMany(Modulo::class, 'aux_modulo_empresa', 'empresa_id','modulo_id')->withPivot('status')->withTimestamps();
 	}

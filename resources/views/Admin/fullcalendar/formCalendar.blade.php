@@ -1,12 +1,26 @@
 <form id="formEvent">
   <div id="message"></div>
-  <div class="form-group row">
+  {{-- <div class="form-group row">
     <label for="title" class="col-sm-4 col-form-label">Título</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="title" placeholder="Titulo" name="title">
-      <input type="hidden" name="id">
+
+    </div>
+  </div> --}}
+  <input type="hidden" name="id">
+
+  <div class="form-group row">
+    <label for="title" class="col-sm-4 col-form-label">Tipo Agendamento</label>
+    <div class="col-sm-8">
+      <select id="title" name="title" required class="form-control">
+        <option disabled>Tipo Agendamento</option>
+        @foreach ($tipoevento as $item)
+        <option value="{{$item->titulo}}" id="{{$item->id}}">{{$item->titulo}}</option>
+        @endforeach
+      </select>
     </div>
   </div>
+
   <div class="form-group row">
     <label for="start" class="col-sm-4 col-form-label">Data/Hora Inicio</label>
     <div class="col-sm-8">
@@ -20,7 +34,7 @@
     </div>
   </div>
   <div class="form-group row">
-    <label for="color" class="col-sm-4 col-form-label">Cor do Evento</label>
+    <label for="color" class="col-sm-4 col-form-label">Cor Agendamento</label>
     <div class="col-sm-8">
       <input type="color" class="form-control" id="color" placeholder="Data/Hora Final" name="color">
     </div>
@@ -34,7 +48,7 @@
   <input type="hidden" name="empresa_id" id="empresa_id" value="{{Auth::user()->empresa_id}}">
 
   <div class="form-group row">
-    <label for="description" class="col-sm-4 col-form-label">Contatos</label>
+    <label for="contatos" class="col-sm-4 col-form-label">Contatos</label>
     <div class="col-sm-8">
       <select id="contato_id" class="form-control">
         <option selected>Contatos</option>

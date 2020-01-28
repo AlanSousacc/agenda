@@ -81,50 +81,35 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 13);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/users/users.js":
-/*!*************************************!*\
-  !*** ./resources/js/users/users.js ***!
-  \*************************************/
+/***/ "./resources/js/tipoevento/tipoevento.js":
+/*!***********************************************!*\
+  !*** ./resources/js/tipoevento/tipoevento.js ***!
+  \***********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-$('#editar').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget);
-  var userid = button.data('userid');
-  var name = button.data('name');
-  var email = button.data('email');
-  var profile = button.data('profile');
-  var updated_at = button.data('updated_at');
-  var modal = $(this);
-  modal.find('.modal-body #name').val(name);
-  modal.find('.modal-body #email').val(email);
-  modal.find('.modal-body #profile').val(profile);
-  modal.find('.modal-body #updated_at').val(updated_at);
-  modal.find('.modal-body #userid').val(userid);
-}); // Função delete
-
 $('#delete').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget);
-  var userid = button.data('userid');
+  var tipeveid = button.data('tipeveid');
   var modal = $(this);
-  modal.find('.modal-body #userid').val(userid);
+  modal.find('.modal-body #tipeveid').val(tipeveid);
 });
 
 /***/ }),
 
-/***/ 6:
-/*!*******************************************!*\
-  !*** multi ./resources/js/users/users.js ***!
-  \*******************************************/
+/***/ 13:
+/*!*****************************************************!*\
+  !*** multi ./resources/js/tipoevento/tipoevento.js ***!
+  \*****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\wamp64\www\Laravel 6\agenda\resources\js\users\users.js */"./resources/js/users/users.js");
+module.exports = __webpack_require__(/*! C:\wamp64\www\Laravel 6\agenda\resources\js\tipoevento\tipoevento.js */"./resources/js/tipoevento/tipoevento.js");
 
 
 /***/ })

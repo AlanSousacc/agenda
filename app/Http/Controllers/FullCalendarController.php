@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\Empresa;
 use App\Models\Event;
 use App\Models\Contato;
+use App\Models\TipoEvento;
 use Auth;
 use App\User;
 
@@ -21,6 +22,8 @@ class FullCalendarController extends Controller
 
     $events = Event::where('empresa_id', '=', $user)->get();
 
+    $tipoevento = TipoEvento::where('empresa_id', '=', $user)->get();
+
     // define a listagem de contato baseado no tipo da empresa
     $emp = Empresa::where('id', '=', $user)->first();
     if($emp->tipo == 'estetica'){
@@ -32,6 +35,6 @@ class FullCalendarController extends Controller
 		$contato = Contato::where('tipocontato', '=', $tipoContato)
 												->where('empresa_id', '=', $user)->get();
 
-    return view('Admin.fullcalendar.master', compact('events', 'contato'));
+    return view('Admin.fullcalendar.master', compact('events', 'contato', 'tipoevento'));
   }
 }

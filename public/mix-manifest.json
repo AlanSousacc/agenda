@@ -12,5 +12,6 @@
     "/admin/js/movimentacao/consultapersonalizada.js": "/admin/js/movimentacao/consultapersonalizada.js",
     "/admin/js/movimentacao/jquery.maskMoney.js": "/admin/js/movimentacao/jquery.maskMoney.js",
     "/admin/js/movimentacao/movimentacao.js": "/admin/js/movimentacao/movimentacao.js",
+    "/admin/js/tipoevento/tipoevento.js": "/admin/js/tipoevento/tipoevento.js",
     "/admin/js/users/users.js": "/admin/js/users/users.js"
 }
