@@ -24,10 +24,10 @@
 			<td>
 				@if ($modemp->pivot->status == '1')
 				<input type="checkbox" data-toggle="toggle" data-onstyle="outline-success" data-offstyle="outline-danger"
-				data-size="sm" data-on="<i class='fa fa-check'></i> Sim" data-off="<i class='fa fa-times'></i> Não" checked> 
+				data-size="sm" data-on="<i class='fa fa-check'></i> Sim" data-off="<i class='fa fa-times'></i> Não" name="status" value="1" checked> 
 				@else
 				<input type="checkbox" data-toggle="toggle" data-onstyle="outline-success" data-offstyle="outline-danger"
-				data-size="sm" data-on="<i class='fa fa-check'></i> Sim" data-off="<i class='fa fa-times'></i> Não" > 
+				data-size="sm" data-on="<i class='fa fa-check'></i> Sim" data-off="<i class='fa fa-times'></i> Não" name="status" value="0"> 
 				@endif
 			</td>
 		</tr>

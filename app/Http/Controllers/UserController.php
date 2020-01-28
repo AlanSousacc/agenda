@@ -13,7 +13,7 @@ class UserController extends Controller
 		$user 		= Auth::user()->empresa_id;
     $consulta = User::where('empresa_id', '=', $user)->paginate(10);
 
-    return view('Admin.users.list', compact('consulta', 'dataForm'));
+    return view('Admin.users.list', compact('consulta'));
   }
 
   public function search(Request $request, User $user){
@@ -79,7 +79,7 @@ class UserController extends Controller
         $user->save();
         $saved = $user->save();
         if (!$saved){
-          return redirect('my-account')->with('error', $e->getMessage());
+          return redirect('my-account')->with('error', 'Não foi possível salvar as alterações!');
         } else {
           return redirect('my-account')->with('success', 'Seu usuário foi alterado com sucesso!');
         }
@@ -97,7 +97,7 @@ class UserController extends Controller
           $user->save();
           $saved = $user->save();
           if (!$saved){
-            return redirect('my-account')->with('error', $e->getMessage());
+            return redirect('my-account')->with('error', 'Não foi possível salvar as alterações!');
           } else {
             return redirect('my-account')->with('success', 'Seu usuário foi alterado com sucesso!');
           }
