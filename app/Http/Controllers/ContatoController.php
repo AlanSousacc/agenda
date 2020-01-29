@@ -19,7 +19,7 @@ class ContatoController extends Controller
   public function index()
   {
     $user 		= Auth::user()->empresa_id;
-    $consulta = Contato::where('empresa_id', '=', $user)->paginate(10);
+    $consulta = Contato::where('empresa_id', $user)->paginate(10);
 
     return view('Admin.contatos.listagem', compact('consulta'));
   }
@@ -33,7 +33,7 @@ class ContatoController extends Controller
 
   public function create(){
 		$user 		 = Auth::user()->empresa_id;
-		$consulta  = Movimento::where('empresa_id', '=', $user);
+		$consulta  = Movimento::where('empresa_id', $user);
 
     return view('Admin.contatos.novo', compact('consulta'));
   }
@@ -43,10 +43,10 @@ class ContatoController extends Controller
 
 		$user 		 = Auth::user()->empresa_id;
 		$pagamento = Condicao_pagamento::all();
-		$contatos  = Contato::where('empresa_id', '=', $user)->get();
-		$centro  = CentroCusto::where('empresa_id', '=', $user)->get();
+		$contatos  = Contato::where('empresa_id',$user)->get();
+		$centro  = CentroCusto::where('empresa_id', $user)->get();
 
-		$consulta  = Movimento::where('empresa_id', '=', $user)->where('contato_id', '=', $contato->id)->paginate(10);
+		$consulta  = Movimento::where('empresa_id', $user)->where('contato_id', $contato->id)->paginate(10);
 		$total		 = $consulta->sum('valortotal');
 		$totaldeb	 = $consulta->sum('valorpendente');
 
@@ -80,8 +80,6 @@ class ContatoController extends Controller
       $contato->grupo_id        = $data['grupo_id'];
       $contato->tipocontato     = $data['tipocontato'];
 			$contato->empresa_id      = Auth::user()->empresa_id;
-
-      // $emp = Empresa::where('id', '=', $contato->empresa_id)->first();
 
     } catch (Exception $e) {
       return redirect('contato')->with('error', $e->getMessage());
@@ -136,8 +134,6 @@ class ContatoController extends Controller
       $contato->grupo_id        = $data['grupo_id'];
       $contato->tipocontato     = $data['tipocontato'];
 			$contato->empresa_id      = Auth::user()->empresa_id;
-
-			// $emp = Empresa::where('id', '=', $contato->empresa_id)->first();
 
     } catch (Exception $e) {
       return redirect('contato')->with('error', $e->getMessage());
@@ -206,5 +202,4 @@ class ContatoController extends Controller
       return redirect('contato')->with('error', $e->getMessage());
     }
   }
-
 }

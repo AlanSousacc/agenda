@@ -240,6 +240,17 @@
                 </li>
               </ul>
               @endif
+
+              @if (Auth::user()->profile == 'Administrador')
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ route('tipoevento.list') }}" class="nav-link">
+                    <i class="fa fa-calendar-alt  nav-icon"></i>
+                    <p>Tipo de Agendamento</p>
+                  </a>
+                </li>
+              </ul>
+              @endif
             </li>
 
             <li class="nav-item has-treeview menu-open">
@@ -257,17 +268,6 @@
                     <i class="fa fa-folder-minus nav-icon"></i>
                     {{-- <p>Módulos    <span class="badge badge-pill badge-success">{{$zmodulos->count()}}</span></p> --}}
                     <p>Módulos</p>
-                  </a>
-                </li>
-              </ul>
-              @endif
-
-              @if (Auth::user()->profile == 'Administrador')
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="{{ route('tipoevento.list') }}" class="nav-link">
-                    <i class="fa fa-calendar-alt  nav-icon"></i>
-                    <p>Tipo de Agendamento</p>
                   </a>
                 </li>
               </ul>

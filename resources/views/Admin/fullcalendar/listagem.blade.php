@@ -13,42 +13,7 @@
           <h3 class="card-title mt-md-4"> Listagem de Agendamentos</h3>
         </div>
         <div class="col-md-9 search float-md-right">
-          <form action="{{route('routeEventSearch')}}" method="POST" class="form-inline float-md-right ">
-            @csrf
-            <div class="row">
-              <div class="col-md-3">
-                <div class="form-group">
-                  <label for="start">Dt. Inicial</label>
-                    <input type="date" class="form-control start" id="start" value="{{old('start')}}" name="start">
-                </div>
-              </div>
-
-              <div class="col-md-3">
-                <div class="form-group">
-                  <label for="end">Dt. Final</label>
-                    <input type="date" class="form-control end" id="end" value="{{old('end')}}" name="end">
-                </div>
-              </div>
-
-              <div class="col-md-3">
-                <div class="form-group">
-                  <label for="documento">Contato</label>
-                  <select class="form-control contato_id" id="contato_id" name="contato_id" {{old('contato_id')}}>
-                    <option selected disabled>Selecione um contato para consultar</option>
-                    @foreach ($contato as $item)
-                    <option value="{{$item->id}}">{{$item->nome}}</option>
-                    @endforeach
-                  </select>
-                </div>
-              </div>
-
-              <div class="col-md-3">
-                <div class="form-group mt-4 float-md-right">
-                  <button type="submit" class="btn btn-success"><i class="fa fa-search"></i></button>
-                </div>
-              </div>
-            </div>
-          </form>
+          <a href="http://" data-target="#filtroagendamento" data-toggle="modal" class="btn btn-success float-md-right">Filtrar <i class="fa fa-filter"></i></a>
         </div>
       </div>
 
@@ -58,7 +23,7 @@
       <thead>
         <tr>
           <th class="text-center">Contato</th>
-          <th class="text-center">Título</th>
+          <th class="text-center">Tipo Agendamento</th>
           <th class="text-center">Data/Hora inicio</th>
           <th class="text-center">Data/Hora Final</th>
           <th class="text-center">Descrição</th>
@@ -87,10 +52,13 @@
         @endif
       </div>
     </div>
+    {{-- modal filtro--}}
+    @include('Admin.fullcalendar.modalfiltro')
   </div>
   <!-- /.card -->
   @push('scripts')
   <script src='{{asset('admin/js/agenda/agenda.js')}}'></script>
+  {{-- <script src='{{asset('assets/fullcalendar/js/agendamento.js')}}'></script> --}}
   @endpush
   @endsection
 
