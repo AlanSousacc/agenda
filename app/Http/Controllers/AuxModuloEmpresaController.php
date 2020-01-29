@@ -52,24 +52,25 @@ class AuxModuloEmpresaController extends Controller
 		public function edit($id){
 			$empresa = Empresa::find($id);
 			$modulosempresa = $empresa->modulos;
-			// dd($modulosempresa);
-				return view('Admin.empresa.moduloempresa.editar',compact('empresa','modulosempresa'));
+			 return view('Admin.empresa.moduloempresa.editar',compact('empresa','modulosempresa'));
 			}
 			
-			public function update(Request $request, $id)
+			public function update($modemp, $emp )
 			{
-				$empresa 							= Empresa::find($id);
-				$modulo 							= Modulo::find($request->hidden_id);
-				dd($modulo->id);
-				$modulo->id						= $request->hidden_id;
-				$modulosempresa 			= $empresa->modulos;
-				$arr 									= array();
-				$arrstatus 						= array();
-				foreach($modulosempresa as $modemp){
-					$arr[] 						= $modemp->id;
-					// $arrstatus[]  		= (!isset($request['status']) == 'on')? 1 : 0;
-					$arrstatus[]  		= $request->checkstatus == 'on' ? 0 : 1;
-				}
+				dd($emp);
+				// $empresa 							= Empresa::find($request->hidden_emp);
+				// dd($empresa);
+				// $modulo 							= Modulo::find($request->hidden_id);
+				// dd($modulo->id);
+				// $modulo->id						= $request->hidden_id;
+				// $modulosempresa 			= $empresa->modulos;
+				// $arr 									= array();
+				// $arrstatus 						= array();
+				// foreach($modulosempresa as $modemp){
+				// 	$arr[] 						= $modemp->id;
+				// 	// $arrstatus[]  		= (!isset($request['status']) == 'on')? 1 : 0;
+				// 	$arrstatus[]  		= $request->checkstatus == 'on' ? 0 : 1;
+				// }
 				dd($arrstatus);
 				$empresa->modulos()->sync($arr)->pivot->status($arrstatus);
 				dd($empresa->modulos);

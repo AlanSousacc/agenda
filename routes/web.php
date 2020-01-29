@@ -77,8 +77,8 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
 Route::middleware(['auth', 'isAdmin'])->group(function () {
 	// Route::get('teste', 'AuxModuloEmpresaController@teste')->name('modulosempresa.teste1');
 	// Route::get('teste2', 'AuxModuloEmpresaController@teste2')->name('modulosempresa.teste2');
-	Route::get('modulosempresa/edit/{id}', 'AuxModuloEmpresaController@edit')->name('modulosempresa.edit');
-	Route::put('modulosempresa/update/{id}', 'AuxModuloEmpresaController@update')->name('modulosempresa.update');
+	Route::get('modulosempresa/modulos/empresa/{id}', 'AuxModuloEmpresaController@edit')->name('modulosempresa.edit');
+	Route::get('modulosempresa/modulos/update/{id}', 'AuxModuloEmpresaController@update')->name('modulosempresa.update');
 });
 
 // access do sistema
