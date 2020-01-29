@@ -128,8 +128,7 @@ $('#editar').on('show.bs.modal', function (event) {
   modal.find('.modal-body #bairro').val(bairro);
   modal.find('.modal-body #tipo').val(tipo);
   modal.find('.modal-body #emprid').val(emprid);
-}); // Função delete
-
+});
 $('#delete').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget);
   var emprid = button.data('emprid');

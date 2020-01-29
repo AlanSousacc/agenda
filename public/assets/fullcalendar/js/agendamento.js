@@ -1,5 +1,4 @@
-// tabela com listagem de clientes
-$('#editar').on('show.bs.modal', function (event) {
+$('#filtroagendamento').on('show.bs.modal', function (event) {
   var button       = $(event.relatedTarget);
   var emprid       = button.data('emprid');
   var razaosocial  = button.data('razaosocial');
@@ -34,18 +33,4 @@ $('#editar').on('show.bs.modal', function (event) {
   modal.find('.modal-body #bairro').val(bairro);
   modal.find('.modal-body #tipo').val(tipo);
   modal.find('.modal-body #emprid').val(emprid);
-});
-
-$('#delete').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget);
-  var emprid = button.data('emprid');
-  var modal = $(this);
-  modal.find('.modal-body #emprid').val(emprid);
-});
-$(document).ready(function () {
-  $('.telefone').mask('(00) 0000-0000');
-  $('.cep').mask('00000-000');
-  $('.cnpj').mask('00.000.000/0000-00', {
-    reverse: true
-  });
 });

@@ -20,9 +20,9 @@ class FullCalendarController extends Controller
   public function index(){
     $user    = Auth::user()->empresa_id;
 
-    $events = Event::where('empresa_id', '=', $user)->get();
+    $events = Event::where('empresa_id', $user)->get();
 
-    $tipoevento = TipoEvento::where('empresa_id', '=', $user)->get();
+    $tipoevento = TipoEvento::where('empresa_id', $user)->where('status', 1)->get();
 
     // define a listagem de contato baseado no tipo da empresa
     $emp = Empresa::where('id', '=', $user)->first();
@@ -32,8 +32,9 @@ class FullCalendarController extends Controller
       $tipoContato    = 'paciente';
     }
 
-		$contato = Contato::where('tipocontato', '=', $tipoContato)
-												->where('empresa_id', '=', $user)->get();
+		$contato = Contato::where('tipocontato', $tipoContato)
+												->where('empresa_id', $user)
+												->where('status', 1)->get();
 
     return view('Admin.fullcalendar.master', compact('events', 'contato', 'tipoevento'));
   }

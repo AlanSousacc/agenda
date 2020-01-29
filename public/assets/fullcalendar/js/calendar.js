@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var calendar = new Calendar(calendarEl, {
       plugins: [ 'interaction', 'dayGrid', 'timeGrid', 'list' ],
+      // defaultView: 'listWeek',
       header: {
         left: 'prev,next today',
         center: 'title',
@@ -33,6 +34,14 @@ document.addEventListener('DOMContentLoaded', function() {
       selectable: true,
       editable: true,
       droppable: true, // this allows things to be dropped onto the calendar
+
+      // eventRender: function(event, element) {
+      //   // console.log(event.event.extendedProps.contato_id)
+      //   console.log(event.el.querySelectorAll('.fc-title') = 'event.event.extendedProps.description')
+      //   // event.el.querySelectorAll('.fc-title').html = 'event.event.extendedProps.description'
+      //   // element.find('.fc-content .fc-title').append(event.event.extendedProps.contato_id);
+      // },
+
       drop: function(arg) {
         // is the "remove after drop" checkbox checked?
         if (document.getElementById('drop-remove').checked) {

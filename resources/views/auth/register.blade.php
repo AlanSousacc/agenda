@@ -55,7 +55,7 @@
 						<input id="password-confirm" type="password" class="form-control" name="password_confirmation" required placeholder="Confirme a senha">
 					</div>
 				</div>
-				
+
 				<div class="form-group row">
 					<div class="col-md-10 offset-md-1">
 						<select id="empresa_id" name="empresa_id" class="form-control">

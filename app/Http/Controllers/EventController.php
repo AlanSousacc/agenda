@@ -8,6 +8,7 @@ use Auth;
 use App\User;
 use App\Models\Empresa;
 use App\Models\Contato;
+use App\Models\TipoEvento;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -25,10 +26,12 @@ class EventController extends Controller
       $tipoContato    = 'paciente';
     }
 
-    $contato = Contato::where('tipocontato', '=', $tipoContato)
-                        ->where('empresa_id', '=', $user)->get();
+    $tipoevento = TipoEvento::where('empresa_id', $user)->where('status', 1)->get();
 
-    return view('Admin.fullcalendar.listagem', compact('consulta', 'contato'));
+    $contato = Contato::where('tipocontato', $tipoContato)
+                        ->where('empresa_id', $user)->get();
+
+    return view('Admin.fullcalendar.listagem', compact('consulta', 'contato', 'tipoevento'));
   }
 
   public function search(Request $request, Event $event)
@@ -44,10 +47,12 @@ class EventController extends Controller
       $tipoContato = 'paciente';
     }
 
+    $tipoevento = TipoEvento::where('empresa_id', $user)->where('status', 1)->get();
+
     $contato = Contato::where('tipocontato', '=', $tipoContato)
                         ->where('empresa_id', '=', $user)->get();
 
-    return view('Admin.fullcalendar.listagem', compact('consulta', 'evento', 'contato'));
+    return view('Admin.fullcalendar.listagem', compact('consulta', 'evento', 'contato', 'tipoevento'));
   }
 
   public function __construct()
