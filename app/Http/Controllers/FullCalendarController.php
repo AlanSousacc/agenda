@@ -33,7 +33,8 @@ class FullCalendarController extends Controller
     }
 
 		$contato = Contato::where('tipocontato', $tipoContato)
-												->where('empresa_id', $user)->get();
+												->where('empresa_id', $user)
+												->where('status', 1)->get();
 
     return view('Admin.fullcalendar.master', compact('events', 'contato', 'tipoevento'));
   }

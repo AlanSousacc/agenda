@@ -28,8 +28,8 @@ class EventController extends Controller
 
     $tipoevento = TipoEvento::where('empresa_id', $user)->where('status', 1)->get();
 
-    $contato = Contato::where('tipocontato', '=', $tipoContato)
-                        ->where('empresa_id', '=', $user)->get();
+    $contato = Contato::where('tipocontato', $tipoContato)
+                        ->where('empresa_id', $user)->get();
 
     return view('Admin.fullcalendar.listagem', compact('consulta', 'contato', 'tipoevento'));
   }
