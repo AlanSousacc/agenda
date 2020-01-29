@@ -73,15 +73,16 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
   Route::delete('centrodecusto/delete', 'CentroCustoController@destroy')->name('cc.destroy');
 });
 
+// relacionamento módulos da empresa
+Route::middleware(['auth', 'isAdmin'])->group(function () {
+	// Route::get('teste', 'AuxModuloEmpresaController@teste')->name('modulosempresa.teste1');
+	// Route::get('teste2', 'AuxModuloEmpresaController@teste2')->name('modulosempresa.teste2');
+	Route::get('modulosempresa/edit/{id}', 'AuxModuloEmpresaController@edit')->name('modulosempresa.edit');
+	Route::put('modulosempresa/update/{id}', 'AuxModuloEmpresaController@update')->name('modulosempresa.update');
+});
+
 // access do sistema
 Route::get('unauthorized', 'AccessController@index')->name('unauthorized');
-
-// relacionamento módulos da empresa
-// Route::get('teste', 'AuxModuloEmpresaController@teste')->name('modulosempresa.teste1');
-// Route::get('teste2', 'AuxModuloEmpresaController@teste2')->name('modulosempresa.teste2');
-Route::get('modulosempresa/edit/{id}', 'AuxModuloEmpresaController@edit')->name('modulosempresa.edit');
-Route::put('modulosempresa/update/{id}', 'AuxModuloEmpresaController@update')->name('modulosempresa.update');
-
 
 Auth::routes();
 Auth::routes(['verify' => true]);

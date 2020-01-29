@@ -9,6 +9,7 @@ use Exception;
 use App\User;
 use App\Models\Empresa;
 use App\Models\Modulo;
+use App\Models\AuxModuloEmpresa;
 
 class AuxModuloEmpresaController extends Controller
 {
@@ -58,6 +59,9 @@ class AuxModuloEmpresaController extends Controller
 			public function update(Request $request, $id)
 			{
 				$empresa 							= Empresa::find($id);
+				$modulo 							= Modulo::find($request->hidden_id);
+				dd($modulo->id);
+				$modulo->id						= $request->hidden_id;
 				$modulosempresa 			= $empresa->modulos;
 				$arr 									= array();
 				$arrstatus 						= array();
