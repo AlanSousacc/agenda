@@ -24,18 +24,18 @@ class ModulosTableSeeder extends Seeder
 			]);
 
 			Modulo::create ([
-        'nome'        => 'Empresas',
-        'descricao'       => 'Acesso às opções de Cadastros de novas Empresas no sistema.',
-			]);
-
-			Modulo::create ([
         'nome'        => 'Usuários',
-        'descricao'       => 'Acesso às opções de Cadastros de novos Usuários no sistema.',
+        'descricao'       => 'Acesso às opções de Usuários no sistema.',
 			]);
 
 			Modulo::create ([
         'nome'        => 'Movimentos',
         'descricao'       => 'Acesso às opções de Pagamentos e Recebimentos no sistema.',
+			]);
+
+			Modulo::create ([
+        'nome'        => 'Centro de Custo',
+        'descricao'       => 'Acesso ao de Centro de Custo no sistema.',
 			]);
 
     }

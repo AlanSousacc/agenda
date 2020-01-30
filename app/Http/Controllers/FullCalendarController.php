@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 // use Illuminate\Http\Request;
 use App\Models\Empresa;
 use App\Models\Event;
+use App\Models\AuxModuloEmpresa;
 use App\Models\Contato;
 use App\Models\TipoEvento;
 use Auth;
@@ -12,10 +13,20 @@ use App\User;
 
 class FullCalendarController extends Controller
 {
-  public function __construct()
-  {
-    $this->middleware('auth');
-  }
+  protected $empresa;
+
+	public function __construct()
+	{
+		$this->middleware(function ($request, $next) {
+			$this->empresa = Auth::user()->empresa_id;
+
+			$permissao = AuxModuloEmpresa::where('empresa_id', $this->empresa)->where('modulo_id', 1)->first();
+			if ($permissao->status != 1)
+				return redirect()->route('unauthorized')->with('error', 'Acesso indisponível a esta empresa!');
+				
+    	return $next($request);
+		});
+	}
 
   public function index(){
     $user    = Auth::user()->empresa_id;

@@ -8,10 +8,26 @@ use Exception;
 use App\User;
 use Illuminate\Support\Facades\DB;
 use App\Models\TipoEvento;
+use App\Models\AuxModuloEmpresa;
 use App\Http\Requests\TipoEventoRequest;
 
 class TipoEventoController extends Controller
 {
+	protected $empresa;
+
+	public function __construct()
+	{
+		$this->middleware(function ($request, $next) {
+			$this->empresa = Auth::user()->empresa_id;
+
+			$permissao = AuxModuloEmpresa::where('empresa_id', $this->empresa)->where('modulo_id', 1)->first();
+			if ($permissao->status != 1)
+				return redirect()->route('unauthorized')->with('error', 'Acesso indisponível a esta empresa!');
+				
+    	return $next($request);
+		});
+	}
+
   public function index()
   {
     try{

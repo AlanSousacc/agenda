@@ -39,9 +39,11 @@ $(function(){
 
     let description = $("#modalCalendar textarea[name='description']").val();
 
-    let contato = $("#contato_id").val();
+		let contato = $("#contato_id").val();
+		
+    let tipoevento = $("#tipo_evento_id").val();
 
-    let title = $("#title :selected").text()
+    let title = $("#title").val();
 
 
     let Event = {
@@ -52,7 +54,10 @@ $(function(){
       color: color,
       description: description,
       contato_id: contato,
-    };
+      tipo_evento_id: tipoevento,
+		};
+		
+		console.log(Event)
 
     let route;
 

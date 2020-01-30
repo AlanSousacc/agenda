@@ -27,13 +27,13 @@
     <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
       <thead>
         <tr>
-          <th class="text-center" style="width: 50px;" >#ID</th>
-          <th class="th-sm" style="width: 200px;" >Razão Social</th>
-          <th class="th-sm" style="width: 200px;" >Nome Fantasia</th>
-          <th class="th-sm" style="width: 150px;" >CNPJ</th>
-          <th class="th-sm" style="width: 120px;" >Telefone</th>
-          <th class="th-sm" style="width: 120px;" >Email</th>
-          <th class="text-center" style="width: 120px;" >Opções</th>
+          <th class="text-center">#ID</th>
+          <th class="text-center">Razão Social</th>
+          <th class="text-center">Nome Fantasia</th>
+          <th class="text-center">CNPJ</th>
+          <th class="text-center">Telefone</th>
+          <th class="text-center">Email</th>
+          <th class="text-center">Opções</th>
         </tr>
       </thead>
       <tbody>

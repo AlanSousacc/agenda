@@ -21,7 +21,6 @@ class CreateEventsTable extends Migration
       $table->string('color');
       $table->longText('description')->nullable();
       $table->timestamps();
-      $table->softDeletes();
       $table->unsignedBigInteger('contato_id')->unsigned();
       $table->unsignedBigInteger('empresa_id')->unsigned();
 

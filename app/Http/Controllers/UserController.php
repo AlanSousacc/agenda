@@ -13,6 +13,22 @@ use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
+	protected $empresa;
+
+	public function __construct()
+	{
+		// verifica se a empresa tem permissão de acesso ao modulo de usuario
+		$this->middleware(function ($request, $next) {
+			$this->empresa = Auth::user()->empresa_id;
+
+			$permissao = AuxModuloEmpresa::where('empresa_id', $this->empresa)->where('modulo_id', 3)->first();
+			if ($permissao->status != 1)
+				return redirect()->route('unauthorized')->with('error', 'Acesso indisponível a esta empresa!');
+
+    	return $next($request);
+		});
+	}
+
   public function index(Request $request){
 
 				// //Verifica o empresa_id do usuário logado

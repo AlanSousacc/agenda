@@ -8,6 +8,7 @@ use Exception;
 use App\User;
 use App\Models\Empresa;
 use App\Models\Movimento;
+use App\Models\AuxModuloEmpresa;
 use App\Models\Contato;
 use App\Models\Condicao_pagamento;
 use App\Models\CentroCusto;
@@ -18,6 +19,22 @@ use \PDF;
 
 class MovimentacaoController extends Controller
 {
+	protected $empresa;
+
+	public function __construct()
+	{
+		// verifica se a empresa tem permissão de acesso ao modulo Movimentação
+		$this->middleware(function ($request, $next) {
+			$this->empresa = Auth::user()->empresa_id;
+
+			$permissao = AuxModuloEmpresa::where('empresa_id', $this->empresa)->where('modulo_id', 4)->first();
+			if ($permissao->status != 1)
+				return redirect()->route('unauthorized')->with('error', 'Acesso indisponível a esta empresa!');
+				
+    	return $next($request);
+		});
+	}
+
   public function index()
   {
     $user 		  		= Auth::user()->empresa_id;

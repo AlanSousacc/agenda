@@ -1,21 +1,15 @@
 <form id="formEvent">
   <div id="message"></div>
-  {{-- <div class="form-group row">
-    <label for="title" class="col-sm-4 col-form-label">Título</label>
-    <div class="col-sm-8">
-      <input type="text" class="form-control" id="title" placeholder="Titulo" name="title">
-
-    </div>
-  </div> --}}
   <input type="hidden" name="id">
+  <input type="hidden" name="title" id="title" class="title" value="Contato">
 
   <div class="form-group row">
     <label for="title" class="col-sm-4 col-form-label">Tipo Agendamento</label>
     <div class="col-sm-8">
-      <select id="title" name="title" required class="form-control">
+      <select id="tipo_evento_id" name="tipo_evento_id" required class="form-control">
         <option disabled>Tipo Agendamento</option>
         @foreach ($tipoevento as $item)
-        <option value="{{$item->titulo}}" id="{{$item->id}}">{{$item->titulo}}</option>
+        <option value="{{$item->id}}" id="{{$item->id}}">{{$item->titulo}}</option>
         @endforeach
       </select>
     </div>
@@ -50,7 +44,7 @@
   <div class="form-group row">
     <label for="contatos" class="col-sm-4 col-form-label">Contatos</label>
     <div class="col-sm-8">
-      <select id="contato_id" class="form-control">
+      <select id="contato_id" required class="form-control">
         <option selected>Contatos</option>
         @foreach ($contato as $item)
         <option value="{{$item->id}}" id="{{$item->id}}">{{$item->nome}}</option>

@@ -1,10 +1,10 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Contato;
 use App\Models\Empresa;
 use App\Models\Movimento;
+use App\Models\AuxModuloEmpresa;
 use App\Models\CentroCusto;
 use App\Models\Condicao_pagamento;
 use Illuminate\Http\Request;
@@ -16,6 +16,22 @@ use Exception;
 
 class ContatoController extends Controller
 {
+	protected $empresa;
+
+	public function __construct()
+	{
+		// verifica se a empresa tem permissão de acesso ao modulo de contato
+		$this->middleware(function ($request, $next) {
+			$this->empresa = Auth::user()->empresa_id;
+
+			$permissao = AuxModuloEmpresa::where('empresa_id', $this->empresa)->where('modulo_id', 5)->first();
+			if ($permissao->status != 1)
+				return redirect()->route('unauthorized')->with('error', 'Acesso indisponível a esta empresa!');
+				
+    	return $next($request);
+		});
+	}
+	
   public function index()
   {
     $user 		= Auth::user()->empresa_id;
