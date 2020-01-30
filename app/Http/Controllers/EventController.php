@@ -7,6 +7,7 @@ use App\Http\Requests\EventRequest;
 use Auth;
 use App\User;
 use App\Models\Empresa;
+use App\Models\AuxModuloEmpresa;
 use App\Models\Contato;
 use App\Models\TipoEvento;
 use Illuminate\Http\Request;
@@ -14,6 +15,22 @@ use Illuminate\Support\Facades\DB;
 
 class EventController extends Controller
 {
+	protected $empresa;
+
+	public function __construct()
+	{
+		// verifica se a empresa tem permissão de acesso ao modulo de agenda
+		$this->middleware(function ($request, $next) {
+			$this->empresa = Auth::user()->empresa_id;
+
+			$permissao = AuxModuloEmpresa::where('empresa_id', $this->empresa)->where('modulo_id', 1)->first();
+			if ($permissao->status != 1)
+				return redirect()->route('unauthorized')->with('error', 'Acesso indisponível a esta empresa!');
+				
+    	return $next($request);
+		});
+	}
+
   public function index()
   {
     $user 		= Auth::user()->empresa_id;
@@ -55,13 +72,7 @@ class EventController extends Controller
     return view('Admin.fullcalendar.listagem', compact('consulta', 'evento', 'contato', 'tipoevento'));
   }
 
-  public function __construct()
-  {
-    $this->middleware('auth');
-  }
-
-  public function loadEvents()
-  {
+  public function loadEvents(){
     $user    = Auth::user()->empresa_id;
     $events  = Event::where('empresa_id', '=', $user)->get();
 

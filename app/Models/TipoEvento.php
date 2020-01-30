@@ -14,6 +14,10 @@ class TipoEvento extends Model
     'empresa_id'
   ];
 
+	public function events(){
+    return $this->hasMany('App\Models\Event');
+	}
+	
   public function empresa(){
     return $this->belongsTo(Empresa::class);
   }

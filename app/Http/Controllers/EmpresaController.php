@@ -103,7 +103,6 @@ class EmpresaController extends Controller
 				throw new Exception('Falha ao salvar Centro de Custo #Despesas#!');
 			}
 			
-			// ######################################################## Cadastro dos Módulos da Empresa
 			$zmodulos 				= Modulo::all();
 			// Joga para um Array todos os ids dos módulos cadastrados
 			$arr = array();
@@ -115,7 +114,6 @@ class EmpresaController extends Controller
 			if (!$empresa){
 				throw new Exception('Falha ao salvar os módulos da Empresa!');
 			}
-			// ########################################################  Final do Cadastro dos Módulos da Empresa
 			
 			DB::commit();
 			return redirect('empresa')->with('success', 'Empresa criada com sucesso!');

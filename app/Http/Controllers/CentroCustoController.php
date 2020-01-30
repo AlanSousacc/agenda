@@ -9,12 +9,28 @@ use Auth;
 use Exception;
 use App\User;
 use App\Models\CentroCusto;
+use App\Models\AuxModuloEmpresa;
 use App\Http\Requests\CentroCustoRequest;
 
 
 
 class CentroCustoController extends Controller
 {
+	// protected $empresa;
+
+	// public function __construct()
+	// {
+	// 	$this->middleware(function ($request, $next) {
+	// 		$this->empresa = Auth::user()->empresa_id;
+
+	// 		$permissao = AuxModuloEmpresa::where('empresa_id', $this->empresa)->where('modulo_id', 5)->first();
+	// 		if ($permissao->status != 1)
+	// 			return redirect()->route('unauthorized')->with('error', 'Acesso indisponível a esta empresa!');
+				
+  //   	return $next($request);
+	// 	});
+	// }
+
   // LISTAGEM DE MÓDULOS
   public function index()
   {
