@@ -1,6 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\AuxModuloEmpresa;
+use App\Models\Empresa;
+use App\Models\Modulo;
 use Exception;
 use App\User;
 use Illuminate\Support\Facades\Auth;
@@ -10,8 +14,21 @@ use Illuminate\Support\Facades\DB;
 class UserController extends Controller
 {
   public function index(Request $request){
+
+				// //Verifica o empresa_id do usuário logado
+				// $empresa 		= Auth::user()->empresa_id;
+		
+				// // Verifica o status da permissão do módulo 4 (Módulo 4 = Usuários).
+				// $permissao  	 = AuxModuloEmpresa::where('empresa_id', $empresa)->where('modulo_id', 4)->get('status');
+
+				// //Verifica o status do módulo
+				// if ( $permissao != 1 )
+				// 	return redirect()->route('unauthorized')->with('error', 'Este usuário não tem permissão para acessar esta página!');
+
+
+
 		$user 		= Auth::user()->empresa_id;
-    $consulta = User::where('empresa_id', '=', $user)->paginate(10);
+		$consulta = User::where('empresa_id', '=', $user)->paginate(10);
 
     return view('Admin.users.list', compact('consulta'));
   }

@@ -55,30 +55,10 @@ class AuxModuloEmpresaController extends Controller
 			 return view('Admin.empresa.moduloempresa.editar',compact('empresa','modulosempresa'));
 			}
 			
-			public function update($modemp, $emp )
+			public function update($modulo, $emp, $status )
 			{
-				dd($emp);
-				// $empresa 							= Empresa::find($request->hidden_emp);
-				// dd($empresa);
-				// $modulo 							= Modulo::find($request->hidden_id);
-				// dd($modulo->id);
-				// $modulo->id						= $request->hidden_id;
-				// $modulosempresa 			= $empresa->modulos;
-				// $arr 									= array();
-				// $arrstatus 						= array();
-				// foreach($modulosempresa as $modemp){
-				// 	$arr[] 						= $modemp->id;
-				// 	// $arrstatus[]  		= (!isset($request['status']) == 'on')? 1 : 0;
-				// 	$arrstatus[]  		= $request->checkstatus == 'on' ? 0 : 1;
-				// }
-				dd($arrstatus);
-				$empresa->modulos()->sync($arr)->pivot->status($arrstatus);
-				dd($empresa->modulos);
-				if (!$empresa){
-					throw new Exception('Falha ao salvar Permissões da Empresa!');
-
-				return view('Admin.empresa.moduloempresa.editar',compact('modulosempresa'));
-				
-				}
+				$empresa = Empresa::find($emp);
+				$empresa->modulos()->updateExistingPivot($modulo,['status'=>$status]);	
+					return redirect()->back();	
 			}
 		}

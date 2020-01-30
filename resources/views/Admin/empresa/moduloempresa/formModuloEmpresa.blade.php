@@ -36,12 +36,12 @@
 				{{-- <input type="hidden" name="hidden_id" id="hidden_id" value={{$modemp->id}}> --}}
 				@if ($modemp->pivot->status == 1)
 				<input type="hidden" name="hidden_status" id="hidden_status" value=1>
-				<a  role="button" href="{{ route('modulosempresa.update',array($modemp->id, $modemp->pivot->empresa_id)) }}" 
+				<a  role="button" href="{{ route('modulosempresa.update',array($modemp->id, $modemp->pivot->empresa_id, 0)) }}" 
 					class="btn btn-outline-danger btn-sm	 btn-block">Bloquear
 				</a>
 				@else
 				<input type="hidden" name="hidden_status" id="hidden_status" value=0>
-				<a  role="button" href="{{ route('modulosempresa.update',array($modemp->id, $modemp->pivot->empresa_id)) }}" 
+				<a  role="button" href="{{ route('modulosempresa.update',array($modemp->id, $modemp->pivot->empresa_id, 1)) }}" 
 					class="btn btn-outline-success btn-sm	 btn-block">Permitir
 				</a>
 				@endif
