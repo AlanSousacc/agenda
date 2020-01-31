@@ -18,18 +18,22 @@ class CreateMovimentosTable extends Migration
       $table->unsignedBigInteger('user_id');
       $table->unsignedBigInteger('contato_id');
       $table->unsignedBigInteger('empresa_id');
+      $table->unsignedBigInteger('centrocusto_id');
       $table->unsignedBigInteger('condicao_pagamento_id');
       $table->unsignedBigInteger('event_id')->nullable();
-      $table->string('tipo', 50);
-      $table->text('observacao');
-      $table->double('valor', 5, 2);
+      $table->enum('tipo', ['Entrada', 'Saída']);
+      $table->text('observacao')->nullable();
+      $table->double('valortotal', 10, 2);
+      $table->double('valorrecebido', 10, 2);
+      $table->double('valorpendente', 10, 2);
       $table->dateTime('movimented_at');
-      $table->text('observacao')->nullable(true)->change();
+      $table->boolean('status');
       $table->timestamps();
 
       $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
       $table->foreign('contato_id')->references('id')->on('contatos')->onDelete('cascade');
       $table->foreign('empresa_id')->references('id')->on('empresas')->onDelete('cascade');
+      $table->foreign('centrocusto_id')->references('id')->on('centro_custo')->onDelete('cascade');
       $table->foreign('condicao_pagamento_id')->references('id')->on('condicao_pagamento')->onDelete('cascade');
       $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
     });

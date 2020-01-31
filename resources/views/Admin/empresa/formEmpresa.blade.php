@@ -20,13 +20,13 @@
       </div>
     </div>
 	</div>
-	
+
   <div class="col-md-3">
     <div class="form-group">
       <label for="status">Tipo de empresa</label>
       <div class="input-group">
 				<select class="form-control tipo" id="tipo" name="tipo" {{old('tipo')}} required>
-					<option selected disabled>Tipo</option>
+					<option value="">Tipo</option>
           <option value="estetica">Estética</option>
           <option value="clinica">Clínica</option>
         </select>
@@ -87,7 +87,7 @@
     <div class="form-group">
       <label for="im">Inscrição Municipal</label>
       <div class="input-group">
-        <input type="text" class="form-control im" id="im" placeholder="Digite a inscrição municipal" value="{{old('im')}}" name="im" autofocus>
+        <input type="text" class="form-control im" id="im" placeholder="Digite a inscrição municipal" value="{{old('im')}}" name="im" autofocus maxlength="14">
       </div>
     </div>
   </div>

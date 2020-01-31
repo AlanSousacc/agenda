@@ -27,13 +27,13 @@
     <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
       <thead>
         <tr>
-          <th class="text-center" style="width: 50px;" >#ID</th>
-          <th class="th-sm" style="width: 200px;" >Razão Social</th>
-          <th class="th-sm" style="width: 200px;" >Nome Fantasia</th>
-          <th class="th-sm" style="width: 150px;" >CNPJ</th>
-          <th class="th-sm" style="width: 120px;" >Telefone</th>
-          <th class="th-sm" style="width: 120px;" >Email</th>
-          <th class="text-center" style="width: 120px;" >Opções</th>
+          <th class="text-center">#ID</th>
+          <th class="text-center">Razão Social</th>
+          <th class="text-center">Nome Fantasia</th>
+          <th class="text-center">CNPJ</th>
+          <th class="text-center">Telefone</th>
+          <th class="text-center">Email</th>
+          <th class="text-center">Opções</th>
         </tr>
       </thead>
       <tbody>
@@ -70,9 +70,11 @@
 										data-bairro="{{$item->bairro}}"
 										data-tipo="{{$item->tipo}}"
 										data-target="#editar"
-										data-toggle="modal"> Editar <i class="fa fa-edit"></i></a>
+										data-toggle="modal"><i class="fa fa-edit"></i> Editar</a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="{{$item->id}}" data-emprid={{$item->id}} data-target="#delete" data-toggle="modal">Excluir <i class="fa fa-trash"></i></a>
+                  <a class="dropdown-item" href="{{$item->id}}" data-emprid={{$item->id}} data-target="#delete" data-toggle="modal"><i class="fa fa-trash"></i> Excluir</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="{{ route('modulosempresa.edit', $item->id) }}" ><i class="fa fa-lock"></i> Permissões</a>
                   @endif
                 </div>
               </div>

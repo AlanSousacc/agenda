@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use Exception;
 use App\User;
 use App\Models\Empresa;
 use App\Models\Movimento;
+use App\Models\AuxModuloEmpresa;
 use App\Models\Contato;
 use App\Models\Condicao_pagamento;
+use App\Models\CentroCusto;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\MovimentacaoRequest;
 use Carbon\Carbon;
@@ -16,44 +19,102 @@ use \PDF;
 
 class MovimentacaoController extends Controller
 {
+	protected $empresa;
+
+	public function __construct()
+	{
+		// verifica se a empresa tem permissão de acesso ao modulo Movimentação
+		$this->middleware(function ($request, $next) {
+			$this->empresa = Auth::user()->empresa_id;
+
+			$permissao = AuxModuloEmpresa::where('empresa_id', $this->empresa)->where('modulo_id', 4)->first();
+			if ($permissao->status != 1)
+				return redirect()->route('unauthorized')->with('error', 'Acesso indisponível a esta empresa!');
+
+    	return $next($request);
+		});
+	}
+
   public function index()
   {
-    $user 		  = Auth::user()->empresa_id;
-    $consulta   = Movimento::where('empresa_id', '=', $user)->paginate(10);
-    $total      = $consulta->sum('valor');
+    $user 		  		= Auth::user()->empresa_id;
+    $movIn   				= Movimento::where('empresa_id', '=', $user)->where('tipo', '=', 'Entrada')->paginate(10);
+    $movOut   			= Movimento::where('empresa_id', '=', $user)->where('tipo', '=', 'Saída')->paginate(10);
+		$totalIn    		= $movIn->sum('valortotal'); //total de entrada
+		$totalRecebIn   = $movIn->sum('valorrecebido'); //total de entrada recebida
+		$totalPendIn    = $movIn->sum('valorpendente'); //total de entrada pendente
+    $totalOut   		= $movOut->sum('valortotal'); //total de saida
+    $totalPagbOut	  = $movOut->sum('valorrecebido'); //total de saida recebida
+		$totalPendOut   = $movOut->sum('valorpendente'); //total de saida pendente
 
-    $contato    = Contato::where('empresa_id', '=', $user)->get();
-    $pagamento  = Condicao_pagamento::all();
+		$contatos   		= Contato::where('empresa_id', '=', $user)->get();
+		$centro   			= CentroCusto::where('empresa_id', '=', $user)->get();
+    $pagamento  		= Condicao_pagamento::all();
 
-    return view('Admin.movimentacao.listagem', compact('consulta', 'contato', 'pagamento', 'total'));
+    return view('Admin.movimentacao.listagem', compact('movIn', 'movOut', 'contatos', 'centro', 'pagamento', 'totalIn', 'totalOut', 'totalPendOut', 'totalPagbOut', 'totalPendIn', 'totalRecebIn'));
+	}
+
+	public function show($id){
+		$consulta = Movimento::where('contato_id', $id)->paginate(10);
+
+		$user 		 = Auth::user()->empresa_id;
+		$pagamento = Condicao_pagamento::all();
+		$centro  	 = CentroCusto::where('empresa_id', '=', $user)->get();
+		$contatos	 = Contato::where('empresa_id', '=', $user)->get();
+
+		$total		 = $consulta->sum('valortotal');
+		$totaldeb	 = $consulta->sum('valorpendente');
+		$totalpag	 = $consulta->sum('valorrecebido');
+
+    return view('Admin.contatos.listagemFinanceiroContato', compact('totalpag', 'contatos', 'consulta', 'total', 'totaldeb', 'pagamento', 'centro'));
   }
 
-  public function create()
+	// gera tela de cadastro de movimentação de entrada
+  public function createIn()
   {
-    //
+    $user 		 = Auth::user()->empresa_id;
+    $contatos  = Contato::where('empresa_id', '=', $user)->get();
+    $centro  	 = CentroCusto::where('empresa_id', '=', $user )->where('tipo', '=', 'Receita')->get();
+		$pagamento = Condicao_pagamento::all();
+
+    return view('Admin.movimentacao.novaMovimentacao', compact('contatos', 'centro', 'pagamento'));
+	}
+
+	// gera tela de cadastro de movimentação de saída
+	public function createOut()
+  {
+    $user 		 = Auth::user()->empresa_id;
+    $contatos  = Contato::where('empresa_id', '=', $user)->get();
+    $centro 	 = CentroCusto::where('empresa_id', '=', $user )->where('tipo', '=', 'Despesa')->get();
+		$pagamento = Condicao_pagamento::all();
+
+    return view('Admin.movimentacao.novaMovimentacao', compact('contatos', 'centro', 'pagamento'));
   }
 
   public function store(MovimentacaoRequest $request)
   {
-    $user			 = Auth::user();
-    $data      = $request->all();
-
+    $user	= Auth::user();
+		$data = $request->all();
     try{
-      $moviment = new Movimento;
 
-      $moviment->user_id        				= $user->id;
-      $moviment->contato_id     				= $data['contato_id'];
-      $moviment->empresa_id     				= $user->empresa_id;
-      $moviment->condicao_pagamento_id  = $data['condicao_pagamento_id'];
+			$mov 												= new Movimento;
+      $mov->user_id        				= $user->id;
+      $mov->contato_id     				= $data['contato_id'];
+      $mov->empresa_id     				= $user->empresa_id;
+      $mov->centrocusto_id 				= $data['centrocusto_id'];
+      $mov->condicao_pagamento_id = $data['condicao_pagamento_id'];
+			$mov->tipo      						= $data['tipo'];
+			$mov->observacao         		= $data['observacao'];
+      $mov->valortotal      			= str_replace (',', '.', str_replace ('.', '', $data['valortotal']));
+      $mov->valorrecebido         = str_replace (',', '.', str_replace ('.', '', $data['valorrecebido']));
+			$mov->valorpendente					= $mov->valortotal - $mov->valorrecebido;
+      $mov->movimented_at 				= date('Y-m-d H:i:s');
 
-      // if(!isset($data['event_id'])){
-        // 	$moviment->event_id         		= $data['event_id'];
-        // }
-
-        $moviment->tipo      							= 'Entrada';
-        $moviment->observacao         		= $data['observacao'];
-        $moviment->valor          				= $data['valor'];
-        $moviment->movimented_at 					= date('Y-m-d H:i:s');
+			if($mov->valorpendente == 0){
+				$mov->status = 1;
+			} else{
+				$mov->status = 0;
+			}
 
       } catch (Exception $e) {
         return redirect('movimentacao')->with('error', $e->getMessage());
@@ -64,7 +125,7 @@ class MovimentacaoController extends Controller
       try{
         DB::beginTransaction();
 
-        $saved = $moviment->save();
+        $saved = $mov->save();
         if (!$saved){
           throw new Exception('Falha ao salvar Movimentação!');
         }
@@ -77,27 +138,64 @@ class MovimentacaoController extends Controller
         DB::rollBack();
         return redirect('movimentacao')->with('error', $e->getMessage());
       }
-    }
+		}
 
-    public function show($id)
-    {
-      //
-    }
+		public function update(Request $request){
+			$data = $request->all();
 
-    public function edit($id)
-    {
-      //
-    }
+			try{
+				$mov = Movimento::find($data['movimentacao_id']);
+				if (!$mov)
+					throw new Exception("Nenhuma movimentação encontrada!");
 
-    public function update(Request $request, $id)
-    {
-      //
-    }
+				// verifica se valor não é maior que zero
+				// if ($data['valor'] <= 0)
+				// 	throw new Exception("Valor não pode ser negativo, ou 0 [ZERO]!");
 
-    public function destroy($id)
-    {
-      //
-    }
+				// verifica se valor é maior que o devido
+				if ($data['valor'] > $mov->valorpendente)
+					throw new Exception("Valor informado excedeu o valor restante de: R$" .number_format($mov->valorpendente, 2, ',', '.'));
+
+				$mov->user_id									= $mov->user_id;
+				$mov->contato_id							= $mov->contato_id;
+				$mov->condicao_pagamento_id		= $mov->condicao_pagamento_id;
+				$mov->centrocusto_id					= $mov->centrocusto_id;
+
+				// atribui valores corretos ao valor pendente e valor recebido
+        $valor 								= str_replace (',', '.', str_replace ('.', '', $data['valor']));
+				$mov->valorpendente 	-= str_replace (',', '.', str_replace ('.', '', $valor)); //atualiza o valor pendete
+				$mov->valorrecebido 	+= $valor; //atualiza o valor recebido
+
+				// verufica se o valor recebido for igual ao total aplica como status "pago" e define o valor 0 no pendente
+				if ($mov->valorrecebido == $mov->valortotal){
+					$mov->valorpendente = 0;
+					$mov->status = 1;
+				} else {
+					$mov->valorpendente = $mov->valortotal - $mov->valorrecebido;
+					$mov->status = 0;
+				}
+
+			} catch (Exception $e) {
+				return redirect()->back()->with('error', $e->getMessage());
+				exit();
+			}
+
+			try{
+				DB::beginTransaction();
+
+				$saved = $mov->save();
+				if (!$saved){
+					throw new Exception('Falha ao salvar movimentação!');
+				}
+
+        DB::commit();
+        return redirect()->back()->with('success', 'Movimentação registrada com sucesso! ID:. #'.$mov->id);
+			} catch (Exception $e) {
+				DB::rollBack();
+				return redirect()->back()->with('error', $e->getMessage());
+			}
+
+		}
 
     // RELATÓRIO
     public function listagemEntradas()
@@ -126,11 +224,6 @@ class MovimentacaoController extends Controller
 				$mov['mend'] 		= Carbon::createFromFormat('d/m/Y', $mov['mend'])->format('Y-m-d');
 
 			$consulta = $rel->personalizado($mov);
-
-			// dd($consulta);
-
-      // $user 		  = Auth::user()->empresa_id;
-      // $consulta   = Movimento::where('empresa_id', '=', $user)->whereMonth('movimented_at', date('m'))->paginate(10);
       $total      = $consulta->sum('valor');
 
       return PDF::loadView('Admin.movimentacao.relatorios.RME', compact('total', 'consulta'))

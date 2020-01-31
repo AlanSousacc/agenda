@@ -81,19 +81,35 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 7);
+/******/ 	return __webpack_require__(__webpack_require__.s = 13);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 7:
-/*!*********************************************!*\
-  !*** multi ./resources/js/agenda/agenda.js ***!
-  \*********************************************/
+/***/ "./resources/js/tipoevento/tipoevento.js":
+/*!***********************************************!*\
+  !*** ./resources/js/tipoevento/tipoevento.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$('#delete').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget);
+  var tipeveid = button.data('tipeveid');
+  var modal = $(this);
+  modal.find('.modal-body #tipeveid').val(tipeveid);
+});
+
+/***/ }),
+
+/***/ 13:
+/*!*****************************************************!*\
+  !*** multi ./resources/js/tipoevento/tipoevento.js ***!
+  \*****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-!(function webpackMissingModule() { var e = new Error("Cannot find module 'C:\\wamp64\\www\\Laravel 6\\agenda\\resources\\js\\agenda\\agenda.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+module.exports = __webpack_require__(/*! C:\laragon\www\agendabetha\resources\js\tipoevento\tipoevento.js */"./resources/js/tipoevento/tipoevento.js");
 
 
 /***/ })

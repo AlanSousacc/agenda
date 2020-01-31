@@ -1,5 +1,5 @@
 <div class="modal fade" id="visualizar" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document" style="min-width:500px">
+  <div class="modal-dialog" role="document" style="min-width:700px">
     <div class="modal-content">
       <div class="modal-header" style="text-align: center; display: inline;">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -7,6 +7,7 @@
       </div>
       <form>
         <div class="modal-body">
+          <input type="hidden" name="movimentacao_id" id="movid" value="">
           @include('Admin.movimentacao.formMovimentacao')
         </div>
         <div class="modal-footer">
