@@ -24,7 +24,7 @@ class ContatoController extends Controller
 		$this->middleware(function ($request, $next) {
 			$this->empresa = Auth::user()->empresa_id;
 
-			$permissao = AuxModuloEmpresa::where('empresa_id', $this->empresa)->where('modulo_id', 5)->first();
+			$permissao = AuxModuloEmpresa::where('empresa_id', $this->empresa)->where('modulo_id', 2)->first();
 			if ($permissao->status != 1)
 				return redirect()->route('unauthorized')->with('error', 'Acesso indisponível a esta empresa!');
 				

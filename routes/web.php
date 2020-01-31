@@ -1,4 +1,7 @@
 <?php
+// Verifica se Há login em todas as rotas
+Route::middleware(['auth'])->group(function () {
+
 
 Route::get('/', 'FullCalendarController@index')->name('index');
 Route::get('list-event', 'EventController@index')->name('routeEventList');
@@ -13,27 +16,31 @@ Route::delete('/event-destroy', 'EventController@destroy')->name('routeEventDele
 Route::resource('contato', 'ContatoController');
 Route::any('search-contato', 'ContatoController@search')->name('routeContatoSearch');
 
-// empresa
+// Somente usuários ISADMIN verão as empresas
 Route::middleware(['auth', 'isAdmin'])->group(function () {
   Route::resource('empresa', 'EmpresaController');
   Route::any('search-empresa', 'EmpresaController@search')->name('routeEmpresaSearch');
-  Route::post('minha-empresa', 'EmpresaController@logoUploadPost')->name('routeEmpresaLogo');
   Route::post('empresa', 'EmpresaController@store')->name('empresa.store');
 });
+// Usuários Administradores de Empresa podem editar informações da Própria Empresa
+Route::middleware(['auth', 'checkProfile'])->group(function () {
+Route::post('minha-empresa', 'EmpresaController@logoUploadPost')->name('routeEmpresaLogo');
+});
 
-// user
-Route::get('list-user', 'UserController@index')->name('routeUserList');
+// Qualquer usuário listar ou pesquisar usuários de sua própria empresa. E pode atualizar informações do próprio usuário
 Route::get('my-account', 'UserController@myAccount')->name('routeUserAccount');
-Route::any('search', 'UserController@search')->name('routeUserSearch');
 Route::patch('users/{user}/update', 'UserController@updateMyAccount')->name('routeUserUpdateMyAccount');
-Route::middleware(['auth', 'isAdmin'])->group(function () {
+// Apenas usuários Administradores da Empresa pode inserir novos usuários em sua empresa
+Route::middleware(['auth', 'checkProfile'])->group(function () {
+	Route::any('search', 'UserController@search')->name('routeUserSearch');
+	Route::get('list-user', 'UserController@index')->name('routeUserList');
   Route::patch('users', 'UserController@update')->name('routeUserEdit');
   Route::delete('/users-delete', 'UserController@destroy')->name('routeUserDelete');
 });
 
 // movimentacoes
 Route::get('movimentacao', 'MovimentacaoController@index')->name('movimentação.index');
-Route::middleware(['auth', 'isAdmin'])->group(function () {
+Route::middleware(['auth', 'checkProfile'])->group(function () {
   Route::get('movimentacao/create/entrada', 'MovimentacaoController@createIn')->name('movimentacao.createIn');
   Route::get('movimentacao/create/saida', 'MovimentacaoController@createOut')->name('movimentacao.createOut');
   Route::post('movimentacao', 'MovimentacaoController@store')->name('movimentacao.store');
@@ -55,7 +62,7 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
 
 // tipo de evento sistema
 Route::get('tipo-evento', 'TipoEventoController@index')->name('tipoevento.list');
-Route::middleware(['auth', 'isAdmin'])->group(function () {
+Route::middleware(['auth', 'checkProfile'])->group(function () {
   Route::get('tipo-evento/novo', 'TipoEventoController@create')->name('tipoevento.novo');
   Route::post('tipo-evento/salvar', 'TipoEventoController@store')->name('tipoevento.store');
   Route::get('tipo-evento/{id}/editar', 'TipoEventoController@edit')->name('tipoevento.edit');
@@ -65,7 +72,7 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
 
 // centros de custo
 Route::get('centrodecusto', 'CentroCustoController@index')->name('cc.list');
-Route::middleware(['auth', 'isAdmin'])->group(function () {
+Route::middleware(['auth', 'checkProfile'])->group(function () {
   Route::get('centrodecusto/novo', 'CentroCustoController@create')->name('cc.novo');
   Route::post('centrodecusto/salvar', 'CentroCustoController@store')->name('cc.store');
   Route::get('centrodecusto/edit/{id}', 'CentroCustoController@edit')->name('cc.edit');
@@ -82,5 +89,7 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
 // access do sistema
 Route::get('unauthorized', 'AccessController@index')->name('unauthorized');
 
+
+});
 Auth::routes();
 Auth::routes(['verify' => true]);

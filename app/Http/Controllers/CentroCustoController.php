@@ -17,9 +17,9 @@ use App\Http\Requests\CentroCustoRequest;
 class CentroCustoController extends Controller
 {
 	// protected $empresa;
-
 	// public function __construct()
 	// {
+	// 	// verifica se a empresa tem permissão de acesso ao modulo de contato
 	// 	$this->middleware(function ($request, $next) {
 	// 		$this->empresa = Auth::user()->empresa_id;
 
@@ -35,7 +35,10 @@ class CentroCustoController extends Controller
   public function index()
   {
     try{
-      $centro   = CentroCusto::orderBy('id')->paginate(10);
+			$this->empresa = Auth::user()->empresa_id;
+			$centro   = CentroCusto::orderBy('id')
+			->where('empresa_id', $this->empresa)
+			->paginate(10);
       return view('Admin.centrocusto.listagem', compact('centro'));
 
     } catch (Exception $e) {
