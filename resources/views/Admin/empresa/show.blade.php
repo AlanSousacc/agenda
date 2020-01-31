@@ -23,7 +23,7 @@
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="col-md-4">
 						<div class="form-group">
 							<label for="nomefantasia">Nome Fantasia</label>
@@ -32,7 +32,7 @@
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="col-md-4">
 						<div class="form-group">
 							<label for="apelido">Apelido</label>
@@ -42,7 +42,7 @@
 						</div>
 					</div>
 				</div>
-				
+
 				<div class="row">
 					<div class="col-md-4">
 						<div class="form-group">
@@ -52,7 +52,7 @@
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="col-md-4">
 						<div class="form-group">
 							<label for="ie">Inscrição Estadual</label>
@@ -61,7 +61,7 @@
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="col-md-4">
 						<div class="form-group">
 							<label for="im">Inscrição Municipal</label>
@@ -71,7 +71,7 @@
 						</div>
 					</div>
 				</div>
-				
+
 				<div class="row">
 					<div class="col-md-4">
 						<div class="form-group">
@@ -81,7 +81,7 @@
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="col-md-4">
 						<div class="form-group">
 							<label for="email">E-mail</label>
@@ -90,7 +90,7 @@
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="col-md-4">
 						<div class="form-group">
 							<label for="cidade">Cidade</label>
@@ -100,7 +100,7 @@
 						</div>
 					</div>
 				</div>
-				
+
 				<div class="row">
 					<div class="col-md-4">
 						<div class="form-group">
@@ -110,7 +110,7 @@
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="col-md-2">
 						<div class="form-group">
 							<label for="numero">Número</label>
@@ -119,7 +119,7 @@
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="col-md-2">
 						<div class="form-group">
 							<label for="cep">CEP</label>
@@ -128,7 +128,7 @@
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="col-md-4">
 						<div class="form-group">
 							<label for="bairro">Bairro</label>
@@ -145,7 +145,7 @@
 				</div>
 				<br>
 				<input type="hidden" name="_token" value="{{csrf_token()}}">
-				<input type="submit" name="submit" class="btn-alt btn btn-success btn-sm" value="Atualizar Logo" />
+				<input type="submit" name="submit" class="btn-alt btn btn-success btn-sm mb-4" value="Atualizar Logo" />
 			</div>
 		</form>
 	</div>

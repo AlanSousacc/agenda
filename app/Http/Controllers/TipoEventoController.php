@@ -23,7 +23,7 @@ class TipoEventoController extends Controller
 			$permissao = AuxModuloEmpresa::where('empresa_id', $this->empresa)->where('modulo_id', 1)->first();
 			if ($permissao->status != 1)
 				return redirect()->route('unauthorized')->with('error', 'Acesso indisponível a esta empresa!');
-				
+
     	return $next($request);
 		});
 	}
@@ -31,7 +31,7 @@ class TipoEventoController extends Controller
   public function index()
   {
     try{
-      $consulta = TipoEvento::orderBy('id')->paginate(10);
+      $consulta = TipoEvento::Where('empresa_id', Auth::user()->empresa_id)->orderBy('id')->paginate(10);
       return view('Admin.tipoevento.listagem', compact('consulta'));
 
     } catch (Exception $e) {
