@@ -48,7 +48,7 @@
             {{ Auth::user()->name }}
           </a>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="color: #7f7f7f;">
-            <a class="dropdown-item" href="my-account">Minha Conta</a>
+            <a class="dropdown-item" href="{{route('routeUserAccount')}}">Minha Conta</a>
             @if (Auth::user()->isAdmin == 1)
             <a href="{{route('empresa.show', Auth::user()->empresa_id)}}" class="dropdown-item">Minha Empresa</a>
             @endif
