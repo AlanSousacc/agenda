@@ -79,6 +79,7 @@ Route::middleware(['auth', 'checkProfile'])->group(function () {
   Route::get('centrodecusto/edit/{id}', 'CentroCustoController@edit')->name('cc.edit');
   Route::put('centrodecusto/update/{id}', 'CentroCustoController@update')->name('cc.update');
   Route::delete('centrodecusto/delete', 'CentroCustoController@destroy')->name('cc.destroy');
+  Route::get('movimentacao-centrodecusto', 'CentroCustoController@relatorio')->name('cc.relatorio');
 });
 
 // relacionamento módulos da empresa

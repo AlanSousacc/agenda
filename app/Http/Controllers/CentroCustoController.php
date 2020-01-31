@@ -9,36 +9,24 @@ use Auth;
 use Exception;
 use App\User;
 use App\Models\CentroCusto;
+use App\Models\Movimento;
 use App\Models\AuxModuloEmpresa;
 use App\Http\Requests\CentroCustoRequest;
+use \PDF;
 
 
 
 class CentroCustoController extends Controller
 {
-	// protected $empresa;
-	// public function __construct()
-	// {
-	// 	// verifica se a empresa tem permissão de acesso ao modulo de contato
-	// 	$this->middleware(function ($request, $next) {
-	// 		$this->empresa = Auth::user()->empresa_id;
-
-	// 		$permissao = AuxModuloEmpresa::where('empresa_id', $this->empresa)->where('modulo_id', 5)->first();
-	// 		if ($permissao->status != 1)
-	// 			return redirect()->route('unauthorized')->with('error', 'Acesso indisponível a esta empresa!');
-				
-  //   	return $next($request);
-	// 	});
-	// }
 
   // LISTAGEM DE MÓDULOS
   public function index()
   {
     try{
-			$this->empresa = Auth::user()->empresa_id;
-			$centro   = CentroCusto::orderBy('id')
-			->where('empresa_id', $this->empresa)
-			->paginate(10);
+      $this->empresa = Auth::user()->empresa_id;
+      $centro   = CentroCusto::orderBy('id')
+      ->where('empresa_id', $this->empresa)
+      ->paginate(10);
       return view('Admin.centrocusto.listagem', compact('centro'));
 
     } catch (Exception $e) {
@@ -132,4 +120,18 @@ class CentroCustoController extends Controller
       return redirect()->route('cc.list')->with('error', $e->getMessage());
     }
   }
-}
+
+  public function relatorio(){
+    $consulta = Movimento::select(\DB::raw('centrocusto_id, sum(valortotal)'))
+                          ->where('empresa_id', Auth::user()->empresa_id)
+                          ->groupBy('centrocusto_id')->get();
+
+    // $total    = $consulta->sum('valor');
+
+    return PDF::loadView('Admin.centrocusto.relatorios.geral', compact('consulta'))
+    // Se quiser que fique no formato a4 retrato:
+      ->setPaper('a4', 'landscape')
+      ->stream('relatorio-centrocusto.pdf');
+      // ->download('relatorio-entradas.pdf');
+    }
+  }
