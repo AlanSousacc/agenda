@@ -20,7 +20,7 @@ class CreateContatosTable extends Migration
       $table->string('endereco', 60)->nullable();
       $table->string('numero', 5)->nullable();
       $table->string('telefone', 25);
-      $table->string('email', 60)->unique();
+      $table->string('email', 60);
       $table->date('datanascimento')->nullable();
       $table->enum('tipocontato', ['Profissional', 'Paciente', 'Cliente', 'Aluno', 'Fornecedor', 'Funcionario']);
       $table->boolean('status');

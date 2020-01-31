@@ -25,6 +25,7 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
 // Usuários Administradores de Empresa podem editar informações da Própria Empresa
 Route::middleware(['auth', 'checkProfile'])->group(function () {
 Route::post('minha-empresa', 'EmpresaController@logoUploadPost')->name('routeEmpresaLogo');
+Route::get('empresa/minha-conta/{id}', 'EmpresaController@show')->name('empresa.show');
 });
 
 // Qualquer usuário listar ou pesquisar usuários de sua própria empresa. E pode atualizar informações do próprio usuário

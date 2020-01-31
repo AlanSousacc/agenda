@@ -49,7 +49,7 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="color: #7f7f7f;">
             <a class="dropdown-item" href="{{route('routeUserAccount')}}">Minha Conta</a>
-            @if (Auth::user()->isAdmin == 1)
+            @if (Auth::user()->profile == 'Administrador')
             <a href="{{route('empresa.show', Auth::user()->empresa_id)}}" class="dropdown-item">Minha Empresa</a>
             @endif
             <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();" class="dropdown-item">Sair</a>
