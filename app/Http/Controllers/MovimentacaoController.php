@@ -30,7 +30,7 @@ class MovimentacaoController extends Controller
 			$permissao = AuxModuloEmpresa::where('empresa_id', $this->empresa)->where('modulo_id', 4)->first();
 			if ($permissao->status != 1)
 				return redirect()->route('unauthorized')->with('error', 'Acesso indisponível a esta empresa!');
-				
+
     	return $next($request);
 		});
 	}
@@ -224,11 +224,6 @@ class MovimentacaoController extends Controller
 				$mov['mend'] 		= Carbon::createFromFormat('d/m/Y', $mov['mend'])->format('Y-m-d');
 
 			$consulta = $rel->personalizado($mov);
-
-			// dd($consulta);
-
-      // $user 		  = Auth::user()->empresa_id;
-      // $consulta   = Movimento::where('empresa_id', '=', $user)->whereMonth('movimented_at', date('m'))->paginate(10);
       $total      = $consulta->sum('valor');
 
       return PDF::loadView('Admin.movimentacao.relatorios.RME', compact('total', 'consulta'))

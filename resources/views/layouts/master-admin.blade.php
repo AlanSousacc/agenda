@@ -143,6 +143,12 @@
                         <p>Mês Atual</p>
                       </a>
                     </li>
+                    <li class="nav-item">
+                      <a  href="{{route('cc.relatorio')}}" class="nav-link">
+                        <i class="fa fa-poll-h nav-icon"></i>
+                        <p>Por Centro de Custo</p>
+                      </a>
+                    </li>
                   </ul>
                 </li>
               </ul>
