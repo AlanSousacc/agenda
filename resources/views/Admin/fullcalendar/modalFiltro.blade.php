@@ -44,7 +44,17 @@
                 @endforeach
               </select>
             </div>
-          </div>
+					</div>
+					
+					<div class="form-group row">
+						<label for="geracobranca" class="col-sm-4 col-form-label">Com Cobrança</label>
+						<div class="col-sm-8">
+							<div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
+								<input type="checkbox" class="custom-control-input" id="geracobranca" name="geracobranca">
+								<label class="custom-control-label" for="geracobranca" style="font-weight: 300;">Mostrar agendamentos com Cobrança</label>
+							</div>
+						</div>
+					</div>
 
         </div>
         <div class="modal-footer">

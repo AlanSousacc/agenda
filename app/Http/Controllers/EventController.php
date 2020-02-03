@@ -65,7 +65,6 @@ class EventController extends Controller
     }
 
     $tipoevento = TipoEvento::where('empresa_id', $user)->where('status', 1)->get();
-
     $contato = Contato::where('tipocontato', '=', $tipoContato)
                         ->where('empresa_id', '=', $user)->get();
 
@@ -81,8 +80,8 @@ class EventController extends Controller
 
   public function store(EventRequest $request)
   {
-    Event::create($request->all());
-
+		Event::create($request->all());
+		// if($request->geracobranca == true)
     return response()->json(true);
   }
 
