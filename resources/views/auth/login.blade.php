@@ -55,19 +55,19 @@
           </div>
 
           <div class="row">
-            <div class="col-8">
+            {{-- <div class="col-8">
               <div class="icheck-primary">
                 <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                 <label for="remember">
                   Lembrar-me
                 </label>
               </div>
-            </div>
+            </div> --}}
             <!-- /.col -->
-            <div class="col-4">
+            <div class="col-12">
               <button type="submit" class="btn btn-primary btn-block">Entrar</button>
             </div>
-            <div class="col-12">
+            <div class="col-12 text-center">
               @if (Route::has('password.request'))
               <a class="btn btn-link pl-0" href="{{ route('password.request') }}">
                 Esqueci minha senha?

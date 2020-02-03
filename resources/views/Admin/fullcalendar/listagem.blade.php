@@ -28,6 +28,7 @@
           <th class="text-center">Data/Hora Final</th>
           <th class="text-center">Descrição</th>
           <th class="text-center">Cor</th>
+          <th class="text-center">Opção</th>
         </tr>
       </thead>
       <tbody>
@@ -38,7 +39,22 @@
           <td class="text-center">{{Carbon\Carbon::parse($item->start)->format('d/m/Y H:m:i')}}</td>
           <td class="text-center">{{Carbon\Carbon::parse($item->end)->format('d/m/Y H:m:i')}}</td>
           <td class="text-center">{{$item->description}}</td>
-          <td class="text-center"><i class="fa fa-circle" style="color:{{$item->color}}"></i></td>
+					<td class="text-center"><i class="fa fa-circle" style="color:{{$item->color}}"></i></td>
+					<td class="text-center" style="padding: 0.45rem">
+						<div class="btn-group dropleft">
+							<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								Ação
+							</button>
+							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+								<a class="dropdown-item" href="{{$item->id}}"
+									data-movid="{{$item->id}}"
+									data-tipo="{{$item->tipo}}"
+									data-contato_id="{{$item->contato->id}}"
+									data-target="#gerarfat"
+									data-toggle="modal"><i class="fa fa-donate"></i> Gerar Fatura</a>
+								</div>
+							</div>
+						</td>
           </tr>
           @endforeach
         </tbody>
@@ -53,6 +69,9 @@
       </div>
     </div>
     {{-- modal filtro--}}
+		@include('Admin.fullcalendar.modalfiltro')
+		
+    {{-- modal gerar fatura--}}
     @include('Admin.fullcalendar.modalfiltro')
   </div>
   <!-- /.card -->

@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Event extends Model
 {
-	protected $fillable = ['title', 'start', 'end', 'description', 'tipo_evento_id', 'contato_id', 'color', 'empresa_id'];
+	protected $fillable = ['title', 'start', 'end', 'description', 'tipo_evento_id', 'contato_id', 'color', 'empresa_id', 'geracobranca'];
 	
 	public function contato(){
 		return $this->belongsTo('App\Models\Contato');
@@ -43,6 +43,9 @@ class Event extends Model
 			
 			if(isset($value['title']))
 			$query->where('title',  'like', '%'.$value['title'].'%');
+
+			if(isset($value['geracobranca']) && ($value['geracobranca']) == "on")
+			$query->where('geracobranca', 1);
 		})
 		// ->toSql();
 		// dd($resultado);

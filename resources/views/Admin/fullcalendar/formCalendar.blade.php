@@ -39,6 +39,15 @@
       <textarea name="description" placeholder="Descrição do evento" id="description" cols="40" rows="4"></textarea>
     </div>
   </div>
+  <div class="form-group row">
+    <label for="geracobranca" class="col-sm-4 col-form-label">Gerar Cobrança</label>
+    <div class="col-sm-8">
+      <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
+				<input type="checkbox" class="custom-control-input" id="geracobranca" name="geracobranca">
+				<label class="custom-control-label" for="geracobranca" style="font-weight: 300;">Habilite esta opção para realizar movimentação deste agendamento</label>
+			</div>
+    </div>
+  </div>
   <input type="hidden" name="empresa_id" id="empresa_id" value="{{Auth::user()->empresa_id}}">
 
   <div class="form-group row">
