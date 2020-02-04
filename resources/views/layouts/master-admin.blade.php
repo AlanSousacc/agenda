@@ -148,6 +148,12 @@
                         <i class="fa fa-poll-h nav-icon"></i>
                         <p>Por Centro de Custo</p>
                       </a>
+										</li>
+										<li class="nav-item">
+                      <a  href="{{route('cc.teste')}}" class="nav-link">
+                        <i class="fa fa-poll-h nav-icon"></i>
+                        <p>Teste</p>
+                      </a>
                     </li>
                   </ul>
                 </li>
