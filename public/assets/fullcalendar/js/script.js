@@ -43,10 +43,11 @@ $(function(){
 
 		if($("input[type=checkbox]").is(":checked") == true){
 			var geracobranca = 1;
+			var valorevento = $("#valorevento").val();
 		} else {
 			var geracobranca = 0;
 		}
-		
+
     let tipoevento = $("#tipo_evento_id").val();
 
     let title = $("#title").val();
@@ -57,6 +58,7 @@ $(function(){
       start: start,
       end: end,
       color: color,
+      valorevento: valorevento,
       geracobranca: geracobranca,
       description: description,
       contato_id: contato,
@@ -85,7 +87,7 @@ function sendEvent(route, data_){
     dataType: 'json',
     success:function(json){
       if(json){
-				// console.log(data_.geracobranca)
+				// console.log(data_)
 				$( "#sucesso").modal('show');
 				$( '.btn-success' ).click(function() {
 					location.reload();

@@ -16,6 +16,7 @@ class Empresa extends Model
 			if(isset($value['razaosocial']))
 				$query->where('razaosocial', 'like', '%'.$value['razaosocial'].'%')->
 				where('id', '!=', 1);
+				$query->where('empresa_id', '=', Auth::user()->empresa_id);
 		})
 		// ->toSql();
 		// dd($resultado);

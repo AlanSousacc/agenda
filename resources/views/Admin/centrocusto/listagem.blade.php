@@ -52,7 +52,7 @@
 					<td>{{ date('d/m/Y H:m', strtotime($cc->created_at)) }}</td>
           <td>{{ date('d/m/Y H:m', strtotime($cc->updated_at)) }}</td>
 					<td class="text-center" style="padding: 0.45rem">
-						<div class="dropdown">
+						<div class="btn-group dropleft">
 							<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								Ação
 							</button>

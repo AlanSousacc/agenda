@@ -11,6 +11,8 @@ Route::post('/event-store', 'EventController@store')->name('routeEventStore');
 Route::any('search-event', 'EventController@search')->name('routeEventSearch');
 Route::delete('/users-delete/{contato}', 'EventController@delete')->name('routeAgendaDelete');
 Route::delete('/event-destroy', 'EventController@destroy')->name('routeEventDelete');
+Route::get('gerarmovimentacao/agendamento/{id}', 'EventController@show')->name('geramov.agendamento.show');
+Route::post('gerarmovimentacao', 'EventController@storeMov')->name('gerarMov.store');
 
 // contatos
 Route::resource('contato', 'ContatoController');

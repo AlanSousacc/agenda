@@ -9,7 +9,7 @@
 				</button>
 			</div>
 			<div class="modal-body">
-        @include('Admin.fullcalendar.formCalendar')
+				@include('Admin.fullcalendar.formCalendar')
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
@@ -19,3 +19,22 @@
 		</div>
 	</div>
 </div>
+@push('scripts')
+<script>
+	$(document).on('show.bs.modal', function () {
+		if($('input[type="checkbox"]').prop("checked") == false){
+			$('.showvalorevento').hide();
+		}
+	});
+	
+	$('input[type="checkbox"]').click(function(){
+		if($('input[type="checkbox"]').prop("checked") == true){
+			$('.showvalorevento').show();
+		}
+		else if($('input[type="checkbox"]').prop("checked") == false){
+			$('.showvalorevento').hide();
+		}
+	});
+	$('.valorevento').mask("#.##0,00", {reverse: true});
+</script>
+@endpush

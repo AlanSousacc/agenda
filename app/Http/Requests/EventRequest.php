@@ -16,7 +16,8 @@ class EventRequest extends FormRequest
     return [
       'title' 					=> 'required|min:3',
       'start' 					=> 'date_format:Y-m-d H:i:s|before:end',
-      'end'   					=> 'date_format:Y-m-d H:i:s|after:start',
+			'end'   					=> 'date_format:Y-m-d H:i:s|after:start',
+			'valorevento'			=> 'required_if:geracobranca,==,1',
     ];
   }
 
@@ -28,7 +29,8 @@ class EventRequest extends FormRequest
       'start.date_format' 			=> 'Preencha uma data/hora inicial com valor válido!',
       'start.before'      			=> 'A data/hora inicial deve ser inferior a data final!',
       'end.date_format'   			=> 'Preencha uma data/hora final com valor válido!',
-      'end.after'         			=> 'A data/hora final deve ser superior a data inicial!',
+			'end.after'         			=> 'A data/hora final deve ser superior a data inicial!',
+			'valorevento.required_if'	=> 'Informe um valor de agendamento quando selecionado gerar cobrança!'
     ];
   }
 }
