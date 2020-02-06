@@ -46,12 +46,7 @@
 								Ação
 							</button>
 							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-								<a class="dropdown-item" href="{{$item->id}}"
-									data-movid="{{$item->id}}"
-									data-tipo="{{$item->tipo}}"
-									data-contato_id="{{$item->contato->id}}"
-									data-target="#gerarfat"
-									data-toggle="modal"><i class="fa fa-donate"></i> Gerar Fatura</a>
+								<a class="dropdown-item" href="{{route('geramov.agendamento.show', $item->id)}}"><i class="fa fa-donate"></i> Gerar Fatura</a>
 								</div>
 							</div>
 						</td>
@@ -70,9 +65,6 @@
     </div>
     {{-- modal filtro--}}
 		@include('Admin.fullcalendar.modalfiltro')
-		
-    {{-- modal gerar fatura--}}
-    @include('Admin.fullcalendar.modalfiltro')
   </div>
   <!-- /.card -->
   @push('scripts')

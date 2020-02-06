@@ -41,26 +41,26 @@ class Movimento extends Model
 
 
   public function user(){
-    return $this->belongsto('App\User');
+    return $this->belongsTo('App\User');
   }
 
   public function empresa(){
-    return $this->belongsto('App\Models\Empresa');
+    return $this->belongsTo('App\Models\Empresa');
   }
 
   public function contato(){
-    return $this->belongsto('App\Models\Contato');
+    return $this->belongsTo('App\Models\Contato');
   }
 
   public function condicao_pagamento(){
-    return $this->belongsto('App\Models\Condicao_pagamento');
+    return $this->belongsTo('App\Models\Condicao_pagamento');
 	}
 
   public function centrocusto(){
-    return $this->belongsto('App\Models\CentroCusto');
+    return $this->belongsTo('App\Models\CentroCusto');
   }
 
   public function event(){
-    return $this->hasOne('App\Models\Event');
+    return $this->belongsTo('App\Models\Event');
   }
 }

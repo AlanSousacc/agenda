@@ -53,6 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let title 				= element.event.title;
         let empresa_id 		= element.event.empresa_id;
         let description 	= element.event.extendedProps.description;
+        let valorevento 	= element.event.extendedProps.valorevento;
 
         let newEvent = {
           _method:'PUT',
@@ -62,6 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
           contato_id: contato,
           tipo_evento_id: tipoevento,
           title: title,
+          valorevento: valorevento,
           geracobranca: geracobranca,
           empresa_id: empresa_id,
           description: description
@@ -95,6 +97,16 @@ document.addEventListener('DOMContentLoaded', function() {
 				
         if(element.event.extendedProps.geracobranca == 1){
 					$("#geracobranca").prop( "checked", true );
+					$('.showvalorevento').show();
+
+					var valorevento = element.event.extendedProps.valorevento;
+					$("#modalCalendar input[name='valorevento']").val(new Intl.NumberFormat([], {
+						style: 'currency',
+						currency: 'BRL'
+					}).format(valorevento));
+
+				} else{
+					$('.showvalorevento').hide();
 				}
 
         let description = element.event.extendedProps.description;
@@ -118,6 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let title = element.event.title;
         let empresa_id = element.event.empresa_id;
         let description = element.event.extendedProps.description;
+        let valorevento = element.event.extendedProps.valorevento;
 
         let newEvent = {
           _method:'PUT',
@@ -129,7 +142,8 @@ document.addEventListener('DOMContentLoaded', function() {
           tipo_evento_id: tipoevento,
           title: title,
           empresa_id: empresa_id,
-          description: description
+          description: description,
+          valorevento: valorevento
         };
 
         sendEvent(routeEvents('routeEventUpdate'), newEvent);
@@ -156,5 +170,4 @@ document.addEventListener('DOMContentLoaded', function() {
 		});
 		
     calendar.render();
-  });
-
+	});

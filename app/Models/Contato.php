@@ -47,8 +47,9 @@ class Contato extends Model
   public function search($value){
 		return $this->where(function ($query) use ($value) {
 			if(isset($value['nome']))
-        $query->where('nome', 'like', '%'.$value['nome'].'%')
-              ->where('empresa_id', '=', Auth::user()->empresa_id);
+				$query->where('nome', 'like', '%'.$value['nome'].'%');
+				
+				$query->where('empresa_id', '=', Auth::user()->empresa_id);
 		})->paginate(10);
   }
 

@@ -10,6 +10,10 @@ use App\Models\Empresa;
 use App\Models\AuxModuloEmpresa;
 use App\Models\Contato;
 use App\Models\TipoEvento;
+use App\Models\Movimento;
+use App\Http\Requests\MovimentacaoRequest;
+use App\Models\Condicao_pagamento;
+use App\Models\CentroCusto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -38,15 +42,15 @@ class EventController extends Controller
 
     $emp = Empresa::where('id', '=', $user)->first();
     if($emp->tipo == 'estetica'){
-      $tipoContato    = 'cliente';
+      $tipoContato = 'cliente';
     } else if($emp->tipo == 'clinica'){
-      $tipoContato    = 'paciente';
+      $tipoContato = 'paciente';
     }
 
     $tipoevento = TipoEvento::where('empresa_id', $user)->where('status', 1)->get();
 
     $contato = Contato::where('tipocontato', $tipoContato)
-                        ->where('empresa_id', $user)->get();
+												->where('empresa_id', $user)->get();
 
     return view('Admin.fullcalendar.listagem', compact('consulta', 'contato', 'tipoevento'));
   }
@@ -80,18 +84,59 @@ class EventController extends Controller
 
   public function store(EventRequest $request)
   {
-		Event::create($request->all());
-		// if($request->geracobranca == true)
+		$user    = Auth::user()->empresa_id;
+		Event::create([
+			'title' 				 => $request->title, 
+			'start' 				 => $request->start,
+			'end' 					 => $request->end,
+			'description' 	 => $request->description,
+			'tipo_evento_id' => $request->tipo_evento_id,
+			'contato_id' 		 => $request->contato_id,
+			'color' 				 => $request->color,
+			'empresa_id' 		 => $request->empresa_id,
+			'geracobranca' 	 => $request->geracobranca,
+			'valorevento' 	 => str_replace (',', '.', str_replace ('.', '', $request->valorevento))
+		]);
+
+		if($request->geracobranca == 1){
+			dd('teste');
+			$mov 												= new Movimento;
+			$mov->event_id	     				= $request->id;
+			$mov->tipo      						= 'Entrada';
+			$mov->contato_id     				= $request->contato_id;
+			$mov->condicao_pagamento_id = 6;
+      $mov->centrocusto_id 				= 1;
+      $mov->user_id        				= $user->id;
+      $mov->empresa_id     				= $user->empresa_id;
+			$mov->observacao         		= 'Movimentação realizada peloa gendamento:. #'+ $request->id + '\n' + $request->description;
+      $mov->valortotal      			= str_replace (',', '.', str_replace ('.', '', $request->valorevento));
+      $mov->valorrecebido         = str_replace (',', '.', str_replace ('.', '', 0));
+			$mov->valorpendente					= $mov->valortotal - $mov->valorrecebido;
+			$mov->movimented_at 				= date('Y-m-d H:i:s');
+			$mov->status 								= 0;
+			$mov->save();
+		}
     return response()->json(true);
   }
 
   public function update(EventRequest $request)
   {
-    $event = Event::where('id', $request->id)->first();
-    $event->fill($request->all());
+		$event = Event::where('id', $request->id)->first();
+		$event->fill([
+			'title' 				 => $request->title, 
+			'start' 				 => $request->start,
+			'end' 					 => $request->end,
+			'description' 	 => $request->description,
+			'tipo_evento_id' => $request->tipo_evento_id,
+			'contato_id' 		 => $request->contato_id,
+			'color' 				 => $request->color,
+			'empresa_id' 		 => $request->empresa_id,
+			'geracobranca' 	 => $request->geracobranca,
+			'valorevento' 	 => str_replace (',', '.', str_replace ('.', '', $request->valorevento))
+		]);
     $event->save();
     return response()->json(true);
-  }
+	}
 
   public function destroy(EventRequest $request)
   {
