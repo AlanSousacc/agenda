@@ -10,12 +10,15 @@ $(function(){
 
   $(".deleteEvent").click(function(){
 
-    let id = $("#modalCalendar input[name='id']").val();
+		let id = $("#modalCalendar input[name='id']").val();
+		
+		let geracobranca = $("input[type=checkbox]").is(":checked");
 
     let title = $("#title").val();
 
     let Event = {
-      id: id,
+			id: id,
+			geracobranca: geracobranca,
       title: title,
       _method: 'DELETE'
     };

@@ -100,11 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
 					$('.showvalorevento').show();
 
 					var valorevento = element.event.extendedProps.valorevento;
-					$("#modalCalendar input[name='valorevento']").val(new Intl.NumberFormat([], {
-						style: 'currency',
-						currency: 'BRL'
-					}).format(valorevento));
-
+					$("#modalCalendar input[name='valorevento']").val(new Intl.NumberFormat('pt-BR', { minimumSignificantDigits: 2 }).format(valorevento));
 				} else{
 					$('.showvalorevento').hide();
 				}

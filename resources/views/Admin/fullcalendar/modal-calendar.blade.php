@@ -35,6 +35,7 @@
 			$('.showvalorevento').hide();
 		}
 	});
+	
 	$('.valorevento').mask("#.##0,00", {reverse: true});
 </script>
 @endpush
