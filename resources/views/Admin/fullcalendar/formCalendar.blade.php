@@ -39,7 +39,7 @@
   <div class="form-group row">
     <label for="description" class="col-sm-4 col-form-label">Descrição</label>
     <div class="col-sm-8">
-      <textarea name="description" placeholder="Descrição do evento" id="description" cols="50" rows="2" style="border: 1px solid #ced4da; resize: none;"></textarea>
+      <textarea name="description" placeholder="Descrição do evento" id="description" cols="40" rows="2" style="border: 1px solid #ced4da; resize: none;"></textarea>
     </div>
 	</div>
 	
