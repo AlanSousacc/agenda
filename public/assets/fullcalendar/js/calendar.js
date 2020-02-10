@@ -145,6 +145,7 @@ document.addEventListener('DOMContentLoaded', function() {
         sendEvent(routeEvents('routeEventUpdate'), newEvent);
       },
       select: function(element){
+				$("#modalCalendar input[name='id']").val("");
 				element.allDay = false
         clearMessages('#message');
         resetForm('#formEvent');
