@@ -45,13 +45,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
       eventDrop: function(element){
         // pega a dt e hr inicial quando dropado.
-        let start 			= moment(element.event.start).format("YYYY-MM-DD HH:mm:ss");
-        let end   			= moment(element.event.end).format("YYYY-MM-DD HH:mm:ss");
-        let contato 		= element.event.extendedProps.contato_id;
-        let tipoevento 	= element.event.extendedProps.tipo_evento_id;
-        let title 			= element.event.title;
-        let empresa_id 	= element.event.empresa_id;
-        let description = element.event.extendedProps.description;
+        let start 				= moment(element.event.start).format("YYYY-MM-DD HH:mm:ss");
+        let end   				= moment(element.event.end).format("YYYY-MM-DD HH:mm:ss");
+        let contato 			= element.event.extendedProps.contato_id;
+        let tipoevento 		= element.event.extendedProps.tipo_evento_id;
+        let geracobranca	= element.event.extendedProps.geracobranca;
+        let title 				= element.event.title;
+        let empresa_id 		= element.event.empresa_id;
+        let description 	= element.event.extendedProps.description;
+        let valorevento 	= element.event.extendedProps.valorevento;
 
         let newEvent = {
           _method:'PUT',
@@ -61,6 +63,8 @@ document.addEventListener('DOMContentLoaded', function() {
           contato_id: contato,
           tipo_evento_id: tipoevento,
           title: title,
+          valorevento: valorevento,
+          geracobranca: geracobranca,
           empresa_id: empresa_id,
           description: description
         };
@@ -89,7 +93,17 @@ document.addEventListener('DOMContentLoaded', function() {
         $("#modalCalendar input[name='end']").val(end);
 
         let color = element.event.backgroundColor;
-        $("#modalCalendar input[name='color']").val(color);
+				$("#modalCalendar input[name='color']").val(color);
+				
+        if(element.event.extendedProps.geracobranca == 1){
+					$("#geracobranca").prop( "checked", true );
+					$('.showvalorevento').show();
+
+					var valorevento = element.event.extendedProps.valorevento;
+					$("#modalCalendar input[name='valorevento']").val(new Intl.NumberFormat('pt-BR', { minimumSignificantDigits: 2 }).format(valorevento));
+				} else{
+					$('.showvalorevento').hide();
+				}
 
         let description = element.event.extendedProps.description;
         $("#modalCalendar textarea[name='description']").val(description);
@@ -108,9 +122,11 @@ document.addEventListener('DOMContentLoaded', function() {
         let end   = moment(element.event.end).format("YYYY-MM-DD HH:mm:ss");
         let contato = element.event.extendedProps.contato_id;
         let tipoevento = element.event.extendedProps.tipo_evento_id;
+        let geracobranca = element.event.extendedProps.geracobranca;
         let title = element.event.title;
         let empresa_id = element.event.empresa_id;
         let description = element.event.extendedProps.description;
+        let valorevento = element.event.extendedProps.valorevento;
 
         let newEvent = {
           _method:'PUT',
@@ -118,10 +134,12 @@ document.addEventListener('DOMContentLoaded', function() {
           start: start,
           end: end,
           contato_id: contato,
+          geracobranca: geracobranca,
           tipo_evento_id: tipoevento,
           title: title,
           empresa_id: empresa_id,
-          description: description
+          description: description,
+          valorevento: valorevento
         };
 
         sendEvent(routeEvents('routeEventUpdate'), newEvent);
@@ -147,8 +165,5 @@ document.addEventListener('DOMContentLoaded', function() {
 			events: routeEvents('routeLoadEvents'),
 		});
 		
-
     calendar.render();
-
-  });
-
+	});

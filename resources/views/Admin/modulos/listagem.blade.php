@@ -40,7 +40,7 @@
 					<td class="sorting_1">{{$modulo->nome}}</td>
 					<td>{{$modulo->descricao}}</td>
 					<td class="text-center" style="padding: 0.45rem">
-						<div class="dropdown">
+						<div class="btn-group dropleft">
 							<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								Ação
 							</button>

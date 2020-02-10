@@ -122,16 +122,14 @@ class CentroCustoController extends Controller
   }
 
   public function relatorio(){
-    $consulta = Movimento::select(\DB::raw('centrocusto_id, sum(valortotal)'))
+    $consulta = Movimento::select('*')
                           ->where('empresa_id', Auth::user()->empresa_id)
-                          ->groupBy('centrocusto_id')->get();
-
-    // $total    = $consulta->sum('valor');
+                          ->groupBy('centrocusto_id')
+													->orderBy('valortotal', 'desc')
+													->get();
 
     return PDF::loadView('Admin.centrocusto.relatorios.geral', compact('consulta'))
-    // Se quiser que fique no formato a4 retrato:
       ->setPaper('a4', 'landscape')
       ->stream('relatorio-centrocusto.pdf');
-      // ->download('relatorio-entradas.pdf');
     }
   }

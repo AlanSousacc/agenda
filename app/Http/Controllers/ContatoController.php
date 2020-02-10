@@ -84,7 +84,7 @@ class ContatoController extends Controller
       $contato->status          = $data['status'];
 			$contato->email           = $data['email'];
 			$contato->datanascimento  = $data['datanascimento'];
-      $contato->valorsessao     = $data['valorsessao'];
+      // $contato->valorsessao     = $data['valorsessao'];
       $contato->sexo            = $data['sexo'];
       $contato->escolaridade    = $data['escolaridade'];
       $contato->profissao       = $data['profissao'];
@@ -138,7 +138,7 @@ class ContatoController extends Controller
       $contato->status          = $data['status'];
 			$contato->email           = $data['email'];
 			$contato->datanascimento  = $data['datanascimento'];
-      $contato->valorsessao     = $data['valorsessao'];
+      // $contato->valorsessao     = $data['valorsessao'];
       $contato->sexo            = $data['sexo'];
       $contato->escolaridade    = $data['escolaridade'];
       $contato->profissao       = $data['profissao'];

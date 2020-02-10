@@ -1,5 +1,8 @@
 <?php
 // Verifica se Há login em todas as rotas
+
+use App\Http\Controllers\RelCentroCustoController;
+
 Route::middleware(['auth'])->group(function () {
 
 
@@ -11,6 +14,8 @@ Route::post('/event-store', 'EventController@store')->name('routeEventStore');
 Route::any('search-event', 'EventController@search')->name('routeEventSearch');
 Route::delete('/users-delete/{contato}', 'EventController@delete')->name('routeAgendaDelete');
 Route::delete('/event-destroy', 'EventController@destroy')->name('routeEventDelete');
+Route::get('gerarmovimentacao/agendamento/{id}', 'EventController@show')->name('geramov.agendamento.show');
+Route::post('gerarmovimentacao', 'EventController@storeMov')->name('gerarMov.store');
 
 // contatos
 Route::resource('contato', 'ContatoController');
@@ -79,7 +84,8 @@ Route::middleware(['auth', 'checkProfile'])->group(function () {
   Route::get('centrodecusto/edit/{id}', 'CentroCustoController@edit')->name('cc.edit');
   Route::put('centrodecusto/update/{id}', 'CentroCustoController@update')->name('cc.update');
   Route::delete('centrodecusto/delete', 'CentroCustoController@destroy')->name('cc.destroy');
-  Route::get('movimentacao-centrodecusto', 'CentroCustoController@relatorio')->name('cc.relatorio');
+	Route::get('movimentacao-centrodecusto', 'CentroCustoController@relatorio')->name('cc.relatorio');
+	Route::get('movimentacao/teste', 'RelCentroCustoController@teste')->name('cc.teste');
 });
 
 // relacionamento módulos da empresa

@@ -27,7 +27,7 @@
           <th class="text-center">Data/Hora inicio</th>
           <th class="text-center">Data/Hora Final</th>
           <th class="text-center">Descrição</th>
-          <th class="text-center">Cor</th>
+          <th class="text-center"><i class="fa fa-dollar-sign"></i></th>
         </tr>
       </thead>
       <tbody>
@@ -38,9 +38,15 @@
           <td class="text-center">{{Carbon\Carbon::parse($item->start)->format('d/m/Y H:m:i')}}</td>
           <td class="text-center">{{Carbon\Carbon::parse($item->end)->format('d/m/Y H:m:i')}}</td>
           <td class="text-center">{{$item->description}}</td>
-          <td class="text-center"><i class="fa fa-circle" style="color:{{$item->color}}"></i></td>
-          </tr>
-          @endforeach
+					<td class="text-center">
+						@if ($item->geracobranca)
+							<i class="fa fa-donate" style="color: #3fb359" data-toggle="tooltip" data-placement="bottom" title="Este agendamento tem fatura!"></i>
+						@else
+							<i class="fa fa-donate" style="color: #ff5656" data-toggle="tooltip" data-placement="bottom" title="Este agendamento não tem fatura!"></i>
+						@endif
+					</td>
+				</tr>
+				@endforeach
         </tbody>
       </table>
       <div class="row">
@@ -53,12 +59,16 @@
       </div>
     </div>
     {{-- modal filtro--}}
-    @include('Admin.fullcalendar.modalfiltro')
+		@include('Admin.fullcalendar.modalfiltro')
   </div>
   <!-- /.card -->
   @push('scripts')
-  <script src='{{asset('admin/js/agenda/agenda.js')}}'></script>
-  {{-- <script src='{{asset('assets/fullcalendar/js/agendamento.js')}}'></script> --}}
+	<script src='{{asset('admin/js/agenda/agenda.js')}}'></script>
+	<script>
+		$(function () {
+			$('[data-toggle="tooltip"]').tooltip()
+		})
+	</script>
   @endpush
   @endsection
 

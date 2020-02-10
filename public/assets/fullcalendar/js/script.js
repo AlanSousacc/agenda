@@ -10,12 +10,15 @@ $(function(){
 
   $(".deleteEvent").click(function(){
 
-    let id = $("#modalCalendar input[name='id']").val();
+		let id = $("#modalCalendar input[name='id']").val();
+		
+		let geracobranca = $("input[type=checkbox]").is(":checked");
 
     let title = $("#title").val();
 
     let Event = {
-      id: id,
+			id: id,
+			geracobranca: geracobranca,
       title: title,
       _method: 'DELETE'
     };
@@ -40,11 +43,17 @@ $(function(){
     let description = $("#modalCalendar textarea[name='description']").val();
 
 		let contato = $("#contato_id").val();
-		
+
+		if($("input[type=checkbox]").is(":checked") == true){
+			var geracobranca = 1;
+			var valorevento = $("#valorevento").val();
+		} else {
+			var geracobranca = 0;
+		}
+
     let tipoevento = $("#tipo_evento_id").val();
 
     let title = $("#title").val();
-
 
     let Event = {
       title: title,
@@ -52,12 +61,12 @@ $(function(){
       start: start,
       end: end,
       color: color,
+      valorevento: valorevento,
+      geracobranca: geracobranca,
       description: description,
       contato_id: contato,
       tipo_evento_id: tipoevento,
 		};
-		
-		console.log(Event)
 
     let route;
 
@@ -70,7 +79,6 @@ $(function(){
     }
 
     sendEvent(route, Event)
-
   });
 });
 
@@ -82,7 +90,7 @@ function sendEvent(route, data_){
     dataType: 'json',
     success:function(json){
       if(json){
-				// console.log(data_._method)
+				// console.log(data_)
 				$( "#sucesso").modal('show');
 				$( '.btn-success' ).click(function() {
 					location.reload();
