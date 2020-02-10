@@ -149,8 +149,8 @@ class MovimentacaoController extends Controller
 					throw new Exception("Nenhuma movimentação encontrada!");
 
 				// verifica se valor não é maior que zero
-				// if ($data['valor'] <= 0)
-				// 	throw new Exception("Valor não pode ser negativo, ou 0 [ZERO]!");
+				if ($data['valor'] <= 0)
+					throw new Exception("Valor não pode ser negativo, ou 0 [ZERO]!");
 
 				// verifica se valor é maior que o devido
 				if ($data['valor'] > $mov->valorpendente)
