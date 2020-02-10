@@ -59,7 +59,7 @@
       </div>
     </div>
     {{-- modal filtro--}}
-		@include('Admin.fullcalendar.modalfiltro')
+		@include('Admin.fullcalendar.modalFiltro')
   </div>
   <!-- /.card -->
   @push('scripts')

@@ -102,7 +102,8 @@
                     <input type="email" class="form-control email" id="email" placeholder="Digite o email completo" value="{{isset($contato) ? $contato->email : ''}}" name="email" autofocus>
                   </div>
                 </div>
-              </div>
+							</div>
+							
 
               <div class="col-md-4">
                 <div class="form-group">
