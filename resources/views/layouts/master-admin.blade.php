@@ -265,6 +265,7 @@
               @endif
             </li>
 
+						@if (Auth::user()->isAdmin == 1)
             <li class="nav-item has-treeview menu-open">
               <a href="#" class="nav-link">
                 <i class="fa fa-cog nav-icon"></i>
@@ -273,7 +274,6 @@
                 </p>
               </a>
 
-              @if (Auth::user()->isAdmin == 1)
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="{{ route('modulos.list') }}" class="nav-link">

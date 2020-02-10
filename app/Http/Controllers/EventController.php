@@ -170,6 +170,7 @@ class EventController extends Controller
 				$mov->observacao         		= 'Movimentação realizada pelo agendamento:. #' .$event->id;
 				$mov->valortotal      			= str_replace (',', '.', str_replace ('.', '', $request->valorevento));
 				$mov->valorrecebido         = str_replace (',', '.', str_replace ('.', '', 0	));
+				$mov->valorpendente					= $mov->valortotal - $mov->valorrecebido;
 				$mov->movimented_at 				= date('Y-m-d H:i:s');
 				$saved 											= $mov->save();
 			}
