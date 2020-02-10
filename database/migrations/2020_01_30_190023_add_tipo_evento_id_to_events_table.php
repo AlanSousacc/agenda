@@ -27,7 +27,7 @@ class AddTipoEventoIdToEventsTable extends Migration
 	public function down()
 	{
 		Schema::table('events', function (Blueprint $table) {
-			Schema::dropColumn('tipo_evento_id');
+			
 		});
 	}
 }

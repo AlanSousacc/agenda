@@ -196,8 +196,6 @@ class EmpresaController extends Controller
 			if (Auth::user()->isAdmin != 1)
 			throw new Exception("Este usuário não é Administrador do sistema, contate-o para obter informações");
 
-
-
 		} catch (Exception $e) {
 			return redirect('empresa')->with('error', $e->getMessage());
 			exit();

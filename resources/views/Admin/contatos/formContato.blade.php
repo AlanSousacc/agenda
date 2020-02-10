@@ -63,10 +63,10 @@
                 <div class="form-group">
                   <label for="tipocontato">Tipo Contato*</label>
                   <div class="input-group">
-                    <select class="form-control tipocontato" id="tipocontato" name="tipocontato" {{old('tipocontato')}}>
+										<select class="form-control tipocontato" id="tipocontato" name="tipocontato" {{old('tipocontato')}}>
+											<option value="Cliente" @if (isset($contato->tipocontato) && ($contato->tipocontato == 'Cliente')) selected @endif>Cliente</option>
                       <option value="Profissional" @if (isset($contato->tipocontato) && ($contato->tipocontato == 'Profissional')) selected @endif>Profissional</option>
                       <option value="Paciente" @if (isset($contato->tipocontato) && ($contato->tipocontato == 'Paciente')) selected @endif>Paciente</option>
-                      <option value="Cliente" @if (isset($contato->tipocontato) && ($contato->tipocontato == 'Cliente')) selected @endif>Cliente</option>
                       <option value="Aluno" @if (isset($contato->tipocontato) && ($contato->tipocontato == 'Aluno')) selected @endif>Aluno</option>
                       <option value="Fornecedor" @if (isset($contato->tipocontato) && ($contato->tipocontato == 'Fornecedor')) selected @endif>Fornecedor</option>
                       <option value="Funcionario" @if (isset($contato->tipocontato) && ($contato->tipocontato == 'Funcionario')) selected @endif>Funcionario</option>
@@ -97,9 +97,9 @@
 
               <div class="col-md-4">
                 <div class="form-group">
-                  <label for="nome">Email*</label>
+                  <label for="nome">Email</label>
                   <div class="input-group">
-                    <input type="email" class="form-control email" id="email" placeholder="Digite o email completo" value="{{isset($contato) ? $contato->email : ''}}" name="email" required autofocus>
+                    <input type="email" class="form-control email" id="email" placeholder="Digite o email completo" value="{{isset($contato) ? $contato->email : ''}}" name="email" autofocus>
                   </div>
                 </div>
               </div>
@@ -155,7 +155,7 @@
 
           {{-- campos adicionais --}}
           <div class="tab-pane fade" id="custom-tabs-three-profile" role="tabpanel" aria-labelledby="custom-tabs-three-profile-tab">
-            <div class="row">
+            {{-- <div class="row">
               <div class="col-md-2">
                 <div class="form-group">
                   <label for="valorsessao">Valor por Sessão</label>
@@ -167,7 +167,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> --}}
 
             <div class="row">
               <div class="col-md-4">
@@ -175,7 +175,7 @@
                   <label for="escolaridade">Escolaridade</label>
                   <div class="input-group">
                     <select class="form-control escolaridade" id="escolaridade" name="escolaridade">
-                      <option value="" selected>Escolaridade</option>
+                      {{-- <option value="" selected>Escolaridade</option> --}}
                       <option value="Ensino Fundamental Completo" @if (isset($contato->escolaridade) && ($contato->escolaridade == 'Ensino Fundamental Completo')) selected @endif>Ensino Fundamental Completo</option>
                       <option value="Ensino Fundamental Incompleto" @if (isset($contato->escolaridade) && ($contato->escolaridade == 'Ensino Fundamental Incompleto')) selected @endif>Ensino Fundamental Incompleto</option>
                       <option value="Ensino Médio Completo" @if (isset($contato->escolaridade) && ($contato->escolaridade == 'Ensino Médio Completo')) selected @endif>Ensino Médio Completo</option>

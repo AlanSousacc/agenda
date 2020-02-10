@@ -43,7 +43,7 @@
         </ul>
       </div>
       <div class="col-md-6 float-right">
-        <div class="dropdown show float-right mr-3">
+        <div class="btn-group dropleft show float-right mr-3">
           <a class=" dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             {{ Auth::user()->name }}
           </a>

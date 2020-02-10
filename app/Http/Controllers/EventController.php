@@ -125,7 +125,7 @@ class EventController extends Controller
 
   public function update(EventRequest $request)
   {
-		$user							 = Auth::user();
+		$user	 = Auth::user();
 		$event = Event::where('id', $request->id)
 									->where('empresa_id', $user->empresa_id)
 									->first(); //evento selecionado
@@ -170,8 +170,14 @@ class EventController extends Controller
 				$mov->observacao         		= 'Movimentação realizada pelo agendamento:. #' .$event->id;
 				$mov->valortotal      			= str_replace (',', '.', str_replace ('.', '', $request->valorevento));
 				$mov->valorrecebido         = str_replace (',', '.', str_replace ('.', '', 0	));
+				$mov->movimented_at 				= date('Y-m-d H:i:s');
 				$saved 											= $mov->save();
 			}
+		} else {
+			// se não houver cobrança na alteração ele verifica se há movimentação com o id do agendamento, caso haja exclui a movimentação.
+			$mov = Movimento::where('event_id', $event->id)
+											->where('empresa_id', $user->empresa_id)
+											->delete();
 		}
 
 		$event->save(); //Salva a edição da movimentação
