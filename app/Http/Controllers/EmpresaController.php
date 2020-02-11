@@ -236,7 +236,7 @@ class EmpresaController extends Controller
 				$empresa->save();
 			}
 
-			return back()->with('success','Upload realizado com sucesso!');
+			return redirect('empresa.show')->with('success','Upload realizado com sucesso!');
 		}
 
 		public function show($id){
