@@ -67,7 +67,7 @@
 				<td class="text-center">R$ {{ number_format( $item->where('centrocusto_id', $current_cc_id)->sum('valorpendente'), 2, ',', '.' ) }}</td>
 			</tr>
 			<tr>
-				<td colspan="5"></td>
+				<td colspan="6"></td>
 			</tr>
 			
 			<tr>
