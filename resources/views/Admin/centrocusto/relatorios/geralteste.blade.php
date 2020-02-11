@@ -13,34 +13,34 @@
 	</h1>
 	<table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
 		<thead>
-			<tr role="row" class="odd">	
-				<th class="text-center th-sm">Centro de Custo</th>
-				<th class="text-center th-smr">Nome do Cliente</th>
-				<th class="text-center th-sm">ID da Movimentação</th>
-				<th class="text-center th-sm">Valor Total</th>
-				<th class="text-center th-sm">Valor Recebido</th>
-				<th class="text-center th-sm">Valor Pendente</th>
+			<tr>
+				<th class="text-center">ID</th>
+				<th class="text-center">Descrição do Centro de Custo</th>
+				<th class="text-center">campoqualquer</th>
+				<th class="text-center">Valor Total</th>
+				<th class="text-center">Valor Recebido</th>
+				<th class="text-center">Valor Pendente</th>
 			</tr>
 		</thead>
 		<tbody>
 			@php ($current_cc_id = null)
-			
+
 			@foreach ($consulta as $item)
-			
+
 			@if ($loop->index > 0 && $current_cc_id != $item->centrocusto->id)
-			
-			<tr>
-				{{-- <td colspan="2"></td> --}}
-				<td colspan="3">SUBTOTAL</td>
-				<td>{{ $item->where('centrocusto_id', $current_cc_id)->sum('valortotal') }}</td>
-				<td>{{ $item->where('centrocusto_id', $current_cc_id)->sum('valorrecebido') }}</td>
-				<td>{{ $item->where('centrocusto_id', $current_cc_id)->sum('valorpendente') }}</td>
-			</tr>
-			<tr>
-				<td colspan="6"></td>
-			</tr>
+
+													<tr>
+														<td colspan="2"></td>
+														<td>SUBTOTAL</td>
+														<td>{{ $item->where('centrocusto_id', $current_cc_id)->sum('valortotal') }}</td>
+														<td>{{ $item->where('centrocusto_id', $current_cc_id)->sum('valorrecebido') }}</td>
+														<td>{{ $item->where('centrocusto_id', $current_cc_id)->sum('valorpendente') }}</td>
+													</tr>
+													<tr>
+														<td colspan="5"></td>
+													</tr>
 			@endif
-			
+
 			<tr role="row" class="odd">
 				@if ($current_cc_id == $item->centrocusto->id)
 				<td colspan="2"></td>
@@ -58,25 +58,25 @@
 			</tr>
 			
 			@if ($loop->last)
-			
-			<tr>
-				{{-- <td colspan="2"></td> --}}
-				<td class="text-center" colspan="3">SUBTOTAL</td>
-				<td class="text-center">R$ {{ number_format( $item->where('centrocusto_id', $current_cc_id)->sum('valortotal'), 2, ',', '.' ) }}</td>
-				<td class="text-center">R$ {{ number_format( $item->where('centrocusto_id', $current_cc_id)->sum('valorrecebido'), 2, ',', '.' ) }}</td>
-				<td class="text-center">R$ {{ number_format( $item->where('centrocusto_id', $current_cc_id)->sum('valorpendente'), 2, ',', '.' ) }}</td>
-			</tr>
-			<tr>
-				<td colspan="6"></td>
-			</tr>
-			
-			<tr>
-				{{-- <td colspan="2"></td> --}}
-				<td class="text-center" colspan="3">TOTAL</td>
-				<td class="text-center">R$ {{ number_format( $item->sum('valortotal'), 2, ',', '.' ) }}</td>
-				<td class="text-center">R$ {{ number_format( $item->sum('valorrecebido'), 2, ',', '.' ) }}</td>
-				<td class="text-center">R$ {{ number_format( $item->sum('valorpendente'), 2, ',', '.' ) }}</td>
-			</tr>
+
+										<tr>
+											<td colspan="2"></td>
+											<td>SUBTOTAL</td>
+											<td>{{ $item->where('centrocusto_id', $current_cc_id)->sum('valortotal') }}</td>
+											<td>{{ $item->where('centrocusto_id', $current_cc_id)->sum('valorrecebido') }}</td>
+											<td>{{ $item->where('centrocusto_id', $current_cc_id)->sum('valorpendente') }}</td>
+										</tr>
+										<tr>
+											<td colspan="5"></td>
+										</tr>
+
+																<tr>
+																	<td colspan="2"></td>
+																	<td>TOTAL</td>
+																	<td>{{ $item->sum('valortotal') }}</td>
+																	<td>{{ $item->sum('valorrecebido') }}</td>
+																	<td>{{ $item->sum('valorpendente') }}</td>
+																</tr>
 			@endif
 			@endforeach
 		</tbody>

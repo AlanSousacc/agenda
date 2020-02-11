@@ -49,3 +49,56 @@ body {
 	float: right;
 	width: 900px;
 }
+
+/* mobile */
+@media only screen and (min-width: 100px) and (max-width: 765px) { 
+	.fc-toolbar.fc-header-toolbar{
+		width: 100%;
+		display: block;
+		margin-bottom: 0;
+	}
+	
+	.fc-left {
+		margin: 0 0%;
+		position: absolute;
+		top: 19px;
+		right: 10px;
+	}
+	
+	.fc-center {
+		width: 100%;
+		display: block;
+		text-align: center;
+		margin: 30px 0 0;
+		font-size: 15px;
+	}
+	
+	.fc-right {
+		margin: 0 0%;
+		position: absolute;
+		top: 20px;
+		left: 10px;
+	}
+	
+	button.fc-timeGridWeek-button.fc-button.fc-button-primary {
+		display: none;
+	}
+	
+	button.fc-dayGridMonth-button.fc-button.fc-button-primary {
+		display: none;
+	}
+	
+	.modal-dialog {
+    width: 100%!important;
+    max-width: 270px;
+    margin: 0 auto!important;
+	}
+
+	.modal-content form#formEvent textarea#description {
+    width: 100%;
+	}
+
+	.modal-content {
+    margin-left: 0!important;
+}
+}
