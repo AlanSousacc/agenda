@@ -55,9 +55,11 @@ class RelCentroCustoController extends Controller
 																	->where('empresas.id', Auth::user()->empresa_id)
 
 																	->get();
-		$total = $consulta->sum('valortotal');															
+		$total = $consulta->sum('valortotal');	
+		$recebido = $consulta->sum('valorrecebido');														
+		$pendente = $consulta->sum('valorpendente');														
 
-		return PDF::loadView('Admin.centrocusto.relatorios.geralteste', compact('consulta', 'total'))
+		return PDF::loadView('Admin.centrocusto.relatorios.geralteste', compact('consulta', 'total', 'recebido','pendente'))
 		->setPaper('a4', 'landscape')
 		->stream('relatorio-centrocusto.pdf');
 	}
