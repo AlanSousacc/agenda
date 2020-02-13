@@ -10,7 +10,7 @@
 				{{csrf_field()}}
         <div class="modal-body">
           <input type="hidden" name="agenda_id" id="agenid" value="">
-          <input type="hidden" name="contato_id" id="agenid" value="">
+          <input type="hidden" name="contato_id" id="contid" value="">
           @include('Admin.fullcalendar.formCalendar')
         </div>
         <div class="modal-footer">
