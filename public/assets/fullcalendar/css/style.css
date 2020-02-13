@@ -50,6 +50,14 @@ body {
 	width: 900px;
 }
 
+.botton-flot {
+	display: none;
+}
+
+button.fc-addEventButton-button.fc-button.fc-button-primary {
+	display: none;
+}
+
 /* mobile */
 @media only screen and (min-width: 100px) and (max-width: 765px) { 
 	.fc-toolbar.fc-header-toolbar{
@@ -89,16 +97,69 @@ body {
 	}
 	
 	.modal-dialog {
-    width: 100%!important;
-    max-width: 270px;
-    margin: 0 auto!important;
+		width: 100%!important;
+		max-width: 270px;
+		margin: 0 auto!important;
 	}
-
+	
 	.modal-content form#formEvent textarea#description {
-    width: 100%;
+		width: 100%;
 	}
-
+	
 	.modal-content {
-    margin-left: 0!important;
+		margin-left: 0!important;
+	}
+	
+	footer.main-footer {
+		text-align: center;
+	}
+	
+	table tr th {
+		font-size: 14px;
+		font-weight: 500;
+		color: #000000;
+	}
+	
+	table tbody tr td {
+		font-size: 14px;
+		font-weight: 100;
+	}
+	
+	.modal-content.filtro {
+		width: 100%;
+		max-width: 300px;
+		margin: 0 auto!important;
+	}
+	
+	.modal-dialog {
+		min-width: auto!important;
+	}
+	
+	.modal-content.filtro h4.modal-title {
+		font-size: 18px;
+	}
+	
+	.row.footer-modal p {
+		text-align: center;
+		width: 100%;
+		max-width: 270px;
+		margin: 0 auto;
+		padding: 21px 20px 20px 0;
+	}
+	button.fc-addEventButton-button.fc-button.fc-button-primary {
+    text-align: center;
+    position: absolute;
+    right: 0%;
+    top: 1000%;
+    background: #29a745;
+    color: #fff;
+    border-radius: 50px;
+    font-size: 33px;
+    width: 60px;
+    height: 60px;
+    line-height: 1px;
 }
+	button.fc-addEventButton-button.fc-button.fc-button-primary {
+		display: block;
+	}
 }

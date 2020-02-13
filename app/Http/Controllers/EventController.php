@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use App\Http\Requests\EventRequest;
 use Auth;
-use Exception;
 use App\User;
 use App\Models\Empresa;
 use App\Models\AuxModuloEmpresa;
@@ -15,7 +14,6 @@ use App\Models\Movimento;
 use App\Http\Requests\MovimentacaoRequest;
 use App\Models\Condicao_pagamento;
 use App\Models\CentroCusto;
-use Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -129,6 +127,7 @@ class EventController extends Controller
 		$event = Event::where('id', $request->id)
 									->where('empresa_id', $user->empresa_id)
 									->first(); //evento selecionado
+
 		$event->fill([ // preenchimento dos campos do agendamento
 			'title' 				 => $request->title, 
 			'start' 				 => $request->start,
@@ -141,10 +140,9 @@ class EventController extends Controller
 			'geracobranca' 	 => $request->geracobranca,
 			'valorevento' 	 => str_replace (',', '.', str_replace ('.', '', $request->valorevento))
 		]);
-
 		// verifica se a movimentação a ser alterada tem cobrança
 		if($request->geracobranca == 1){
-			
+
 			$mov = Movimento::where('event_id', $event->id)
 											->where('empresa_id', $user->empresa_id)
 											->first(); //se houver cobrança consulta qual o id do agendamento
@@ -157,6 +155,7 @@ class EventController extends Controller
 				$updated = Movimento::where('event_id', $event->id)
 														->where('empresa_id', $user->empresa_id)
 														->update(['valortotal' => $valortotal], ['valorrecebido' => $valorrecebido], ['valorpendente' => $valorpendente]);
+
 			} else {
 				// se houver cobrança habilitada mas não existir movimentação, realiza cadastro da movimentação
 				$mov = new Movimento;
@@ -176,12 +175,14 @@ class EventController extends Controller
 			}
 		} else {
 			// se não houver cobrança na alteração ele verifica se há movimentação com o id do agendamento, caso haja exclui a movimentação.
+
 			$mov = Movimento::where('event_id', $event->id)
 											->where('empresa_id', $user->empresa_id)
 											->delete();
 		}
 
 		$event->save(); //Salva a edição da movimentação
+		// dd($event);
 		return response()->json(true);
 	}
 

@@ -1,6 +1,6 @@
 <div class="modal fade" id="filtroagendamento" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document" style="min-width:500px">
-    <div class="modal-content">
+    <div class="modal-content filtro">
       <div class="modal-header" style="text-align: center; display: inline;">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title">Filtrar Agendamentos</h4>

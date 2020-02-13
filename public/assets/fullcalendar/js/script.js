@@ -29,19 +29,12 @@ $(function(){
   });
 
   $(".saveEvent").click(function(){
-
     let empresa_id = $("#modalCalendar input[name='empresa_id']").val();
-
     let id = $("#modalCalendar input[name='id']").val();
-
     let start = moment($("#modalCalendar input[name='start']").val(), "DD/MM/YYYY HH:mm:ss").format("YYYY-MM-DD HH:mm:ss");
-
     let end = moment($("#modalCalendar input[name='end']").val(), "DD/MM/YYYY HH:mm:ss").format("YYYY-MM-DD HH:mm:ss");
-
     let color = $("#modalCalendar input[name='color']").val();
-
     let description = $("#modalCalendar textarea[name='description']").val();
-
 		let contato = $("#contato_id").val();
 
 		if($("input[type=checkbox]").is(":checked") == true){
@@ -50,11 +43,10 @@ $(function(){
 		} else {
 			var geracobranca = 0;
 		}
-
+		
     let tipoevento = $("#tipo_evento_id").val();
-
-    let title = $("#title").val();
-
+		let title = $("#title").val();
+		
     let Event = {
       title: title,
       empresa_id: empresa_id,
