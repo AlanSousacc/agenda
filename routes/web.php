@@ -17,6 +17,8 @@ Route::delete('/event-destroy', 'EventController@destroy')->name('routeEventDele
 Route::get('gerarmovimentacao/agendamento/{id}', 'EventController@show')->name('geramov.agendamento.show');
 Route::post('gerarmovimentacao', 'EventController@storeMov')->name('gerarMov.store');
 
+Route::view('sobre', 'Admin.sobre.sobre')->name('sobre');
+
 // contatos
 Route::resource('contato', 'ContatoController');
 Route::any('search-contato', 'ContatoController@search')->name('routeContatoSearch');
