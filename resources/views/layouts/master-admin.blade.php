@@ -236,7 +236,7 @@
                     <li class="nav-item">
                       <a href="{{ route('routeUserList') }}" class="nav-link">
                         <i class="fa fa-list-ul nav-icon"></i>
-                        <p>Listagem de Usuarios</p>
+                        <p>Listar Usuarios</p>
                       </a>
                     </li>
                   </ul>

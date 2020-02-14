@@ -6,52 +6,53 @@
 	@include('layouts.master-message')
 </div>
 <div class="col-md-12">
-  <div class="card">
-    <div class="card-header">
-      <div class="com-md-6">
-        <h3 class="card-title mt-md-2"> Listagem de empresas</h3>
-      </div>
-
-      <div class="com-md-6 float-md-right search">
-        <form action="{{route('routeEmpresaSearch')}}" method="POST" class="form-inline">
-          @csrf
-          <div class="input-group input-group-sm">
-            <input type="search" placeholder="Consultar Razão Social" aria-label="Consultar" name="razaosocial" class="form-control form-control-navbar">
-            <div class="input-group-append">
-              <button type="submit" class="btn btn-navbar"><i class="fas fa-search"></i></button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-    <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
-      <thead>
-        <tr>
-          <th class="text-center">#ID</th>
-          <th class="text-center">Razão Social</th>
-          <th class="text-center">Nome Fantasia</th>
-          <th class="text-center">CNPJ</th>
-          <th class="text-center">Telefone</th>
-          <th class="text-center">Email</th>
-          <th class="text-center">Opções</th>
-        </tr>
-      </thead>
-      <tbody>
-        @foreach ($consulta as $item)
-        <tr role="row" class="odd">
-          <td class="text-center">{{$item->id}}</td>
-          <td class="sorting_1">{{$item->razaosocial}}</td>
-          <td>{{$item->nomefantasia}}</td>
-          <td>{{$item->cnpj}}</td>
-          <td>{{$item->telefone}}</td>
-          <td>{{$item->email}}</td>
-            <td class="text-center" style="padding: 0.45rem">
-              <div class="btn-group dropleft">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Ação
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  @if (Auth::user()->profile == 'Administrador' )
+	<div class="card">
+		<div class="card-header">
+			<div class="com-md-6">
+				<h3 class="card-title mt-md-2"> Listagem de empresas</h3>
+			</div>
+			
+			<div class="com-md-6 float-md-right search">
+				<form action="{{route('routeEmpresaSearch')}}" method="POST" class="form-inline">
+					@csrf
+					<div class="input-group input-group-sm">
+						<input type="search" placeholder="Consultar Razão Social" aria-label="Consultar" name="razaosocial" class="form-control form-control-navbar">
+						<div class="input-group-append">
+							<button type="submit" class="btn btn-navbar"><i class="fas fa-search"></i></button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="table-responsive-sm">
+			<table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
+				<thead>
+					<tr>
+						<th class="text-center">#ID</th>
+						<th class="text-center">Razão Social</th>
+						<th class="text-center">Nome Fantasia</th>
+						<th class="text-center">CNPJ</th>
+						<th class="text-center">Telefone</th>
+						<th class="text-center">Email</th>
+						<th class="text-center">Opções</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach ($consulta as $item)
+					<tr role="row" class="odd">
+						<td class="text-center">{{$item->id}}</td>
+						<td class="sorting_1">{{$item->razaosocial}}</td>
+						<td>{{$item->nomefantasia}}</td>
+						<td>{{$item->cnpj}}</td>
+						<td>{{$item->telefone}}</td>
+						<td>{{$item->email}}</td>
+						<td class="text-center" style="padding: 0.45rem">
+							<div class="btn-group dropleft">
+								<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									Ação
+								</button>
+								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+									@if (Auth::user()->profile == 'Administrador' )
 									<a class="dropdown-item" href="{{$item->id}}"
 										data-emprid="{{$item->id}}"
 										data-razaosocial="{{$item->razaosocial}}"
@@ -71,40 +72,42 @@
 										data-tipo="{{$item->tipo}}"
 										data-target="#editar"
 										data-toggle="modal"><i class="fa fa-edit"></i> Editar</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="{{$item->id}}" data-emprid={{$item->id}} data-target="#delete" data-toggle="modal"><i class="fa fa-trash"></i> Excluir</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="{{ route('modulosempresa.edit', $item->id) }}" ><i class="fa fa-lock"></i> Permissões</a>
-                  @endif
-                </div>
-              </div>
-            </td>
-        </tr>
-        @endforeach
-      </tbody>
-    </table>
-    <div class="row">
-      <div class="col-md-6 pl-4 mt-md-2"><p>Mostrando {{$consulta->count()}} empresas de um total de {{$consulta->total()}}</p></div>
-      @if (isset($empresas))
-      <div class="col-md-6 pr-4">{{$consulta->appends($empresas)->links()}}</div>
-      @else
-      <div class="col-md-6 pr-4">{{$consulta->links()}}</div>
-      @endif
+										<div class="dropdown-divider"></div>
+										<a class="dropdown-item" href="{{$item->id}}" data-emprid={{$item->id}} data-target="#delete" data-toggle="modal"><i class="fa fa-trash"></i> Excluir</a>
+										<div class="dropdown-divider"></div>
+										<a class="dropdown-item" href="{{ route('modulosempresa.edit', $item->id) }}" ><i class="fa fa-lock"></i> Permissões</a>
+										@endif
+									</div>
+								</div>
+							</td>
+						</tr>
+						@endforeach
+					</tbody>
+				</table>
+			</div>
+			<div class="row">
+				<div class="col-md-6 pl-4 mt-md-2"><p>Mostrando {{$consulta->count()}} empresas de um total de {{$consulta->total()}}</p></div>
+				@if (isset($empresas))
+				<div class="col-md-6 pr-4">{{$consulta->appends($empresas)->links()}}</div>
+				@else
+				<div class="col-md-6 pr-4">{{$consulta->links()}}</div>
+				@endif
+			</div>
+			
+			<!-- Modal editar-->
+			@include('Admin.empresa.modalEditar')
+			
+			{{-- modal Deletar--}}
+			@include('Admin.empresa.modalExcluir')
+			{{-- Modal --}}
 		</div>
-
-		<!-- Modal editar-->
-		@include('Admin.empresa.modalEditar')
-
-		{{-- modal Deletar--}}
-		@include('Admin.empresa.modalExcluir')
-		{{-- Modal --}}
-  </div>
-</div>
-<!-- /.card -->
-@push('scripts')
+	</div>
+	<!-- /.card -->
+	@push('scripts')
 	<script src='{{asset('admin/js/empresa/empresa.js')}}'></script>
-@endpush
-@endsection
-
-
-
+	@endpush
+	@endsection
+	
+	
+	
+	

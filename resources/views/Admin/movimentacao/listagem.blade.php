@@ -22,6 +22,7 @@
       <div class="tab-content" id="custom-tabs-three-tabContent">
         {{-- capos entradas --}}
         <div class="tab-pane fade show active" id="custom-tabs-three-entradas" role="tabpanel" aria-labelledby="custom-tabs-three-entradas-tab">
+					<div class="table-responsive-sm">
           <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
               <tr>
@@ -100,12 +101,14 @@
               @else
               <div class="col-md-6 pr-4">{{$movIn->links()}}</div>
               @endif
-            </div>
+						</div>
+					</div>
           </div>
           {{-- fim campos entradas --}}
 
           {{-- campos saidas --}}
           <div class="tab-pane fade" id="custom-tabs-three-saidas" role="tabpanel" aria-labelledby="custom-tabs-three-saidas-tab">
+						<div class="table-responsive-sm">
             <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
               <thead>
                 <tr>
@@ -149,7 +152,6 @@
 													data-target="#visualizar"
 													data-toggle="modal"><i class="fab fa-wpforms"></i> Visualizar</a>
                           <div class="dropdown-divider"></div>
-                          {{-- <a class="dropdown-item" href="{{$item->id}}" data-contid={{$item->id}} data-target="#delete" data-toggle="modal">Excluir <i class="fa fa-trash"></i></a> --}}
 													@if ($item->status == 0)
 														<a class="dropdown-item" href="{{$item->id}}"
 															data-movid={{$item->id}}
@@ -177,7 +179,8 @@
                     <td class="text-center" colspan="1"></td>
                   </tr>
                 </tfoot>
-              </table>
+							</table>
+						</div>
               <div class="row">
                 <div class="col-md-6 pl-4 mt-md-2"><p>Mostrando {{$movOut->count()}} movimentações de um total de {{$movOut->total()}}</p></div>
                 @if (isset($contato))
@@ -201,8 +204,8 @@
 
       <div class="row" >
         <div class="col-md-12 mb-3">
-          <a href="{{route('movimentacao.createOut')}}" class="btn btn-danger btn-lg float-right mr-2">Nova Saída</a>
-          <a href="{{route('movimentacao.createIn')}}" class="btn btn-success btn-lg float-right mr-3">Nova Entrada</a>
+          <a href="{{route('movimentacao.createOut')}}" class="btn btn-danger float-right mr-2">Nova Saída</a>
+          <a href="{{route('movimentacao.createIn')}}" class="btn btn-success float-right mr-3">Nova Entrada</a>
         </div>
       </div>
     </div>
