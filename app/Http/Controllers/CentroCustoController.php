@@ -122,7 +122,7 @@ class CentroCustoController extends Controller
   }
 
   public function relatorio(){
-    $consulta = Movimento::select('*')
+    $consulta = Movimento::selectRaw('*, sum(valortotal) as valortotal')
                           ->where('empresa_id', Auth::user()->empresa_id)
                           ->groupBy('centrocusto_id')
 													->orderBy('valortotal', 'desc')

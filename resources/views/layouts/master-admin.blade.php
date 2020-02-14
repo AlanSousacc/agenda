@@ -34,11 +34,13 @@
             <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
           </li>
           <li class="nav-item d-none d-sm-inline-block">
-            <a href="/" class="nav-link">Home</a>
+            <a href="/" class="nav-link">Home <i class="fa fa-calendar-alt"></i></a>
           </li>
           <li class="nav-item d-none d-sm-inline-block">
-
-            <a href="{{route('contato.index')}}" class="nav-link">Contatos</a>
+            <a href="{{route('contato.index')}}" class="nav-link">Contatos <i class="fa fa-address-card"></i></a>
+          </li>
+          <li class="nav-item d-none d-sm-inline-block">
+            <a href="{{route('sobre')}}" class="nav-link">Sobre <i class="fa fa-info-circle"></i></a>
           </li>
         </ul>
       </div>
@@ -138,13 +140,13 @@
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a  href="{{route('relatorio.mes.atual')}}" class="nav-link">
+                      <a target="_blank" href="{{route('relatorio.mes.atual')}}" class="nav-link">
                         <i class="fa fa-chart-pie nav-icon"></i>
                         <p>Mês Atual</p>
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a  href="{{route('cc.relatorio')}}" class="nav-link">
+                      <a target="_blank" href="{{route('cc.relatorio')}}" class="nav-link">
                         <i class="fa fa-poll-h nav-icon"></i>
                         <p>Por Centro de Custo</p>
                       </a>

@@ -198,21 +198,27 @@ class MovimentacaoController extends Controller
 		}
 
     // RELATÓRIO
-    public function listagemEntradas()
-    {
+    public function listagemEntradas(){
       $user 		  = Auth::user()->empresa_id;
-      $consulta   = Movimento::where('empresa_id', '=', $user)->whereMonth('movimented_at', date('m'))->paginate(10);
-      $total      = $consulta->sum('valor');
+			$consultaEntrada   = Movimento::where('empresa_id', '=', $user)
+															->whereMonth('movimented_at', date('m'))
+															->where('tipo', 'Entrada')
+															->paginate(10);
+			$totalEntrada      = $consultaEntrada->sum('valortotal');
+			
+			$consultaSaida   	= Movimento::where('empresa_id', '=', $user)
+															->whereMonth('movimented_at', date('m'))
+															->where('tipo', 'Saída')
+															->paginate(10);
+      $totalSaida      = $consultaSaida->sum('valortotal');
 
       setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
       date_default_timezone_set('America/Sao_Paulo');
       $date = strftime('%B de %Y', strtotime('today'));
 
-      return PDF::loadView('Admin.movimentacao.relatorios.RME', compact('total', 'consulta', 'date'))
-      // Se quiser que fique no formato a4 retrato:
+      return PDF::loadView('Admin.movimentacao.relatorios.RME', compact('totalEntrada', 'totalSaida', 'consultaEntrada', 'consultaSaida', 'date'))
         ->setPaper('a4', 'landscape')
         ->stream('relatorio-entradas.pdf');
-        // ->download('relatorio-entradas.pdf');
 		}
 
     public function relPeriodo(Request $request, Movimento $rel)
@@ -223,10 +229,13 @@ class MovimentacaoController extends Controller
 			if(!empty($mov['mend']))
 				$mov['mend'] 		= Carbon::createFromFormat('d/m/Y', $mov['mend'])->format('Y-m-d');
 
-			$consulta = $rel->personalizado($mov);
-      $total      = $consulta->sum('valor');
+			$consultaEntrada 	= $rel->personalizado($mov)->where('tipo', 'Entrada');
+			$consultaSaida 		= $rel->personalizado($mov)->where('tipo', 'Saída');
+			$totalEntrada			= $consultaEntrada->sum('valortotal');
+			$totalSaida  			= $consultaSaida->sum('valortotal');
+			// dd($total);
 
-      return PDF::loadView('Admin.movimentacao.relatorios.RME', compact('total', 'consulta'))
+      return PDF::loadView('Admin.movimentacao.relatorios.RME', compact('totalEntrada', 'totalSaida', 'consultaEntrada', 'consultaSaida'))
       // Se quiser que fique no formato a4 retrato:
         ->setPaper('a4', 'landscape')
         ->stream('relatorio-personalizado.pdf');
