@@ -6,12 +6,12 @@
 	@include('layouts.master-message')
 </div>
 <div class="col-md-12">
-	<div class="card">
-		<div class="card-header">
-			<div class="col-md-6">
-				<h3 class="card-title mt-md-2"> Listagem de Módulos do Sistema</h3>
-			</div>
-		</div>
+	<nav class="navbar navbar-light bg-light">
+		<h3 class="navbar-brand">Listagem de Módulos do Sistema</h3>
+		<div class="col-md-6 float-md-right search">
+			<a class="btn btn-primary float-right" href="{{ route('modulos.novo') }}" role="button">Novo Módulo</a>
+	</div>
+	</nav>
 		<div class="table-responsive-sm">
 			<table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
 				<thead>
@@ -44,17 +44,9 @@
 					@endforeach
 				</tbody>
 			</table>
-		</div>
-		
+		</div>		
 		{{-- modal Deletar--}}
 		@include('Admin.modulos.modalExcluir')
-		
-		<div class="card-footer">
-			<div class="col-md-6 offset-md-4 float-right">
-				<a class="btn btn-primary float-right" href="{{ route('modulos.novo') }}" role="button">Novo Módulo</a>
-			</div>
-		</div>
-	</div>
 </div>
 <!-- /.card -->
 @push('scripts')

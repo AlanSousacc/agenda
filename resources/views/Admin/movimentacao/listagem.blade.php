@@ -6,6 +6,13 @@
   @include('layouts.master-message')
 </div>
 <div class="col-md-12">
+	<nav class="navbar navbar-light bg-light">
+		<h3 class="navbar-brand">Listagem de Movimentações</h3>
+		<div class="col-md-6 float-md-right search">
+			<a href="{{route('movimentacao.createOut')}}" class="btn btn-danger float-right mr-2">Nova Saída</a>
+			<a href="{{route('movimentacao.createIn')}}" class="btn btn-success float-right mr-3">Nova Entrada</a>
+		</div>
+	</nav>
   <div class="col-12 col-sm-6 col-lg-12">
     <div class="card card-primary card-outline card-outline-tabs" style="border-top: 0px solid #007bff;">
       <div class="card-header p-0 border-bottom-0">
@@ -204,12 +211,6 @@
       {{-- modal fechar conta--}}
       @include('Admin.movimentacao.modalFecharConta')
 
-      <div class="row" >
-        <div class="col-md-12 mb-3">
-          <a href="{{route('movimentacao.createOut')}}" class="btn btn-danger float-right mr-2">Nova Saída</a>
-          <a href="{{route('movimentacao.createIn')}}" class="btn btn-success float-right mr-3">Nova Entrada</a>
-        </div>
-      </div>
     </div>
     <!-- /.card -->
     @push('scripts')

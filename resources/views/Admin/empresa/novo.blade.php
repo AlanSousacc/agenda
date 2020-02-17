@@ -7,7 +7,7 @@
         <form enctype="multipart/form-data" action="{{route('empresa.store')}}" method="POST">
           {{csrf_field()}}
           <div class="panel-body">
-            <h1 class="text-center">Cadastrar Empresa</h1><br>
+            <h1 class="text-center my-3">Nova Empresa</h1>
             @include('Admin.empresa.formEmpresa')
             <input type="hidden" name="_token" value="{{csrf_token()}}">
             <input type="submit" name="submit" class="btn-alt btn btn-success btn-sm" value="Cadastrar" />

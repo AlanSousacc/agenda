@@ -34,13 +34,13 @@
             <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
           </li>
           <li class="nav-item d-none d-sm-inline-block">
-            <a href="/" class="nav-link">Home <i class="fa fa-calendar-alt"></i></a>
+            <a href="/" class="nav-link">Home</a>
           </li>
           <li class="nav-item d-none d-sm-inline-block">
-            <a href="{{route('contato.index')}}" class="nav-link">Contatos <i class="fa fa-address-card"></i></a>
+            <a href="{{route('contato.index')}}" class="nav-link">Contatos</a>
           </li>
           <li class="nav-item d-none d-sm-inline-block">
-            <a href="{{route('sobre')}}" class="nav-link">Sobre <i class="fa fa-info-circle"></i></a>
+            <a href="{{route('sobre')}}" class="nav-link">Sobre</a>
           </li>
         </ul>
       </div>
@@ -102,8 +102,8 @@
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="{{route('routeEventList')}}" class="nav-link">
-                    <i class="fa fa-calendar-minus nav-icon"></i>
-                    <p>Listagem</p>
+                    <i class="fa fa-calendar-week nav-icon"></i>
+                    <p>Agendamentos</p>
                   </a>
                 </li>
               </ul>
@@ -113,16 +113,16 @@
             {{-- Sidebar movimentação --}}
             <li class="nav-item has-treeview menu-open">
               <a href="#" class="nav-link">
-                <i class="nav-icon fa fa-money-check-alt"></i>
+                <i class="nav-icon fa fa-dollar-sign"></i>
                 <p>
-                  Movimentação
+                  Financeiro
                 </p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="{{route('movimentação.index')}}" class="nav-link">
-                    <i class="fa fa-list nav-icon"></i>
-                    <p>Listagem</p>
+                    <i class="fa fa-money-bill-alt nav-icon"></i>
+                    <p>Movimentações</p>
                   </a>
                 </li>
                 <li class="nav-item has-treeview">
@@ -150,7 +150,7 @@
                         <i class="fa fa-poll-h nav-icon"></i>
                         <p>Por Centro de Custo</p>
                       </a>
-										</li>
+                    </li>
                   </ul>
                 </li>
               </ul>
@@ -163,79 +163,30 @@
                 <i class="nav-icon fa fa-address-book"></i>
                 <p>Cadastros</p>
               </a>
+              @if (Auth::user()->isAdmin == 1)
               <ul class="nav nav-treeview">
-                @if (Auth::user()->isAdmin == 1)
-                <li class="nav-item has-treeview">
-                  <a href="#" class="nav-link">
+                <li class="nav-item">
+                  <a href="{{route('empresa.index')}}" class="nav-link">
                     <i class="fa fa-landmark nav-icon"></i>
-                    <p>
-                      Empresas
-                      <i class="right fas fa-angle-left"></i>
-                    </p>
+                    <p>Empresas</p>
                   </a>
-                  <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                      <a href="{{route('empresa.create')}}" class="nav-link">
-                        <i class="fa fa-plus-circle nav-icon"></i>
-                        <p>Nova Empresa</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a  href="{{route('empresa.index')}}" class="nav-link">
-                        <i class="fa fa-list-ul nav-icon"></i>
-                        <p>Listar Empresas</p>
-                      </a>
-                    </li>
-                  </ul>
                 </li>
-                @endif
-                <li class="nav-item has-treeview">
-                  <a href="#" class="nav-link">
+              </ul>
+              @endif
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{route('contato.index')}}" class="nav-link">
                     <i class="fa fa-address-card nav-icon"></i>
-                    <p>
-                      Contatos
-                      <i class="right fas fa-angle-left"></i>
-                    </p>
+                    <p>Contatos</p>
                   </a>
-                  <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                      <a href="{{route('contato.create')}}" class="nav-link">
-                        <i class="fa fa-plus-circle nav-icon"></i>
-                        <p>Novo Contato</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a  href="{{route('contato.index')}}" class="nav-link">
-                        <i class="fa fa-list-ul nav-icon"></i>
-                        <p>Listar Contatos</p>
-                      </a>
-                    </li>
-                  </ul>
                 </li>
-                <li class="nav-item has-treeview">
-                  <a href="#" class="nav-link">
+              </ul>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ route('routeUserList') }}" class="nav-link">
                     <i class="fa fa-user-circle nav-icon"></i>
-                    <p>
-                      Usuários
-                      <i class="right fas fa-angle-left"></i>
-                    </p>
+                    <p>Usuários</p>
                   </a>
-                  <ul class="nav nav-treeview">
-                    @if (Auth::user()->profile == 'Administrador')
-                    <li class="nav-item">
-                      <a href="{{ route('register') }}" class="nav-link">
-                        <i class="fa fa-plus-circle nav-icon"></i>
-                        <p>Novo Usuário</p>
-                      </a>
-                    </li>
-                    @endif
-                    <li class="nav-item">
-                      <a href="{{ route('routeUserList') }}" class="nav-link">
-                        <i class="fa fa-list-ul nav-icon"></i>
-                        <p>Listar Usuarios</p>
-                      </a>
-                    </li>
-                  </ul>
                 </li>
               </ul>
               @if (Auth::user()->profile == 'Administrador')
@@ -261,7 +212,7 @@
               @endif
             </li>
 
-						@if (Auth::user()->isAdmin == 1)
+            @if (Auth::user()->isAdmin == 1)
             <li class="nav-item has-treeview menu-open">
               <a href="#" class="nav-link">
                 <i class="fa fa-cog nav-icon"></i>
@@ -290,8 +241,8 @@
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-        <div class="content-header">
-        </div>
+        {{-- <div class="content-header">
+        </div> --}}
         <!-- /.content-header -->
 
         <!-- Main content -->

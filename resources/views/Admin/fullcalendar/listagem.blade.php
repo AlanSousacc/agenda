@@ -7,13 +7,13 @@
 </div>
 <div class="container">
 	<div class="col-md-12">
-		<div class="card">
+		<div class="card mt-3">
 			<div class="card-header">
 				<div class="row">
 					<div class="col-8">
-						<h3 class="card-title mt-md-4"> Listagem de Agendamentos</h3>
+						<h3 class="card-title mt-2"> Listagem de Agendamentos</h3>
 					</div>
-					<div class="col-4 search" style="text-align: center;">
+					<div class="col-4 search mt-1" style="text-align: center;">
 						<a href="http://" data-target="#filtroagendamento" data-toggle="modal" class="btn btn-success btn-sm float-md-right">Filtrar <i class="fa fa-filter"></i></a>
 					</div>
 				</div>

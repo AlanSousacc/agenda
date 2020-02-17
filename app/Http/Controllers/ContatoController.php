@@ -42,7 +42,7 @@ class ContatoController extends Controller
 
   public function search(Request $request, Contato $cont){
 		$contato  = $request->except('_token');
-    $consulta = $cont->search($contato);
+		$consulta = $cont->search($contato);
 
     return view('Admin.contatos.listagem', compact('consulta', 'contato'));
   }

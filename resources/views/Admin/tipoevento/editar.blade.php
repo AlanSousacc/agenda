@@ -9,7 +9,7 @@
           <input type="hidden" name="_token" value="{{ csrf_token() }}">
           @csrf
           <div class="panel-body">
-            <h1 class="text-center">Editar Tipo de Evento</h1><br>
+            <h1 class="text-center my-4">Cadastrar Tipo de Agendamento</h1>
             @include('Admin.tipoevento.formTipoEvento')
           </div>
           <button type="submit" class="btn btn-primary" style="margin-left: 7px;">Salvar Modificação</button>

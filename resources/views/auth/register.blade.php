@@ -4,7 +4,7 @@
 <div class="container">
 	<div class="row justify-content-center">
 		<div class="col-md-12">
-			<h3 class="text-center header-text">Cadastro de novos usuários</h3><br>
+			<h1 class="text-center header-text my-3">Novo usuário</h1>
 			<form method="POST" action="{{ route('register') }}">
 				@csrf
 
