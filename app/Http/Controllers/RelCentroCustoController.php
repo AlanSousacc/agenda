@@ -43,7 +43,7 @@ class RelCentroCustoController extends Controller
 		->stream('relatorio-centrocusto.pdf');
 	}
 
-	public function teste(){
+	public function relbycc(){
 		$empresa = Auth::user()->empresa_id;
 		// $consulta = DB::table('movimentos')									
 		$consulta = Movimento::select('movimentos.*', 'centro_custo.descricao')									
@@ -65,7 +65,7 @@ class RelCentroCustoController extends Controller
 																	$totalPagbOut	  = $movOut->sum('valorrecebido'); //total de saida recebida
 																	$totalPendOut   = $movOut->sum('valorpendente'); //total de saida pendente
 
-		return PDF::loadView('Admin.centrocusto.relatorios.geralteste', compact('consulta', 'totalIn', 'totalRecebIn','totalPendIn','totalOut','totalPagbOut','totalPendOut'))
+		return PDF::loadView('Admin.centrocusto.relatorios.geral', compact('consulta', 'totalIn', 'totalRecebIn','totalPendIn','totalOut','totalPagbOut','totalPendOut'))
 		->setPaper('a4')
 		->stream('relatorio-centrocusto.pdf');
 	}

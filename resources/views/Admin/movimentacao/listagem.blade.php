@@ -86,13 +86,15 @@
                 @endforeach
               </tbody>
               <tfoot>
+								@if (Auth::user()->profile == 'Administrador')
                 <tr>
                   <td class="text-center" colspan="3"></td>
                   <td class="text-center" style="font-weight:600">Total R$ {{number_format($totalIn, 2, ',', '.')}}</td>
                   <td class="text-center" style="font-weight:600">Total Rec. R$ {{number_format($totalRecebIn, 2, ',', '.')}}</td>
                   <td class="text-center" style="font-weight:600">Total Pend. R$ {{number_format($totalPendIn, 2, ',', '.')}}</td>
                   <td class="text-center" colspan="1"></td>
-                </tr>
+								</tr>
+								@endif
               </tfoot>
             </table>
             <div class="row">
