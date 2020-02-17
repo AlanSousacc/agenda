@@ -15,19 +15,11 @@ use File;
 
 class EmpresaController extends Controller
 {
-	public function index()
-	{
-		$consulta = Empresa::Where('id', '!=', 1)->paginate(10);
+	public function index(){
+		$consultaAtivo 		= Empresa::Where('id', '!=', 1)->where('status', 1)->paginate(10);
+		$consultaInativo 	= Empresa::Where('id', '!=', 1)->where('status', 0)->paginate(10);
 
-		return view('Admin.empresa.listagem', compact('consulta'));
-	}
-
-	public function search(Request $request, Empresa $empr){
-		$empresas = $request->except('_token');
-
-		$consulta = $empr->search($empresas);
-
-		return view('Admin.empresa.listagem', compact('consulta', 'empresas'));
+		return view('Admin.empresa.listagem', compact('consultaAtivo', 'consultaInativo'));
 	}
 
 	public function create()

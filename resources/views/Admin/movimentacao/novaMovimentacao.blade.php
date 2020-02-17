@@ -7,7 +7,7 @@
         <form autocomplete="off" action="{{route('movimentacao.store')}}" method="POST">
           {{csrf_field()}}
           <div class="panel-body">
-            <h1 class="text-center">Registrar Movimentação</h1><br>
+            <h1 class="text-center my-3">Registrar Movimentação</h1>
             @include('Admin.movimentacao.formMovimentacao')
           </div>
           <button type="submit" class="btn btn-primary" style="margin-left: 7px;">Registrar</button>

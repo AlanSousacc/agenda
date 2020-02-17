@@ -13,7 +13,7 @@
 			</div>
 			
 			<div class="col-md-6 float-md-right search">
-				<form action="{{route('routeUserSearch')}}" method="POST" class="form-inline">
+				<form action="{{route('routeUserSearch')}}" method="POST" class="form-inline float-right">
 					@csrf
 					<div class="input-group input-group-sm">
 						<input type="search" placeholder="Consultar" aria-label="Consultar" name="name" class="form-control form-control-navbar">
@@ -22,6 +22,7 @@
 						</div>
 					</div>
 				</form>
+				<a class="btn btn-primary float-right mr-3" href="{{ route('register') }}" role="button" style="margin-top: 1px;"> <i class="fa fa-plus-circle"></i> Novo Usuário</a>
 			</div>
 		</div>
 		<div class="table-responsive-sm">

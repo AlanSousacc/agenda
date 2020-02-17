@@ -48,9 +48,10 @@ class Contato extends Model
 		return $this->where(function ($query) use ($value) {
 			if(isset($value['nome']))
 				$query->where('nome', 'like', '%'.$value['nome'].'%');
-				
 				$query->where('empresa_id', '=', Auth::user()->empresa_id);
 		})->paginate(10);
+		// ->toSql();
+		// dd($resultado);
   }
 
   public function getdatanascimentoAttribute($date) {

@@ -9,15 +9,18 @@
 <div class="col-12 col-sm-6 col-lg-12">
 	<nav class="navbar navbar-light bg-light">
 		<h3 class="navbar-brand">Listagem de Contatos</h3>
-		<form action="{{route('routeContatoSearch')}}" method="POST" class="form-inline">
-			@csrf
-			<div class="input-group input-group-sm">
-				<input type="search" placeholder="Consultar" aria-label="Consultar" name="nome" class="form-control form-control-navbar">
-				<div class="input-group-append">
-					<button type="submit" class="btn btn-navbar"><i class="fas fa-search"></i></button>
+		<div class="col-md-6 float-md-right search">
+			<form action="{{route('routeContatoSearch')}}" method="POST" class="form-inline float-right">
+				@csrf
+				<div class="input-group input-group-sm">
+					<input type="search" placeholder="Consultar" aria-label="Consultar" name="nome" class="form-control form-control-navbar">
+					<div class="input-group-append">
+						<button type="submit" class="btn btn-navbar"><i class="fas fa-search"></i></button>
+					</div>
 				</div>
-			</div>
-		</form>
+			</form>
+		<a class="btn btn-primary float-right mr-3" href="{{route('contato.create')}}" role="button" style="margin-top: 1px;"> <i class="fa fa-plus-circle"></i> Novo Contato</a>
+	</div>
 	</nav>
 	<div class="card card-primary card-outline card-outline-tabs" style="border-top: 0px solid #007bff;">
 		<div class="card-header p-0 border-bottom-0">

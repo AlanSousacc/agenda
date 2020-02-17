@@ -54,18 +54,3 @@
 	</table>
 </div>
 
-
-
-{{-- EXEMPLO DE CHECKBOX TOGGLE --}}
-{{-- <input type="checkbox" data-toggle="toggle" data-onstyle="outline-success" data-offstyle="outline-danger" data-size="sm" 
-data-on="<i class='fa fa-check'></i> Sim" {{$modemp->pivot->status ? 'checked' : ''}}
-data-off="<i class='fa fa-times'></i> Não" 
-name="status" id="status" data-id={{$modemp->id}} class="toggle-class"
-> --}}
-
-{{-- JAVA SCRIPT PARA O TOGGLE --}}
-{{-- @push('scripts')
-<script src='{{asset('admin/js/bootstrap4-toggle.min.js')}}'></script>
-@endpush --}}
-
-

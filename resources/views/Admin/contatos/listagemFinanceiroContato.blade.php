@@ -6,7 +6,7 @@
 	@include('layouts.master-message')
 </div>
 <div class="col-md-12">
-	<div class="card">
+	<div class="card mt-3">
 		<div class="card-header">
 			<div class="com-md-12">
 				<h3 class="card-title mt-md-2">Listagem de Movimentação por Contato</h3>
