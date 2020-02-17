@@ -146,17 +146,11 @@
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a target="_blank" href="{{route('cc.relatorio')}}" class="nav-link">
+                      <a target="_blank" href="{{route('cc.relbycc')}}" class="nav-link">
                         <i class="fa fa-poll-h nav-icon"></i>
                         <p>Por Centro de Custo</p>
                       </a>
 										</li>
-										<li class="nav-item">
-                      <a  href="{{route('cc.teste')}}" class="nav-link">
-                        <i class="fa fa-poll-h nav-icon"></i>
-                        <p>Teste</p>
-                      </a>
-                    </li>
                   </ul>
                 </li>
               </ul>
