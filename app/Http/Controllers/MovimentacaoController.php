@@ -73,8 +73,8 @@ class MovimentacaoController extends Controller
   public function createIn()
   {
     $user 		 = Auth::user()->empresa_id;
-    $contatos  = Contato::where('empresa_id', '=', $user)->get();
-    $centro  	 = CentroCusto::where('empresa_id', '=', $user )->where('tipo', '=', 'Receita')->get();
+    $contatos  = Contato::where('empresa_id', '=', $user)->where('status', 1)->get();
+    $centro  	 = CentroCusto::where('empresa_id', '=', $user )->where('tipo', '=', 'Receita')->where('status', 1)->get();
 		$pagamento = Condicao_pagamento::all();
 
     return view('Admin.movimentacao.novaMovimentacao', compact('contatos', 'centro', 'pagamento'));
@@ -84,7 +84,7 @@ class MovimentacaoController extends Controller
 	public function createOut()
   {
     $user 		 = Auth::user()->empresa_id;
-    $contatos  = Contato::where('empresa_id', '=', $user)->get();
+    $contatos  = Contato::where('empresa_id', '=', $user)->where('status', 1)->get();
     $centro 	 = CentroCusto::where('empresa_id', '=', $user )->where('tipo', '=', 'Despesa')->get();
 		$pagamento = Condicao_pagamento::all();
 

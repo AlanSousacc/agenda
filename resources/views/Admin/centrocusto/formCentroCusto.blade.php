@@ -18,7 +18,18 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-10">
+				<div class="col-md-2">
+          <div class="form-group">
+            <label for="status">Status*</label>
+            <div class="input-group">
+              <select class="form-control status" id="status" name="status">
+                <option value="1" @if (isset($centro->status) && ($centro->status == '1')) selected @endif>Ativo</option>
+                <option value="0" @if (isset($centro->status) && ($centro->status == '0')) selected @endif>Inativo</option>
+              </select>
+            </div>
+          </div>
+        </div>
+				<div class="col-md-8">
 					<div class="form-group">
 						<label for="descricao">Descrição do Centro de Custo</label>
 						<div class="input-group">

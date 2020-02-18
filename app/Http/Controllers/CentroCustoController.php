@@ -24,13 +24,21 @@ class CentroCustoController extends Controller
 		$centroReceita   = CentroCusto::orderBy('id')
 														->where('empresa_id', $this->empresa)
 														->where('tipo', 'Receita')
+														->where('status', 1)
 														->paginate(10);
 
 		$centroDespesa   = CentroCusto::orderBy('id')
 														->where('empresa_id', $this->empresa)
 														->where('tipo', 'Despesa')
+														->where('status', 1)
 														->paginate(10);
-		return view('Admin.centrocusto.listagem', compact('centroReceita', 'centroDespesa'));
+
+    $centroInativo   = CentroCusto::orderBy('id')
+														->where('empresa_id', $this->empresa)
+														->where('status', 0)
+														->paginate(10);
+
+		return view('Admin.centrocusto.listagem', compact('centroReceita', 'centroDespesa', 'centroInativo'));
 	}
 	
 	// CHAMA FORMULÁRIO PARA CRIAR UM NOVO CENTRO DE CUSTO
@@ -46,6 +54,7 @@ class CentroCustoController extends Controller
 			
 			$centrocusto->tipo  		  = $request['tipo'];
 			$centrocusto->descricao   = $request['descricao'];
+			$centrocusto->status      = $request['status'];
 			$centrocusto->empresa_id  = Auth::user()->empresa_id;
 			
 		} catch (Exception $e) {
@@ -80,6 +89,7 @@ class CentroCustoController extends Controller
 		$cc = CentroCusto::find($id);
 		$cc->tipo       = $request->tipo;
 		$cc->descricao  = $request->descricao;
+		$cc->status     = $request->status;
 		$cc->save();
 		
 		return redirect()->route('cc.list')->with('success', 'Centro de Custo #' . $cc->id . ' atualizado com sucesso!');
