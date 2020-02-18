@@ -7,7 +7,7 @@
 </div>
 <div class="col-md-12">
 	<nav class="navbar navbar-light bg-light">
-		<h3 class="navbar-brand">Listagem de Centro de Custos</h3>
+		<h3 class="navbar-brand">Listagem de Centros de Custo</h3>
 		<div class="col-md-6 float-md-right search">
 			<a class="btn btn-primary float-right" href="{{route('cc.novo')}}" role="button" style="margin-top: 1px;"> <i class="fa fa-plus-circle"></i> Novo Centro de Custo</a>
 		</div>

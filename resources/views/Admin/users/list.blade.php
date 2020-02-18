@@ -6,9 +6,27 @@
 	@include('layouts.master-message')
 </div>
 <div class="col-md-12">
+
+	<nav class="navbar navbar-light bg-light">
+		<h3 class="navbar-brand">Listagem de Usuários</h3>
+		<div class="col-md-6 float-md-right search">
+			<form action="{{route('routeUserSearch')}}" method="POST" class="form-inline float-right">
+				@csrf
+				<div class="input-group input-group-sm">
+					<input type="search" placeholder="Consultar" aria-label="Consultar" name="name" class="form-control form-control-navbar">
+					<div class="input-group-append">
+						<button type="submit" class="btn btn-navbar"><i class="fas fa-search"></i></button>
+					</div>
+				</div>
+			</form>
+			<a class="btn btn-primary float-right mr-3" href="{{ route('register') }}" role="button" style="margin-top: 1px;"> <i class="fa fa-plus-circle"></i> Novo Usuário</a>
+		</div>
+	</nav>
+
+
 	<div class="card">
-		<div class="card-header">
-			<div class="col-md-6">
+		{{-- <div class="card-header">
+		<div class="col-md-6">
 				<h3 class="card-title mt-md-2"> Listagem de Usuários</h3>
 			</div>
 			
@@ -24,7 +42,7 @@
 				</form>
 				<a class="btn btn-primary float-right mr-3" href="{{ route('register') }}" role="button" style="margin-top: 1px;"> <i class="fa fa-plus-circle"></i> Novo Usuário</a>
 			</div>
-		</div>
+		</div> --}}
 		<div class="table-responsive-sm">
 			<table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
 				<thead>
