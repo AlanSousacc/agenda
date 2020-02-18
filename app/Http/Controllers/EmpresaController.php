@@ -78,6 +78,7 @@ class EmpresaController extends Controller
 			$ccr 							= new CentroCusto;
 			$ccr->tipo  		  = 'Receita';
 			$ccr->descricao   = 'Receitas Gerais';
+			$ccr->status      = 1;
 			$ccr->empresa_id  = $empresa->id;
 			$saved		 				= $ccr->save();
 
@@ -88,6 +89,7 @@ class EmpresaController extends Controller
 			$ccd 							= new CentroCusto;
 			$ccd->tipo  		  = 'Despesa';
 			$ccd->descricao   = 'Despesas Gerais';
+			$ccd->status      = 1;
 			$ccd->empresa_id  = $empresa->id;
 			$saved						= $ccd->save();
 
