@@ -15,18 +15,20 @@
 	<div class="card card-primary card-outline card-outline-tabs" style="border-top: 0px solid #007bff;">
 		<div class="card-header p-0 border-bottom-0">
 			<ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
-				<li class="nav-item">
-					<a class="nav-link active" id="custom-tabs-three-ativos-tab" data-toggle="pill" href="#custom-tabs-three-ativos" role="tab" aria-controls="custom-tabs-three-home" aria-selected="true">Ativos</a>
-				</li>
+
+					<li class="nav-item">
+							<a class="nav-link active" id="custom-tabs-three-ativos-tab" data-toggle="pill" href="#custom-tabs-three-Formulariosativos" role="tab" aria-controls="custom-tabs-three-home" aria-selected="true">Ativos</a>
+						</li>
 				
 				<li class="nav-item">
 					<a class="nav-link" id="custom-tabs-three-inativos-tab" data-toggle="pill" href="#custom-tabs-three-inativos" role="tab" aria-controls="custom-tabs-three-inativos" aria-selected="false">Inativos</a>
 				</li>
+
 			</ul>
 		</div>
 		<div class="tab-content" id="custom-tabs-three-tabContent">
 			{{-- FORMULÁRIOS ATIVOS --}}
-			<div class="tab-pane fade show active" id="custom-tabs-three-ativos" role="tabpanel" aria-labelledby="custom-tabs-three-ativos-tab">
+			<div class="tab-pane fade show active" id="custom-tabs-three-Formulariosativos" role="tabpanel" aria-labelledby="custom-tabs-three-ativos-tab">
 				<div class="table-responsive-sm">
 					<table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
 						<thead>

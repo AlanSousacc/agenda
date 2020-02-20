@@ -2,9 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\FormularioRequest;
 use Illuminate\Http\Request;
 use App\Models\Formulario;
-use Illuminate\Support\Facades\Auth;
+// use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Auth;
+use Exception;
+use App\User;
+use \PDF;
 
 class FormularioController extends Controller
 {
@@ -22,4 +28,44 @@ class FormularioController extends Controller
 
 		return view('Admin.formularios.listagem', compact('formAtivo', 'formInativo'));
 	}	
+
+
+	// CHAMA FORMULÁRIO PARA CRIAR UM NOVO FORMULÁRIO
+	public function create(){
+		return view('Admin.formularios.novo');
+	}
+	
+	// SALVA O NOVO FORMULÁRIO
+	public function store(FormularioRequest $request)
+	{
+		try{
+			$formulario = new Formulario;
+			
+			$formulario->descricao   = $request['descricao'];
+			$formulario->status      = $request['status'];
+			$formulario->empresa_id  = Auth::user()->empresa_id;
+			$formulario->user_id  = Auth::user()->id;
+			
+		} catch (Exception $e) {
+			return redirect()->route('form.list')->with('error', $e->getMessage());
+			exit();
+		}
+		
+		try{
+			DB::beginTransaction();
+			
+			$saved = $formulario->save();
+			if (!$saved){
+				throw new Exception('Falha ao salvar Formulário!');
+			}
+			DB::commit();
+			return redirect()->route('form.list')->with('success', 'Formulário criado com sucesso!');
+			
+		} catch (Exception $e) {
+			DB::rollBack();
+			return redirect()->route('form.list')->with('error', $e->getMessage());
+		}
+	}
+
+
 }
