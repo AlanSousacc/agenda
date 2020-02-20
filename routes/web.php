@@ -99,6 +99,16 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
 // access do sistema
 Route::get('unauthorized', 'AccessController@index')->name('unauthorized');
 
+// Formulários Personalisados
+Route::get('formulario', 'FormularioController@index')->name('form.list');
+Route::middleware(['auth', 'checkProfile'])->group(function () {
+  Route::get('formulario/novo', 'FormularioController@create')->name('form.novo');
+  // Route::post('formulario/salvar', 'FormularioController@store')->name('form.store');
+  // Route::get('formulario/edit/{id}', 'FormularioController@edit')->name('form.edit');
+  // Route::put('formulario/update/{id}', 'FormularioController@update')->name('form.update');
+  // Route::delete('formulario/delete', 'FormularioController@destroy')->name('form.destroy');
+});
+
 
 });
 Auth::routes();

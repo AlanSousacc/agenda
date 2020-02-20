@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\User;
 use App\Models\Modulo;
 use App\Models\TipoEvento;
+use App\Models\Formulario;
 use Illuminate\Support\Facades\Auth;
 
 class Empresa extends Model
@@ -41,5 +42,10 @@ class Empresa extends Model
 	public function centrocusto(){
     return $this->hasMany('App\Models\CentroCusto');
 	}
+
+	public function formularios(){
+    return $this->hasMany(Formulario::class);
+	}
+
 
 }
