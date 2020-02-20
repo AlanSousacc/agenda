@@ -209,9 +209,22 @@
                   </a>
                 </li>
               </ul>
-              @endif
-            </li>
+							@endif
+							
+							@if (Auth::user()->profile == 'Administrador')
+							<ul class="nav nav-treeview">
+								<li class="nav-item">
+									<a href="{{ route('form.list') }}" class="nav-link">
+										<i class="fa fa-calendar-alt  nav-icon"></i>
+										<p>Formulários</p>
+									</a>
+								</li>
+							</ul>
+							@endif
 
+							
+						</li>
+						
             @if (Auth::user()->isAdmin == 1)
             <li class="nav-item has-treeview menu-open">
               <a href="#" class="nav-link">
