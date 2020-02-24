@@ -27,44 +27,61 @@ class FormularioController extends Controller
 														->paginate(10);
 
 		return view('Admin.formularios.listagem', compact('formAtivo', 'formInativo'));
-	}	
+	}
 
 
 	// CHAMA FORMULÁRIO PARA CRIAR UM NOVO FORMULÁRIO
 	public function create(){
 		return view('Admin.formularios.novo');
 	}
-	
+
 	// SALVA O NOVO FORMULÁRIO
 	public function store(FormularioRequest $request)
 	{
 		try{
 			$formulario = new Formulario;
-			
+
 			$formulario->descricao   = $request['descricao'];
 			$formulario->status      = $request['status'];
 			$formulario->empresa_id  = Auth::user()->empresa_id;
 			$formulario->user_id  = Auth::user()->id;
-			
+
 		} catch (Exception $e) {
 			return redirect()->route('form.list')->with('error', $e->getMessage());
 			exit();
 		}
-		
+
 		try{
 			DB::beginTransaction();
-			
+
 			$saved = $formulario->save();
 			if (!$saved){
 				throw new Exception('Falha ao salvar Formulário!');
 			}
 			DB::commit();
 			return redirect()->route('form.list')->with('success', 'Formulário criado com sucesso!');
-			
+
 		} catch (Exception $e) {
 			DB::rollBack();
 			return redirect()->route('form.list')->with('error', $e->getMessage());
 		}
+  }
+
+  public function edit($id)
+	{
+		$formulario = Formulario::find($id);
+		return view('Admin.formularios.editar',compact('formulario'));
+	}
+
+	public function update(FormularioRequest $request)
+	{
+    dd($request->id);
+    $form = Formulario::find($request->id);
+
+		$form->status     = 0;
+		$form->save();
+
+		return redirect()->route('form.list')->with('success', 'Formulário #' . $form->id . ' atualizado com sucesso!');
 	}
 
 

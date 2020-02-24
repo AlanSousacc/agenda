@@ -20,7 +20,7 @@
         </div>
 				<div class="col-md-8">
 					<div class="form-group">
-						<label for="descricao">Descrição do Formulário</label>
+						<label for="descricao">Descrição do Formulário *</label>
 						<div class="input-group">
 							<input type="text" class="form-control descricao" id="descricao" placeholder="Nome do Formulário" value="{{isset($formulario) ? $formulario->descricao : ''}}" name="descricao" autofocus minlength="5" maxlength="80">
 						</div>

@@ -15,15 +15,15 @@
 	<div class="card card-primary card-outline card-outline-tabs" style="border-top: 0px solid #007bff;">
 		<div class="card-header p-0 border-bottom-0">
 			<ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
-				
+
 				<li class="nav-item">
 					<a class="nav-link active" id="custom-tabs-three-ativos-tab" data-toggle="pill" href="#custom-tabs-three-Formulariosativos" role="tab" aria-controls="custom-tabs-three-home" aria-selected="true">Ativos</a>
 				</li>
-				
+
 				<li class="nav-item">
 					<a class="nav-link" id="custom-tabs-three-inativos-tab" data-toggle="pill" href="#custom-tabs-three-inativos" role="tab" aria-controls="custom-tabs-three-inativos" aria-selected="false">Inativos</a>
 				</li>
-				
+
 			</ul>
 		</div>
 		<div class="tab-content" id="custom-tabs-three-tabContent">
@@ -57,7 +57,8 @@
 								</td>
 								<td class="text-center" style="padding: 0.45rem">
 										<div class="btn-group dropleft">
-												<a class="btn btn-outline-secondary btn-sm btn-block" href="{{ route('form.edit', $form->id) }}"><i class="fa fa-edit"></i> Editar</a>
+                        {{-- <a class="btn btn-outline-secondary btn-sm btn-block" href="{{ route('form.edit', $form->id) }}"><i class="fa fa-edit"></i> Editar</a> --}}
+                        <a class="dropdown-item" href="{{$form->id}}" data-emprid={{$form->id}} data-target="#update" data-toggle="modal"><i class="fa fa-trash"></i> Desativar</a>
 										</div>
 									</div>
 								</td>
@@ -72,7 +73,7 @@
 				</div>
 			</div>
 			{{-- Fim FORMULÁRIOS ATIVOS --}}
-			
+
 			{{-- FORMULÁRIOS INATIVOS --}}
 			<div class="tab-pane fade" id="custom-tabs-three-inativos" role="tabpanel" aria-labelledby="custom-tabs-three-inativos-tab">
 				<div class="table-responsive-sm">
@@ -103,7 +104,8 @@
 								</td>
 								<td class="text-center" style="padding: 0.45rem">
 										<div class="btn-group dropleft">
-												<a class="btn btn-outline-secondary btn-sm btn-block" href="{{ route('form.edit', $form->id) }}"><i class="fa fa-edit"></i> Editar</a>
+                        {{-- <a class="btn btn-outline-secondary btn-sm btn-block" href="{{ route('form.edit', $form->id) }}"><i class="fa fa-edit"></i> Editar</a> --}}
+                        <a class="dropdown-item" href="{{$form->id}}" data-emprid={{$form->id}} data-target="#put" data-toggle="modal"><i class="fa fa-trash"></i> Desativar</a>
 										</div>
 									</div>
 								</td>
@@ -118,12 +120,12 @@
 				</div>
 			</div>
 			{{-- Fim FORMULÁRIOS INATIVOS --}}
-			
+
 		</div>
 	</div>
-	{{-- modal Deletar --}}
-	{{-- @include('Admin.formularios.modalExcluir') --}}
-	
+	{{-- modal Desativar Formulário --}}
+	@include('Admin.formularios.modalExcluir')
+
 </div>
 <!-- /.card -->
 @push('scripts')
