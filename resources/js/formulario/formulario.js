@@ -1,4 +1,4 @@
-$('#delete').on('show.bs.modal', function (event) {
+$('#put').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget);
 	var formularioid = button.data('formularioid');
   var modal = $(this);

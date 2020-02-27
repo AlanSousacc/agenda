@@ -215,7 +215,7 @@
 							<ul class="nav nav-treeview">
 								<li class="nav-item">
 									<a href="{{ route('form.list') }}" class="nav-link">
-										<i class="fa fa-calendar-alt  nav-icon"></i>
+										<i class="fa fa-clipboard-list  nav-icon"></i>
 										<p>Formulários</p>
 									</a>
 								</li>

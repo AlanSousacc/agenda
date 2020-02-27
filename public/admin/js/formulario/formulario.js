@@ -109,7 +109,7 @@ $('#delete').on('show.bs.modal', function (event) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! Z:\Laragon\www\agenda\resources\js\formulario\formulario.js */"./resources/js/formulario/formulario.js");
+module.exports = __webpack_require__(/*! C:\laragon\www\agendabetha\resources\js\formulario\formulario.js */"./resources/js/formulario/formulario.js");
 
 
 /***/ })
