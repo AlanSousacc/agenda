@@ -11,7 +11,6 @@ class FormQuestions extends Model
 {
 	protected $table      = 'form_questions';
 	protected $primaryKey = 'id';
-	// public  $timestamps   = false;
 	protected $guarded 		= ['id', 'formulario_id','created_at', 'update_at'];
 	protected $filable = [
     'question',

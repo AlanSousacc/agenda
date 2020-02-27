@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\FormularioRequest;
 use Illuminate\Http\Request;
 use App\Models\Formulario;
+use App\Models\FormQuestions;
 // use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Auth;
@@ -70,7 +71,13 @@ class FormularioController extends Controller
   public function edit($id)
 	{
 		$formulario = Formulario::find($id);
-		return view('Admin.formularios.editar',compact('formulario'));
+
+		
+		$question   = FormQuestions::orderBy('id')
+																 ->where('formulario_id', $id);
+
+		dd($question);													 
+		return view('Admin.formularios.editar',compact('formulario', 'question'));
 	}
 
 	public function update(FormularioRequest $request)

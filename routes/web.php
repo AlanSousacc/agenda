@@ -106,7 +106,8 @@ Route::middleware(['auth', 'checkProfile'])->group(function () {
   Route::post('formulario/salvar', 'FormularioController@store')->name('form.store');
   Route::get('formulario/edit/{id}', 'FormularioController@edit')->name('form.edit');
   Route::put('formulario/update/{id}', 'FormularioController@update')->name('form.update');
-  // Route::delete('formulario/delete', 'FormularioController@destroy')->name('form.destroy');
+	// Route::delete('formulario/delete', 'FormularioController@destroy')->name('form.destroy');
+	Route::post('formquestion/salvar', 'FormQuestionController@store')->name('formquestion.store');
 });
 
 

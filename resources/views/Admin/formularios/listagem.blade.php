@@ -56,10 +56,9 @@
 									@endif
 								</td>
 								<td class="text-center" style="padding: 0.45rem">
-										<div class="btn-group dropleft">
-                        {{-- <a class="btn btn-outline-secondary btn-sm btn-block" href="{{ route('form.edit', $form->id) }}"><i class="fa fa-edit"></i> Editar</a> --}}
-                        <a class="dropdown-item" href="{{$form->id}}" data-emprid={{$form->id}} data-target="#update" data-toggle="modal"><i class="fa fa-trash"></i> Desativar</a>
-										</div>
+									<div class="btn-group dropleft">
+										<a class="btn btn-outline-secondary btn-sm btn-block" href="{{ route('form.edit', $form->id) }}"><i class="fa fa-edit"></i> Editar</a>
+								 </div>
 									</div>
 								</td>
 							</tr>
@@ -104,8 +103,7 @@
 								</td>
 								<td class="text-center" style="padding: 0.45rem">
 										<div class="btn-group dropleft">
-                        {{-- <a class="btn btn-outline-secondary btn-sm btn-block" href="{{ route('form.edit', $form->id) }}"><i class="fa fa-edit"></i> Editar</a> --}}
-                        <a class="dropdown-item" href="{{$form->id}}" data-emprid={{$form->id}} data-target="#put" data-toggle="modal"><i class="fa fa-trash"></i> Desativar</a>
+                        <a class="btn btn-outline-secondary btn-sm btn-block" href="{{ route('form.edit', $form->id) }}"><i class="fa fa-edit"></i> Editar</a>
 										</div>
 									</div>
 								</td>
@@ -124,7 +122,7 @@
 		</div>
 	</div>
 	{{-- modal Desativar Formulário --}}
-	@include('Admin.formularios.modalExcluir')
+	{{-- @include('Admin.formularios.modalExcluir') --}}
 
 </div>
 <!-- /.card -->
@@ -132,3 +130,12 @@
 <script src='{{asset('admin/js/formualario/formulario.js')}}'></script>
 @endpush
 @endsection
+
+{{-- 
+EXEMPLO DE TOGGLE BUTTON
+<div class="form-group">
+		<div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
+			<input type="checkbox" class="custom-control-input" id="customSwitch3">
+			<label class="custom-control-label" for="customSwitch3">Este é só um exemplo de Toggle para ficar guardado kkkkkk</label>
+		</div>
+	</div> --}}
