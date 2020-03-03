@@ -15,4 +15,5 @@ mix
 	.js('resources/js/centrocusto/centrocusto.js', 'public/admin/js/centrocusto')
 	.css('resources/css/bootstrap4-toggle.min.css', 'public/admin/css')
 	.js('resources/js/bootstrap4-toggle.min.js', 'public/admin/js')
-	.js('resources/js/tipoevento/tipoevento.js', 'public/admin/js/tipoevento');
+	.js('resources/js/tipoevento/tipoevento.js', 'public/admin/js/tipoevento')
+	.js('resources/js/atendimento/atendimento.js', 'public/admin/js/atendimento');

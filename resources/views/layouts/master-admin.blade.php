@@ -107,6 +107,14 @@
                   </a>
                 </li>
               </ul>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{route('saladeespera')}}" class="nav-link">
+                    &nbsp;<img src="{{URL::asset('assets/master-admin/img/waiting_room.png')}}" alt="icon room" style="max-width:20px">
+                    <p>&nbsp; Sala de Espera</p>
+                  </a>
+                </li>
+              </ul>
             </li>
             {{-- end agendamentos --}}
 
@@ -211,8 +219,7 @@
               </ul>
               @endif
             </li>
-
-            @if (Auth::user()->isAdmin == 1)
+						@if (Auth::user()->profile == 'Administrador')
             <li class="nav-item has-treeview menu-open">
               <a href="#" class="nav-link">
                 <i class="fa fa-cog nav-icon"></i>
@@ -221,6 +228,7 @@
                 </p>
               </a>
 
+							@if (Auth::user()->isAdmin == 1)
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="{{ route('modulos.list') }}" class="nav-link">
@@ -230,8 +238,17 @@
                   </a>
                 </li>
               </ul>
-              @endif
-            </li>
+							@endif
+							<ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ route('configuracao')}}" class="nav-link">
+                    <i class="fa fa-folder-minusfa fa-sliders-h nav-icon"></i>
+                    <p>Geral</p>
+                  </a>
+                </li>
+              </ul>
+						</li>
+						@endif
           </nav>
           <!-- /.sidebar-menu -->
         </div>
