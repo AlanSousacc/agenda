@@ -81,50 +81,39 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 14);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/users/users.js":
-/*!*************************************!*\
-  !*** ./resources/js/users/users.js ***!
-  \*************************************/
+/***/ "./resources/js/atendimento/atendimento.js":
+/*!*************************************************!*\
+  !*** ./resources/js/atendimento/atendimento.js ***!
+  \*************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-$('#editar').on('show.bs.modal', function (event) {
+$('#definestatus').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget);
-  var userid = button.data('userid');
-  var name = button.data('name');
-  var email = button.data('email');
-  var profile = button.data('profile');
-  var updated_at = button.data('updated_at');
+  var eventid = button.data('eventid');
   var modal = $(this);
-  modal.find('.modal-body #name').val(name);
-  modal.find('.modal-body #email').val(email);
-  modal.find('.modal-body #profile').val(profile);
-  modal.find('.modal-body #updated_at').val(updated_at);
-  modal.find('.modal-body #userid').val(userid);
-}); // Função delete
-
-$('#delete').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget);
-  var userid = button.data('userid');
-  var modal = $(this);
-  modal.find('.modal-body #userid').val(userid);
+  modal.find('.modal-body #eventid').val(eventid);
+});
+$("input[name = 'btnstatus']").on('click', function () {
+  var valbtn = $(this).val();
+  $('#status').val() == valbtn;
 });
 
 /***/ }),
 
-/***/ 6:
-/*!*******************************************!*\
-  !*** multi ./resources/js/users/users.js ***!
-  \*******************************************/
+/***/ 14:
+/*!*******************************************************!*\
+  !*** multi ./resources/js/atendimento/atendimento.js ***!
+  \*******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\wamp64\www\Laravel 6\agenda\resources\js\users\users.js */"./resources/js/users/users.js");
+module.exports = __webpack_require__(/*! C:\wamp64\www\Laravel 6\agenda\resources\js\atendimento\atendimento.js */"./resources/js/atendimento/atendimento.js");
 
 
 /***/ })

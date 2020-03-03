@@ -99,6 +99,13 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
 // access do sistema
 Route::get('unauthorized', 'AccessController@index')->name('unauthorized');
 
+// atendimento
+Route::get('saladeespera', 'AtendimentoController@index')->name('saladeespera');
+Route::patch('saladeespera/update', 'AtendimentoController@update')->name('saladeespera.update');
+
+// Configurações
+Route::get('configuracao', 'ConfiguracaoController@index')->name('configuracao');
+Route::put('configuracao/update/{id}', 'ConfiguracaoController@update')->name('configuracao.update');
 
 });
 Auth::routes();

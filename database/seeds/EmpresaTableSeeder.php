@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Models\Empresa;
+use App\Models\Configuracao;
 
 class EmpresaTableSeeder extends Seeder
 {

@@ -18,6 +18,10 @@ class Empresa extends Model
 
 	public function movimentos(){
     return $this->hasMany('App\Models\Movimento');
+	}
+	
+	public function configuracoes(){
+    return $this->hasMany('App\Models\Configuracoes');
   }
 
 	public function events(){

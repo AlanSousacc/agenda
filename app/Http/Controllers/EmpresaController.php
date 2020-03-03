@@ -9,6 +9,7 @@ use Auth;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\EmpresaRequest;
 use App\Models\CentroCusto;
+use App\Models\Configuracao;
 use App\Models\Modulo;
 use Image;
 use File;
@@ -72,6 +73,16 @@ class EmpresaController extends Controller
 
 			if (!$saved){
 				throw new Exception('Falha ao salvar empresa!');
+			}
+
+			// ADICIONA CONFIGURAÇÃO DEFAULT DA EMPRESA NO SEU CADASTRO
+			$config 												= new Configuracao;
+			$config->empresa_id  						= $empresa->id;
+			$config->atendimentosimultaneo 	= 0;
+			$saved													= $config->save();
+
+			if (!$saved){
+				throw new Exception('Falha ao criar configuração padrão da empresa');
 			}
 
 			// adiciona centro de custo ao cadastrar empresa
