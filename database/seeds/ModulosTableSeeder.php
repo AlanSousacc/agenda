@@ -38,5 +38,10 @@ class ModulosTableSeeder extends Seeder
         'descricao'       => 'Acesso ao de Centro de Custo no sistema.',
 			]);
 
+			Modulo::create ([
+        'nome'        => 'Sala de Espera',
+        'descricao'       => 'Acesso ao gerenciamento da Sala de Espera.',
+			]);
+
     }
 }

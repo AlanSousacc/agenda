@@ -82,9 +82,124 @@
 
 	</div>
 	@include('Admin.atendimento.status-agendamento')
+	{{-- @include('Admin.fullcalendar.modal-calendar') --}}
 </div>
 
 @push('scripts')
 <script src='{{asset('admin/js/atendimento/atendimento.js')}}'></script>
+
+{{-- <script>
+	$('#start').daterangepicker({
+    "singleDatePicker": true,
+    "showDropdowns": true,
+    "timePicker": true,
+    "timePicker24Hour": true,
+    "timePickerIncrement": 10,
+    "autoApply": true,
+    "maxSpan": {
+      "days": 7
+    },
+    "locale": {
+      "format": "MM/DD/YYYY hh:mm A",
+      "separator": " - ",
+      "applyLabel": "Aplicar",
+      "cancelLabel": "Cancelar",
+      "fromLabel": "From",
+      "toLabel": "To",
+      "customRangeLabel": "Custom",
+      "weekLabel": "W",
+      "daysOfWeek": [
+      "Dom",
+      "Seg",
+      "Ter",
+      "Qua",
+      "Qui",
+      "Sex",
+      "Sab"
+      ],
+      "monthNames": [
+      "Janeiro",
+      "Fevereiro",
+      "Março",
+      "Abril",
+      "Maio",
+      "Junho",
+      "Julho",
+      "Agosto",
+      "Setembro",
+      "Outubro",
+      "Novembro",
+      "Dezembro"
+      ],
+      "firstDay": 1
+    },
+    "linkedCalendars": false,
+    "autoUpdateInput": false,
+    // "startDate": "12/10/2019",
+    // "endDate": "12/16/2019",
+    "opens": "center",
+    "applyButtonClasses": "btn-success"
+  }, function(start, end, label) {
+    $("#modalCalendar input[name='start']").val(start.format('DD/MM/YYYY HH:mm:00'));
+    console.log('New date range selected: ' + start.format('YYYY-MM-DD HH:mm:00'));
+    console.log(label);
+  });
+
+  $('#end').daterangepicker({
+    "singleDatePicker": true,
+    "showDropdowns": true,
+    "timePicker": true,
+    "timePicker24Hour": true,
+    "timePickerIncrement": 10,
+    "autoApply": true,
+    "maxSpan": {
+      "days": 7
+    },
+    "locale": {
+      "format": "MM/DD/YYYY hh:mm A",
+      "separator": " - ",
+      "applyLabel": "Aplicar",
+      "cancelLabel": "Cancelar",
+      "fromLabel": "From",
+      "toLabel": "To",
+      "customRangeLabel": "Custom",
+      "weekLabel": "W",
+      "daysOfWeek": [
+      "Dom",
+      "Seg",
+      "Ter",
+      "Qua",
+      "Qui",
+      "Sex",
+      "Sab"
+      ],
+      "monthNames": [
+      "Janeiro",
+      "Fevereiro",
+      "Março",
+      "Abril",
+      "Maio",
+      "Junho",
+      "Julho",
+      "Agosto",
+      "Setembro",
+      "Outubro",
+      "Novembro",
+      "Dezembro"
+      ],
+      "firstDay": 1
+    },
+    "linkedCalendars": false,
+    "autoUpdateInput": false,
+    // "startDate": "12/10/2019",
+    // "endDate": "12/16/2019",
+    "opens": "center",
+    "applyButtonClasses": "btn-success"
+  }, function(start, end, label) {
+    $("#modalCalendar input[name='end']").val(end.format('DD/MM/YYYY HH:mm:00'));
+    console.log('New date range selected: ' + end.format('YYYY-MM-DD HH:mm:00'));
+    console.log(label);
+  });
+</script> --}}
 @endpush
 @endsection

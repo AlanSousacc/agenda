@@ -13,7 +13,7 @@
 						<button type="submit" class="btn btn-primary" style="margin-left: 7px;">Salvar Cadastro</button>
 				</form>
       </div>
-    </div>
+		</div>
   </div>
 </div>
 @endsection

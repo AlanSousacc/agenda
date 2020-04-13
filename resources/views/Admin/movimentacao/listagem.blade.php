@@ -9,6 +9,7 @@
 	<nav class="navbar navbar-light bg-light">
 		<h3 class="navbar-brand">Listagem de Movimentações</h3>
 		<div class="col-md-6 float-md-right search">
+			{{-- <a href="#" data-target="#filtromovimentacao" data-toggle="modal" class="btn btn-outline-success btn-md float-md-right">Filtrar <i class="fa fa-filter"></i></a> --}}
 			<a href="{{route('movimentacao.createOut')}}" class="btn btn-danger float-right mr-2">Nova Saída</a>
 			<a href="{{route('movimentacao.createIn')}}" class="btn btn-success float-right mr-3">Nova Entrada</a>
 		</div>
@@ -209,7 +210,10 @@
       @include('Admin.movimentacao.modalExcluir')
 
       {{-- modal fechar conta--}}
-      @include('Admin.movimentacao.modalFecharConta')
+			@include('Admin.movimentacao.modalFecharConta')
+			
+			{{-- modal filtro--}}
+			{{-- @include('Admin.movimentacao.modalFiltro') --}}
 
     </div>
     <!-- /.card -->

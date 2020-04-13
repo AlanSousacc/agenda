@@ -98,7 +98,10 @@ $('#definestatus').on('show.bs.modal', function (event) {
   var eventid = button.data('eventid');
   var modal = $(this);
   modal.find('.modal-body #eventid').val(eventid);
-});
+}); // $("input[name = 'btnstatusremarcado']").on('click', function(evt){
+// 	evt.preventDefault();
+// });
+
 $("input[name = 'btnstatus']").on('click', function () {
   var valbtn = $(this).val();
   $('#status').val() == valbtn;
