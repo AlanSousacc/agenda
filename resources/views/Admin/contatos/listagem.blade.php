@@ -19,7 +19,7 @@
 					</div>
 				</div>
 			</form>
-		<a class="btn btn-primary float-right mr-3" href="{{route('contato.create')}}" role="button" style="margin-top: 1px;"> <i class="fa fa-plus-circle"></i> Novo Contato</a>
+		<a class="btn btn-primary btn-sm float-right mr-3" href="{{route('contato.create')}}" role="button" style="margin-top: 1px;"> <i class="fa fa-plus-circle"></i> Novo Contato</a>
 	</div>
 	</nav>
 	<div class="card card-primary card-outline card-outline-tabs" style="border-top: 0px solid #007bff;">
@@ -77,7 +77,7 @@
 					</table>
 				</div>
 				<div class="row">
-					<div class="col-md-6 pl-4 mt-md-2"><p>Mostrando {{$consulta->count()}} contatos de um total de {{$consulta->total()}}</p></div>
+					<div class="col-md-6 pl-4 mt-md-2"><p>Mostrando {{$consulta->count()}} contatos de um total de {{$consulta->total()}} #ATIVOS#</p></div>
 					@if (isset($contato))
 					<div class="col-md-6 pr-4">{{$consulta->appends($contato)->links()}}</div>
 					@else
@@ -129,7 +129,7 @@
 					</table>
 				</div>
 				<div class="row">
-					<div class="col-md-6 pl-4 mt-md-2"><p>Mostrando {{$consulta->count()}} contatos de um total de {{$consulta->total()}}</p></div>
+					<div class="col-md-6 pl-4 mt-md-2"><p>Mostrando {{$consulta->count()}} contatos de um total de {{$consulta->total()}}  #INATIVOS#</p></div>
 					@if (isset($contato))
 					<div class="col-md-6 pr-4">{{$consulta->appends($contato)->links()}}</div>
 					@else

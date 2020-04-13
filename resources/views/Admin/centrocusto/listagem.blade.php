@@ -9,7 +9,7 @@
 	<nav class="navbar navbar-light bg-light">
 		<h3 class="navbar-brand">Listagem de Centros de Custo</h3>
 		<div class="col-md-6 float-md-right search">
-			<a class="btn btn-primary float-right" href="{{route('cc.novo')}}" role="button" style="margin-top: 1px;"> <i class="fa fa-plus-circle"></i> Novo Centro de Custo</a>
+			<a class="btn btn-primary btn-sm float-right" href="{{route('cc.novo')}}" role="button" style="margin-top: 1px;"> <i class="fa fa-plus-circle"></i> Novo Centro de Custo</a>
 		</div>
 	</nav>
 	<div class="card card-primary card-outline card-outline-tabs" style="border-top: 0px solid #007bff;">
@@ -209,7 +209,7 @@
 					</table>
 				</div>
 				<div class="row">
-					<div class="col-md-6 pl-4 mt-md-2"><p>Mostrando {{$centroInativo->count()}} centros de custo #DESPESAS# de um total de {{$centroInativo->total()}}</p></div>
+					<div class="col-md-6 pl-4 mt-md-2"><p>Mostrando {{$centroInativo->count()}} centros de custo #INATIVOS# de um total de {{$centroInativo->total()}}</p></div>
 					<div class="col-md-6 pr-4">{{$centroInativo->links()}}</div>
 				</div>
 			</div>

@@ -17,10 +17,9 @@ use File;
 class EmpresaController extends Controller
 {
 	public function index(){
-		$consultaAtivo 		= Empresa::Where('id', '!=', 1)->where('status', 1)->paginate(10);
-		$consultaInativo 	= Empresa::Where('id', '!=', 1)->where('status', 0)->paginate(10);
+		$consulta = Auth::user()->empresa_id == 1 ? Empresa::paginate(10) : Empresa::Where('id', '!=', 1)->paginate(10);
 
-		return view('Admin.empresa.listagem', compact('consultaAtivo', 'consultaInativo'));
+		return view('Admin.empresa.listagem', compact('consulta'));
 	}
 
 	public function create()

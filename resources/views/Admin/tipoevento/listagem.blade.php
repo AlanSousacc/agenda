@@ -9,7 +9,7 @@
 	<nav class="navbar navbar-light bg-light">
 		<h3 class="navbar-brand">Listagem de Tipos de Agendamento</h3>
 		<div class="col-md-6 float-md-right search">
-			<a class="btn btn-primary float-right mr-3" href="{{route('tipoevento.novo')}}" role="button" style="margin-top: 1px;"> <i class="fa fa-plus-circle"></i> Novo Tipo de Agendamento</a>
+			<a class="btn btn-primary btn-sm float-right mr-3" href="{{route('tipoevento.novo')}}" role="button" style="margin-top: 1px;"> <i class="fa fa-plus-circle"></i> Novo Tipo de Agendamento</a>
 		</div>
 	</nav>
 	<div class="card card-primary card-outline card-outline-tabs" style="border-top: 0px solid #007bff;">
@@ -67,7 +67,7 @@
 					</table>
 				</div>
 				<div class="row">
-					<div class="col-md-6 pl-4 mt-md-2"><p>Mostrando {{$consultaAtivo->count()}} contatos de um total de {{$consultaAtivo->total()}}</p></div>
+					<div class="col-md-6 pl-4 mt-md-2"><p>Mostrando {{$consultaAtivo->count()}} contatos de um total de {{$consultaAtivo->total()}} #ATIVOS#</p></div>
 					@if (isset($contato))
 					<div class="col-md-6 pr-4">{{$consultaAtivo->appends($contato)->links()}}</div>
 					@else
@@ -119,7 +119,7 @@
 					</table>
 				</div>
 				<div class="row">
-					<div class="col-md-6 pl-4 mt-md-2"><p>Mostrando {{$consultaInativo->count()}} contatos de um total de {{$consultaInativo->total()}}</p></div>
+					<div class="col-md-6 pl-4 mt-md-2"><p>Mostrando {{$consultaInativo->count()}} contatos de um total de {{$consultaInativo->total()}} #INATIVOS</p></div>
 					@if (isset($contato))
 					<div class="col-md-6 pr-4">{{$consultaInativo->appends($contato)->links()}}</div>
 					@else

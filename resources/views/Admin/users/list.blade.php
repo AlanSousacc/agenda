@@ -19,7 +19,7 @@
 					</div>
 				</div>
 			</form>
-			<a class="btn btn-primary float-right mr-3" href="{{ route('register') }}" role="button" style="margin-top: 1px;"> <i class="fa fa-plus-circle"></i> Novo Usuário</a>
+			<a class="btn btn-primary btn-sm float-right mr-3" href="{{ route('register') }}" role="button" style="margin-top: 1px;"> <i class="fa fa-plus-circle"></i> Novo Usuário</a>
 		</div>
 	</nav>
 
@@ -89,7 +89,7 @@
 					</table>
 				</div>
 				<div class="row">
-					<div class="col-md-6 pl-4 mt-md-2"><p>Mostrando {{$consulta->count()}} usuários de um total de {{$consulta->total()}}</p></div>
+					<div class="col-md-6 pl-4 mt-md-2"><p>Mostrando {{$consulta->count()}} usuários de um total de {{$consulta->total()}}  #ATIVOS#</p></div>
 					@if (isset($dataForm))
 					<div class="col-md-6 pr-4">{{$consulta->appends($dataForm)->links()}}</div>
 					@else

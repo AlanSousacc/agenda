@@ -39,6 +39,24 @@ class Movimento extends Model
 		->paginate(10);
 	}
 
+	public function search($value){
+		return $this->where(function ($query) use ($value) {			
+			if(isset($value['contato_id']))
+			$query->where('contato_id', $value['contato_id']);
+
+			if(isset($value['status'])){
+				$query->where('status', 1);
+			} else {
+				$query->where('status', 0);
+			}
+
+			$query->where('empresa_id', '=', Auth::user()->empresa_id);
+		});
+		// ->toSql();
+		// dd($resultado);
+		// ->paginate(10);
+	}
+
 
   public function user(){
     return $this->belongsTo('App\User');
