@@ -1,28 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Verifique seu endereço de e-mail') }}</div>
-
-                <div class="card-body">
-                    @if (session('resent'))
-                        <div class="alert alert-success" role="alert">
-                            {{ __('Um novo link de verificação foi enviado para o seu endereço de e-mail.') }}
-                        </div>
-                    @endif
-
-                    {{ __('Antes de continuar verifique sua caixa de email para confirmar este cadastro.') }}
-                    {{ __('Se você não recebeu um email') }},
-                    <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
-                        @csrf
-                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('Clique aqui para solicitar outro') }}</button>.
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="container" style="background-color: #5271ff">
+	<div class="row justify-content-center">
+		<div class="col-md-8">
+			<div>
+				<img src="/uploads/logos/email.png" style="max-width:800px; width: 100%">
+				@if (session('resent'))
+				<div class="alert alert-success text-center" role="alert">
+					{{ __('Um novo link de verificação foi enviado para o seu endereço de e-mail.') }}
+				</div>
+				@endif
+				<h4 class="text-center text-white">{{ __('Se você ainda não recebeu um email') }}</h4>,
+				<form class="text-center" method="POST" action="{{ route('verification.resend') }}">
+					@csrf
+					<button type="submit" class="btn btn-link pb-4 m-0 text-white ">{{ __('Clique aqui para reenviar') }}</button>.
+				</form>
+			</div>
+		</div>
+	</div>
 </div>
 @endsection

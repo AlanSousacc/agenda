@@ -74,7 +74,7 @@
         </div>
       </div>
     </div>
-  <div class="col-md-4 offset-md-2">
+  <div class="col-md-4 offset-md-2 mb-4">
     <button type="submit" class="btn btn-secondary">Salvar</button>
   </div>
 </form>

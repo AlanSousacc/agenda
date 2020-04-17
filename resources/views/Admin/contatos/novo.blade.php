@@ -7,7 +7,7 @@
         <form action="{{route('contato.store')}}" method="POST">
           {{csrf_field()}}
           <div class="panel-body">
-            <h1 class="text-center">Cadastrar Contato</h1><br>
+            <h1 class="text-center">Novo Contato</h1><br>
             @include('Admin.contatos.formContato')
           </div>
           <button type="submit" class="btn btn-primary" style="margin-left: 7px;">Salvar Cadastro</button>

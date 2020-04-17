@@ -9,25 +9,17 @@ use Auth;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\EmpresaRequest;
 use App\Models\CentroCusto;
+use App\Models\Configuracao;
 use App\Models\Modulo;
 use Image;
 use File;
 
 class EmpresaController extends Controller
 {
-	public function index()
-	{
-		$consulta = Empresa::Where('id', '!=', 1)->paginate(10);
+	public function index(){
+		$consulta = Auth::user()->empresa_id == 1 ? Empresa::paginate(10) : Empresa::Where('id', '!=', 1)->paginate(10);
 
 		return view('Admin.empresa.listagem', compact('consulta'));
-	}
-
-	public function search(Request $request, Empresa $empr){
-		$empresas = $request->except('_token');
-
-		$consulta = $empr->search($empresas);
-
-		return view('Admin.empresa.listagem', compact('consulta', 'empresas'));
 	}
 
 	public function create()
@@ -82,10 +74,21 @@ class EmpresaController extends Controller
 				throw new Exception('Falha ao salvar empresa!');
 			}
 
+			// ADICIONA CONFIGURAÇÃO DEFAULT DA EMPRESA NO SEU CADASTRO
+			$config 												= new Configuracao;
+			$config->empresa_id  						= $empresa->id;
+			$config->atendimentosimultaneo 	= 0;
+			$saved													= $config->save();
+
+			if (!$saved){
+				throw new Exception('Falha ao criar configuração padrão da empresa');
+			}
+
 			// adiciona centro de custo ao cadastrar empresa
 			$ccr 							= new CentroCusto;
 			$ccr->tipo  		  = 'Receita';
 			$ccr->descricao   = 'Receitas Gerais';
+			$ccr->status      = 1;
 			$ccr->empresa_id  = $empresa->id;
 			$saved		 				= $ccr->save();
 
@@ -96,6 +99,7 @@ class EmpresaController extends Controller
 			$ccd 							= new CentroCusto;
 			$ccd->tipo  		  = 'Despesa';
 			$ccd->descricao   = 'Despesas Gerais';
+			$ccd->status      = 1;
 			$ccd->empresa_id  = $empresa->id;
 			$saved						= $ccd->save();
 

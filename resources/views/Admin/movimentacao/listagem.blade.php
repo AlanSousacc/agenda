@@ -6,6 +6,14 @@
   @include('layouts.master-message')
 </div>
 <div class="col-md-12">
+	<nav class="navbar navbar-light bg-light">
+		<h3 class="navbar-brand">Listagem de Movimentações</h3>
+		<div class="col-md-6 float-md-right search">
+			{{-- <a href="#" data-target="#filtromovimentacao" data-toggle="modal" class="btn btn-outline-success btn-md float-md-right">Filtrar <i class="fa fa-filter"></i></a> --}}
+			<a href="{{route('movimentacao.createOut')}}" class="btn btn-danger float-right mr-2">Nova Saída</a>
+			<a href="{{route('movimentacao.createIn')}}" class="btn btn-success float-right mr-3">Nova Entrada</a>
+		</div>
+	</nav>
   <div class="col-12 col-sm-6 col-lg-12">
     <div class="card card-primary card-outline card-outline-tabs" style="border-top: 0px solid #007bff;">
       <div class="card-header p-0 border-bottom-0">
@@ -22,6 +30,7 @@
       <div class="tab-content" id="custom-tabs-three-tabContent">
         {{-- capos entradas --}}
         <div class="tab-pane fade show active" id="custom-tabs-three-entradas" role="tabpanel" aria-labelledby="custom-tabs-three-entradas-tab">
+					<div class="table-responsive-sm">
           <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
               <tr>
@@ -85,13 +94,15 @@
                 @endforeach
               </tbody>
               <tfoot>
+								@if (Auth::user()->profile == 'Administrador')
                 <tr>
                   <td class="text-center" colspan="3"></td>
                   <td class="text-center" style="font-weight:600">Total R$ {{number_format($totalIn, 2, ',', '.')}}</td>
                   <td class="text-center" style="font-weight:600">Total Rec. R$ {{number_format($totalRecebIn, 2, ',', '.')}}</td>
                   <td class="text-center" style="font-weight:600">Total Pend. R$ {{number_format($totalPendIn, 2, ',', '.')}}</td>
                   <td class="text-center" colspan="1"></td>
-                </tr>
+								</tr>
+								@endif
               </tfoot>
             </table>
             <div class="row">
@@ -100,12 +111,14 @@
               @else
               <div class="col-md-6 pr-4">{{$movIn->links()}}</div>
               @endif
-            </div>
+						</div>
+					</div>
           </div>
           {{-- fim campos entradas --}}
 
           {{-- campos saidas --}}
           <div class="tab-pane fade" id="custom-tabs-three-saidas" role="tabpanel" aria-labelledby="custom-tabs-three-saidas-tab">
+						<div class="table-responsive-sm">
             <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
               <thead>
                 <tr>
@@ -149,7 +162,6 @@
 													data-target="#visualizar"
 													data-toggle="modal"><i class="fab fa-wpforms"></i> Visualizar</a>
                           <div class="dropdown-divider"></div>
-                          {{-- <a class="dropdown-item" href="{{$item->id}}" data-contid={{$item->id}} data-target="#delete" data-toggle="modal">Excluir <i class="fa fa-trash"></i></a> --}}
 													@if ($item->status == 0)
 														<a class="dropdown-item" href="{{$item->id}}"
 															data-movid={{$item->id}}
@@ -177,7 +189,8 @@
                     <td class="text-center" colspan="1"></td>
                   </tr>
                 </tfoot>
-              </table>
+							</table>
+						</div>
               <div class="row">
                 <div class="col-md-6 pl-4 mt-md-2"><p>Mostrando {{$movOut->count()}} movimentações de um total de {{$movOut->total()}}</p></div>
                 @if (isset($contato))
@@ -197,14 +210,11 @@
       @include('Admin.movimentacao.modalExcluir')
 
       {{-- modal fechar conta--}}
-      @include('Admin.movimentacao.modalFecharConta')
+			@include('Admin.movimentacao.modalFecharConta')
+			
+			{{-- modal filtro--}}
+			{{-- @include('Admin.movimentacao.modalFiltro') --}}
 
-      <div class="row" >
-        <div class="col-md-12 mb-3">
-          <a href="{{route('movimentacao.createOut')}}" class="btn btn-danger btn-lg float-right mr-2">Nova Saída</a>
-          <a href="{{route('movimentacao.createIn')}}" class="btn btn-success btn-lg float-right mr-3">Nova Entrada</a>
-        </div>
-      </div>
     </div>
     <!-- /.card -->
     @push('scripts')

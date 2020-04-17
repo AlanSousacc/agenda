@@ -28,6 +28,7 @@ class MovimentacaoController extends Controller
 			$this->empresa = Auth::user()->empresa_id;
 
 			$permissao = AuxModuloEmpresa::where('empresa_id', $this->empresa)->where('modulo_id', 4)->first();
+			
 			if ($permissao->status != 1)
 				return redirect()->route('unauthorized')->with('error', 'Acesso indisponível a esta empresa!');
 
@@ -73,8 +74,8 @@ class MovimentacaoController extends Controller
   public function createIn()
   {
     $user 		 = Auth::user()->empresa_id;
-    $contatos  = Contato::where('empresa_id', '=', $user)->get();
-    $centro  	 = CentroCusto::where('empresa_id', '=', $user )->where('tipo', '=', 'Receita')->get();
+    $contatos  = Contato::where('empresa_id', '=', $user)->where('status', 1)->get();
+    $centro  	 = CentroCusto::where('empresa_id', '=', $user )->where('tipo', '=', 'Receita')->where('status', 1)->get();
 		$pagamento = Condicao_pagamento::all();
 
     return view('Admin.movimentacao.novaMovimentacao', compact('contatos', 'centro', 'pagamento'));
@@ -84,15 +85,14 @@ class MovimentacaoController extends Controller
 	public function createOut()
   {
     $user 		 = Auth::user()->empresa_id;
-    $contatos  = Contato::where('empresa_id', '=', $user)->get();
+    $contatos  = Contato::where('empresa_id', '=', $user)->where('status', 1)->get();
     $centro 	 = CentroCusto::where('empresa_id', '=', $user )->where('tipo', '=', 'Despesa')->get();
 		$pagamento = Condicao_pagamento::all();
 
     return view('Admin.movimentacao.novaMovimentacao', compact('contatos', 'centro', 'pagamento'));
   }
 
-  public function store(MovimentacaoRequest $request)
-  {
+  public function store(MovimentacaoRequest $request){
     $user	= Auth::user();
 		$data = $request->all();
     try{
@@ -116,120 +116,132 @@ class MovimentacaoController extends Controller
 				$mov->status = 0;
 			}
 
-      } catch (Exception $e) {
-        return redirect('movimentacao')->with('error', $e->getMessage());
-        exit();
-      }
-
-      // aqui inicia a gravação no bd
-      try{
-        DB::beginTransaction();
-
-        $saved = $mov->save();
-        if (!$saved){
-          throw new Exception('Falha ao salvar Movimentação!');
-        }
-        DB::commit();
-        // se chegou aqui é pq deu tudo certo
-        return redirect('movimentacao')->with('success', 'Movimentação realizada com sucesso!');
-
-      } catch (Exception $e) {
-        // se deu pau ao salvar no banco de dados, faz rollback de tudo e retorna erro
-        DB::rollBack();
-        return redirect('movimentacao')->with('error', $e->getMessage());
-      }
+		} catch (Exception $e) {
+			return redirect('movimentacao')->with('error', $e->getMessage());
+			exit();
 		}
 
-		public function update(Request $request){
-			$data = $request->all();
+		// aqui inicia a gravação no bd
+		try{
+			DB::beginTransaction();
 
-			try{
-				$mov = Movimento::find($data['movimentacao_id']);
-				if (!$mov)
-					throw new Exception("Nenhuma movimentação encontrada!");
-
-				// verifica se valor não é maior que zero
-				if ($data['valor'] <= 0)
-					throw new Exception("Valor não pode ser negativo, ou 0 [ZERO]!");
-
-				// verifica se valor é maior que o devido
-				if ($data['valor'] > $mov->valorpendente)
-					throw new Exception("Valor informado excedeu o valor restante de: R$" .number_format($mov->valorpendente, 2, ',', '.'));
-
-				$mov->user_id									= $mov->user_id;
-				$mov->contato_id							= $mov->contato_id;
-				$mov->condicao_pagamento_id		= $mov->condicao_pagamento_id;
-				$mov->centrocusto_id					= $mov->centrocusto_id;
-
-				// atribui valores corretos ao valor pendente e valor recebido
-        $valor 								= str_replace (',', '.', str_replace ('.', '', $data['valor']));
-				$mov->valorpendente 	-= str_replace (',', '.', str_replace ('.', '', $valor)); //atualiza o valor pendete
-				$mov->valorrecebido 	+= $valor; //atualiza o valor recebido
-
-				// verufica se o valor recebido for igual ao total aplica como status "pago" e define o valor 0 no pendente
-				if ($mov->valorrecebido == $mov->valortotal){
-					$mov->valorpendente = 0;
-					$mov->status = 1;
-				} else {
-					$mov->valorpendente = $mov->valortotal - $mov->valorrecebido;
-					$mov->status = 0;
-				}
-
-			} catch (Exception $e) {
-				return redirect()->back()->with('error', $e->getMessage());
-				exit();
+			$saved = $mov->save();
+			if (!$saved){
+				throw new Exception('Falha ao salvar Movimentação!');
 			}
+			DB::commit();
+			// se chegou aqui é pq deu tudo certo
+			return redirect('movimentacao')->with('success', 'Movimentação realizada com sucesso!');
 
-			try{
-				DB::beginTransaction();
-
-				$saved = $mov->save();
-				if (!$saved){
-					throw new Exception('Falha ao salvar movimentação!');
-				}
-
-        DB::commit();
-        return redirect()->back()->with('success', 'Movimentação registrada com sucesso! ID:. #'.$mov->id);
-			} catch (Exception $e) {
-				DB::rollBack();
-				return redirect()->back()->with('error', $e->getMessage());
-			}
-
+		} catch (Exception $e) {
+			// se deu pau ao salvar no banco de dados, faz rollback de tudo e retorna erro
+			DB::rollBack();
+			return redirect('movimentacao')->with('error', $e->getMessage());
 		}
+	}
+
+	public function update(Request $request){
+		$data = $request->all();
+
+		try{
+			$mov = Movimento::find($data['movimentacao_id']);
+			if (!$mov)
+				throw new Exception("Nenhuma movimentação encontrada!");
+
+			// verifica se valor não é maior que zero
+			if ($data['valor'] <= 0)
+				throw new Exception("Valor não pode ser negativo, ou 0 [ZERO]!");
+
+			// verifica se valor é maior que o devido
+			if ($data['valor'] > $mov->valorpendente)
+				throw new Exception("Valor informado excedeu o valor restante de: R$" .number_format($mov->valorpendente, 2, ',', '.'));
+
+			$mov->user_id									= $mov->user_id;
+			$mov->contato_id							= $mov->contato_id;
+			$mov->condicao_pagamento_id		= $mov->condicao_pagamento_id;
+			$mov->centrocusto_id					= $mov->centrocusto_id;
+
+			// atribui valores corretos ao valor pendente e valor recebido
+			$valor 								= str_replace (',', '.', str_replace ('.', '', $data['valor']));
+			$mov->valorpendente 	-= str_replace (',', '.', str_replace ('.', '', $valor)); //atualiza o valor pendete
+			$mov->valorrecebido 	+= $valor; //atualiza o valor recebido
+
+			// verufica se o valor recebido for igual ao total aplica como status "pago" e define o valor 0 no pendente
+			if ($mov->valorrecebido == $mov->valortotal){
+				$mov->valorpendente = 0;
+				$mov->status = 1;
+			} else {
+				$mov->valorpendente = $mov->valortotal - $mov->valorrecebido;
+				$mov->status = 0;
+			}
+
+		} catch (Exception $e) {
+			return redirect()->back()->with('error', $e->getMessage());
+			exit();
+		}
+
+		try{
+			DB::beginTransaction();
+
+			$saved = $mov->save();
+			if (!$saved){
+				throw new Exception('Falha ao salvar movimentação!');
+			}
+
+			DB::commit();
+			return redirect()->back()->with('success', 'Movimentação registrada com sucesso! ID:. #'.$mov->id);
+		} catch (Exception $e) {
+			DB::rollBack();
+			return redirect()->back()->with('error', $e->getMessage());
+		}
+
+	}
 
     // RELATÓRIO
-    public function listagemEntradas()
-    {
-      $user 		  = Auth::user()->empresa_id;
-      $consulta   = Movimento::where('empresa_id', '=', $user)->whereMonth('movimented_at', date('m'))->paginate(10);
-      $total      = $consulta->sum('valor');
+	public function listagemEntradas(){
+		$user 		  = Auth::user()->empresa_id;
+		$consultaEntrada   = Movimento::where('empresa_id', '=', $user)
+														->whereMonth('movimented_at', date('m'))
+														->where('tipo', 'Entrada')
+														->paginate(10);
+		$totalEntrada      = $consultaEntrada->sum('valortotal');
+		
+		$consultaSaida   	= Movimento::where('empresa_id', '=', $user)
+														->whereMonth('movimented_at', date('m'))
+														->where('tipo', 'Saída')
+														->paginate(10);
+		$totalSaida      = $consultaSaida->sum('valortotal');
 
-      setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
-      date_default_timezone_set('America/Sao_Paulo');
-      $date = strftime('%B de %Y', strtotime('today'));
+		setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+		date_default_timezone_set('America/Sao_Paulo');
+		$date = strftime('%B de %Y', strtotime('today'));
 
-      return PDF::loadView('Admin.movimentacao.relatorios.RME', compact('total', 'consulta', 'date'))
-      // Se quiser que fique no formato a4 retrato:
-        ->setPaper('a4', 'landscape')
-        ->stream('relatorio-entradas.pdf');
-        // ->download('relatorio-entradas.pdf');
-		}
+		return PDF::loadView('Admin.movimentacao.relatorios.RME', compact('totalEntrada', 'totalSaida', 'consultaEntrada', 'consultaSaida', 'date'))
+			->setPaper('a4', 'landscape')
+			->stream('relatorio-entradas.pdf');
+	}
 
-    public function relPeriodo(Request $request, Movimento $rel)
-    {
-			$mov = $request->except('_token');
-			if(!empty($mov['mstart']))
-				$mov['mstart'] 	= Carbon::createFromFormat('d/m/Y', $mov['mstart'])->format('Y-m-d');
-			if(!empty($mov['mend']))
-				$mov['mend'] 		= Carbon::createFromFormat('d/m/Y', $mov['mend'])->format('Y-m-d');
+	public function relPeriodo(Request $request, Movimento $rel){
+		$mov = $request->except('_token');
+		if(!empty($mov['mstart']))
+			$mov['mstart'] 	= Carbon::createFromFormat('d/m/Y', $mov['mstart'])->format('Y-m-d');
+		if(!empty($mov['mend']))
+			$mov['mend'] 		= Carbon::createFromFormat('d/m/Y', $mov['mend'])->format('Y-m-d');
 
-			$consulta = $rel->personalizado($mov);
-      $total      = $consulta->sum('valor');
+		$consultaEntrada 	= $rel->personalizado($mov)->where('tipo', 'Entrada');
+		$consultaSaida 		= $rel->personalizado($mov)->where('tipo', 'Saída');
+		$totalTEntrada		= $consultaEntrada->sum('valortotal');
+		$totalREntrada		= $consultaEntrada->sum('valorrecebido');
+		$totalPEntrada		= $consultaEntrada->sum('valorpendente');
+		$totalTSaida  		= $consultaSaida->sum('valortotal');
+		$totalRSaida  		= $consultaSaida->sum('valorrecebido');
+		$totalPSaida  		= $consultaSaida->sum('valorpendente');
+		// dd($total);
 
-      return PDF::loadView('Admin.movimentacao.relatorios.RME', compact('total', 'consulta'))
-      // Se quiser que fique no formato a4 retrato:
-        ->setPaper('a4', 'landscape')
-        ->stream('relatorio-personalizado.pdf');
-        // ->download('relatorio-entradas.pdf');
-    }
-  }
+		return PDF::loadView('Admin.movimentacao.relatorios.RME', compact('totalTEntrada', 'totalREntrada', 'totalPEntrada', 'totalTSaida', 'totalRSaida', 'totalPSaida', 'consultaEntrada', 'consultaSaida'))
+		// Se quiser que fique no formato a4 retrato:
+			->setPaper('a4', 'landscape')
+			->stream('relatorio-personalizado.pdf');
+			// ->download('relatorio-entradas.pdf');
+	}
+}	

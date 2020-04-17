@@ -1,6 +1,10 @@
 
 <!-- 
-
+		ABRIR   APP >>> PROVIDERS >>> APPSERVICEPROVIDER.PHP
+		// DESCOMENTAR AS LINHAS ABAIXO PARA CORRIGIR A FUNÇÃO DE ALTERAR LOGO NA HOSTINGER
+		// $this->app->bind('path.public', function(){
+		// 	return base_path().'/public_html';
+		// });
  -->
  DOCUMENTAÇÃO DE MUDANÇAS BD
  Mudança de campos valortotal, valorrecebido e valorpendente para double(10,2)

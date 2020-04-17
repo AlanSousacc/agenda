@@ -36,10 +36,6 @@
           <li class="nav-item d-none d-sm-inline-block">
             <a href="/" class="nav-link">Home</a>
           </li>
-          <li class="nav-item d-none d-sm-inline-block">
-
-            <a href="{{route('contato.index')}}" class="nav-link">Contatos</a>
-          </li>
         </ul>
       </div>
       <div class="col-md-6 float-right">
@@ -100,8 +96,16 @@
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="{{route('routeEventList')}}" class="nav-link">
-                    <i class="fa fa-calendar-minus nav-icon"></i>
-                    <p>Listagem</p>
+                    <i class="fa fa-calendar-week nav-icon"></i>
+                    <p>Agendamentos</p>
+                  </a>
+                </li>
+              </ul>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{route('saladeespera')}}" class="nav-link">
+                    &nbsp;<img src="{{URL::asset('assets/master-admin/img/waiting_room.png')}}" alt="icon room" style="max-width:20px">
+                    <p>&nbsp; Sala de Espera</p>
                   </a>
                 </li>
               </ul>
@@ -111,16 +115,16 @@
             {{-- Sidebar movimentação --}}
             <li class="nav-item has-treeview menu-open">
               <a href="#" class="nav-link">
-                <i class="nav-icon fa fa-money-check-alt"></i>
+                <i class="nav-icon fa fa-dollar-sign"></i>
                 <p>
-                  Movimentação
+                  Financeiro
                 </p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="{{route('movimentação.index')}}" class="nav-link">
-                    <i class="fa fa-list nav-icon"></i>
-                    <p>Listagem</p>
+                    <i class="fa fa-money-bill-alt nav-icon"></i>
+                    <p>Movimentações</p>
                   </a>
                 </li>
                 <li class="nav-item has-treeview">
@@ -138,21 +142,15 @@
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a  href="{{route('relatorio.mes.atual')}}" class="nav-link">
+                      <a target="_blank" href="{{route('relatorio.mes.atual')}}" class="nav-link">
                         <i class="fa fa-chart-pie nav-icon"></i>
                         <p>Mês Atual</p>
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a  href="{{route('cc.relatorio')}}" class="nav-link">
+                      <a target="_blank" href="{{route('cc.relbycc')}}" class="nav-link">
                         <i class="fa fa-poll-h nav-icon"></i>
                         <p>Por Centro de Custo</p>
-                      </a>
-										</li>
-										<li class="nav-item">
-                      <a  href="{{route('cc.teste')}}" class="nav-link">
-                        <i class="fa fa-poll-h nav-icon"></i>
-                        <p>Teste</p>
                       </a>
                     </li>
                   </ul>
@@ -167,79 +165,30 @@
                 <i class="nav-icon fa fa-address-book"></i>
                 <p>Cadastros</p>
               </a>
+              @if (Auth::user()->isAdmin == 1)
               <ul class="nav nav-treeview">
-                @if (Auth::user()->isAdmin == 1)
-                <li class="nav-item has-treeview">
-                  <a href="#" class="nav-link">
+                <li class="nav-item">
+                  <a href="{{route('empresa.index')}}" class="nav-link">
                     <i class="fa fa-landmark nav-icon"></i>
-                    <p>
-                      Empresas
-                      <i class="right fas fa-angle-left"></i>
-                    </p>
+                    <p>Empresas</p>
                   </a>
-                  <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                      <a href="{{route('empresa.create')}}" class="nav-link">
-                        <i class="fa fa-plus-circle nav-icon"></i>
-                        <p>Nova Empresa</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a  href="{{route('empresa.index')}}" class="nav-link">
-                        <i class="fa fa-list-ul nav-icon"></i>
-                        <p>Listar Empresas</p>
-                      </a>
-                    </li>
-                  </ul>
                 </li>
-                @endif
-                <li class="nav-item has-treeview">
-                  <a href="#" class="nav-link">
+              </ul>
+              @endif
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{route('contato.index')}}" class="nav-link">
                     <i class="fa fa-address-card nav-icon"></i>
-                    <p>
-                      Contatos
-                      <i class="right fas fa-angle-left"></i>
-                    </p>
+                    <p>Contatos</p>
                   </a>
-                  <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                      <a href="{{route('contato.create')}}" class="nav-link">
-                        <i class="fa fa-plus-circle nav-icon"></i>
-                        <p>Novo Contato</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a  href="{{route('contato.index')}}" class="nav-link">
-                        <i class="fa fa-list-ul nav-icon"></i>
-                        <p>Listar Contatos</p>
-                      </a>
-                    </li>
-                  </ul>
                 </li>
-                <li class="nav-item has-treeview">
-                  <a href="#" class="nav-link">
+              </ul>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ route('routeUserList') }}" class="nav-link">
                     <i class="fa fa-user-circle nav-icon"></i>
-                    <p>
-                      Usuários
-                      <i class="right fas fa-angle-left"></i>
-                    </p>
+                    <p>Usuários</p>
                   </a>
-                  <ul class="nav nav-treeview">
-                    @if (Auth::user()->profile == 'Administrador')
-                    <li class="nav-item">
-                      <a href="{{ route('register') }}" class="nav-link">
-                        <i class="fa fa-plus-circle nav-icon"></i>
-                        <p>Novo Usuário</p>
-                      </a>
-                    </li>
-                    @endif
-                    <li class="nav-item">
-                      <a href="{{ route('routeUserList') }}" class="nav-link">
-                        <i class="fa fa-list-ul nav-icon"></i>
-                        <p>Listagem de Usuarios</p>
-                      </a>
-                    </li>
-                  </ul>
                 </li>
               </ul>
               @if (Auth::user()->profile == 'Administrador')
@@ -264,8 +213,7 @@
               </ul>
               @endif
             </li>
-
-						@if (Auth::user()->isAdmin == 1)
+						@if (Auth::user()->profile == 'Administrador')
             <li class="nav-item has-treeview menu-open">
               <a href="#" class="nav-link">
                 <i class="fa fa-cog nav-icon"></i>
@@ -274,6 +222,7 @@
                 </p>
               </a>
 
+							@if (Auth::user()->isAdmin == 1)
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="{{ route('modulos.list') }}" class="nav-link">
@@ -283,8 +232,17 @@
                   </a>
                 </li>
               </ul>
-              @endif
-            </li>
+							@endif
+							<ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ route('configuracao')}}" class="nav-link">
+                    <i class="fa fa-folder-minusfa fa-sliders-h nav-icon"></i>
+                    <p>Geral</p>
+                  </a>
+                </li>
+              </ul>
+						</li>
+						@endif
           </nav>
           <!-- /.sidebar-menu -->
         </div>
@@ -294,8 +252,8 @@
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-        <div class="content-header">
-        </div>
+        {{-- <div class="content-header">
+        </div> --}}
         <!-- /.content-header -->
 
         <!-- Main content -->
@@ -320,7 +278,7 @@
       <footer class="main-footer">
         <!-- To the right -->
         <!-- Default to the left -->
-        <strong>Copyright &copy; 2019 AgendaBETHA</strong> Todos os direitos reservados.
+        <strong>Copyright &copy; 2020 AgendaBETHA</strong> Todos os direitos reservados.
       </footer>
     </div>
 

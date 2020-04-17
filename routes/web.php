@@ -3,7 +3,7 @@
 
 use App\Http\Controllers\RelCentroCustoController;
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
 
 
 Route::get('/', 'FullCalendarController@index')->name('index');
@@ -16,6 +16,8 @@ Route::delete('/users-delete/{contato}', 'EventController@delete')->name('routeA
 Route::delete('/event-destroy', 'EventController@destroy')->name('routeEventDelete');
 Route::get('gerarmovimentacao/agendamento/{id}', 'EventController@show')->name('geramov.agendamento.show');
 Route::post('gerarmovimentacao', 'EventController@storeMov')->name('gerarMov.store');
+
+Route::view('sobre', 'Admin.sobre.sobre')->name('sobre');
 
 // contatos
 Route::resource('contato', 'ContatoController');
@@ -53,7 +55,8 @@ Route::middleware(['auth', 'checkProfile'])->group(function () {
 	Route::get('relatorio-mes', 'MovimentacaoController@listagemEntradas')->name('relatorio.mes.atual');
 	Route::get('movimentacao/contato/{id}', 'MovimentacaoController@show')->name('movimentacao.contato');
 	Route::patch('receber', 'MovimentacaoController@update')->name('receber');
-  Route::any('relatorio-periodo-contato', 'MovimentacaoController@relPeriodo')->name('relatorio.periodo.contato');
+	Route::any('relatorio-periodo-contato', 'MovimentacaoController@relPeriodo')->name('relatorio.periodo.contato');
+	// Route::any('search-movimentacao', 'MovimentacaoController@search')->name('routeMovimentacaoSearch');
 });
 
 // módulos do sistema
@@ -85,7 +88,7 @@ Route::middleware(['auth', 'checkProfile'])->group(function () {
   Route::put('centrodecusto/update/{id}', 'CentroCustoController@update')->name('cc.update');
   Route::delete('centrodecusto/delete', 'CentroCustoController@destroy')->name('cc.destroy');
 	Route::get('movimentacao-centrodecusto', 'CentroCustoController@relatorio')->name('cc.relatorio');
-	Route::get('movimentacao/teste', 'RelCentroCustoController@teste')->name('cc.teste');
+	Route::get('movimentacao/relatorios/cc', 'RelCentroCustoController@relbycc')->name('cc.relbycc');
 });
 
 // relacionamento módulos da empresa
@@ -97,6 +100,16 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
 // access do sistema
 Route::get('unauthorized', 'AccessController@index')->name('unauthorized');
 
+// atendimento
+Route::get('saladeespera', 'AtendimentoController@index')->name('saladeespera');
+Route::patch('saladeespera/update', 'AtendimentoController@update')->name('saladeespera.update');
+
+// Configurações
+Route::get('configuracao', 'ConfiguracaoController@index')->name('configuracao');
+Route::put('configuracao/update/{id}', 'ConfiguracaoController@update')->name('configuracao.update');
+
+// enviar email
+Route::get('notificar-contato/{contato}/{id}', 'EmailController@sendEmail')->name('notificar-contato');
 
 });
 Auth::routes();

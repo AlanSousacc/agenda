@@ -10,7 +10,7 @@
 						<input type="hidden" name="_token" value="{{ csrf_token() }}"> --}}
 						@csrf
           <div class="panel-body">
-            <h1 class="text-center">Cadastrar Módulos</h1><br>
+            <h1 class="text-center my-3">Novo Módulo</h1>
 						@include('Admin.modulos.formModulo')            
 					</div>
 						<button type="submit" class="btn btn-primary" style="margin-left: 7px;">Salvar Cadastro</button>

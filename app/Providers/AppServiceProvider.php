@@ -12,7 +12,12 @@ class AppServiceProvider extends ServiceProvider
 {
   public function register()
   {
-    Schema::defaultStringLength(191);
+		Schema::defaultStringLength(191);
+
+		// DESCOMENTAR AS LINHAS ABAIXO PARA CORRIGIR A FUNÇÃO DE ALTERAR LOGO NA HOSTINGER
+		// $this->app->bind('path.public', function(){
+		// 	return base_path().'/public_html';
+		// });
   }
 
   public function boot()
