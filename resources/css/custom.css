@@ -122,6 +122,7 @@ a.brand-link {
 	background-color: #263341;
 	border-color: #263341;
 }
+
 .btn-secondary:not(:disabled):not(.disabled):active, .btn-secondary:not(:disabled):not(.disabled).active, .show > .btn-secondary.dropdown-toggle {
 	color: #ffffff;
 	background-color: #263341;
