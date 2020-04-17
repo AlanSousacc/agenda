@@ -42,3 +42,89 @@ li.nav-item.active a{
 	border-radius: 10px;
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
 }
+
+.login-page,
+.register-page {
+  -ms-flex-align: center;
+  align-items: center;
+  background: #1f2d3d!important;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100vh;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+.login-box .card {
+	box-shadow: none;
+}
+.card-body.login-card-body {
+	background: #1f2d3d;
+}
+.btn-circle {
+	border-radius: 30px;
+	padding: 10px;
+	background-color: #263341;
+	border-color: #263341;
+	transition: all .5s;
+}
+.btn-circle:hover {
+	color: #ffffff;
+	background-color: #1f2d3d;
+	border-color: #283544;
+	transition: all .5s;
+}
+.login-box a.btn.btn-link {
+	color: #666;
+}
+.input-group-text {
+	border-radius: 30px;
+	right: 5px;
+	position: absolute;
+	padding: 10px;
+	border: 0;
+}
+.login-box input#email {
+	border-radius: 30px;
+	width: 100%;
+	border: 1px solid #959595;
+	padding: 22px;
+	background: #1f2d3d;
+	color: #959595;
+}
+.login-box input#password {
+	border-radius: 30px;
+	width: 100%;
+	border: 1px solid #959595;
+	padding: 22px;
+	background: #1f2d3d;
+	color: #959595;
+}
+.login-box .input-group-text {
+	z-index: 9;
+}
+aside.main-sidebar.sidebar-dark-primary.elevation-4 {
+	background-color: #1f2d3d;
+}
+a.brand-link {
+	background-color: #1f2d3d!important;
+}
+[class*='sidebar-dark-'] .nav-sidebar > .nav-item.menu-open > .nav-link, [class*='sidebar-dark-'] .nav-sidebar > .nav-item:hover > .nav-link, [class*='sidebar-dark-'] .nav-sidebar > .nav-item > .nav-link:focus {
+	background-color: #263341;
+	color: #ffffff;
+}
+.btn-secondary {
+	color: #ffffff;
+	background-color: #1f2d3d;
+	border-color: #1f2d3d;
+}
+.btn-secondary:hover {
+	color: #ffffff;
+	background-color: #263341;
+	border-color: #263341;
+}
+
+.btn-secondary:not(:disabled):not(.disabled):active, .btn-secondary:not(:disabled):not(.disabled).active, .show > .btn-secondary.dropdown-toggle {
+	color: #ffffff;
+	background-color: #263341;
+	border-color: #263341;
+}

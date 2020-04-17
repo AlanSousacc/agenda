@@ -108,6 +108,9 @@ Route::patch('saladeespera/update', 'AtendimentoController@update')->name('salad
 Route::get('configuracao', 'ConfiguracaoController@index')->name('configuracao');
 Route::put('configuracao/update/{id}', 'ConfiguracaoController@update')->name('configuracao.update');
 
+// enviar email
+Route::get('notificar-contato/{contato}/{id}', 'EmailController@sendEmail')->name('notificar-contato');
+
 });
 Auth::routes();
 Auth::routes(['verify' => true]);
