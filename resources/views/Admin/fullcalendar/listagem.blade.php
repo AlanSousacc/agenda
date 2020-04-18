@@ -37,8 +37,8 @@
 						<tr role="row" class="odd">
 							<td class="text-center">{{$item->contato->nome}}</td>
 							<td class="text-center">{{$item->title}}</td>
-							<td class="text-center">{{Carbon\Carbon::parse($item->start)->format('d/m/Y H:m:i')}}</td>
-							<td class="text-center">{{Carbon\Carbon::parse($item->end)->format('d/m/Y H:m:i')}}</td>
+							<td class="text-center">{{Carbon\Carbon::parse($item->start)->format('d/m/Y H:i:s')}}</td>
+							<td class="text-center">{{Carbon\Carbon::parse($item->end)->format('d/m/Y H:i:s')}}</td>
 							<td class="text-center">{{$item->description}}</td>
 							<td class="text-center">
 								@if ($item->geracobranca)
