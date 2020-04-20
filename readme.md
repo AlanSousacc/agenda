@@ -28,3 +28,12 @@ FROM MOVIMENTOS AS MOV
 WHERE MOV.EMPRESA_ID =1
 GROUP BY CC.DESCRICAO, CONT.NOME WITH ROLLUP;
 
+
+<!-- 
+::::::::::  PARA ALTERAR O TEXTO DOS EMAILS ::::::::::
+
+Alterar o arquivo VerifyEmail.php
+vendor > laravel > framework > src > illuminate > auth > notifications
+Alterar texto "Regards"
+vendor > laravel > framework > src > illuminate > notifications > resources > view 
+-->
