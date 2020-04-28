@@ -14,12 +14,12 @@
 <body class="hold-transition login-page">
 	<div class="login-box">
 		<div class="login-logo">
-			<a><b>Agenda</b>BETHA</a>
-		</div>
+      <img src="{{URL::asset('assets/master-admin/img/AgendaBETHA.png')}}" class="brand-image" style="max-width:170px; max-height:170px">
+    </div>
 		<!-- /.login-logo -->
 		<div class="card">
 			<div class="card-body login-card-body">
-				<p class="login-box-msg">Informe seu endereço de email, uma senha e a confirmação para continuar.</p>
+				<p class="login-box-msg">Preencha os campos abaixo para redefinir uma nova senha!</p>
 				
 				
 				<form method="POST" action="{{ route('password.update') }}">
@@ -32,7 +32,7 @@
 							<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" placeholder="Endereço de Email" required autocomplete="email" autofocus>
 							
 							@error('email')
-							<span class="invalid-feedback" role="alert">
+							<span class="invalid-feedback" style="text-align: center;" role="alert">
 								<strong>{{ $message }}</strong>
 							</span>
 							@enderror
@@ -44,7 +44,7 @@
 							<input id="password" type="password" placeholder="Senha" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 							
 							@error('password')
-							<span class="invalid-feedback" role="alert">
+							<span class="invalid-feedback" style="text-align: center;" role="alert">
 								<strong>{{ $message }}</strong>
 							</span>
 							@enderror
@@ -59,8 +59,8 @@
 					
 					<div class="form-group row mb-0">
 						<div class="col-md-12">
-							<button type="submit" class="btn btn-primary" style="width:100%">
-								{{ __('Resetar Senha') }}
+							<button type="submit" class="btn btn-primary btn-circle" style="width:100%">
+								{{ __('ALTERAR SENHA') }}
 							</button>
 						</div>
 					</div>

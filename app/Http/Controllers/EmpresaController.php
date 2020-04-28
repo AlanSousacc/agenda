@@ -251,4 +251,8 @@ class EmpresaController extends Controller
 				return back()->with('error', 'Você não tem permissão para acessar esta rota');
 			}
 		}
+
+		public function createLicenca(){
+			
+		}
 	}
