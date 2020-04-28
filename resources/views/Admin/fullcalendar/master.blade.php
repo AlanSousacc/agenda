@@ -2,7 +2,7 @@
 
 @section('master')
 <div id='wrap'>
-  @include('admin.fullcalendar.modal-calendar')
+  @include('Admin.fullcalendar.modal-calendar')
   <div id='external-events' style="width: 0; display:none; float: none;">
     <div id='external-events-list'>
     </div>
@@ -13,9 +13,9 @@
   data-route-event-update="{{ route('routeEventUpdate') }}"
   data-route-event-store="{{ route('routeEventStore') }}"
   data-route-event-delete="{{ route('routeEventDelete') }}"
-  ></div>
+	></div>
 
-  <div style='clear:both'></div>
+	<div style='clear:both'></div>
 
   <div id="sucesso" class="modal fade text-success" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
@@ -95,8 +95,8 @@
     },
     "linkedCalendars": false,
     "autoUpdateInput": false,
-    "startDate": "12/10/2019",
-    "endDate": "12/16/2019",
+    // "startDate": "12/10/2019",
+    // "endDate": "12/16/2019",
     "opens": "center",
     "applyButtonClasses": "btn-success"
   }, function(start, end, label) {
@@ -151,8 +151,8 @@
     },
     "linkedCalendars": false,
     "autoUpdateInput": false,
-    "startDate": "12/10/2019",
-    "endDate": "12/16/2019",
+    // "startDate": "12/10/2019",
+    // "endDate": "12/16/2019",
     "opens": "center",
     "applyButtonClasses": "btn-success"
   }, function(start, end, label) {

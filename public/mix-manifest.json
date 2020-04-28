@@ -2,12 +2,17 @@
     "/admin/js/adminlte.js": "/admin/js/adminlte.js",
     "/admin/js/app.js": "/admin/js/app.js",
     "/admin/css/app.css": "/admin/css/app.css",
+    "/admin/js/atendimento/atendimento.js": "/admin/js/atendimento/atendimento.js",
     "/admin/js/bootstrap.bundle.js": "/admin/js/bootstrap.bundle.js",
+    "/admin/js/bootstrap4-toggle.min.js": "/admin/js/bootstrap4-toggle.min.js",
+    "/admin/js/centrocusto/centrocusto.js": "/admin/js/centrocusto/centrocusto.js",
     "/admin/js/contato/contato.js": "/admin/js/contato/contato.js",
     "/admin/js/empresa/empresa.js": "/admin/js/empresa/empresa.js",
     "/admin/js/jquery.js": "/admin/js/jquery.js",
+    "/admin/js/modulo/modulo.js": "/admin/js/modulo/modulo.js",
     "/admin/js/movimentacao/consultapersonalizada.js": "/admin/js/movimentacao/consultapersonalizada.js",
     "/admin/js/movimentacao/jquery.maskMoney.js": "/admin/js/movimentacao/jquery.maskMoney.js",
     "/admin/js/movimentacao/movimentacao.js": "/admin/js/movimentacao/movimentacao.js",
+    "/admin/js/tipoevento/tipoevento.js": "/admin/js/tipoevento/tipoevento.js",
     "/admin/js/users/users.js": "/admin/js/users/users.js"
 }

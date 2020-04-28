@@ -10,12 +10,15 @@ $(function(){
 
   $(".deleteEvent").click(function(){
 
-    let id = $("#modalCalendar input[name='id']").val();
+		let id = $("#modalCalendar input[name='id']").val();
+		
+		let geracobranca = $("input[type=checkbox]").is(":checked");
 
-    let title = $("#modalCalendar input[name='title']").val();
+    let title = $("#title").val();
 
     let Event = {
-      id: id,
+			id: id,
+			geracobranca: geracobranca,
       title: title,
       _method: 'DELETE'
     };
@@ -26,32 +29,36 @@ $(function(){
   });
 
   $(".saveEvent").click(function(){
-    let title = $("#modalCalendar input[name='title']").val();
-
     let empresa_id = $("#modalCalendar input[name='empresa_id']").val();
-
     let id = $("#modalCalendar input[name='id']").val();
-
     let start = moment($("#modalCalendar input[name='start']").val(), "DD/MM/YYYY HH:mm:ss").format("YYYY-MM-DD HH:mm:ss");
-
     let end = moment($("#modalCalendar input[name='end']").val(), "DD/MM/YYYY HH:mm:ss").format("YYYY-MM-DD HH:mm:ss");
-
     let color = $("#modalCalendar input[name='color']").val();
-
     let description = $("#modalCalendar textarea[name='description']").val();
+		let contato = $("#contato_id").val();
 
-    let contato = $("#contato_id").val();
-
-
+		if($("input[type=checkbox]").is(":checked") == true){
+			var geracobranca = 1;
+			var valorevento = $("#valorevento").val();
+		} else {
+			var geracobranca = 0;
+		}
+		
+    let tipoevento = $("#tipo_evento_id").val();
+		let title = $("#title").val();
+		
     let Event = {
       title: title,
       empresa_id: empresa_id,
       start: start,
       end: end,
       color: color,
+      valorevento: valorevento,
+      geracobranca: geracobranca,
       description: description,
       contato_id: contato,
-    };
+      tipo_evento_id: tipoevento,
+		};
 
     let route;
 
@@ -64,7 +71,6 @@ $(function(){
     }
 
     sendEvent(route, Event)
-
   });
 });
 
@@ -76,7 +82,7 @@ function sendEvent(route, data_){
     dataType: 'json',
     success:function(json){
       if(json){
-				console.log(data_._method)
+				// console.log(data_)
 				$( "#sucesso").modal('show');
 				$( '.btn-success' ).click(function() {
 					location.reload();
@@ -85,7 +91,7 @@ function sendEvent(route, data_){
       }
     },
     error:function(json){
-      console.log(json.responseJSON);
+      // console.log(json.responseJSON);
       let responseJSON = json.responseJSON.errors;
 
       $("#message").html(loadErrors(responseJSON));

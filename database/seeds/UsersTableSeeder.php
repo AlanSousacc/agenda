@@ -14,11 +14,20 @@ class UsersTableSeeder extends Seeder
     {
       User::create ([
         'name'        => 'Alan Wilian de Sousa',
-        'email'       => 'alansousa.cc@gmail.com',
-        'password'    => bcrypt('14789635sousa'),
+        'email'       => 'alan.sousa@avacyn.com.br',
+        'password'    => bcrypt('@dmcli876'),
         'isAdmin'     => 1,
         'profile'     => 'Administrador',
         'empresa_id'  => 1,
-      ]);
+			]);
+			
+			User::create ([
+        'name'        => 'Daniel Braga Takegava',
+        'email'       => 'daniel.takegava@avacyn.com.br',
+        'password'    => bcrypt('@dmcli876'),
+        'isAdmin'     => 1,
+        'profile'     => 'Administrador',
+        'empresa_id'  => 1,
+			]);
     }
 }

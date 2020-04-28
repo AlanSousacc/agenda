@@ -18,8 +18,23 @@ class Contato extends Model
     'telefone',
     'email',
     'datanascimento',
-    'empresa_id'
+    'empresa_id',
+    'tipocontato',
+    'valorsessao',
+    'sexo',
+    'escolaridade',
+    'profissao',
+    'nomeresponsavel',
+    'cpfresponsavel',
+    'nomeparente',
+    'telefoneparente',
+    'observacao',
+    'grupo_id'
   ];
+
+  public function grupo(){
+    return $this->belongsTo('App\Models\Grupo');
+  }
 
   public function events(){
     return $this->hasMany('App\Models\Event');
@@ -32,9 +47,11 @@ class Contato extends Model
   public function search($value){
 		return $this->where(function ($query) use ($value) {
 			if(isset($value['nome']))
-        $query->where('nome', 'like', '%'.$value['nome'].'%')
-              ->where('empresa_id', '=', Auth::user()->empresa_id);
+				$query->where('nome', 'like', '%'.$value['nome'].'%');
+				$query->where('empresa_id', '=', Auth::user()->empresa_id);
 		})->paginate(10);
+		// ->toSql();
+		// dd($resultado);
   }
 
   public function getdatanascimentoAttribute($date) {

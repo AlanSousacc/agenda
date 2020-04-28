@@ -4,7 +4,7 @@
 <div class="container">
 	<div class="row justify-content-center">
 		<div class="col-md-12">
-			<h3 class="text-center">Cadastro de novos usuários</h3><br>
+			<h1 class="text-center header-text my-3">Novo usuário</h1>
 			<form method="POST" action="{{ route('register') }}">
 				@csrf
 
@@ -19,7 +19,7 @@
 				</div>
 
 				<div class="form-group row">
-					<div class="col-md-5 offset-md-1">
+					<div class="col-md-5 offset-md-1 pb-3">
 						<input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required placeholder="Nome Completo" autofocus>
 
 						@error('name')
@@ -41,7 +41,7 @@
 				</div>
 
 				<div class="form-group row">
-					<div class="col-md-5 offset-md-1">
+					<div class="col-md-5 offset-md-1 pb-3">
 						<input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required placeholder="Senha">
 
 						@error('password')
@@ -55,7 +55,7 @@
 						<input id="password-confirm" type="password" class="form-control" name="password_confirmation" required placeholder="Confirme a senha">
 					</div>
 				</div>
-				
+
 				<div class="form-group row">
 					<div class="col-md-10 offset-md-1">
 						<select id="empresa_id" name="empresa_id" class="form-control">
