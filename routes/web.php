@@ -105,6 +105,7 @@ Route::get('saladeespera', 'AtendimentoController@index')->name('saladeespera');
 Route::patch('saladeespera/update', 'AtendimentoController@update')->name('saladeespera.update');
 
 // Configurações
+Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 Route::get('configuracao', 'ConfiguracaoController@index')->name('configuracao');
 Route::put('configuracao/update/{id}', 'ConfiguracaoController@update')->name('configuracao.update');
 
