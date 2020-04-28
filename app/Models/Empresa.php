@@ -14,6 +14,10 @@ class Empresa extends Model
 
 	public function users(){
     return $this->hasMany('App\User');
+	}
+	
+	public function licenca(){
+    return $this->hasMany('App\Models\Licenca');
   }
 
 	public function movimentos(){
