@@ -79,6 +79,7 @@
 												<div class="dropdown-divider"></div>
 												<a class="dropdown-item" href="{{$item->id}}" data-emprid={{$item->id}} data-target="#delete" data-toggle="modal"><i class="fa fa-trash"></i> Excluir</a>
 												<div class="dropdown-divider"></div>
+												
 												{{-- <a href="{{$item->id}}" data-target="#licenca" data-toggle="modal" class="dropdown-item">
 													<img src="{{URL::asset('assets/master-admin/img/license.png')}}" style="max-width:20px;">
 													Licença
