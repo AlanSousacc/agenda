@@ -116,7 +116,7 @@ $("input[name = 'btnstatus']").on('click', function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\laragon\www\agendabetha\resources\js\atendimento\atendimento.js */"./resources/js/atendimento/atendimento.js");
+module.exports = __webpack_require__(/*! Z:\Laragon\www\AgendaBethaV3\resources\js\atendimento\atendimento.js */"./resources/js/atendimento/atendimento.js");
 
 
 /***/ })
