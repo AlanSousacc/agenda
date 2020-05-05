@@ -9,6 +9,7 @@ use Auth;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\EmpresaRequest;
 use App\Models\CentroCusto;
+use App\Models\Configuracao;
 use App\Models\Modulo;
 use Image;
 use File;
@@ -16,10 +17,9 @@ use File;
 class EmpresaController extends Controller
 {
 	public function index(){
-		$consultaAtivo 		= Empresa::Where('id', '!=', 1)->where('status', 1)->paginate(10);
-		$consultaInativo 	= Empresa::Where('id', '!=', 1)->where('status', 0)->paginate(10);
+		$consulta = Auth::user()->empresa_id == 1 ? Empresa::paginate(10) : Empresa::Where('id', '!=', 1)->paginate(10);
 
-		return view('Admin.empresa.listagem', compact('consultaAtivo', 'consultaInativo'));
+		return view('Admin.empresa.listagem', compact('consulta'));
 	}
 
 	public function create()
@@ -72,6 +72,16 @@ class EmpresaController extends Controller
 
 			if (!$saved){
 				throw new Exception('Falha ao salvar empresa!');
+			}
+
+			// ADICIONA CONFIGURAÇÃO DEFAULT DA EMPRESA NO SEU CADASTRO
+			$config 												= new Configuracao;
+			$config->empresa_id  						= $empresa->id;
+			$config->atendimentosimultaneo 	= 0;
+			$saved													= $config->save();
+
+			if (!$saved){
+				throw new Exception('Falha ao criar configuração padrão da empresa');
 			}
 
 			// adiciona centro de custo ao cadastrar empresa
@@ -240,5 +250,9 @@ class EmpresaController extends Controller
 			} else {
 				return back()->with('error', 'Você não tem permissão para acessar esta rota');
 			}
+		}
+
+		public function createLicenca(){
+			
 		}
 	}

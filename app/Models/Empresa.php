@@ -15,10 +15,18 @@ class Empresa extends Model
 
 	public function users(){
     return $this->hasMany('App\User');
+	}
+	
+	public function licenca(){
+    return $this->hasMany('App\Models\Licenca');
   }
 
 	public function movimentos(){
     return $this->hasMany('App\Models\Movimento');
+	}
+	
+	public function configuracoes(){
+    return $this->hasMany('App\Models\Configuracoes');
   }
 
 	public function events(){

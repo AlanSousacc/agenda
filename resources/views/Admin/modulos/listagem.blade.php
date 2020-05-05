@@ -9,7 +9,7 @@
 	<nav class="navbar navbar-light bg-light">
 		<h3 class="navbar-brand">Listagem de Módulos do Sistema</h3>
 		<div class="col-md-6 float-md-right search">
-			<a class="btn btn-primary float-right" href="{{ route('modulos.novo') }}" role="button">Novo Módulo</a>
+			<a class="btn btn-primary btn-sm float-right" href="{{ route('modulos.novo') }}" role="button">Novo Módulo</a>
 	</div>
 	</nav>
 		<div class="table-responsive-sm">

@@ -2,6 +2,7 @@
     "/admin/js/adminlte.js": "/admin/js/adminlte.js",
     "/admin/js/app.js": "/admin/js/app.js",
     "/admin/css/app.css": "/admin/css/app.css",
+    "/admin/js/atendimento/atendimento.js": "/admin/js/atendimento/atendimento.js",
     "/admin/js/bootstrap.bundle.js": "/admin/js/bootstrap.bundle.js",
     "/admin/js/bootstrap4-toggle.min.js": "/admin/js/bootstrap4-toggle.min.js",
     "/admin/js/centrocusto/centrocusto.js": "/admin/js/centrocusto/centrocusto.js",

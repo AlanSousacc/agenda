@@ -3,7 +3,7 @@
 
 use App\Http\Controllers\RelCentroCustoController;
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
 
 
 Route::get('/', 'FullCalendarController@index')->name('index');
@@ -55,7 +55,8 @@ Route::middleware(['auth', 'checkProfile'])->group(function () {
 	Route::get('relatorio-mes', 'MovimentacaoController@listagemEntradas')->name('relatorio.mes.atual');
 	Route::get('movimentacao/contato/{id}', 'MovimentacaoController@show')->name('movimentacao.contato');
 	Route::patch('receber', 'MovimentacaoController@update')->name('receber');
-  Route::any('relatorio-periodo-contato', 'MovimentacaoController@relPeriodo')->name('relatorio.periodo.contato');
+	Route::any('relatorio-periodo-contato', 'MovimentacaoController@relPeriodo')->name('relatorio.periodo.contato');
+	// Route::any('search-movimentacao', 'MovimentacaoController@search')->name('routeMovimentacaoSearch');
 });
 
 // módulos do sistema
@@ -99,17 +100,17 @@ Route::middleware(['auth', 'isAdmin'])->group(function () {
 // access do sistema
 Route::get('unauthorized', 'AccessController@index')->name('unauthorized');
 
-// Formulários Personalisados
-Route::get('formulario', 'FormularioController@index')->name('form.list');
-Route::middleware(['auth', 'checkProfile'])->group(function () {
-  Route::get('formulario/novo', 'FormularioController@create')->name('form.novo');
-  Route::post('formulario/salvar', 'FormularioController@store')->name('form.store');
-  Route::get('formulario/edit/{id}', 'FormularioController@edit')->name('form.edit');
-  Route::put('formulario/update/{id}', 'FormularioController@update')->name('form.update');
-	// Route::delete('formulario/delete', 'FormularioController@destroy')->name('form.destroy');
-	Route::post('formquestion/salvar', 'FormQuestionController@store')->name('formquestion.store');
-});
+// atendimento
+Route::get('saladeespera', 'AtendimentoController@index')->name('saladeespera');
+Route::patch('saladeespera/update', 'AtendimentoController@update')->name('saladeespera.update');
 
+// Configurações
+Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+Route::get('configuracao', 'ConfiguracaoController@index')->name('configuracao');
+Route::put('configuracao/update/{id}', 'ConfiguracaoController@update')->name('configuracao.update');
+
+// enviar email
+Route::get('notificar-contato/{contato}/{id}', 'EmailController@sendEmail')->name('notificar-contato');
 
 });
 Auth::routes();

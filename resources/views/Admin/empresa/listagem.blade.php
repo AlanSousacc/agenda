@@ -9,7 +9,7 @@
 	<nav class="navbar navbar-light bg-light">
 		<h3 class="navbar-brand">Listagem de empresas</h3>
 		<div class="col-md-6 float-md-right search">
-			<a class="btn btn-primary float-right mr-3" href="{{route('empresa.create')}}" role="button" style="margin-top: 1px;"> <i class="fa fa-plus-circle"></i> Nova Empresa</a>
+			<a class="btn btn-primary btn-sm float-right mr-3" href="{{route('empresa.create')}}" role="button" style="margin-top: 1px;"> <i class="fa fa-plus-circle"></i> Nova Empresa</a>
 		</div>
 	</nav>
 	
@@ -42,7 +42,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							@foreach ($consultaAtivo as $item)
+							@foreach ($consulta->where('status', 1) as $item)
 							<tr role="row" class="odd">
 								<td class="text-center">{{$item->id}}</td>
 								<td class="sorting_1">{{$item->razaosocial}}</td>
@@ -79,6 +79,11 @@
 												<div class="dropdown-divider"></div>
 												<a class="dropdown-item" href="{{$item->id}}" data-emprid={{$item->id}} data-target="#delete" data-toggle="modal"><i class="fa fa-trash"></i> Excluir</a>
 												<div class="dropdown-divider"></div>
+												{{-- <a href="{{$item->id}}" data-target="#licenca" data-toggle="modal" class="dropdown-item">
+													<img src="{{URL::asset('assets/master-admin/img/license.png')}}" style="max-width:20px;">
+													Licença
+												</a> --}}
+												<div class="dropdown-divider"></div>
 												<a class="dropdown-item" href="{{ route('modulosempresa.edit', $item->id) }}" ><i class="fa fa-lock"></i> Permissões</a>
 												@endif
 											</div>
@@ -90,11 +95,11 @@
 						</table>
 					</div>
 					<div class="row">
-						<div class="col-md-6 pl-4 mt-md-2"><p>Mostrando {{$consultaAtivo->count()}} empresas de um total de {{$consultaAtivo->total()}} #ATIVAS#</p></div>
+						<div class="col-md-6 pl-4 mt-md-2"><p>Mostrando {{$consulta->count()}} empresas de um total de {{$consulta->total()}} #ATIVAS#</p></div>
 						@if (isset($empresas))
-						<div class="col-md-6 pr-4">{{$consultaAtivo->appends($empresas)->links()}}</div>
+						<div class="col-md-6 pr-4">{{$consulta->appends($empresas)->links()}}</div>
 						@else
-						<div class="col-md-6 pr-4">{{$consultaAtivo->links()}}</div>
+						<div class="col-md-6 pr-4">{{$consulta->links()}}</div>
 						@endif
 					</div>
 				</div>
@@ -116,7 +121,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								@foreach ($consultaInativo as $item)
+								@foreach ($consulta->where('status', 0) as $item)
 								<tr role="row" class="odd">
 									<td class="text-center">{{$item->id}}</td>
 									<td class="sorting_1">{{$item->razaosocial}}</td>
@@ -153,6 +158,11 @@
 													<div class="dropdown-divider"></div>
 													<a class="dropdown-item" href="{{$item->id}}" data-emprid={{$item->id}} data-target="#delete" data-toggle="modal"><i class="fa fa-trash"></i> Excluir</a>
 													<div class="dropdown-divider"></div>
+													{{-- <a href="{{$item->id}}" data-target="#licenca" data-toggle="modal" class="dropdown-item">
+														<img src="{{URL::asset('assets/master-admin/img/license.png')}}" style="max-width:20px;">
+														Licença
+													</a> --}}
+													<div class="dropdown-divider"></div>
 													<a class="dropdown-item" href="{{ route('modulosempresa.edit', $item->id) }}" ><i class="fa fa-lock"></i> Permissões</a>
 													@endif
 												</div>
@@ -164,19 +174,22 @@
 							</table>
 						</div>
 						<div class="row">
-							<div class="col-md-6 pl-4 mt-md-2"><p>Mostrando {{$consultaInativo->count()}} empresas de um total de {{$consultaInativo->total()}} #INATIVAS#</p></div>
+							<div class="col-md-6 pl-4 mt-md-2"><p>Mostrando {{$consulta->count()}} empresas de um total de {{$consulta->total()}} #INATIVAS#</p></div>
 							@if (isset($empresas))
-							<div class="col-md-6 pr-4">{{$consultaInativo->appends($empresas)->links()}}</div>
+							<div class="col-md-6 pr-4">{{$consulta->appends($empresas)->links()}}</div>
 							@else
-							<div class="col-md-6 pr-4">{{$consultaInativo->links()}}</div>
+							<div class="col-md-6 pr-4">{{$consulta->links()}}</div>
 							@endif
 						</div>
 						{{-- Fim empresas Inativos --}}
 					</div>
 				</div>
 				
-				<!-- Modal editar-->
-				@include('Admin.empresa.modalEditar')
+				{{-- <!-- Modal editar-->
+				@include('Admin.empresa.modalEditar') --}}
+
+				<!-- Modal licença-->
+				@include('Admin.empresa.modalLicenca')
 				
 				{{-- modal Deletar--}}
 				@include('Admin.empresa.modalExcluir')
