@@ -81,35 +81,35 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 14);
+/******/ 	return __webpack_require__(__webpack_require__.s = 12);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/tipoevento/tipoevento.js":
+/***/ "./resources/js/formulario/formulario.js":
 /*!***********************************************!*\
-  !*** ./resources/js/tipoevento/tipoevento.js ***!
+  !*** ./resources/js/formulario/formulario.js ***!
   \***********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
 $('#delete').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget);
-  var tipeveid = button.data('tipeveid');
+  var formularioid = button.data('formularioid');
   var modal = $(this);
-  modal.find('.modal-body #tipeveid').val(tipeveid);
+  modal.find('.modal-body #formularioid').val(formularioid);
 });
 
 /***/ }),
 
-/***/ 14:
+/***/ 12:
 /*!*****************************************************!*\
-  !*** multi ./resources/js/tipoevento/tipoevento.js ***!
+  !*** multi ./resources/js/formulario/formulario.js ***!
   \*****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! Z:\Laragon\www\AgendaBethaV3\resources\js\tipoevento\tipoevento.js */"./resources/js/tipoevento/tipoevento.js");
+module.exports = __webpack_require__(/*! C:\laragon\www\agendabetha\resources\js\formulario\formulario.js */"./resources/js/formulario/formulario.js");
 
 
 /***/ })
