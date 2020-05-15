@@ -61,5 +61,9 @@ class Contato extends Model
 
   public function movimentos(){
     return $this->hasMany('App\Models\Movimento');
+	}
+
+  public function medidas(){
+    return $this->hasMany('App\Models\Medida');
   }
 }
