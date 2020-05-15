@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-$('#delete').on('show.bs.modal', function (event) {
+$('#put').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget);
   var formularioid = button.data('formularioid');
   var modal = $(this);
@@ -109,7 +109,7 @@ $('#delete').on('show.bs.modal', function (event) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\laragon\www\agendabetha\resources\js\formulario\formulario.js */"./resources/js/formulario/formulario.js");
+module.exports = __webpack_require__(/*! X:\Laragon\www\agendaBetha\resources\js\formulario\formulario.js */"./resources/js/formulario/formulario.js");
 
 
 /***/ })
