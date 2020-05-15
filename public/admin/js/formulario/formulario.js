@@ -81,48 +81,35 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 12);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/contato/contato.js":
-/*!*****************************************!*\
-  !*** ./resources/js/contato/contato.js ***!
-  \*****************************************/
+/***/ "./resources/js/formulario/formulario.js":
+/*!***********************************************!*\
+  !*** ./resources/js/formulario/formulario.js ***!
+  \***********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-$('#delete').on('show.bs.modal', function (event) {
+$('#put').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget);
-  var contid = button.data('contid');
+  var formularioid = button.data('formularioid');
   var modal = $(this);
-  modal.find('.modal-body #contid').val(contid);
-});
-$(document).ready(function () {
-  $('#valorsessao').mask('000.000.000.000.000,00');
-});
-$(document).ready(function () {
-  $('.telefone').mask('(00) 00000-0000');
-  $('.telefoneparente').mask('(00) 00000-0000');
-  $('.documento').mask('000.000.000-00', {
-    reverse: true
-  });
-  $('.cpfresponsavel').mask('000.000.000-00', {
-    reverse: true
-  });
+  modal.find('.modal-body #formularioid').val(formularioid);
 });
 
 /***/ }),
 
-/***/ 4:
-/*!***********************************************!*\
-  !*** multi ./resources/js/contato/contato.js ***!
-  \***********************************************/
+/***/ 12:
+/*!*****************************************************!*\
+  !*** multi ./resources/js/formulario/formulario.js ***!
+  \*****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! X:\Laragon\www\agendaBetha\resources\js\contato\contato.js */"./resources/js/contato/contato.js");
+module.exports = __webpack_require__(/*! X:\Laragon\www\agendaBetha\resources\js\formulario\formulario.js */"./resources/js/formulario/formulario.js");
 
 
 /***/ })

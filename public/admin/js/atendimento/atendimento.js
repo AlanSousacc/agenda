@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 14);
+/******/ 	return __webpack_require__(__webpack_require__.s = 15);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -109,14 +109,14 @@ $("input[name = 'btnstatus']").on('click', function () {
 
 /***/ }),
 
-/***/ 14:
+/***/ 15:
 /*!*******************************************************!*\
   !*** multi ./resources/js/atendimento/atendimento.js ***!
   \*******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! Z:\Laragon\www\AgendaBethaV3\resources\js\atendimento\atendimento.js */"./resources/js/atendimento/atendimento.js");
+module.exports = __webpack_require__(/*! X:\Laragon\www\agendaBetha\resources\js\atendimento\atendimento.js */"./resources/js/atendimento/atendimento.js");
 
 
 /***/ })
