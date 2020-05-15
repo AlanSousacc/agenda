@@ -36,8 +36,8 @@
 								<th class="text-center">Razão Social</th>
 								<th class="text-center">Nome Fantasia</th>
 								<th class="text-center">CNPJ</th>
-								<th class="text-center">Telefone</th>
-								<th class="text-center">Email</th>
+								<th class="text-center">Status da Licença</th>
+								<th class="text-center">Validade</th>
 								<th class="text-center">Opções</th>
 							</tr>
 						</thead>
@@ -48,8 +48,17 @@
 								<td class="sorting_1">{{$item->razaosocial}}</td>
 								<td>{{$item->nomefantasia}}</td>
 								<td>{{$item->cnpj}}</td>
-								<td>{{$item->telefone}}</td>
-								<td>{{$item->email}}</td>
+								@if ($item->licenca['status'] == 1)
+									<td class="text-center" style="color: #28a745"><i class="fa fa-check-circle"></i></td>
+								@else
+									<td class="text-center" style="color: #dc3545"><i class="fa fa-times-circle"></i></td>
+								@endif
+
+								@if ($item->licenca['status'] == 1)
+								<td class="text-center">{{Carbon\Carbon::parse($item->licenca['dtvalidade'])->format('d/m/Y')}}</td>
+								@else
+								<td class="text-center">S/L</td>
+								@endif
 								<td class="text-center" style="padding: 0.45rem">
 									<div class="btn-group dropleft">
 										<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -78,6 +87,11 @@
 												data-toggle="modal"><i class="fa fa-edit"></i> Editar</a>
 												<div class="dropdown-divider"></div>
 												<a class="dropdown-item" href="{{$item->id}}" data-emprid={{$item->id}} data-target="#delete" data-toggle="modal"><i class="fa fa-trash"></i> Excluir</a>
+												<div class="dropdown-divider"></div>
+												<a href="{{$item->id}}" data-emprid={{$item->id}} data-target="#licenca" data-toggle="modal" class="dropdown-item">
+													<img src="{{URL::asset('assets/master-admin/img/license.png')}}" style="max-width:20px;">
+													Licença
+												</a>
 												<div class="dropdown-divider"></div>
 												<a class="dropdown-item" href="{{ route('modulosempresa.edit', $item->id) }}" ><i class="fa fa-lock"></i> Permissões</a>
 												@endif
@@ -110,8 +124,8 @@
 									<th class="text-center">Razão Social</th>
 									<th class="text-center">Nome Fantasia</th>
 									<th class="text-center">CNPJ</th>
-									<th class="text-center">Telefone</th>
-									<th class="text-center">Email</th>
+									<th class="text-center">Status da Licença</th>
+									<th class="text-center">Validade</th>
 									<th class="text-center">Opções</th>
 								</tr>
 							</thead>
@@ -119,11 +133,20 @@
 								@foreach ($consulta->where('status', 0) as $item)
 								<tr role="row" class="odd">
 									<td class="text-center">{{$item->id}}</td>
-									<td class="sorting_1">{{$item->razaosocial}}</td>
-									<td>{{$item->nomefantasia}}</td>
-									<td>{{$item->cnpj}}</td>
-									<td>{{$item->telefone}}</td>
-									<td>{{$item->email}}</td>
+								<td class="sorting_1">{{$item->razaosocial}}</td>
+								<td>{{$item->nomefantasia}}</td>
+								<td>{{$item->cnpj}}</td>
+								@if ($item->licenca['status'] == 1)
+									<td class="text-center" style="color: #28a745"><i class="fa fa-check-circle"></i></td>
+								@else
+									<td class="text-center" style="color: #dc3545"><i class="fa fa-times-circle"></i></td>
+								@endif
+
+								@if ($item->licenca['status'] == 1)
+								<td class="text-center">{{Carbon\Carbon::parse($item->licenca['dtvalidade'])->format('d/m/Y')}}</td>
+								@else
+								<td class="text-center">S/L</td>
+								@endif
 									<td class="text-center" style="padding: 0.45rem">
 										<div class="btn-group dropleft">
 											<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -153,6 +176,11 @@
 													<div class="dropdown-divider"></div>
 													<a class="dropdown-item" href="{{$item->id}}" data-emprid={{$item->id}} data-target="#delete" data-toggle="modal"><i class="fa fa-trash"></i> Excluir</a>
 													<div class="dropdown-divider"></div>
+													<a href="{{$item->id}}" data-emprid={{$item->id}} data-target="#licenca" data-toggle="modal" class="dropdown-item">
+														<img src="{{URL::asset('assets/master-admin/img/license.png')}}" style="max-width:20px;">
+														Licença
+													</a>
+													<div class="dropdown-divider"></div>
 													<a class="dropdown-item" href="{{ route('modulosempresa.edit', $item->id) }}" ><i class="fa fa-lock"></i> Permissões</a>
 													@endif
 												</div>
@@ -178,6 +206,9 @@
 				<!-- Modal editar-->
 				@include('Admin.empresa.modalEditar')
 				
+				<!-- Modal licença-->
+				@include('Admin.empresa.modalLicenca')
+				
 				{{-- modal Deletar--}}
 				@include('Admin.empresa.modalExcluir')
 				{{-- Modal --}}
@@ -186,5 +217,7 @@
 		<!-- /.card -->
 		@push('scripts')
 		<script src='{{asset('admin/js/empresa/empresa.js')}}'></script>
-		@endpush
-		@endsection
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/md5.js"></script>
+		<script src='{{asset('admin/js/licenca/licenca.js')}}'></script>
+	@endpush
+	@endsection

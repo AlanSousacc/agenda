@@ -20,7 +20,7 @@ class CheckIsAdmin
     return redirect()->route('login');
 
     // verifica se usuário é admin do sistema
-    if ( auth()->user()->isAdmin != 1 )
+		if ( auth()->user()->isAdmin != 1 )
       return redirect()->route('unauthorized')->with('error', 'Este usuário não tem permissão para acessar esta página!');
 
     return $next($request);

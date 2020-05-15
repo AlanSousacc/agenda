@@ -60,7 +60,7 @@ class ContatoController extends Controller
 		$user 		 = Auth::user()->empresa_id;
 		$pagamento = Condicao_pagamento::all();
 		$contatos  = Contato::where('empresa_id',$user)->get();
-		$centro  = CentroCusto::where('empresa_id', $user)->get();
+		$centro  	 = CentroCusto::where('empresa_id', $user)->get();
 
 		$consulta  = Movimento::where('empresa_id', $user)->where('contato_id', $contato->id)->paginate(10);
 		$total		 = $consulta->sum('valortotal');
@@ -103,8 +103,8 @@ class ContatoController extends Controller
     }
 
     try{
-
-      DB::beginTransaction();
+			DB::beginTransaction();
+			
       $saved = $contato->save();
       if (!$saved)
         throw new Exception('Falha ao salvar contatos!');
@@ -157,12 +157,11 @@ class ContatoController extends Controller
     }
 
     try{
-
-      DB::beginTransaction();
+			DB::beginTransaction();
+			
 			$saved = $contato->save();
       if (!$saved)
 				throw new Exception('Falha ao salvar contato!');
-
 
       DB::commit();
       return redirect('contato')->with('success', 'Contato #' . $contato->id . ' alterado com sucesso.');
