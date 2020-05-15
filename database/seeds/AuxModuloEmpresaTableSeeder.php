@@ -52,5 +52,13 @@ class AuxModuloEmpresaTableSeeder extends Seeder
 					'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
     			'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
 				]);
+
+				AuxModuloEmpresa::create([
+					'modulo_id' 		=> 6,
+					'empresa_id' 		=> 1,
+					'status' 				=> 1,
+					'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+    			'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+				]);
     }
 }

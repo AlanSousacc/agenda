@@ -20,7 +20,6 @@
 						<h1 class="text-center my-3">Alterar Permissões da Empresa</h1>
 						@include('Admin.empresa.moduloempresa.formModuloEmpresa')
 					</div>
-					{{-- <button type="submit" class="btn btn-primary" style="margin-left: 7px;">Salvar Permissões</button> --}}
 				</form>
 			</div>
 		</div>
