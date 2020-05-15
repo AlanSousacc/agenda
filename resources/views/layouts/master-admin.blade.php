@@ -218,7 +218,26 @@
                 </li>
               </ul>
               @endif
-            </li>
+						</li>
+						
+						{{-- Sidebar Medidas --}}
+						<li class="nav-item has-treeview menu-open">
+							<a href="#" class="nav-link">
+								<i class="nav-icon fa fa-dumbbell"></i>
+								<p>Academia</p>
+							</a>
+							@if (Auth::user()->profile == 'Administrador')
+							<ul class="nav nav-treeview">
+								<li class="nav-item">
+									<a href="{{route('medidas.list')}}" class="nav-link">
+										<i class="fa fa-balance-scale-right nav-icon"></i>
+										<p>Medidas</p>
+									</a>
+								</li>
+							</ul>
+							@endif
+							{{-- Fim Sidebar Medidas --}}
+
 						@if (Auth::user()->profile == 'Administrador')
             <li class="nav-item has-treeview menu-open">
               <a href="#" class="nav-link">
