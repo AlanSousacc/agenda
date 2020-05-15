@@ -29027,7 +29027,20 @@ a.brand-link {
 	background: #1f2d3d;
 	color: #959595;
 }
-@charset "UTF-8";
+
+.disableValidade{
+	pointer-events:none;
+	cursor: no-drop;
+	background: #dee2e6!important;
+	color: #6c757d!important;
+}
+.enableValidade{
+	background: #fff;
+	cursor: pointer;
+	padding: 5px 10px;
+	border: 1px solid #ccc;
+	width: 100%;
+}@charset "UTF-8";
 
 /*!
  * Font Awesome Free 5.12.0 by @fontawesome - https://fontawesome.com

@@ -16,11 +16,12 @@ class CreateLicencaTable extends Migration
 		Schema::create('licenca', function (Blueprint $table) {
 			$table->id();
 			$table->timestamps();
-			$table->date('dtvalidade');
+			$table->date('dtinicio')->nullable();
+			$table->date('dtvalidade')->nullable();
 			$table->boolean('status');
 			$table->string('hash', 256);
 			$table->unsignedBigInteger('empresa_id')->unsigned();
-			$table->foreign('empresa_id')->references('id')->on('licenca')->onDelete('cascade');
+			$table->foreign('empresa_id')->references('id')->on('empresas')->onDelete('cascade');
 		});
 	}
 	

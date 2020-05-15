@@ -12,12 +12,14 @@ use App\Models\CentroCusto;
 use App\Models\Configuracao;
 use App\Models\Modulo;
 use Image;
+use \Carbom;
 use File;
 
 class EmpresaController extends Controller
 {
 	public function index(){
-		$consulta = Auth::user()->empresa_id == 1 ? Empresa::paginate(10) : Empresa::Where('id', '!=', 1)->paginate(10);
+		$consulta = Auth::user()->empresa_id == 1 ? Empresa::with('licenca')->paginate(10) : Empresa::with('licenca')->Where('id', '!=', 1)->paginate(10);
+		// dd($consulta);
 
 		return view('Admin.empresa.listagem', compact('consulta'));
 	}
