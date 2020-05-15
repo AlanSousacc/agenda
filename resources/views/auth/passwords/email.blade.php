@@ -14,12 +14,12 @@
 <body class="hold-transition login-page">
 	<div class="login-box">
 		<div class="login-logo">
-			<a><b>Agenda</b>BETHA</a>
-		</div>
+      <img src="{{URL::asset('assets/master-admin/img/AgendaBETHA.png')}}" class="brand-image" style="max-width:170px; max-height:170px">
+    </div>
 		<!-- /.login-logo -->
 		<div class="card">
 			<div class="card-body login-card-body">
-				<p class="login-box-msg">Esqueceu sua senha? Aqui você pode recuperar facilmente uma nova senha.</p>
+				<p class="login-box-msg">Esqueceu sua senha? Aqui você pode solicitar uma nova senha, facilmente!</p>
 				
 				
 				<form method="POST" action="{{ route('password.email') }}">
@@ -30,7 +30,7 @@
 							<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Email" required autocomplete="email" autofocus>
 							
 							@error('email')
-							<span class="invalid-feedback" role="alert">
+							<span class="invalid-feedback" style="text-align: center;" role="alert">
 								<strong>{{ $message }}</strong>
 							</span>
 							@enderror
@@ -39,17 +39,17 @@
 					
 					<div class="form-group row mb-0">
 						<div class="col-md-12">
-							<button type="submit" style="width: 100%" class="btn btn-primary">
-								{{ __('Enviar link de redefinição de senha') }}
+							<button type="submit" style="width: 100%" class="btn btn-primary btn-circle">
+								{{ __('SOLICITAR NOVA SENHA') }}
 							</button>
 						</div>
 					</div>
-					<p class="col-md-12 mt-3 mb-1">
-						<a href="/login">Login</a>
+					<p class="col-md-12 mt-3 mb-1" style="text-align: center;">
+						<a href="/login">LOGAR</a>
 					</p>
 				</form>
 				@if (session('status'))
-				<div class="alert alert-success" role="alert">
+				<div class="alert alert-success" style="border-radius: 0; text-align: center; border-radius: 50px; margin-top: 16px;" role="alert">
 					{{ session('status') }}
 				</div>
 				@endif

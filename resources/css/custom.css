@@ -128,3 +128,26 @@ a.brand-link {
 	background-color: #263341;
 	border-color: #263341;
 }
+
+.login-box input#password-confirm {
+	border-radius: 30px;
+	width: 100%;
+	border: 1px solid #959595;
+	padding: 22px;
+	background: #1f2d3d;
+	color: #959595;
+}
+
+.disableValidade{
+	pointer-events:none;
+	cursor: no-drop;
+	background: #dee2e6!important;
+	color: #6c757d!important;
+}
+.enableValidade{
+	background: #fff;
+	cursor: pointer;
+	padding: 5px 10px;
+	border: 1px solid #ccc;
+	width: 100%;
+}

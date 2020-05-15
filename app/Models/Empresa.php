@@ -11,11 +11,15 @@ use Illuminate\Support\Facades\Auth;
 class Empresa extends Model
 {
 	protected $filable = ['razaosocial', 'nomefantasia', 'apelido', 'cnpj', 'ie', 'im', 'telefone', 'email', 'cidade', 'endereco', 'numero', 'cep', 'bairro', 'logo', 'tipo'];
+	
+	public function licenca(){
+		return $this->hasOne('App\Models\Licenca');
+	}
 
 	public function users(){
     return $this->hasMany('App\User');
-  }
-
+	}
+	
 	public function movimentos(){
     return $this->hasMany('App\Models\Movimento');
 	}

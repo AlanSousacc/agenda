@@ -26,7 +26,7 @@
           <div class="input-group mb-3">
             <input id="email" type="email" class="form-control" name="email" placeholder="EMAIL" value="{{ old('email') }}" required autocomplete="off" autofocus>
             @error('email')
-            <span class="invalid-feedback" role="alert">
+            <span class="invalid-feedback" style="text-align: center;" role="alert">
               <strong>{{ $message }}</strong>
             </span>
             @enderror
@@ -42,7 +42,7 @@
 
             @error('password')
             {{ $message }}
-            <span class="invalid-feedback" role="alert">
+            <span class="invalid-feedback" style="text-align: center;" role="alert">
               <strong>{{ $message }}</strong>
             </span>
             @enderror
