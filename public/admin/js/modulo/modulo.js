@@ -109,7 +109,7 @@ $('#delete').on('show.bs.modal', function (event) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! Z:\Laragon\www\AgendaBethaV3\resources\js\modulo\modulo.js */"./resources/js/modulo/modulo.js");
+module.exports = __webpack_require__(/*! X:\Laragon\www\agendaBetha\resources\js\modulo\modulo.js */"./resources/js/modulo/modulo.js");
 
 
 /***/ })
