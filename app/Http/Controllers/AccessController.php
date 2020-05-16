@@ -10,5 +10,10 @@ class AccessController extends Controller
   public function index()
   {
     return view('layouts.unauthorized-access');
+	}
+	
+  public function verificaLicenca()
+  {
+    return view('layouts.unauthorized-license');
   }
 }

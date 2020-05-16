@@ -6,9 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Licenca extends Model
 {
-  protected $fillable = ['dtvalidade', 'status', 'hash', 'empresa_id'];
+	protected $table = 'licenca';
+  protected $filable = ['dtvalidade', 'dtinicio', 'status', 'hash', 'empresa_id'];
 	
 	public function empresa(){
-    return $this->belongsTo(Empresa::class);
+    return $this->hasOne('App\Models\Empresa');
   }
 }
