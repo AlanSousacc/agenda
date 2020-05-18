@@ -10,6 +10,7 @@
     "/admin/js/empresa/empresa.js": "/admin/js/empresa/empresa.js",
     "/admin/js/formulario/formulario.js": "/admin/js/formulario/formulario.js",
     "/admin/js/jquery.js": "/admin/js/jquery.js",
+    "/admin/js/licenca/licenca.js": "/admin/js/licenca/licenca.js",
     "/admin/js/modulo/modulo.js": "/admin/js/modulo/modulo.js",
     "/admin/js/movimentacao/consultapersonalizada.js": "/admin/js/movimentacao/consultapersonalizada.js",
     "/admin/js/movimentacao/jquery.maskMoney.js": "/admin/js/movimentacao/jquery.maskMoney.js",
