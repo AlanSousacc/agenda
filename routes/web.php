@@ -132,13 +132,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 // Medidas
 
-	Route::get('medidas', 'CentroCustoController@index')->name('medidas.list');
+	Route::get('medidas', 'MedidaController@index')->name('medidas.list');
 	Route::prefix('/cliente/medida')->middleware(['auth', 'checkProfile'])->group(function () {
-		Route::get('medida/novo', 'CentroCustoController@create')->name('medida.novo');
-		Route::post('medida/salvar', 'CentroCustoController@store')->name('medida.store');
-		Route::get('medida/edit/{id}', 'CentroCustoController@edit')->name('medida.edit');
-		Route::put('medida/update/{id}', 'CentroCustoController@update')->name('medida.update');
-		Route::delete('medida/delete', 'CentroCustoController@destroy')->name('medida.destroy');
+		Route::get('medida/novo', 'MedidaController@create')->name('medida.novo');
+		Route::post('medida/salvar', 'MedidaController@store')->name('medida.store');
+		Route::get('medida/edit/{id}', 'MedidaController@edit')->name('medida.edit');
+		Route::put('medida/update/{id}', 'MedidaController@update')->name('medida.update');
+		Route::delete('medida/delete', 'MedidaController@destroy')->name('medida.destroy');
 	});
 
 });

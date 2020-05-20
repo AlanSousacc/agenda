@@ -19,7 +19,7 @@
 					</div>
 				</div>
 			</form> --}}
-		<a class="btn btn-primary btn-sm float-right mr-3" href="{{route('medidas.create')}}" role="button" style="margin-top: 1px;"> <i class="fa fa-plus-circle"></i> Nova Métrica</a>
+		{{-- <a class="btn btn-primary btn-sm float-right mr-3" href="{{route('medidas.create')}}" role="button" style="margin-top: 1px;"> <i class="fa fa-plus-circle"></i> Nova Métrica</a> --}}
 	</div>
 	</nav>
 	<div class="card card-primary card-outline card-outline-tabs" style="border-top: 0px solid #007bff;">
@@ -35,29 +35,30 @@
 			</ul>
 		</div>
 		<div class="tab-content" id="custom-tabs-three-tabContent">
-			{{-- Contato Ativos --}}
+
+			{{-- Medidas Ativos --}}
 			<div class="tab-pane fade show active" id="custom-tabs-three-contatosativos" role="tabpanel" aria-labelledby="custom-tabs-three-contatosativos-tab">
 				<div class="table-responsive-sm">
 					<table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
 						<thead>
 							<tr>
 								<th class="text-center" style="width: 50px;" >#ID</th>
-								<th class="th-sm" style="width: 200px;" >Nome Completo</th>
-								<th class="th-sm" style="width: 120px;" >Documento</th>
-								<th class="th-sm" style="width: 150px;" >Telefone</th>
-								<th class="th-sm" style="width: 161px;" >Email</th>
+								<th class="th-sm" style="width: 200px;" >Clinte</th>
+								<th class="th-sm" style="width: 120px;" >Peso</th>
+								<th class="th-sm" style="width: 150px;" >Altura</th>
+								<th class="th-sm" style="width: 161px;" >IMC</th>
 								<th class="text-center" style="width: 120px;" >Opções</th>
 							</tr>
 						</thead>
 						<tbody>
-							@foreach ($consulta->where('status', 1) as $item)
+							@foreach ($medidas as $item)
 							<tr role="row" class="odd">
 								<td class="text-center">{{$item->id}}</td>
-								<td class="sorting_1">{{$item->nome}}</td>
-								<td>{{$item->documento}}</td>
-								<td>{{$item->telefone}}</td>
-								<td>{{$item->email}}</td>
-								<td class="text-center" style="padding: 0.45rem">
+								<td class="sorting_1">{{$item->clientes->nome}}</td>
+								<td>{{$item->peso}}</td>
+								<td>{{$item->altura}}</td>
+								<td>{{$item->imc}}</td>
+								{{-- <td class="text-center" style="padding: 0.45rem">
 									<div class="btn-group dropleft">
 										<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 											Ação
@@ -70,25 +71,25 @@
 											<a class="dropdown-item" href="{{route('movimentacao.contato', $item->id)}}"><i class="fa fa-money-check-alt"></i> Financeiro</a>
 										</div>
 									</div>
-								</td>
+								</td> --}}
 							</tr>
 							@endforeach
 						</tbody>
 					</table>
 				</div>
-				<div class="row">
-					<div class="col-md-6 pl-4 mt-md-2"><p>Mostrando {{$consulta->count()}} contatos de um total de {{$consulta->total()}} #ATIVOS#</p></div>
-					@if (isset($contato))
-					<div class="col-md-6 pr-4">{{$consulta->appends($contato)->links()}}</div>
-					@else
-					<div class="col-md-6 pr-4">{{$consulta->links()}}</div>
-					@endif
-				</div>
+					{{-- <div class="row">
+						<div class="col-md-6 pl-4 mt-md-2"><p>Mostrando {{$medidas->count()}} medidas de um total de {{$medidas->total()}} #ATIVOS#</p></div>
+						@if (isset($medidas))
+						<div class="col-md-6 pr-4">{{$medidas->appends($medidas)->links()}}</div>
+						@else
+						<div class="col-md-6 pr-4">{{$medidas->links()}}</div>
+						@endif
+					</div> --}}
 			</div>
-			{{-- Fim Contato Ativos --}}
+			{{-- Fim Medidas Ativos --}}
 			
 			{{-- Contatos Inativos --}}
-			<div class="tab-pane fade" id="custom-tabs-three-contatosinativos" role="tabpanel" aria-labelledby="custom-tabs-three-contatosinativos-tab">
+			{{-- <div class="tab-pane fade" id="custom-tabs-three-contatosinativos" role="tabpanel" aria-labelledby="custom-tabs-three-contatosinativos-tab">
 				<div class="table-responsive-sm">
 					<table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
 						<thead>
@@ -136,17 +137,17 @@
 					<div class="col-md-6 pr-4">{{$consulta->links()}}</div>
 					@endif
 				</div>
-			</div>
+			</div> --}}
 			{{-- Fim Contatos Inativos --}}
 		</div>
 	</div>
 	{{-- modal Deletar--}}
-	@include('Admin.contatos.modalExcluir')
+	{{-- @include('Admin.contatos.modalExcluir') --}}
 </div>
 
 <!-- /.card -->
 @push('scripts')
-<script src='{{asset('admin/js/contato/contato.js')}}'></script>
+{{-- <script src='{{asset('admin/js/contato/contato.js')}}'></script> --}}
 @endpush
 @endsection
 

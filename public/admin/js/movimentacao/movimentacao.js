@@ -169,7 +169,7 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! X:\Laragon\www\agendaBetha\resources\js\movimentacao\movimentacao.js */"./resources/js/movimentacao/movimentacao.js");
+module.exports = __webpack_require__(/*! Z:\Laragon\www\agendaBetha\resources\js\movimentacao\movimentacao.js */"./resources/js/movimentacao/movimentacao.js");
 
 
 /***/ })
