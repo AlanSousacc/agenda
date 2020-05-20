@@ -130,6 +130,18 @@ Route::middleware(['auth', 'verified'])->group(function () {
 	// Licença
 	Route::post('licenca/salvar', 'LicencaController@store')->name('licenca.store');
 
+// Medidas
+
+	Route::get('medidas', 'MedidaController@index')->name('medidas.list');
+	Route::prefix('/cliente/medida')->middleware(['auth', 'checkProfile'])->group(function () {
+		Route::get('medida/novo', 'MedidaController@create')->name('medida.novo');
+		Route::post('medida/salvar', 'MedidaController@store')->name('medida.store');
+		Route::get('medida/edit/{id}', 'MedidaController@edit')->name('medida.edit');
+		Route::put('medida/update/{id}', 'MedidaController@update')->name('medida.update');
+		Route::delete('medida/delete', 'MedidaController@destroy')->name('medida.destroy');
+	});
+
 });
+
 Auth::routes();
 Auth::routes(['verify' => true]);

@@ -14,11 +14,11 @@
         </div>
         <div class="modal-footer">
 					<div class="left" style="width: 60%;">
-						<button type="submit" class="btn btn-warning generate">Gerar Código</button>
+						<button type="submit" class="btn btn-warning btn-sm generate">Gerar Código</button>
 					</div>
 					<div class="right" style="width: 40%">
-						<button type="submit" class="btn btn-primary float-right salvar">Salvar Licença</button>
-						<button type="button" class="btn btn-default float-right mx-2" data-dismiss="modal">Cancelar</button>
+						<button type="submit" class="btn btn-primary btn-sm float-right salvar">Salvar Licença</button>
+						<button type="button" class="btn btn-default btn-sm float-right mx-2" data-dismiss="modal">Cancelar</button>
 					</div>
         </div>
       </form>
