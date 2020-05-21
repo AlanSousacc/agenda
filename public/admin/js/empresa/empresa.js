@@ -152,7 +152,7 @@ $(document).ready(function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! X:\Laragon\www\agendaBetha\resources\js\empresa\empresa.js */"./resources/js/empresa/empresa.js");
+module.exports = __webpack_require__(/*! C:\wamp64\www\Laravel 6\agenda\resources\js\empresa\empresa.js */"./resources/js/empresa/empresa.js");
 
 
 /***/ })

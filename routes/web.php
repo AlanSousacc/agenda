@@ -17,6 +17,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 		Route::delete('/event-destroy', 'EventController@destroy')->name('routeEventDelete');
 		Route::get('gerarmovimentacao/agendamento/{id}', 'EventController@show')->name('geramov.agendamento.show');
 		Route::post('gerarmovimentacao', 'EventController@storeMov')->name('gerarMov.store');
+
+		Route::any('relatorio-tempo', 'AtendimentoController@relatorio_tempo')->name('relatorio-tempo');
+
 	});
 
 	Route::view('sobre', 'Admin.sobre.sobre')->name('sobre');

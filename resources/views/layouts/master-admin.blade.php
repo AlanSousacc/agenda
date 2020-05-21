@@ -38,7 +38,9 @@
           </li>
           <li class="nav-item d-none d-sm-inline-block">
             <a href="/" class="nav-link">Home</a>
-          </li>
+					</li>
+					{{-- <x-relatorios-layout> 
+					</x-relatorios-layout> --}}
           {{-- <li class="nav-item d-none d-sm-inline-block">
             <a href="dashboard" class="nav-link">Dashboard</a>
           </li> --}}
@@ -114,7 +116,7 @@
                     <p>&nbsp; Sala de Espera</p>
                   </a>
                 </li>
-              </ul>
+							</ul>
             </li>
             {{-- end agendamentos --}}
 
@@ -132,34 +134,6 @@
                     <i class="fa fa-money-bill-alt nav-icon"></i>
                     <p>Movimentações</p>
                   </a>
-                </li>
-                <li class="nav-item has-treeview">
-                  <a href="#" class="nav-link">
-                    <i class="fa fa fa-chart-bar nav-icon"></i>
-                    <p>Relatórios
-                      <i class="right fas fa-angle-left"></i>
-                    </p>
-                  </a>
-                  <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                      <a href="relatorio.periodo.contato" data-target="#personalizado" data-toggle="modal" class="nav-link">
-                        <i class="fa fa-filter nav-icon"></i>
-                        <p>Personalizado</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a target="_blank" href="{{route('relatorio.mes.atual')}}" class="nav-link">
-                        <i class="fa fa-chart-pie nav-icon"></i>
-                        <p>Mês Atual</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a target="_blank" href="{{route('cc.relbycc')}}" class="nav-link">
-                        <i class="fa fa-poll-h nav-icon"></i>
-                        <p>Por Centro de Custo</p>
-                      </a>
-                    </li>
-                  </ul>
                 </li>
               </ul>
             </li>
@@ -219,9 +193,19 @@
               </ul>
               @endif
 						</li>
+						<li class="nav-item has-treeview menu-open">
+							<a href="#" class="nav-link">
+								<i class="fa fa fa-chart-bar nav-icon"></i>
+								<p>
+									Relatórios
+								</p>
+							</a>
+							<x-relatorios-layout> 
+							</x-relatorios-layout>
+						</li>
 						
 						{{-- Sidebar Medidas --}}
-						<li class="nav-item has-treeview menu-open">
+						{{-- <li class="nav-item has-treeview menu-open">
 							<a href="#" class="nav-link">
 								<i class="nav-icon fa fa-dumbbell"></i>
 								<p>Academia</p>
@@ -235,7 +219,8 @@
 									</a>
 								</li>
 							</ul>
-							@endif
+						</li>
+							@endif --}}
 							{{-- Fim Sidebar Medidas --}}
 
 						@if (Auth::user()->profile == 'Administrador')
@@ -300,7 +285,7 @@
       <!-- /.control-sidebar -->
 
       <!-- Main Footer -->
-      <footer class="main-footer">
+      <footer class="main-footer text-center">
         <!-- To the right -->
         <!-- Default to the left -->
         <strong>Copyright &copy; 2020 AgendaBETHA</strong> Todos os direitos reservados.
