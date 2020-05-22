@@ -113,6 +113,7 @@
 				</div>
 			</div>
 		</div>
+
 		{{-- end caixas dash --}}
 			
 			<div class="card mt-3">
@@ -133,9 +134,9 @@
 							<tr>
 								<th class="text-center" style="width:80px">Data</th>
 								<th class="text-center" style="width:250px">Nome</th>
-								<th class="text-center" style="width:150px">Hr Marcada</th>
-								<th class="text-center" style="width:150px">Hr Chegada</th>
-								<th class="text-center" style="width:100px">Ini Atend.</th>
+								<th class="text-center" style="width:150px">Hr. Marcada</th>
+								<th class="text-center" style="width:150px">Hr. Chegada</th>
+								<th class="text-center" style="width:100px">Ini. Atend.</th>
 								<th class="text-center" style="width:120px">Fim Atend.</th>
 							</tr>
 						</thead>
