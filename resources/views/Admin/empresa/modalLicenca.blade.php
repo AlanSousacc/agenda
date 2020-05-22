@@ -13,12 +13,14 @@
 					<input type="hidden" name="_token" value="{{csrf_token()}}">
         </div>
         <div class="modal-footer">
-					<div class="left" style="width: 60%;">
+
+					<div class="left" style="width: 50%;">
 						<button type="submit" class="btn btn-warning generate">Gerar Código</button>
 					</div>
-					<div class="right" style="width: 40%">
+					<div class="right" style="width: 50%">
 						<button type="submit" class="btn btn-primary float-right salvar">Salvar Licença</button>
 						<button type="button" class="btn btn-default float-right mx-2" data-dismiss="modal">Cancelar</button>
+
 					</div>
         </div>
       </form>

@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 15);
+/******/ 	return __webpack_require__(__webpack_require__.s = 16);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -165,14 +165,14 @@ $(document).ready(function () {
 
 /***/ }),
 
-/***/ 15:
+/***/ 16:
 /*!***********************************************!*\
   !*** multi ./resources/js/licenca/licenca.js ***!
   \***********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\wamp64\www\Laravel 6\agenda\resources\js\licenca\licenca.js */"./resources/js/licenca/licenca.js");
+module.exports = __webpack_require__(/*! Z:\Laragon\www\agendaBetha\resources\js\licenca\licenca.js */"./resources/js/licenca/licenca.js");
 
 
 /***/ })

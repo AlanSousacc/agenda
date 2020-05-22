@@ -20,6 +20,10 @@ class Empresa extends Model
 	public function users(){
     return $this->hasMany('App\User');
 	}
+
+	public function evento_logs(){
+    return $this->hasMany('App\Models\Evento_log');
+	}
 	
 	public function movimentos(){
     return $this->hasMany('App\Models\Movimento');
