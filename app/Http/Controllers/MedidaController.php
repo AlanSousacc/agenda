@@ -36,11 +36,13 @@ class MedidaController extends Controller
     {
 			$empresa 	= Auth::user()->empresa_id;
 			$contatos = Contato::where('empresa_id', $empresa);
+
 			dd($contatos);
 			$medidas  = Medida::wherein('contato_id', $contatos);
 			// dd($medidas);
 			// return view('Admin.medidas.listagem', compact('consulta'));
 			return view('Admin.medidas.listagem', compact ('contatos', 'medidas'));
+
     }
 
 

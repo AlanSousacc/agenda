@@ -1,10 +1,10 @@
 <?php
 namespace App\Http\Controllers;
 
+use Exception;
 use \Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Exception;
 use App\Http\Requests\LicencaRequest;
 
 use App\Models\Licenca;

@@ -16,6 +16,7 @@ class CheckLicense
 											->where('status', 1)
 											->where('dtvalidade', '>=', $dt->toDateString())
 											->first();
+										
 		if(!$licenca)
 			return redirect()->route('unauthorized-license')->with('error', 'Esta empresa encontra-se com a licença expirada, ou inativa!');
 

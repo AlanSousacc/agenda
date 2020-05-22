@@ -151,3 +151,6 @@ a.brand-link {
 	border: 1px solid #ccc;
 	width: 100%;
 }
+.layout-fixed .main-sidebar {
+	width: 270px;
+}
