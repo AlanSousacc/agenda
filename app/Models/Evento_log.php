@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+use Auth;
 use Illuminate\Database\Eloquent\Model;
 
 class Evento_log extends Model
@@ -15,5 +15,6 @@ class Evento_log extends Model
 	
 	public function empresa(){
     return $this->belongsTo('App\Models\Empresa');
-  }
+	}
+	
 }

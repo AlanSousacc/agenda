@@ -98,8 +98,52 @@ class AtendimentoController extends Controller
 
 	public function relatorio_tempo(){
 		$dt				= Carbon::now();
+		$user 	 	= Auth::user()->empresa_id;
 		$eventlog = Evento_log::paginate(10);
-		// dd($eventlog->avg('duracaoespera')->whereMonth('created_at', date('m')));
-		return view('Admin.atendimento.relatorio_tempo', compact('eventlog', 'avg'));
+		$contato 	= Contato::where('empresa_id', $user)->get();
+
+		return view('Admin.atendimento.relatorio.relatorio_tempo', compact('eventlog', 'avg', 'contato'));
 	}
+
+	public function search(Request $request)
+  {
+		$dt				= Carbon::now();
+		$user 	 	= Auth::user()->empresa_id;
+		$contato 	= Contato::where('empresa_id', $user)->get();
+		$evento   = $request->except('_token');
+
+		$eventlog = Evento_log::join('events', 'evento_log.event_id', '=', 'events.id')
+			->join('contatos', 'events.contato_id', '=', 'contatos.id')
+			->where('contatos.id', $evento['contato_id'])
+			->where('evento_log.empresa_id', $user)
+			->paginate(10);
+
+		$mediaespera = Evento_log::join('events', 'evento_log.event_id', '=', 'events.id')
+			->join('contatos', 'events.contato_id', '=', 'contatos.id')
+			->where('contatos.id', $evento['contato_id'])
+			->where('evento_log.empresa_id', $user)
+			->whereMonth('evento_log.created_at', date('m'))
+			->avg('duracaoespera');
+
+		$mediaatendim = Evento_log::join('events', 'evento_log.event_id', '=', 'events.id')
+			->join('contatos', 'events.contato_id', '=', 'contatos.id')
+			->where('contatos.id', $evento['contato_id'])
+			->where('evento_log.empresa_id', $user)
+			->whereMonth('evento_log.created_at', date('m'))
+			->avg('duracaoatendimento');
+
+		$totalagend = Evento_log::join('events', 'evento_log.event_id', '=', 'events.id')
+			->join('contatos', 'events.contato_id', '=', 'contatos.id')
+			->where('contatos.id', $evento['contato_id'])
+			->where('evento_log.empresa_id', $user)
+			->whereMonth('evento_log.created_at', date('m'))
+			->count('evento_log.id');
+
+		$cont = Evento_log::join('events', 'evento_log.event_id', '=', 'events.id')
+			->join('contatos', 'events.contato_id', '=', 'contatos.id')
+			->where('contatos.id', $evento['contato_id'])
+			->where('evento_log.empresa_id', $user)->first();
+
+    return view('Admin.atendimento.relatorio.relatorio_tempo', compact('eventlog', 'contato', 'cont', 'mediaatendim', 'totalagend', 'mediaespera'));
+  }
 }

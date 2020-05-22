@@ -19,7 +19,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 		Route::post('gerarmovimentacao', 'EventController@storeMov')->name('gerarMov.store');
 
 		Route::any('relatorio-tempo', 'AtendimentoController@relatorio_tempo')->name('relatorio-tempo');
-
+		Route::any('search-relatorio-tempo', 'AtendimentoController@search')->name('search-relatorio-tempo');
 	});
 
 	Route::view('sobre', 'Admin.sobre.sobre')->name('sobre');

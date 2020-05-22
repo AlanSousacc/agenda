@@ -10,7 +10,11 @@
 	<div class="col-md-12">
 		<div class="row">
 			<div class="col-8">
+			@if (!isset($mediaatendim))
 				<h2 class="py-3 text-dark"> Balanço geral do mês</h2>
+			@else
+				<h2 class="py-3 text-dark"> Balanço mensal de: {{$cont->nome}}</h2>
+			@endif
 			</div>
 		</div>
 			{{-- caixas dash --}}
@@ -19,9 +23,11 @@
 				<!-- small box -->
 				<div class="small-box bg-info">
 					<div class="inner">
-						<h3>{{\App\Models\Evento_log::whereMonth('created_at', date('m'))->count('id')}} | <i class="fa fa-sort-numeric-up"></i></h3>
-						{{-- <h3>{{$eventlog->count('id')}} | <i class="fa fa-sort-numeric-up"></i></h3> --}}
-						
+						@if (!isset($totalagend))
+							<h3>{{\App\Models\Evento_log::whereMonth('created_at', date('m'))->count('id')}} | <i class="fa fa-sort-numeric-up"></i></h3>								
+						@else
+							<h3>{{$totalagend}} | <i class="fa fa-sort-numeric-up"></i></h3>										
+						@endif						
 						<p>Total Agendamentos</p>
 					</div>
 					<div class="icon">
@@ -35,17 +41,31 @@
 				<!-- small box -->
 				<div class="small-box bg-success">
 					<div class="inner">
-						@if ($eventlog->avg('duracaoespera') >= 15)
-							<h3>
-								{{ number_format(\App\Models\Evento_log::whereMonth('created_at', date('m'))->avg('duracaoespera'), 2, ',', '.')}}
-								<i class="fa fa-thumbs-down text-danger" data-toggle="tooltip" data-placement="bottom" title="Média de espera acima de 15 minutos"></i>							
-							</h3>							
+						@if (!isset($mediaespera))
+							@if ($eventlog->avg('duracaoespera') >= 15)
+								<h3>
+									{{ number_format(\App\Models\Evento_log::whereMonth('created_at', date('m'))->avg('duracaoespera'), 2, ',', '.')}}
+									<i class="fa fa-thumbs-down text-danger" data-toggle="tooltip" data-placement="bottom" title="Média de espera acima de 15 minutos"></i>							
+								</h3>							
+							@else
+								<h3>
+									{{ number_format(\App\Models\Evento_log::whereMonth('created_at', date('m'))->avg('duracaoespera'), 2, ',', '.')}}
+									<i class="fa fa-thumbs-up text-white" data-toggle="tooltip" data-placement="bottom" title="Média de espera abaixo de 15 minutos"></i>
+								</h3>
+							@endif
 						@else
-							<h3>
-								{{ number_format(\App\Models\Evento_log::whereMonth('created_at', date('m'))->avg('duracaoespera'), 2, ',', '.')}}
-								<i class="fa fa-thumbs-up text-white" data-toggle="tooltip" data-placement="bottom" title="Média de espera abaixo de 15 minutos"></i>
-							</h3>
-						@endif						
+							@if ($mediaespera >= 15)
+								<h3>
+									{{ number_format($mediaespera, 2, ',', '.')}}
+									<i class="fa fa-thumbs-down text-danger" data-toggle="tooltip" data-placement="bottom" title="Média de espera acima de 15 minutos"></i>							
+								</h3>							
+							@else
+								<h3>
+									{{ number_format($mediaespera, 2, ',', '.')}}
+									<i class="fa fa-thumbs-up text-white" data-toggle="tooltip" data-placement="bottom" title="Média de espera abaixo de 15 minutos"></i>
+								</h3>
+							@endif		
+						@endif				
 						<p>Média de Espera </p>
 					</div>
 					<div class="icon">
@@ -59,6 +79,7 @@
 				<!-- small box -->
 				<div class="small-box bg-warning">
 					<div class="inner">
+						@if (!isset($mediaatendim))
 						@if ($eventlog->avg('duracaoatendimento') >= 60)
 							<h3>
 								{{ number_format(\App\Models\Evento_log::whereMonth('created_at', date('m'))->avg('duracaoatendimento'), 2, ',', '.')}}
@@ -69,6 +90,19 @@
 								{{ number_format(\App\Models\Evento_log::whereMonth('created_at', date('m'))->avg('duracaoatendimento'), 2, ',', '.')}}
 								<i class="fa fa-thumbs-up text-success" data-toggle="tooltip" data-placement="bottom" title="Média de atendimentos abaixo de 60 minutos"></i>
 							</h3>
+						@endif		
+						@else
+							@if ($mediaatendim >= 60)
+								<h3>
+									{{ number_format($mediaatendim, 2, ',', '.')}}
+									<i class="fa fa-thumbs-down text-danger" data-toggle="tooltip" data-placement="bottom" title="Média de atendimentos acima de 60 minutos"></i>							
+								</h3>							
+							@else
+							<h3>
+								{{ number_format($mediaatendim, 2, ',', '.')}}
+								<i class="fa fa-thumbs-up text-success" data-toggle="tooltip" data-placement="bottom" title="Média de atendimentos abaixo de 60 minutos"></i>
+							</h3>
+							@endif
 						@endif
 						<p>Média Duração Atendimento</p>
 					</div>
@@ -125,7 +159,7 @@
 				</div>
 			</div>
 			{{-- modal filtro--}}
-			{{-- @include('Admin.fullcalendar.modalFiltro') --}}
+			@include('Admin.atendimento.relatorio.modalFiltro')
 		</div>
 	</div>
 	
