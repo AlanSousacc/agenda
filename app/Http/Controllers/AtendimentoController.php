@@ -58,6 +58,8 @@ class AtendimentoController extends Controller
 				$eventoLog->dtchegada 					= new DateTime(now());
 				$eventoLog->duracaoespera 			= 0.0;
 				$eventoLog->duracaoatendimento 	= 0.0;
+				$eventoLog->dtatendimento				= null;
+				$eventoLog->dtfimAtendimento		= null;
 				$eventoLog->event_id 						= $request->event_id;
 				$eventoLog->empresa_id 					= $user;
 				
