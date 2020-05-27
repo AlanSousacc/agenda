@@ -68,7 +68,6 @@
 
   <!-- /.card -->
   @push('scripts')
-	{{-- <script src='{{asset('admin/js/agenda/agenda.js')}}'></script> --}}
 	<script>
 		$(function () {
 			$('[data-toggle="tooltip"]').tooltip()
