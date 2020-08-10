@@ -7,6 +7,57 @@
 </div>
 <div class="col-md-12">
 	<div class="card mt-3">
+
+		{{-- dash --}}
+		<div class="row p-3">
+			<div class="col-lg-4 col-6">
+				<div class="small-box bg-info">
+					<div class="inner">
+						<h3>
+							R$ {{number_format(App\Models\Movimento::where('contato_id', $contato->id)->sum('valortotal'), 2, ',', '.')}}
+							{{-- <i class="fa fa-calendar-check"></i> --}}
+						</h3>									
+						<p>Movimentação Total</p>
+					</div>
+					<div class="icon">
+						<i class="fa fa-donate"></i>
+					</div>
+					{{-- <a href="#" class="small-box-footer">Visualizar agendamentos <i class="fas fa-arrow-circle-right"></i></a> --}}
+				</div>
+			</div>
+
+			<div class="col-lg-4 col-6">
+				<div class="small-box bg-success">
+					<div class="inner">
+						<h3>
+							R$ {{number_format(App\Models\Movimento::where('contato_id', $contato->id)->sum('valorrecebido'), 2, ',', '.')}}
+						</h3>									
+						<p>Total de Receb. / Pag.</p>
+					</div>
+					<div class="icon">
+						<i class="fa fa-check"></i>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-4 col-6">
+				<div class="small-box bg-warning">
+					<div class="inner">
+						<h3>
+							R$ {{number_format(App\Models\Movimento::where('contato_id', $contato->id)->sum('valorpendente'), 2, ',', '.')}}
+							
+						</h3>							
+						<p>Restante</p>
+					</div>
+					<div class="icon">
+						<i class="fa fa-exclamation-circle"></i>
+					</div>
+					{{-- <a href="#" class="small-box-footer">Visualizar próximas <i class="fas fa-arrow-circle-right"></i></a> --}}
+				</div>
+			</div>
+		</div>
+		{{-- end dash --}}
+
 		<div class="card-header">
 			<div class="com-md-12">
 				<h3 class="card-title mt-md-2">Listagem de Movimentação por Contato</h3>

@@ -56,7 +56,7 @@ class ContatoController extends Controller
   }
 
   public function show($id){
-		$contato = Contato::find($id);
+		$contato 	 = Contato::find($id);
 
 		$user 		 = Auth::user()->empresa_id;
 		$pagamento = Condicao_pagamento::all();

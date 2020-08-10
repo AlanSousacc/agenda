@@ -106,6 +106,12 @@ $("input[name = 'btnstatus']").on('click', function () {
   var valbtn = $(this).val();
   $('#status').val() == valbtn;
 });
+$('#iniciarSessao').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget);
+  var eventid = button.data('eventid');
+  var modal = $(this);
+  modal.find('.modal-body #eventid').val(eventid);
+});
 
 /***/ }),
 
@@ -116,7 +122,7 @@ $("input[name = 'btnstatus']").on('click', function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! Z:\Laragon\www\agendaBetha\resources\js\atendimento\atendimento.js */"./resources/js/atendimento/atendimento.js");
+module.exports = __webpack_require__(/*! C:\wamp64\www\Laravel 6\agenda\resources\js\atendimento\atendimento.js */"./resources/js/atendimento/atendimento.js");
 
 
 /***/ })

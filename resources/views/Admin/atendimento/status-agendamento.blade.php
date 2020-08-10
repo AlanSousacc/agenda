@@ -18,8 +18,6 @@
 					@endif
 					<input type="submit" value="Finalizado" name="btnstatus" class="btnstatus btn btn-success my-1 mx-1 btn-sm">	
 					<input type="submit" value="Ausente" name="btnstatus" class="btnstatus btn btn-danger my-1 mx-1 btn-sm">
-					{{-- <input type="submit" value="Remarcado" name="btnstatus" class="btnstatus btn btn-warning my-1 text-dark btn-sm mx-1"> --}}
-					{{-- <input type="submit" value="Remarcado" name="btnstatus" class="btnstatus btn btn-warning my-1 text-dark btn-sm mx-1" data-target="#modalCalendar" data-toggle="modal" data-eventid={{$item->id}}> --}}
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>

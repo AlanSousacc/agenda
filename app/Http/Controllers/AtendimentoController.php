@@ -42,8 +42,16 @@ class AtendimentoController extends Controller
 		$config 	  = Configuracao::where('empresa_id', $user)->first();
 		$tipoevento = TipoEvento::where('empresa_id', $user)->get();
 		$contato		= Contato::where('empresa_id', $user)->get();
+
 		return view('Admin.atendimento.saladeespera', compact('eventDay', 'config', 'tipoevento', 'contato'));
 	}
+
+	// public function sessoes(){
+	// 	$user 		  = Auth::user()->empresa_id;
+	// 	$eventDay   = Event::where('empresa_id', '=', $user)->whereRaw('date(start) = CURDATE()')->get();		
+
+	// 	return view('Admin.atendimento.sessao.listagem-sessoes', compact('eventDay'));
+	// }
 
 	public function update(Request $request){
 		try{
