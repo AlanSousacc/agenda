@@ -33,6 +33,10 @@ class Event extends Model
 	public function empresa(){
 		return $this->belongsTo('App\Models\Empresa');
 	}
+
+	public function evento_log(){
+		return $this->hasOne('App\Models\Evento_log');
+	}
 	
 	public function search($value){
 		return $this->where(function ($query) use ($value) {

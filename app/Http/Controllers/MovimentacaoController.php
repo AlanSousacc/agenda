@@ -56,9 +56,11 @@ class MovimentacaoController extends Controller
 	}
 
 	public function show($id){
-		$consulta = Movimento::where('contato_id', $id)->paginate(10);
-
 		$user 		 = Auth::user()->empresa_id;
+
+		$consulta = Movimento::where('contato_id', $id)->paginate(10);
+		$contato  = Contato::where('empresa_id', '=', $user)->where('id', $id)->first();
+
 		$pagamento = Condicao_pagamento::all();
 		$centro  	 = CentroCusto::where('empresa_id', '=', $user)->get();
 		$contatos	 = Contato::where('empresa_id', '=', $user)->get();
@@ -67,7 +69,7 @@ class MovimentacaoController extends Controller
 		$totaldeb	 = $consulta->sum('valorpendente');
 		$totalpag	 = $consulta->sum('valorrecebido');
 
-    return view('Admin.contatos.listagemFinanceiroContato', compact('totalpag', 'contatos', 'consulta', 'total', 'totaldeb', 'pagamento', 'centro'));
+    return view('Admin.contatos.listagemFinanceiroContato', compact('contato','totalpag', 'contatos', 'consulta', 'total', 'totaldeb', 'pagamento', 'centro'));
   }
 
 	// gera tela de cadastro de movimentação de entrada

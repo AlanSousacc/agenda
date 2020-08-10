@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 14);
+/******/ 	return __webpack_require__(__webpack_require__.s = 15);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -106,10 +106,16 @@ $("input[name = 'btnstatus']").on('click', function () {
   var valbtn = $(this).val();
   $('#status').val() == valbtn;
 });
+$('#iniciarSessao').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget);
+  var eventid = button.data('eventid');
+  var modal = $(this);
+  modal.find('.modal-body #eventid').val(eventid);
+});
 
 /***/ }),
 
-/***/ 14:
+/***/ 15:
 /*!*******************************************************!*\
   !*** multi ./resources/js/atendimento/atendimento.js ***!
   \*******************************************************/

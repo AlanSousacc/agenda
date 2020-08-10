@@ -43,5 +43,10 @@ class ModulosTableSeeder extends Seeder
         'descricao'       => 'Acesso ao gerenciamento da Sala de Espera.',
 			]);
 
+			Modulo::create ([
+        'nome'        => 'Medidas',
+        'descricao'       => 'Acesso ao Gerenciamento de Medidas de Clientes.',
+			]);
+
     }
 }

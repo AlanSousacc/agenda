@@ -1,26 +1,34 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	
+	{{-- star fullcalendar --}}
+	<meta charset='utf-8' />
+	<link href='{{asset('assets/fullcalendar/packages/core/main.css')}}' rel='stylesheet' />
+	<link href='{{asset('assets/fullcalendar/packages/daygrid/main.css')}}' rel='stylesheet' />
+	<link href='{{asset('assets/fullcalendar/packages/timegrid/main.css')}}' rel='stylesheet' />
+	<link href='{{asset('assets/fullcalendar/packages/list/main.css')}}' rel='stylesheet' />
+	
+	<link href='{{asset('assets/fullcalendar/css/style.css')}}' rel='stylesheet' />
+	<link href='{{asset('admin/css/app.css')}}' rel='stylesheet' />
+	
+	<meta name="csrf-token" content="{{ csrf_token() }}">
+	{{-- end fullcalendar--}}
+	
+	<title>AgendaBETHA</title>
+	<!-- Google Font: Source Sans Pro -->
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
-  {{-- star fullcalendar --}}
-  <meta charset='utf-8' />
-  <link href='{{asset('assets/fullcalendar/packages/core/main.css')}}' rel='stylesheet' />
-  <link href='{{asset('assets/fullcalendar/packages/daygrid/main.css')}}' rel='stylesheet' />
-  <link href='{{asset('assets/fullcalendar/packages/timegrid/main.css')}}' rel='stylesheet' />
-  <link href='{{asset('assets/fullcalendar/packages/list/main.css')}}' rel='stylesheet' />
+	{{-- DATATABLES --}}
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap.min.css">
+	
 
-  <link href='{{asset('assets/fullcalendar/css/style.css')}}' rel='stylesheet' />
-  <link href='{{asset('admin/css/app.css')}}' rel='stylesheet' />
-
-  <meta name="csrf-token" content="{{ csrf_token() }}">
-  {{-- end fullcalendar--}}
-
-  <title>AgendaBETHA</title>
-  <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+	{{-- PARA FUNCIONAR BOOTSTRAP MODAL --}}
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body class="sidebar-mini layout-fixed layout-navbar-fixed">
   <div class="wrapper" id="app">
@@ -35,7 +43,9 @@
           </li>
           <li class="nav-item d-none d-sm-inline-block">
             <a href="/" class="nav-link">Home</a>
-          </li>
+					</li>
+					{{-- <x-relatorios-layout> 
+					</x-relatorios-layout> --}}
           {{-- <li class="nav-item d-none d-sm-inline-block">
             <a href="dashboard" class="nav-link">Dashboard</a>
           </li> --}}
@@ -108,10 +118,10 @@
                 <li class="nav-item">
                   <a href="{{route('saladeespera')}}" class="nav-link">
                     &nbsp;<img src="{{URL::asset('assets/master-admin/img/waiting_room.png')}}" alt="icon room" style="max-width:20px">
-                    <p>&nbsp; Sala de Espera</p>
+                    <p>&nbsp;Sala de Espera</p>
                   </a>
                 </li>
-              </ul>
+							</ul>
             </li>
             {{-- end agendamentos --}}
 
@@ -129,34 +139,6 @@
                     <i class="fa fa-money-bill-alt nav-icon"></i>
                     <p>Movimentações</p>
                   </a>
-                </li>
-                <li class="nav-item has-treeview">
-                  <a href="#" class="nav-link">
-                    <i class="fa fa fa-chart-bar nav-icon"></i>
-                    <p>Relatórios
-                      <i class="right fas fa-angle-left"></i>
-                    </p>
-                  </a>
-                  <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                      <a href="relatorio.periodo.contato" data-target="#personalizado" data-toggle="modal" class="nav-link">
-                        <i class="fa fa-filter nav-icon"></i>
-                        <p>Personalizado</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a target="_blank" href="{{route('relatorio.mes.atual')}}" class="nav-link">
-                        <i class="fa fa-chart-pie nav-icon"></i>
-                        <p>Mês Atual</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a target="_blank" href="{{route('cc.relbycc')}}" class="nav-link">
-                        <i class="fa fa-poll-h nav-icon"></i>
-                        <p>Por Centro de Custo</p>
-                      </a>
-                    </li>
-                  </ul>
                 </li>
               </ul>
             </li>
@@ -215,7 +197,37 @@
                 </li>
               </ul>
               @endif
-            </li>
+						</li>
+						<li class="nav-item has-treeview menu-open">
+							<a href="#" class="nav-link">
+								<i class="fa fa fa-chart-bar nav-icon"></i>
+								<p>
+									Relatórios
+								</p>
+							</a>
+							<x-relatorios-layout> 
+							</x-relatorios-layout>
+						</li>
+						
+						{{-- Sidebar Medidas --}}
+						{{-- <li class="nav-item has-treeview menu-open">
+							<a href="#" class="nav-link">
+								<i class="nav-icon fa fa-dumbbell"></i>
+								<p>Academia</p>
+							</a>
+							@if (Auth::user()->profile == 'Administrador')
+							<ul class="nav nav-treeview">
+								<li class="nav-item">
+									<a href="{{route('medidas.list')}}" class="nav-link">
+										<i class="fa fa-balance-scale-right nav-icon"></i>
+										<p>Medidas</p>
+									</a>
+								</li>
+							</ul>
+						</li>
+							@endif --}}
+							{{-- Fim Sidebar Medidas --}}
+
 						@if (Auth::user()->profile == 'Administrador')
             <li class="nav-item has-treeview menu-open">
               <a href="#" class="nav-link">
@@ -278,7 +290,7 @@
       <!-- /.control-sidebar -->
 
       <!-- Main Footer -->
-      <footer class="main-footer">
+      <footer class="main-footer text-center">
         <!-- To the right -->
         <!-- Default to the left -->
         <strong>Copyright &copy; 2020 AgendaBETHA</strong> Todos os direitos reservados.
@@ -370,6 +382,5 @@
     </script>
     @stack('scripts')
   </div>
-
 </body>
 </html>

@@ -17,8 +17,6 @@ class FullCalendarController extends Controller
 
 	public function __construct()
 	{
-		$this->middleware('checkLicense');
-
 		$this->middleware(function ($request, $next) {
 			$this->empresa = Auth::user()->empresa_id;
 

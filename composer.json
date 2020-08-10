@@ -13,9 +13,10 @@
         "doctrine/dbal": "^2.10",
         "fideloper/proxy": "^4.0",
         "intervention/image": "^2.5",
-				"laravel/framework": "^7.1.1",
+        "laravel/framework": "^7.1.1",
         "laravel/tinker": "^2.0",
-        "laravel/ui": "^2"
+        "laravel/ui": "^2",
+        "twbs/bootstrap": "^4.5"
     },
     "require-dev": {
         "facade/ignition": "^2",

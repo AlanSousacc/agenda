@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 13);
+/******/ 	return __webpack_require__(__webpack_require__.s = 14);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -102,7 +102,7 @@ $('#delete').on('show.bs.modal', function (event) {
 
 /***/ }),
 
-/***/ 13:
+/***/ 14:
 /*!*****************************************************!*\
   !*** multi ./resources/js/tipoevento/tipoevento.js ***!
   \*****************************************************/

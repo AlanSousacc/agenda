@@ -29040,6 +29040,9 @@ a.brand-link {
 	padding: 5px 10px;
 	border: 1px solid #ccc;
 	width: 100%;
+}
+.layout-fixed .main-sidebar {
+	width: 270px;
 }@charset "UTF-8";
 
 /*!
