@@ -147,8 +147,8 @@
 								<td>{{$item->event->contato->nome}}</td>
 								<td class="text-center">{{Carbon\Carbon::parse($item->event->start)->format('H:i')}}</td>
 								<td class="text-center">{{Carbon\Carbon::parse($item->dtchegada)->format('H:i')}}</td>
-								<td class="text-center">{{Carbon\Carbon::parse($item->dtatendimento)->format('H:i')}}</td>
-								<td class="text-center">{{Carbon\Carbon::parse($item->dtfimatendimento)->format('H:i')}}</td>
+								<td class="text-center">{{$item->dtatendimento == null ? 'S/E' : Carbon\Carbon::parse($item->dtatendimento)->format('H:i')}}</td>
+								<td class="text-center">{{$item->dtfimatendimento == null ? 'S/E' : Carbon\Carbon::parse($item->dtfimatendimento)->format('H:i')}}</td>
 							</tr>
 							@endforeach
 						</tbody>

@@ -53,7 +53,26 @@ class EventController extends Controller
 												->where('empresa_id', $user)->get();
 
     return view('Admin.fullcalendar.listagem', compact('consulta', 'contato', 'tipoevento'));
-  }
+	}
+	
+  public function show($id){
+		$user 		= Auth::user()->empresa_id;
+		$consulta   = Event::where('empresa_id', $user)->where('contato_id', $id)->paginate(10);
+		
+		$emp = Empresa::where('id', '=', $user)->first();
+    if($emp->tipo == 'estetica'){
+      $tipoContato = 'cliente';
+    } else if($emp->tipo == 'clinica'){
+      $tipoContato = 'paciente';
+    }
+
+		$tipoevento = TipoEvento::where('empresa_id', $user)->where('status', 1)->get();
+    $contato = Contato::where('tipocontato', '=', $tipoContato)
+                        ->where('empresa_id', '=', $user)->get();
+
+    return view('Admin.fullcalendar.listagem', compact('consulta', 'evento', 'contato', 'tipoevento'));
+	}
+
 
   public function search(Request $request, Event $event)
   {

@@ -13,6 +13,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 		Route::put('/event-update', 'EventController@update')->name('routeEventUpdate');
 		Route::post('/event-store', 'EventController@store')->name('routeEventStore');
 		Route::any('search-event', 'EventController@search')->name('routeEventSearch');
+		Route::get('adendamentos-contato/{id}', 'EventController@show')->name('agendamento.show');
 		Route::delete('/users-delete/{contato}', 'EventController@delete')->name('routeAgendaDelete');
 		Route::delete('/event-destroy', 'EventController@destroy')->name('routeEventDelete');
 		Route::get('gerarmovimentacao/agendamento/{id}', 'EventController@show')->name('geramov.agendamento.show');
