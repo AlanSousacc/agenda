@@ -12,14 +12,14 @@
 			<a class="btn btn-primary btn-sm float-right mr-3" href="{{route('empresa.create')}}" role="button" style="margin-top: 1px;"> <i class="fa fa-plus-circle"></i> Nova Empresa</a>
 		</div>
 	</nav>
-	
+
 	<div class="card card-primary card-outline card-outline-tabs" style="border-top: 0px solid #007bff;">
 		<div class="card-header p-0 border-bottom-0">
 			<ul class="nav nav-tabs" id="custom-tabs-three-tab" role="tablist">
 				<li class="nav-item">
 					<a class="nav-link active" id="custom-tabs-three-contatosativos-tab" data-toggle="pill" href="#custom-tabs-three-contatosativos" role="tab" aria-controls="custom-tabs-three-home" aria-selected="true">Ativos</a>
 				</li>
-				
+
 				<li class="nav-item">
 					<a class="nav-link" id="custom-tabs-three-contatosinativos-tab" data-toggle="pill" href="#custom-tabs-three-contatosinativos" role="tab" aria-controls="custom-tabs-three-contatosinativos" aria-selected="false">Inativos</a>
 				</li>
@@ -113,7 +113,7 @@
 					</div>
 				</div>
 				{{-- Fim Empresas Ativos --}}
-				
+
 				{{-- Empresas Inativos --}}
 				<div class="tab-pane fade" id="custom-tabs-three-contatosinativos" role="tabpanel" aria-labelledby="custom-tabs-three-contatosinativos-tab">
 					<div class="table-responsive-sm">
@@ -132,7 +132,7 @@
 							<tbody>
 								@foreach ($consulta->where('status', 0) as $item)
 								<tr role="row" class="odd">
-									<td class="text-center">{{$item->id}}</td>
+                <td class="text-center">{{$item->id}}</td>
 								<td class="sorting_1">{{$item->razaosocial}}</td>
 								<td>{{$item->nomefantasia}}</td>
 								<td>{{$item->cnpj}}</td>
@@ -202,13 +202,13 @@
 						{{-- Fim empresas Inativos --}}
 					</div>
 				</div>
-				
+
 				<!-- Modal editar-->
 				@include('Admin.empresa.modalEditar')
-				
+
 				<!-- Modal licença-->
 				@include('Admin.empresa.modalLicenca')
-				
+
 				{{-- modal Deletar--}}
 				@include('Admin.empresa.modalExcluir')
 				{{-- Modal --}}

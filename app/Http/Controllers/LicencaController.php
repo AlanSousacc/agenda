@@ -25,7 +25,7 @@ class LicencaController extends Controller
 			try {
 				if($data['valstart'] > $dt->toDateString())
 					throw new Exception('A data inicial da licença deve ser maior ou igual a data de hoje');
-	
+
 				/**
 				 * se o status for == 0(inativo) ele define as propriedades da licença existente como vazias
 				 * se o status for == 1(ativo) ele aplica as propriedades vindas do formulario
@@ -45,7 +45,7 @@ class LicencaController extends Controller
 					$licenca->hash     	 = $data['hash'];
 					$licenca->empresa_id = $data['empresa_id'];
 				}
-	
+
 			} catch (Exception $e) {
 				return redirect()->route('empresa.index')->with('error', $e->getMessage());
 				exit();
@@ -57,7 +57,7 @@ class LicencaController extends Controller
 				$licenca = Licenca::where('empresa_id', $data['empresa_id'])->firstOrFail();
 				if ($data['valstart'] > $dt->toDateString())
 					throw new Exception('A data inicial da licença deve ser maior ou igual a data de hoje');
-	
+
 				if($data['status'] == 0){
 					$licenca->dtvalidade = null;
 					$licenca->dtinicio 	 = null;
@@ -71,7 +71,7 @@ class LicencaController extends Controller
 					$licenca->hash     	 = $data['hash'];
 					$licenca->empresa_id = $data['empresa_id'];
 				}
-			
+
 			} catch (Exception $e) {
 				return redirect()->route('empresa.index')->with('error', $e->getMessage());
 				exit();
@@ -80,15 +80,15 @@ class LicencaController extends Controller
 
 		try{
 			DB::beginTransaction();
-			
+
 			$saved = $licenca->save();
 			if (!$saved){
 				throw new Exception('Falha ao salvar esta licença com esta empresa');
 			}
-			
+
 			DB::commit();
 			return redirect()->route('empresa.index')->with('success', 'Licença salva com sucesso!');
-			
+
 		} catch (Exception $e) {
 			DB::rollBack();
 			return redirect()->route('empresa.index')->with('error', $e->getMessage());
