@@ -255,6 +255,6 @@ class EmpresaController extends Controller
 		}
 
 		public function createLicenca(){
-			
+
 		}
 	}

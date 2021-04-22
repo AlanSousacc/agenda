@@ -146,7 +146,7 @@
 
 <!-- /.card -->
 @push('scripts')
-<script src='{{asset('admin/js/contato/contato.js')}}'></script>
+<script src='{{asset('js/contato/contato.js')}}'></script>
 @endpush
 @endsection
 

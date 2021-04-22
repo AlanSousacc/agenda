@@ -29,13 +29,13 @@ class EmailController extends Controller
 		$data['hf'] 			= Carbon\Carbon::parse($event['end'])->format('H:i:s');
 
 		if($to_email == null)
-			return redirect('saladeespera')->with('error', 'Contato sem e-mail cadastrado!');		
+			return redirect('saladeespera')->with('error', 'Contato sem e-mail cadastrado!');
 
 		Mail::send('Admin.emails.notificar-contato', $data, function($message) use ($to_name, $to_email) {
 			$message->to($to_email, $to_name)
 			->subject('Seu agendamento, hoje!');
 		});
-		
+
 		if (Mail::failures()) {
 			return redirect('saladeespera')->with('error', 'Falha eo enviar email para este contato!');
 		}else{
