@@ -10,7 +10,7 @@
       </div>
     </div>
 	</div>
-	
+
 	<div class="form-group col-md-12">
 		<label for="validade" class="col-md-4">Validade</label>
 		<div id="validade" name="validade" class="form-control enableValidade">

@@ -96,7 +96,6 @@ class UserController extends Controller
       DB::rollBack();
       return redirect('list-user')->with('error', $e->getMessage());
     }
-
   }
 
   public function updateMyAccount(User $user){
