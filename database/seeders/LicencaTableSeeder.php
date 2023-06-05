@@ -1,5 +1,5 @@
 <?php
-
+namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Licenca;
 use \Carbon\Carbon;

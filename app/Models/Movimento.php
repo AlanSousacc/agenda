@@ -23,7 +23,7 @@ class Movimento extends Model
     'user_id'
   ];
 
-	protected $dates = ['movimented_at'];
+	protected $casts = ['movimented_at'];
 
 	public function personalizado($value){
 		return $this->where(function ($query) use ($value) {
